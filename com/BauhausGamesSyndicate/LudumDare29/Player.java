@@ -17,7 +17,7 @@ import com.badlogic.gdx.Input.Keys;
  */
 public class Player extends AbstractCharacter {
     private boolean shouldRaise = false;
-    private float speed=1/2f;
+    private float speed=1/8f;
     
     public Player(float x, float y) {
         super(x, y, "player");
