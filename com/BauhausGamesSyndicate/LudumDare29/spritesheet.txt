@@ -3,9 +3,23 @@ format: RGBA8888
 filter: Linear,Linear
 repeat: none
 0
-  rotate: false
-  xy: 2, 2
+  rotate: true
+  xy: 2, 158
   size: 320, 40
   orig: 320, 40
   offset: 0, 0
+  index: -1
+enemy
+  rotate: false
+  xy: 2, 80
+  size: 66, 76
+  orig: 80, 80
+  offset: 2, 1
+  index: -1
+minion
+  rotate: false
+  xy: 2, 2
+  size: 66, 76
+  orig: 80, 80
+  offset: 2, 1
   index: -1

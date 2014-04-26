@@ -31,6 +31,9 @@ public class Tile {
         sprite.setY(yPos);
         sprite.draw(gs.getBatch());
     }
-   
-   
+
+    public boolean colide() {
+        return colission;
+    }
+    
 }
