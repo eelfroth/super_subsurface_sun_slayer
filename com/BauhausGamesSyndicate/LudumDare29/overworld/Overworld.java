@@ -6,6 +6,7 @@ import com.BauhausGamesSyndicate.LudumDare29.GameObjects.Minion;
 import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import java.util.ArrayList;
 
@@ -18,7 +19,7 @@ public class Overworld {
     private static final ArrayList<AbstractEntity> entityList = new ArrayList<>();
     private static int cameraPos = 0;
     private static Chunk[] chunks; 
-    private static Texture background;
+    private static Sprite background;
     private final Eingang eingang;
 
     public Overworld() {        
@@ -30,7 +31,8 @@ public class Overworld {
         eingang = new Eingang();
         
         
-        background = new Texture(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/bg.jpg"));
+        background = new Sprite(new Texture(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/bg.jpg")));
+        background.scale(4);
         
         //heightmap generieren
         Overworld.heightmap = new int[256];
@@ -200,7 +202,7 @@ public class Overworld {
         
         //background
          for (int i = 0; i < getMapWidth()/background.getWidth(); i++) {
-            int x = i*background.getWidth();
+            int x = (int) (i*background.getWidth());
 //            int m=getMapWidth();
 //            if (x < -m)
 //                x += m;
