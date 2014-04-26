@@ -123,12 +123,13 @@ public class Overworld {
     public void render(GameScreen gs){
         gs.getBatch().begin();
         
-        gs.getCamera().translate(-Overworld.getCameraPos()/2, 0);
+        int y = Gdx.graphics.getHeight()-Chunk.HEIGHT; 
+        gs.getCamera().translate(-Overworld.getCameraPos()/2, -y);
         gs.getCamera().update();
         gs.getBatch().setProjectionMatrix(gs.getCamera().combined);
         
         //background
-         int y = Gdx.graphics.getHeight()-Chunk.HEIGHT; 
+
          for (int i = 0; i < getMapWidth()/background.getWidth(); i++) {
             int x = i*background.getWidth();
 //            int m=getMapWidth();
@@ -138,10 +139,10 @@ public class Overworld {
 //                x = x % m;
             
             if (x+background.getWidth() > Overworld.getCameraPos()/2 && x < Gdx.graphics.getWidth()+Overworld.getCameraPos()/2)
-               gs.getBatch().draw(background, x, y);
+               gs.getBatch().draw(background, x, 0);
         }
          
-        gs.getCamera().translate(Overworld.getCameraPos()/2, 0);
+        gs.getCamera().translate(Overworld.getCameraPos()/2, y);
         gs.getCamera().update();
         gs.getBatch().setProjectionMatrix(gs.getCamera().combined);
 
