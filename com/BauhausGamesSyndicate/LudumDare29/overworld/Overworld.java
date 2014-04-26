@@ -189,11 +189,16 @@ public class Overworld {
     
     /**
      * returns the interpolatet height
-     * @param x
+     * @param x the point where you want the map height
      * @return 
      */
     public static int getHeight(int x){
-        return getHeightmapValue(x*heightmap.length/getMapWidth());
+        int y1 = getHeightmapValue(x*heightmap.length/getMapWidth());
+        int y2 = getHeightmapValue((x+resolution())*heightmap.length/getMapWidth());
+        float m=(y2-y1)/(float)(resolution()*2);
+        //y=m*x;
+        //System.out.println("m:"+m);
+        return (int) (getHeightmapValue(x*heightmap.length/getMapWidth())+m*(x-x/resolution()));
     }
     
     public static int getMapWidth(){
