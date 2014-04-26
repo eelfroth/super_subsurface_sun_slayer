@@ -21,6 +21,6 @@ public abstract class AbstractEntity extends Sprite{
     }
     
     public void render(GameScreen gs){
-        
+        draw(gs.getBatch());
     }
 }

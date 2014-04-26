@@ -72,7 +72,4 @@ public abstract class AbstractCharacter extends AbstractEntity {
     public void update(float delta){
        
     }
-    public void render(GameScreen gs){
-        
-    }
 }

@@ -15,7 +15,7 @@ import com.badlogic.gdx.Input.Keys;
  */
 public class Player extends AbstractCharacter {
 
-    public Player(float x, float y, String name) {
+    public Player(float x, float y) {
         super(x, y, "player");
     }
     

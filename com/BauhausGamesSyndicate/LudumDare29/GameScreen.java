@@ -23,9 +23,11 @@ public class GameScreen implements Screen {
     private final FPSdiag fps;
     private final ShapeRenderer shr;
     private static TextureAtlas spritesheet;
-    private boolean world = true; //false: underworld, true: overworld
+    
+    private boolean world = false; //false: underworld, true: overworld
     private OrthographicCamera camera;
     private static Texture overlay;
+    private Player player;
 
     public GameScreen() {
         spritesheet = new TextureAtlas(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/spritesheet.txt"));
