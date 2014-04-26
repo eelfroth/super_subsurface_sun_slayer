@@ -19,6 +19,7 @@ public class Player extends AbstractCharacter {
         super(x, y, "player");
     }
     
+    @Override
     public void update(float update){
         if (Gdx.input.isKeyPressed(Keys.D)){
         
