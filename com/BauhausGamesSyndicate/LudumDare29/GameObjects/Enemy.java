@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package com.BauhausGamesSyndicate.LudumDare29.GameObjects;
 
 /**
@@ -14,7 +8,7 @@ public class Enemy extends AbstractCharacter {
 
     public Enemy(float x, float y) {
         super(x, y, "enemy");
-        setSpeed(0.3f);
+        setSpeed((float) (0.1f + Math.random()*.4f));
     }
 
     @Override
