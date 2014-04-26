@@ -31,7 +31,7 @@ public class Overworld {
         eingang = new Eingang();
         
         
-        background = new Texture(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/bg.png"));
+        background = new Texture(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/bg.jpg"));
         
         //heightmap generieren
         Overworld.heightmap = new int[200];
