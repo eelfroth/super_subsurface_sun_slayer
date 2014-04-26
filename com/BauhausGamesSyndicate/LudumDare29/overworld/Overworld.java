@@ -20,7 +20,7 @@ public class Overworld {
     private static int anzMinions = 10;
     private static Chunk[] chunks; 
     private static Texture background;
-    private Eingang eingang;
+    private final Eingang eingang;
 
     public Overworld() {        
         chunks = new Chunk[3];//max 3 backgroudn tiles
@@ -46,12 +46,13 @@ public class Overworld {
     }
     
     public void update(float delta){
-        cameraPos+=delta/2;
+        cameraPos+=delta/5;
         cameraPos = cameraPos % (Chunk.WIDTH*chunks.length);
         
         for( AbstractEntity m: entityList){
             m.update(delta);
         }
+        
         
     }
     
@@ -89,6 +90,8 @@ public class Overworld {
         for( AbstractEntity m: entityList){
             m.render(gs);
         }
+        
+        eingang.render(gs);
         gs.getBatch().end();
         
         
