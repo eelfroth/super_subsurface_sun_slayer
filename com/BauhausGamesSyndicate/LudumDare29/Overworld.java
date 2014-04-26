@@ -26,8 +26,9 @@ public class Overworld {
         chunkgraphic[1] = new Texture(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/map1.png"));
         chunkgraphic[2] = new Texture(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/map0.png"));
         
-        parallax = new Texture(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/bg.jpg"));
-            
+        parallax = new Texture(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/bg.png"));
+         
+        //heightmap generieren
         this.heightmap = new int[200];
         for (int x = 0; x < heightmap.length; x++) {
             heightmap[x] = (int) (Math.random()*height);
