@@ -54,7 +54,7 @@ public class GameScreen implements Screen {
     }
 
     public void setWorld(boolean world){
-        this.world = world;
+        GameScreen.world = world;
     }
     @Override
     public void dispose() {
