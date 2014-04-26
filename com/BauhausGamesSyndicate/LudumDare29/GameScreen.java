@@ -53,7 +53,9 @@ public class GameScreen implements Screen {
         player = new Player(Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2);
     }
 
-
+    public void setWorld(boolean world){
+        this.world = world;
+    }
     @Override
     public void dispose() {
         batch.dispose();
