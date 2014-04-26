@@ -9,7 +9,7 @@ import com.badlogic.gdx.graphics.Texture;
  * @author Benedikt Vogler
  */
 public class Underworld {
-    private Texture texture;
+    private final Texture texture;
 
     public Underworld() {
         this.texture = new Texture(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/underworld.jpg"));
