@@ -44,6 +44,11 @@ public class Overworld {
     public void update(float delta){
         cameraPos+=delta/2;
         cameraPos = cameraPos % (Chunk.WIDTH*chunks.length);
+        
+        for( AbstractEntity m: entityList){
+            m.update(delta);
+        }
+        
     }
     
     public void render(GameScreen gs){

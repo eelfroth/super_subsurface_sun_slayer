@@ -17,12 +17,14 @@ public class Minion extends AbstractCharacter{
     
     public Minion(float x, float y){
         super(x, y, "minion");
+        setSpeed(1f);
     }
     
+
     @Override
-    public void update(float x, float y){
-        setX(getX() + getSpeed() );
-        setY(Overworld.getHeightmapValue((int) x));
+    public void update(float delta){
+        setX(getX() + getSpeed());
+        setY(Overworld.getHeightmapValue((int) getX() ));
     }
 
     @Override
