@@ -18,6 +18,12 @@ import com.badlogic.gdx.Input.Keys;
  */
 public class Player extends AbstractCharacter {
     private boolean shouldRaise = false;
+    
+    private boolean upLocked    = false;
+    private boolean downLocked  = false;
+    private boolean leftLocked  = false;
+    private boolean rightLocked = false;
+    
     private float speed=1/8f;
     private int menupoint = 0;
     
@@ -54,17 +60,42 @@ public class Player extends AbstractCharacter {
             }
         }else {
             //move up?
-            if (Gdx.input.isKeyPressed(Keys.W)){
-                shouldRaise=true;
+            if (Gdx.input.isKeyPressed(Keys.W)&& !upLocked){
+                if(menupoint == 0)
+                    shouldRaise=true;
+                else 
+                    goTo(0);
+                upLocked = true;
+            }else{
+                if(upLocked)
+                    upLocked = false;
             }
-            if (Gdx.input.isKeyPressed(Keys.D)){
-                goTo(3);
+            if (Gdx.input.isKeyPressed(Keys.D)&& !rightLocked){
+                if(menupoint == 1)
+                    goTo(0);
+                if(menupoint == 0 || menupoint == 2)
+                    goTo(3);
+                rightLocked = true;
+            }else{
+                if(rightLocked)
+                    rightLocked = false;
             }
-            if (Gdx.input.isKeyPressed(Keys.S)){
+            if (Gdx.input.isKeyPressed(Keys.S)&& !downLocked){
                 goTo(2);
+                downLocked = true;
+            }else{
+                if(downLocked)
+                    downLocked = false;
             }
-            if (Gdx.input.isKeyPressed(Keys.A)){
-                goTo(1);
+            if (Gdx.input.isKeyPressed(Keys.A) && !leftLocked){
+                if(menupoint == 3)
+                    goTo(0);
+                if(menupoint == 0 || menupoint == 2)
+                    goTo(1);
+                leftLocked = true;
+            }else{
+                if(leftLocked)
+                    leftLocked = false;
             }
         }
         
@@ -89,16 +120,16 @@ public class Player extends AbstractCharacter {
     }
     
     private void goTo(int id){
-        if (menupoint==0 &&  id==2){
+        if (id==2){
             setX(1000);
             setY(350);
-        }else if (menupoint==0 && id==1){
+        }else if (id==1){
             setX(580);
             setY(400);
-        } else if(menupoint==0 && id==3){
+        } else if(id==3){
             setX(1400);
             setY(600);
-        } else if(menupoint==2 && id==0){
+        } else if(id==0){
             setX(860);
             setY(500);
         }
