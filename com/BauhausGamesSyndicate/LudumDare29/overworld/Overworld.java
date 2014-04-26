@@ -39,70 +39,70 @@ public class Overworld {
 //            heightmap[x] = (int) (Math.random()*Chunk.HEIGHT/2);
 //        }
         heightmap[0] = 300;
-        heightmap[0] = 327;
-        heightmap[1] = 353;
-        heightmap[2] = 376;
-        heightmap[3] = 416;
-        heightmap[4] = 453;
-        heightmap[5] = 473;
-        heightmap[6] = 501;
-        heightmap[7] = 515;
-        heightmap[8] = 514;
-        heightmap[9] = 473;
-        heightmap[10] = 452;
-        heightmap[11] = 443;
-        heightmap[12] = 444;
-        heightmap[13] = 478;
-        heightmap[14] = 501;
-        heightmap[15] = 509;
-        heightmap[16] = 505;
-        heightmap[17] = 497;
-        heightmap[18] = 495;
-        heightmap[19] = 499;
-        heightmap[20] = 502;
-        heightmap[21] = 492;
-        heightmap[22] = 478;
-        heightmap[23] = 463;
-        heightmap[24] = 433;
-        heightmap[25] = 420;
-        heightmap[26] = 392;
-        heightmap[27] = 372;
-        heightmap[28] = 355;
-        heightmap[29] = 346;
-        heightmap[30] = 318;
-        heightmap[31] = 300;
+        heightmap[1] = 327;
+        heightmap[2] = 353;
+        heightmap[3] = 376;
+        heightmap[4] = 416;
+        heightmap[5] = 453;
+        heightmap[6] = 473;
+        heightmap[7] = 501;
+        heightmap[8] = 515;
+        heightmap[9] = 514;
+        heightmap[10]= 473;
+        heightmap[11] = 452;
+        heightmap[12] = 443;
+        heightmap[13] = 444;
+        heightmap[14] = 478;
+        heightmap[15] = 501;
+        heightmap[16] = 509;
+        heightmap[17] = 505;
+        heightmap[18] = 497;
+        heightmap[19] = 495;
+        heightmap[20] = 499;
+        heightmap[21] = 502;
+        heightmap[22] = 492;
+        heightmap[23] = 478;
+        heightmap[24] = 463;
+        heightmap[25] = 433;
+        heightmap[26] = 420;
+        heightmap[27] = 392;
+        heightmap[28] = 372;
+        heightmap[29] = 355;
+        heightmap[30] = 346;
+        heightmap[31] = 318;
         heightmap[32] = 300;
         heightmap[33] = 300;
-        heightmap[34] = 341;
-        heightmap[35] = 354;
-        heightmap[36] = 364;
-        heightmap[37] = 361;
-        heightmap[38] = 371;
-        heightmap[39] = 374;
-        heightmap[40] = 396;
-        heightmap[41] = 397;
-        heightmap[42] = 396;
+        heightmap[34] = 300;
+        heightmap[35] = 341;
+        heightmap[36] = 354;
+        heightmap[37] = 364;
+        heightmap[38] = 361;
+        heightmap[39] = 371;
+        heightmap[40] = 374;
+        heightmap[41] = 396;
+        heightmap[42] = 397;
         heightmap[43] = 396;
-        heightmap[44] = 393;
-        heightmap[45] = 442;
-        heightmap[46] = 484;
-        heightmap[47] = 495;
-        heightmap[48] = 499;
-        heightmap[49] = 494;
-        heightmap[50] = 465;
-        heightmap[51] = 431;
-        heightmap[52] = 367;
-        heightmap[53] = 343;
-        heightmap[54] = 344;
-        heightmap[55] = 338;
-        heightmap[56] = 324;
-        heightmap[57] = 317;
-        heightmap[58] = 316;
+        heightmap[44] = 396;
+        heightmap[45] = 393;
+        heightmap[46] = 442;
+        heightmap[47] = 484;
+        heightmap[48] = 495;
+        heightmap[49] = 499;
+        heightmap[50] = 494;
+        heightmap[51] = 465;
+        heightmap[52] = 431;
+        heightmap[53] = 367;
+        heightmap[54] = 343;
+        heightmap[55] = 344;
+        heightmap[56] = 338;
+        heightmap[57] = 324;
+        heightmap[58] = 317;
         heightmap[59] = 316;
         heightmap[60] = 316;
-        heightmap[61] = 308;
-        heightmap[62] = 300;
+        heightmap[61] = 316;
+        heightmap[62] = 308;
         heightmap[63] = 300;
+        heightmap[64] = 300;
         
         //minnions in liste füllen
         for (int i = 0; i <= anzMinions; i++){
@@ -184,7 +184,7 @@ public class Overworld {
     public static int getHeightmapValue(int sample){
         int m = heightmap.length;
         int i = (sample < 0) ? (m - (Math.abs(sample) % m) ) %m : (sample % m);
-        return heightmap[i];
+        return heightmap[i]+1080-Chunk.HEIGHT;
     }
     
     /**
@@ -193,7 +193,7 @@ public class Overworld {
      * @return 
      */
     public static int getHeight(int x){
-        return getHeightmapValue(x*64/getMapWidth()*resolution());
+        return getHeightmapValue(x*heightmap.length/getMapWidth());
     }
     
     public static int getMapWidth(){
