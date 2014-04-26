@@ -16,8 +16,8 @@ public abstract class AbstractCharacter extends AbstractEntity {
         super(x, y, name);
         life     = 100;
         
-        speed    = 0;
-        velocity = 0;
+        speed     = 0;
+        velocity  = 0;
         accFactor = 0.2f;
         acceleration = 0;
         friction = 0.01f;
