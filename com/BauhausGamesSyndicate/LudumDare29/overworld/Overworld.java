@@ -34,7 +34,7 @@ public class Overworld {
         background = new Texture(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/bg.jpg"));
         
         //heightmap generieren
-        Overworld.heightmap = new int[200];
+        Overworld.heightmap = new int[256];
         for (int x = 0; x < heightmap.length; x++) {
             heightmap[x] = (int) (Math.random()*Chunk.HEIGHT/2);
         }
@@ -46,7 +46,6 @@ public class Overworld {
     }
     
     public void update(float delta){
-        cameraPos+=delta/5;
         cameraPos = cameraPos % (Chunk.WIDTH*chunks.length);
         
         for( AbstractEntity m: entityList){
@@ -108,19 +107,28 @@ public class Overworld {
  * The resolution of the heightmap
      * @return 
  */
-    public int resolution(){
+    public static int resolution(){
         return getMapWidth()/heightmap.length;
     }
     
    /**
     * Round
-    * @param sample
+    * @param sample get a sample
     * @return 
     */
     public static int getHeightmapValue(int sample){
         int m = heightmap.length;
         int i = (sample < 0) ? (m - (Math.abs(sample) % m) ) %m : (sample % m);
         return heightmap[i];
+    }
+    
+    /**
+     * returns the interpolatet height
+     * @param x
+     * @return 
+     */
+    public static int getHeight(int x){
+        return getHeightmapValue(x*64/getMapWidth()*resolution());
     }
     
     public static int getMapWidth(){
@@ -135,4 +143,5 @@ public class Overworld {
         Overworld.cameraPos = cameraPos;
     }
     
+
 }
