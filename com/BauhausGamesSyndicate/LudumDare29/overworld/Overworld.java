@@ -44,7 +44,7 @@ public class Overworld {
     }
     
     public void update(float delta){
-        cameraPos+=delta;
+        cameraPos+=delta/2;
         cameraPos = cameraPos % (Chunk.WIDTH*chunks.length);
     }
     
@@ -54,7 +54,7 @@ public class Overworld {
         //background
          int y = Gdx.graphics.getHeight()-Chunk.HEIGHT; 
          for (int i = 0; i < getMapWidth()/background.getWidth(); i++) {
-            int x = i*background.getWidth()-cameraPos/2;
+            int x = i*background.getWidth();
 //            int m=getMapWidth();
 //            if (x < -m)
 //                x += m;
@@ -83,7 +83,7 @@ public class Overworld {
         ShapeRenderer sh = gs.getShapeRenderer();
         sh.begin(ShapeRenderer.ShapeType.Line);
         for (int i = 0; i < heightmap.length; i++) {
-            sh.line(i*resolution()-cameraPos, getHeightmapValue(i), (i+1)*resolution()-cameraPos, getHeightmapValue(i+1));
+            sh.line(i*resolution(), getHeightmapValue(i), (i+1)*resolution(), getHeightmapValue(i+1));
         }
         sh.end();
         
