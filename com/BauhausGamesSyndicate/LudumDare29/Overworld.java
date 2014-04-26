@@ -14,7 +14,7 @@ public class Overworld {
     private final int[] heightmap;
     private final ArrayList<AbstractEntity> entityList = new ArrayList<>();
     private int cameraPos = 0;
-    private int anzMinions = 10;
+    private final int anzMinions = 10;
     private final int height =1024;
     private final int width = 4096;//2^14
     private final Texture[] chunkgraphic; 
