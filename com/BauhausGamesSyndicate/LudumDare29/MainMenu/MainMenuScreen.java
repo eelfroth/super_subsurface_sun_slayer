@@ -1,4 +1,4 @@
-package com.BauhausGamesSyndicate.LudumDare29;
+package com.BauhausGamesSyndicate.LudumDare29.MainMenu;
 
 import com.badlogic.gdx.Screen;
 
