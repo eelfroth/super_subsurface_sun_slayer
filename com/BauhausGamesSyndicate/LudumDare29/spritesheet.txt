@@ -1,0 +1,11 @@
+spritesheet.png
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+0
+  rotate: false
+  xy: 2, 2
+  size: 320, 40
+  orig: 320, 40
+  offset: 0, 0
+  index: -1

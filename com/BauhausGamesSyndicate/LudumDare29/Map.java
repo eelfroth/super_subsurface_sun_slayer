@@ -2,7 +2,6 @@ package com.BauhausGamesSyndicate.LudumDare29;
 
 
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import java.util.ArrayList;
 
 /**
@@ -17,10 +16,8 @@ public class Map {
     public Map() {
         this.data = new Tile[100][32];
         for (Tile[] x : data) {
-            for (int y = 0; y < x.length; y++) {
-                x[y] = new Tile(
-                    new Color((float) Math.random()/2, (float) Math.random()/2, (float) Math.random()/2, 1)
-                );
+            for (int y = 0; y < x.length/2; y++) {
+                x[y] = new Tile(0);
             }
         }
     }
@@ -29,17 +26,19 @@ public class Map {
         cameraPos++;
     }
     
-    public void render(ShapeRenderer sh){
-        sh.begin(ShapeRenderer.ShapeType.Filled);
+    public void render(GameScreen gs){
+       // sh.begin(ShapeRenderer.ShapeType.Filled);
+        gs.getBatch().begin();
         
         //render map
         for (int x = 0; x < data.length; x++) {
             for (int y = 0; y < data[x].length; y++) {
                 if (cameraPos<(x+1)*Tile.WIDTH && data[x][y] != null)    //render only if visible
-                    data[x][y].render(sh, x*Tile.WIDTH-cameraPos,y*Tile.HEIGHT);
+                    data[x][y].render(gs, x*Tile.WIDTH-cameraPos,y*Tile.HEIGHT);
             }
         }
-        sh.end();
+        gs.getBatch().end();
+        //sh.end();
     }
     
 }

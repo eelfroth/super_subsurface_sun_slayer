@@ -30,6 +30,8 @@ public class GameScreen implements Screen {
         OrthographicCamera hudCamera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         hudCamera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         shr.setProjectionMatrix(hudCamera.combined);
+        
+        Tile.loadsheet();
     }
 
 
@@ -70,7 +72,7 @@ public class GameScreen implements Screen {
         font.draw(batch, "Hello World", 1920, 200);
         batch.end();
         
-        map.render(shr);
+        map.render(this);
         
         fps.render(shr, font);
     }
