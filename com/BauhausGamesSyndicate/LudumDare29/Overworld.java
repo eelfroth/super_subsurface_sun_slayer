@@ -117,7 +117,9 @@ public class Overworld {
     * @return 
     */
     public int getHeightmapValue(int sample){
-        return heightmap[sample % heightmap.length];
+        int m = heightmap.length;
+        int i = (sample < 0) ? (m - (Math.abs(sample) % m) ) %m : (sample % m);
+        return heightmap[i];
     }
     
     public int getMapWidth(){
