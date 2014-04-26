@@ -6,6 +6,7 @@
 
 package com.BauhausGamesSyndicate.LudumDare29;
 
+import com.BauhausGamesSyndicate.LudumDare29.overworld.Chunk;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 
@@ -14,13 +15,14 @@ import com.badlogic.gdx.Input.Keys;
  * @author Benedikt Vogler
  */
 public class Player extends AbstractCharacter {
-
+    private boolean shouldRaise = false;
+    
     public Player(float x, float y) {
         super(x, y, "player");
     }
     
     @Override
-    public void update(float update){
+    public void update(float delta){   
         if (Gdx.input.isKeyPressed(Keys.D)){
         
         }
@@ -28,6 +30,25 @@ public class Player extends AbstractCharacter {
         if (Gdx.input.isKeyPressed(Keys.A)){
         
         }
+        
+        if (Gdx.input.isKeyPressed(Keys.W) && !GameScreen.onOverworld()){
+            shouldRaise=true;
+        }
+        
+        if (Gdx.input.isKeyPressed(Keys.S) && GameScreen.onOverworld()){
+        
+        }
+        
+        if (shouldRaise && getY() >= Chunk.HEIGHT){
+            GameScreen.switchWorld();
+            shouldRaise=false;
+        }
+        
+        if (shouldRaise){
+            setY(getY()+delta/2);
+            
+        }
+        
     }
     
 }

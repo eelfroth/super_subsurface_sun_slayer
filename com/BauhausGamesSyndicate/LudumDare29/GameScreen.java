@@ -24,7 +24,7 @@ public class GameScreen implements Screen {
     private final ShapeRenderer shr;
     private static TextureAtlas spritesheet;
     
-    private boolean world = false; //false: underworld, true: overworld
+    private static boolean world = false; //false: underworld, true: overworld
     private OrthographicCamera camera;
     private static Texture overlay;
     private Player player;
@@ -46,9 +46,11 @@ public class GameScreen implements Screen {
         shr.setProjectionMatrix(camera.combined);
         batch.setProjectionMatrix(camera.combined);
         
-        
+        //game data
         overworld = new Overworld();
         underworld = new Underworld();
+        
+        player = new Player(Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2);
     }
 
 
@@ -81,7 +83,7 @@ public class GameScreen implements Screen {
             overworld.update(delta);
         else
             underworld.update(delta);
-        
+        player.update(delta);
         
         
         //render
@@ -99,7 +101,9 @@ public class GameScreen implements Screen {
             overworld.render(this);
         else
             underworld.render(this);
-        
+        batch.begin();
+        player.render(this);
+        batch.end();
         
         camera.translate(-Overworld.getCameraPos(), 0);
         camera.update();
@@ -142,6 +146,16 @@ public class GameScreen implements Screen {
     public OrthographicCamera getCamera() {
         return camera;
     }
-    
-    
+
+    /**
+     *  false: underworld, true: overworld
+     * @return 
+     */
+    public static boolean onOverworld() {
+        return world;
+    }
+
+    public static void switchWorld(){
+        world = !world;
+    }
 }
