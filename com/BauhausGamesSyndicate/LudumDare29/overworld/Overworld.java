@@ -17,7 +17,6 @@ public class Overworld {
     private static int[] heightmap;
     private static final ArrayList<AbstractEntity> entityList = new ArrayList<>();
     private static int cameraPos = 0;
-    private static int anzMinions = 10;
     private static Chunk[] chunks; 
     private static Texture background;
     private final Eingang eingang;
@@ -105,14 +104,14 @@ public class Overworld {
         heightmap[64] = 300;
         
         //minnions in liste füllen
-        for (int i = 0; i < anzMinions; i++){
+        for (int i = 0; i < 10; i++){
             entityList.add(new Minion(Gdx.graphics.getWidth()/2f));
         }
         
         //place towns
         for (int i = 0; i < 200; i++){
             entityList.add(
-                new City(this, (int) (Math.random() * getMapWidth()), (int) (Chunk.HEIGHT*Math.random()))
+                new City(this, (int) (Math.random() * getMapWidth()), (int) (Chunk.HEIGHT/2*Math.random()))
             );
         }
     }
@@ -163,7 +162,7 @@ public class Overworld {
             m.render(gs);
         }
         
-        eingang.render(gs);
+        //eingang.render(gs);
         gs.getBatch().end();
         
         
