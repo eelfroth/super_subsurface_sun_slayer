@@ -8,7 +8,7 @@ import com.BauhausGamesSyndicate.LudumDare29.GameObjects.Enemy;
  * @author Benedikt Vogler
  */
 public class City extends AbstractEntity {
-    private float timetillspawn;
+    private float timetillspawn = 10000;
     private float timer;
     private final Overworld overworld;
 
