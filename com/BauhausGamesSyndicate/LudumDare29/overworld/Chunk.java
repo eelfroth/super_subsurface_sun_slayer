@@ -30,15 +30,14 @@ public class Chunk {
     public void render(GameScreen gs){
         int y = Gdx.graphics.getHeight()-Chunk.HEIGHT; 
         int x = id*Chunk.WIDTH-0;
-        //int m=Overworld.getMapWidth();
-        int m=1;
+        int m=Overworld.getMapWidth();
         if (x < -m)
             x += m;
         else
             x = x % m;
 
         //check if visible
-        if (x<Gdx.graphics.getWidth() && x+Chunk.WIDTH > 0)
+        if (x+Chunk.WIDTH > Overworld.getCameraPos() && x < Gdx.graphics.getWidth()+Overworld.getCameraPos())
            gs.getBatch().draw(texture, x, y);
     };
 }

@@ -25,7 +25,7 @@ public class Overworld {
         chunks = new Chunk[3];//max 3 backgroudn tiles
         chunks[0] = new Chunk(0);
         chunks[1] = new Chunk(1);
-        chunks[2] = new Chunk(0);
+        chunks[2] = new Chunk(2);
         
         background = new Texture(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/bg.png"));
         
@@ -116,7 +116,7 @@ public class Overworld {
         return heightmap[i];
     }
     
-    public int getMapWidth(){
+    public static int getMapWidth(){
         return Chunk.WIDTH*chunks.length;
     }
 
