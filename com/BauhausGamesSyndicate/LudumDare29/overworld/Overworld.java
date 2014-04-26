@@ -113,10 +113,10 @@ public class Overworld {
     public void update(float delta){
         cameraPos = cameraPos % (Chunk.WIDTH*chunks.length);
         
+        //update entitys
         for( AbstractEntity m: entityList){
             m.update(delta);
         }
-        
         
     }
     
@@ -129,7 +129,6 @@ public class Overworld {
         gs.getBatch().setProjectionMatrix(gs.getCamera().combined);
         
         //background
-
          for (int i = 0; i < getMapWidth()/background.getWidth(); i++) {
             int x = i*background.getWidth();
 //            int m=getMapWidth();
@@ -138,8 +137,8 @@ public class Overworld {
 //            else
 //                x = x % m;
             
-            if (x+background.getWidth() > Overworld.getCameraPos()/2 && x < Gdx.graphics.getWidth()+Overworld.getCameraPos()/2)
-               gs.getBatch().draw(background, x, 0);
+        if (x+background.getWidth() > Overworld.getCameraPos()/2 && x < Gdx.graphics.getWidth()+Overworld.getCameraPos()/2)
+            gs.getBatch().draw(background, x, 0);
         }
          
         gs.getCamera().translate(Overworld.getCameraPos()/2, y);
@@ -151,7 +150,8 @@ public class Overworld {
         for (Chunk chunk : chunks) {
             chunk.render(gs);
         }
-         
+        
+        //render entitys
         for( AbstractEntity m: entityList){
             m.render(gs);
         }
