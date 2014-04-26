@@ -2,6 +2,7 @@ package com.BauhausGamesSyndicate.LudumDare29;
 
 
 
+import com.BauhausGamesSyndicate.LudumDare29.GameObjects.Player;
 import com.BauhausGamesSyndicate.LudumDare29.Underworld.Underworld;
 import com.BauhausGamesSyndicate.LudumDare29.overworld.Overworld;
 import com.badlogic.gdx.Gdx;
@@ -25,10 +26,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameScreen implements Screen {
+    private static int wargstospawn;
     private final SpriteBatch batch;
     private final BitmapFont font;
-    private final Overworld overworld;
-    private final Underworld underworld;
+    private static Overworld overworld;
+    private static Underworld underworld;
     private final FPSdiag fps;
     private final ShapeRenderer shr;
     private static TextureAtlas spritesheet;
@@ -36,7 +38,6 @@ public class GameScreen implements Screen {
     private static boolean world = false; //false: underworld, true: overworld
     private OrthographicCamera camera;
     private static Texture overlay;
-    private Player player;
     
     private ShaderProgram shader;
     private FrameBuffer frameBuffer;
@@ -45,6 +46,10 @@ public class GameScreen implements Screen {
     private final Texture debug_texture;
     private float world_streckfaktor;
     private final float world_ypos;
+
+    private static Player player;
+    private static int money = 100;
+
 
     public GameScreen() {
         spritesheet = new TextureAtlas(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/spritesheet.txt"));
@@ -68,9 +73,8 @@ public class GameScreen implements Screen {
         //game data
         overworld = new Overworld();
         underworld = new Underworld();
-        
-        player = new Player(Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2);
-        
+        player = new Player(860, 500);
+
         //parable settings:
         world_streckfaktor = 0.25f;
         world_ypos = -0.3f;
@@ -82,7 +86,9 @@ public class GameScreen implements Screen {
         setupFramebuffer();
     }
 
-
+    public void setWorld(boolean world){
+        GameScreen.world = world;
+    }
     @Override
     public void dispose() {
         batch.dispose();
@@ -116,13 +122,15 @@ public class GameScreen implements Screen {
         Overworld.setCameraPos((int) (player.getX()-Gdx.graphics.getWidth()/2));
         
         //render
+        Gdx.gl.glClearColor(0, 0, 0, 1);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         
+        
+                
         //1. render game world to framebuffer:
+        
         frameBuffer.begin();
         {
-            Gdx.gl.glClearColor(0, 0, 0, 1);
-            Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
             camera.translate(Overworld.getCameraPos(), 0);
             camera.update();
             batch.setProjectionMatrix(camera.combined);
@@ -148,7 +156,14 @@ public class GameScreen implements Screen {
         }
         frameBuffer.end();
         
-        //2. render framebuffer to frame;
+
+        //2. render framebuffer to frame:
+        
+        float angle=Overworld.getCameraPos()*360/(float) Overworld.getMapWidth();
+        camera.rotate(-angle);
+        batch.setProjectionMatrix(camera.combined);
+        shr.setProjectionMatrix(camera.combined);
+        
         frameBuffer.getColorBufferTexture().bind();
         //debug_texture.bind();
         shader.begin();
@@ -158,6 +173,10 @@ public class GameScreen implements Screen {
         shader.setUniformf("f_ypos", world_ypos);
         frameMesh.render(shader, GL20.GL_TRIANGLES);
         shader.end();
+        
+        camera.rotate(angle);
+        batch.setProjectionMatrix(camera.combined);
+        shr.setProjectionMatrix(camera.combined);
         
         //fps
         fps.render(shr, font);
@@ -201,6 +220,8 @@ public class GameScreen implements Screen {
 
     public static void switchWorld(){
         world = !world;
+        if (!world)
+            underworld.enter();
     }
     
     private void setupShader() {
@@ -290,4 +311,18 @@ public class GameScreen implements Screen {
         mynewstring = result.toString();
         Gdx.app.log("frameMesh indices:", mynewstring);
     }
+
+    public static Overworld getOverworld() {
+        return overworld;
+    }
+
+    public static Player getPlayer() {
+        return player;
+    }
+    
+    public static void buyWarg(){
+        money--;
+        wargstospawn++;
+    }
+    
 }

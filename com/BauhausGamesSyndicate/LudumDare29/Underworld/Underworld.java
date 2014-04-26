@@ -2,6 +2,7 @@ package com.BauhausGamesSyndicate.LudumDare29.Underworld;
 
 import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Texture;
 
 /**
@@ -30,7 +31,11 @@ public class Underworld {
     }
     
     public void update(float delta){
-    
+        if (Gdx.input.isKeyPressed(Keys.SPACE)){
+            if (GameScreen.getPlayer().getMenupoint()==2){
+                GameScreen.buyWarg();
+            }
+        }
     }
     
 }
