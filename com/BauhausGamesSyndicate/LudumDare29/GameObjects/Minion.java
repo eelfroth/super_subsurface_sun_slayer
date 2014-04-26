@@ -10,7 +10,7 @@ public class Minion extends AbstractCharacter{
     
     public Minion(float x){
         super(x, 0, "minion");
-        setSpeed(0.3f);
+        setSpeed((float) (0.1f + Math.random()*.2f));
     }
     
 
