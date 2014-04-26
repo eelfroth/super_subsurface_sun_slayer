@@ -26,7 +26,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameScreen implements Screen {
-    private static int wargstospawn;
+    private static int wargsTospawn;
+    private static int slenderTospawn;
+    private static int batTospawn;
     private final SpriteBatch batch;
     private final BitmapFont font;
     private static Overworld overworld;
@@ -36,7 +38,7 @@ public class GameScreen implements Screen {
     private static TextureAtlas spritesheet;
     
     private static boolean world = false; //false: underworld, true: overworld
-    private OrthographicCamera camera;
+    private final OrthographicCamera camera;
     private static Texture overlay;
     
     private ShaderProgram shader;
@@ -322,7 +324,15 @@ public class GameScreen implements Screen {
     
     public static void buyWarg(){
         money--;
-        wargstospawn++;
+        wargsTospawn++;
     }
     
+    public static void buySlender(){
+        money--;
+        slenderTospawn++;
+    }
+    public static void buyBat(){
+        money--;
+        batTospawn++;
+    }
 }
