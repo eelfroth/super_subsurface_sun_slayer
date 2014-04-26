@@ -18,6 +18,7 @@ public class Overworld {
     private final int height =1024;
     private final int width = 4096;//2^14
     private final Texture[] chunkgraphic; 
+    private final Texture parallax;
 
     public Overworld() {        
         chunkgraphic = new Texture[3];//max 3 backgroudn tiles
@@ -25,6 +26,8 @@ public class Overworld {
         chunkgraphic[1] = new Texture(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/map1.png"));
         chunkgraphic[2] = new Texture(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/map0.png"));
         
+        parallax = new Texture(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/bg.jpg"));
+            
         this.heightmap = new int[200];
         for (int x = 0; x < heightmap.length; x++) {
             heightmap[x] = (int) (Math.random()*height);
@@ -46,19 +49,23 @@ public class Overworld {
     public void render(GameScreen gs){
        // sh.begin(ShapeRenderer.ShapeType.Filled);
         gs.getBatch().begin();
-        for( AbstractEntity m: entityList){
-            m.render(gs);
-        }
-        //render map
-//        for (int x = 0; x < heightmap.length; x++) {
-//            for (int y = 0; y < heightmap[x].length; y++) {
-//                if (cameraPos<(x+1)*Tile.WIDTH && heightmap[x][y] != null)    //render only if visible
-//                    heightmap[x][y].render(gs, x*Tile.WIDTH-cameraPos,y*Tile.HEIGHT);
-//            }
-//        }
         
-        //render check left side
-        int y = Gdx.graphics.getHeight()-height; 
+        //background
+         int y = Gdx.graphics.getHeight()-height; 
+         for (int i = 0; i < getMapWidth()/parallax.getWidth(); i++) {
+            int x = i*parallax.getWidth()-cameraPos/2;
+//            int m=getMapWidth();
+//            if (x < -m)
+//                x += m;
+//            else
+//                x = x % m;
+            
+            if (x<Gdx.graphics.getWidth() && x+width > 0)
+               gs.getBatch().draw(parallax, x, y);
+        }
+         
+         //render check left side
+        y = Gdx.graphics.getHeight()-height; 
         for (int i = 0; i < chunkgraphic.length; i++) {
             int x = i*width-cameraPos;
             int m=getMapWidth();
@@ -70,6 +77,15 @@ public class Overworld {
             if (x<Gdx.graphics.getWidth() && x+width > 0)
                gs.getBatch().draw(chunkgraphic[i], x, y);
         }
+         
+        for( AbstractEntity m: entityList){
+            m.render(gs);
+        }
+     
+        
+        
+        
+        
         
         //gs.getFont().draw(gs.getBatch(), Integer.toString(cameraPos), 20, 20);
         gs.getBatch().end();
