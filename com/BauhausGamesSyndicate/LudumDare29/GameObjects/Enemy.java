@@ -14,7 +14,7 @@ public class Enemy extends AbstractCharacter {
 
     @Override
     public void update(float delta) {
-        int randomNum = 0 + (int)(Math.random()*80);
+        int randomNum = 0 + (int)(Math.random()*100);
         if(randomNum == 23){
             direction *= -1;
             if(direction == 1)
