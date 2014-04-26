@@ -15,31 +15,36 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
 public class GameScreen implements Screen {
-    private SpriteBatch batch;
-    private BitmapFont font;
-    private Overworld overworld;
-    private Underworld underworld;
-    private FPSdiag fps;
-    private ShapeRenderer shr;
+    private final SpriteBatch batch;
+    private final BitmapFont font;
+    private final Overworld overworld;
+    private final Underworld underworld;
+    private final FPSdiag fps;
+    private final ShapeRenderer shr;
     private static TextureAtlas spritesheet;
     private boolean world = true; //false: underworld, true: overworld
+    private OrthographicCamera camera;
 
     public GameScreen() {
+        spritesheet = new TextureAtlas(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/spritesheet.txt"));
+                
         batch = new SpriteBatch();    
         font = new BitmapFont();
         font.setColor(Color.RED);
-        spritesheet = new TextureAtlas(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/spritesheet.txt"));
-        overworld = new Overworld();
-        underworld = new Underworld();
         fps = new FPSdiag(50, 200);
         shr = new ShapeRenderer();
         
-        //y-down
-        OrthographicCamera hudCamera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        hudCamera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        shr.setProjectionMatrix(hudCamera.combined);
+        //y-up
+        camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        camera.position.set(50 / 2, 50 / 2, 0);
+        
+        shr.setProjectionMatrix(camera.combined);
+        batch.setProjectionMatrix(camera.combined);
         
         
+        overworld = new Overworld();
+        underworld = new Underworld();
     }
 
 
@@ -78,7 +83,14 @@ public class GameScreen implements Screen {
         //render
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-                
+        
+        camera.translate(Overworld.getCameraPos(), 0);
+        camera.update();
+        
+        shr.setProjectionMatrix(camera.combined);
+        batch.setProjectionMatrix(camera.combined);
+        camera.translate(-Overworld.getCameraPos(), 0);
+        
         if (world)
             overworld.render(this);
         else

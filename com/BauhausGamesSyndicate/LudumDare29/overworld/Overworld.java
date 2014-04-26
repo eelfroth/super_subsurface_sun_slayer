@@ -111,5 +111,10 @@ public class Overworld {
     public int getMapWidth(){
         return Chunk.WIDTH*chunks.length;
     }
+
+    public static int getCameraPos() {
+        return cameraPos;
+    }
+    
     
 }
