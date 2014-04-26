@@ -41,9 +41,6 @@ public class Overworld {
     }
     
     public void update(float delta){
-        for( AbstractEntity m: entityList){
-            m.update(m.getX()+delta, m.getY()+delta);
-        }
         cameraPos+=delta;
         cameraPos = cameraPos % (width*chunkgraphic.length);
     }
