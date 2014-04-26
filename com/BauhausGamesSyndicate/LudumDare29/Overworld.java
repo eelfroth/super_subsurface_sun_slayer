@@ -34,6 +34,7 @@ public class Overworld {
             heightmap[x] = (int) (Math.random()*height);
         }
         
+        //minnions in liste füllen
         for (int i = 0; i <= anzMinions; i++){
             entityList.add(new Minion(width/2f, height/2f ) );
         }
@@ -65,7 +66,7 @@ public class Overworld {
                gs.getBatch().draw(parallax, x, y);
         }
          
-         //render check left side
+        //middleground
         y = Gdx.graphics.getHeight()-height; 
         for (int i = 0; i < chunkgraphic.length; i++) {
             int x = i*width-cameraPos;
