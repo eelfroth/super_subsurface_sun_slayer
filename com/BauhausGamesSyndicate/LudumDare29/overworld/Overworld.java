@@ -130,6 +130,9 @@ public class Overworld {
     public static int getCameraPos() {
         return cameraPos;
     }
-    
+
+    public static void setCameraPos(int cameraPos) {
+        Overworld.cameraPos = cameraPos;
+    }
     
 }

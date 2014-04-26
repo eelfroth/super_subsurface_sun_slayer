@@ -84,6 +84,7 @@ public class GameScreen implements Screen {
         else
             underworld.update(delta);
         player.update(delta);
+        Overworld.setCameraPos((int) (player.getX()-Gdx.graphics.getWidth()/2));
         
         
         //render
