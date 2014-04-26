@@ -7,6 +7,7 @@
 package com.BauhausGamesSyndicate.LudumDare29;
 
 import com.BauhausGamesSyndicate.LudumDare29.overworld.Chunk;
+import com.BauhausGamesSyndicate.LudumDare29.overworld.Eingang;
 import com.BauhausGamesSyndicate.LudumDare29.overworld.Overworld;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
@@ -37,13 +38,23 @@ public class Player extends AbstractCharacter {
             shouldRaise=true;
         }
         
-        if (Gdx.input.isKeyPressed(Keys.S) && GameScreen.onOverworld()){
+        Eingang eingang = GameScreen.getOverworld().getEingang();
+        if (
+            Gdx.input.isKeyPressed(Keys.S) &&
+            GameScreen.onOverworld()&&
+            getX()>eingang.getX() &&
+            getX()<eingang.getX()+eingang.getWidth()
+            ){
             GameScreen.switchWorld();
+            setX(860);
+            setY(500);
         }
         
+        //switch
         if (shouldRaise && getY() >= Chunk.HEIGHT){
             GameScreen.switchWorld();
             shouldRaise=false;
+            setX(GameScreen.getOverworld().getEingang().getX()+GameScreen.getOverworld().getEingang().getWidth()/2);
         }
         
         if (shouldRaise){

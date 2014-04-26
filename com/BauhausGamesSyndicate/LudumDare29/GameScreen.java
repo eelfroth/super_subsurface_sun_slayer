@@ -18,8 +18,8 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 public class GameScreen implements Screen {
     private final SpriteBatch batch;
     private final BitmapFont font;
-    private final Overworld overworld;
-    private final Underworld underworld;
+    private static Overworld overworld;
+    private static Underworld underworld;
     private final FPSdiag fps;
     private final ShapeRenderer shr;
     private static TextureAtlas spritesheet;
@@ -50,7 +50,7 @@ public class GameScreen implements Screen {
         overworld = new Overworld();
         underworld = new Underworld();
         
-        player = new Player(Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2);
+        player = new Player(860, 500);
     }
 
 
@@ -158,5 +158,11 @@ public class GameScreen implements Screen {
 
     public static void switchWorld(){
         world = !world;
+        if (!world)
+            underworld.enter();
+    }
+
+    public static Overworld getOverworld() {
+        return overworld;
     }
 }
