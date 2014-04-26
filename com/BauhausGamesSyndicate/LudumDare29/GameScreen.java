@@ -16,7 +16,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 public class GameScreen implements Screen {
     private SpriteBatch batch;
     private BitmapFont font;
-    private Overworld map;
+    private Overworld overworld;
     private FPSdiag fps;
     private ShapeRenderer shr;
     private static TextureAtlas spritesheet;
@@ -26,7 +26,7 @@ public class GameScreen implements Screen {
         font = new BitmapFont();
         font.setColor(Color.RED);
         spritesheet = new TextureAtlas(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/spritesheet.txt"));
-        map = new Overworld();
+        overworld = new Overworld();
         fps = new FPSdiag(50, 200);
         shr = new ShapeRenderer();
         
@@ -64,7 +64,7 @@ public class GameScreen implements Screen {
         
         //update
         fps.update(delta);
-        map.update(delta);
+        overworld.update(delta);
         
         
         
@@ -76,7 +76,7 @@ public class GameScreen implements Screen {
         font.draw(batch, "Hello World", 1920, 200);
         batch.end();
         
-        map.render(this);
+        overworld.render(this);
         
         fps.render(shr, font);
     }
