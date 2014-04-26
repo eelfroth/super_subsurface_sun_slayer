@@ -1,3 +1,5 @@
+package com.BauhausGamesSyndicate.LudumDare29;
+
 /*
  * Copyright 2013 Benedikt Vogler.
  * All rights reserved.

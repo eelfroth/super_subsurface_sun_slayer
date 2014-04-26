@@ -1,3 +1,5 @@
+package com.BauhausGamesSyndicate.LudumDare29;
+
 /*
  * This is free and unencumbered software released into the public domain.
 *

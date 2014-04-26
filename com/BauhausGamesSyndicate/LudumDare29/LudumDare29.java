@@ -1,4 +1,4 @@
-
+package com.BauhausGamesSyndicate.LudumDare29;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
