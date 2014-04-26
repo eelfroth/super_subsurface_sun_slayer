@@ -31,19 +31,24 @@ package com.BauhausGamesSyndicate.LudumDare29;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import java.util.ArrayList;
 
 /**
  *
  * @author Benedikt Vogler
  */
 public class Map {
-    private Color[][] data;
+    private Tile[][] data;
+    private final ArrayList<AbstractEntity> entityList = new ArrayList<>();
+
 
     public Map() {
-        this.data = new Color[40][32];
-        for (Color[] x : data) {
+        this.data = new Tile[40][32];
+        for (Tile[] x : data) {
             for (int y = 0; y < x.length; y++) {
-                x[y] = new Color((float) Math.random()/2, (float) Math.random()/2, (float) Math.random()/2, 1);
+                x[y] = new Tile(
+                    new Color((float) Math.random()/2, (float) Math.random()/2, (float) Math.random()/2, 1)
+                    );
             }
         }
     }
@@ -52,7 +57,7 @@ public class Map {
         sh.begin(ShapeRenderer.ShapeType.Filled);
         for (int x = 0; x < data.length; x++) {
             for (int y = 0; y < data[x].length; y++) {
-                Color color = data[x][y];
+                Color color = data[x][y].getColor();
                 sh.setColor(color);
 
                 sh.rect(x*20, y*20, 20, 20);
