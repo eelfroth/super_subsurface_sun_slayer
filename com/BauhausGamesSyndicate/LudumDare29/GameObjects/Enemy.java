@@ -14,6 +14,15 @@ public class Enemy extends AbstractCharacter {
 
     public Enemy(float x, float y) {
         super(x, y, "enemy");
+        setSpeed(0.3f);
     }
+
+    @Override
+    public void update(float delta) {
+        super.update(delta);
+        setX(getX() - delta*getSpeed());//run to left
+    }
+    
+    
     
 }
