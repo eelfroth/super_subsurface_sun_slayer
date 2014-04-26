@@ -13,11 +13,11 @@ import com.BauhausGamesSyndicate.LudumDare29.AbstractCharacter;
  * @author Paul
  */
 public class Minion extends AbstractCharacter{
+    
     public Minion(float x, float y){
         super(x, y, "minion");
     }
-
-
+    
     public void update(){
         setX(getX() + getSpeed() );
     }
