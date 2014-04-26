@@ -20,12 +20,16 @@ public class Overworld {
     private static int anzMinions = 10;
     private static Chunk[] chunks; 
     private static Texture background;
+    private Eingang eingang;
 
     public Overworld() {        
         chunks = new Chunk[3];//max 3 backgroudn tiles
-        chunks[0] = new Chunk(0);
-        chunks[1] = new Chunk(1);
-        chunks[2] = new Chunk(2);
+        for (int i = 0; i < chunks.length; i++) {
+            chunks[i] = new Chunk(i);
+        }
+        
+        eingang = new Eingang();
+        
         
         background = new Texture(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/bg.png"));
         
