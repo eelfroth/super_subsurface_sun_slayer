@@ -11,5 +11,9 @@ package com.BauhausGamesSyndicate.LudumDare29.GameObjects;
  * @author Benedikt Vogler
  */
 public class Enemy extends AbstractCharacter {
+
+    public Enemy(float x, float y) {
+        super(x, y, "enemy");
+    }
     
 }

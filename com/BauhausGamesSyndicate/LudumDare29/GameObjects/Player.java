@@ -9,7 +9,6 @@ package com.BauhausGamesSyndicate.LudumDare29.GameObjects;
 import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
 import com.BauhausGamesSyndicate.LudumDare29.overworld.Chunk;
 import com.BauhausGamesSyndicate.LudumDare29.overworld.Eingang;
-import com.BauhausGamesSyndicate.LudumDare29.overworld.Overworld;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 
@@ -27,6 +26,8 @@ public class Player extends AbstractCharacter {
     
     @Override
     public void update(float delta){   
+        super.update(delta);
+        
         if (Gdx.input.isKeyPressed(Keys.D)){
             setX(getX()+speed*delta);
         }
@@ -61,11 +62,7 @@ public class Player extends AbstractCharacter {
         if (shouldRaise){
             setY(getY()+delta/2);
         }
-        
-        if (GameScreen.onOverworld()){
-            setY(Overworld.getHeight((int) getX()));
-        }
-        
+             
     }
     
 }

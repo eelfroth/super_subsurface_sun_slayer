@@ -16,9 +16,7 @@ public abstract class AbstractEntity extends Sprite{
         setY(y);
     }
     
-    public void update(float delta){
-        
-    }
+    public abstract void update(float delta);
     
     public void render(GameScreen gs){
         draw(gs.getBatch());

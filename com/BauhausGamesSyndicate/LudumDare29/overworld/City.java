@@ -1,5 +1,6 @@
 package com.BauhausGamesSyndicate.LudumDare29.overworld;
 
+import com.BauhausGamesSyndicate.LudumDare29.GameObjects.Enemy;
 import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 
@@ -8,6 +9,8 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
  * @author Benedikt Vogler
  */
 public class City extends Sprite {
+    private int x;
+    private int y;
     private float timetillspawn;
     private float timer;
     private Overworld overworld;
@@ -27,7 +30,7 @@ public class City extends Sprite {
     }
 
     private void spawnEnemy() {
-       Enemy enemy = new Enemy();
+       Enemy enemy = new Enemy(x,y);
        overworld.addEntity(enemy);
     }
 }
