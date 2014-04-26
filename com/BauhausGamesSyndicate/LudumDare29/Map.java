@@ -35,8 +35,8 @@ public class Map {
         //render map
         for (int x = 0; x < data.length; x++) {
             for (int y = 0; y < data[x].length; y++) {
-                if (cameraPos<x*Tile.WIDTH)    //render only if visible
-                    data[x][y].render(sh, x*Tile.WIDTH,y*Tile.HEIGHT);
+                if (cameraPos<(x+1)*Tile.WIDTH && data[x][y] != null)    //render only if visible
+                    data[x][y].render(sh, x*Tile.WIDTH-cameraPos,y*Tile.HEIGHT);
             }
         }
         sh.end();
