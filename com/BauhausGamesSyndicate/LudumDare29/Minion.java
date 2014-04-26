@@ -18,7 +18,7 @@ public class Minion extends AbstractCharacter{
         super(x, y, "minion");
     }
     
-    public void update(){
+    public void update(float x, float y){
         setX(getX() + getSpeed() );
     }
 

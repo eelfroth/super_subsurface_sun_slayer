@@ -29,7 +29,7 @@ public abstract class AbstractCharacter extends AbstractEntity {
         return speed;
     }
     
-    public void update(){
+    public void update(float x, float y){
  
     }
     public void render(GameScreen gs){
