@@ -8,12 +8,18 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.Mesh;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.VertexAttribute;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.glutils.FrameBuffer;
+import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.math.Matrix4;
 
 public class GameScreen implements Screen {
     private final SpriteBatch batch;
@@ -28,6 +34,11 @@ public class GameScreen implements Screen {
     private OrthographicCamera camera;
     private static Texture overlay;
     private Player player;
+    
+    private ShaderProgram shader;
+    private FrameBuffer frameBuffer;
+    private Mesh frameMesh;
+    private Matrix4 worldMatrix;
 
     public GameScreen() {
         spritesheet = new TextureAtlas(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/spritesheet.txt"));
@@ -51,6 +62,12 @@ public class GameScreen implements Screen {
         underworld = new Underworld();
         
         player = new Player(Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2);
+        
+        //shader
+        setupShader();
+        
+        //framebuffer
+        setupFramebuffer();
     }
 
 
@@ -86,38 +103,49 @@ public class GameScreen implements Screen {
         player.update(delta);
         Overworld.setCameraPos((int) (player.getX()-Gdx.graphics.getWidth()/2));
         
-        
         //render
-        Gdx.gl.glClearColor(0, 0, 0, 1);
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         
-        camera.translate(Overworld.getCameraPos(), 0);
-        camera.update();
-        batch.setProjectionMatrix(camera.combined);
-        shr.setProjectionMatrix(camera.combined);
-        
+        //1. render game world to framebuffer:
+        frameBuffer.begin();
+        {
+            Gdx.gl.glClearColor(0, 0, 0, 1);
+            Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
+            camera.translate(Overworld.getCameraPos(), 0);
+            camera.update();
+            batch.setProjectionMatrix(camera.combined);
+            shr.setProjectionMatrix(camera.combined);
+
+            if (world)
+                overworld.render(this);
+            else
+                underworld.render(this);
+            batch.begin();
+            player.render(this);
+            batch.end();
+
+            camera.translate(-Overworld.getCameraPos(), 0);
+            camera.update();
+            shr.setProjectionMatrix(camera.combined);
+            batch.setProjectionMatrix(camera.combined);
+
+            //overlay
+            batch.begin();
+            batch.draw(overlay, 0, 0);
+            batch.end();
+        }
+        frameBuffer.end();
         
-        if (world)
-            overworld.render(this);
-        else
-            underworld.render(this);
-        batch.begin();
-        player.render(this);
-        batch.end();
+        //2. render framebuffer to frame;
+        frameBuffer.getColorBufferTexture().bind();
+        shader.begin();
+        shader.setUniformMatrix("u_worldView", worldMatrix);
+        shader.setUniformi("u_texture", 0);
+        frameMesh.render(shader, GL20.GL_TRIANGLES);
+        shader.end();
         
-        camera.translate(-Overworld.getCameraPos(), 0);
-        camera.update();
-        shr.setProjectionMatrix(camera.combined);
-        batch.setProjectionMatrix(camera.combined);
-        
-        
+        //fps
         fps.render(shr, font);
-        
-         //overlay
-        batch.begin();
-        batch.draw(overlay, 0, 0);
-        batch.end();
     }
 
     @Override
@@ -158,5 +186,28 @@ public class GameScreen implements Screen {
 
     public static void switchWorld(){
         world = !world;
+    }
+    
+    private void setupShader() {
+        ShaderProgram.pedantic = false;
+        shader = new ShaderProgram(
+                Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/shaders/world.vert").readString(),
+                Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/shaders/world.frag").readString());
+        if (!shader.isCompiled()) {
+            Gdx.app.log("Problem loading shader:", shader.getLog());
+        }
+        
+        worldMatrix = new Matrix4();
+    }
+    
+    private void setupFramebuffer() {
+        frameBuffer = new FrameBuffer(Pixmap.Format.RGB565 , Gdx.graphics.getWidth(), Gdx.graphics.getWidth(), false);
+        frameMesh = new Mesh(true, 4, 6, VertexAttribute.Position(), VertexAttribute.ColorUnpacked(), VertexAttribute.TexCoords(0));
+        frameMesh.setVertices(new float[] 
+        {-1, -1, 0, 1, 1, 1, 1, 0, 0,
+          1, -1, 0, 1, 1, 1, 1, 1, 0,
+          1,  1, 0, 1, 1, 1, 1, 1, 1,
+         -1,  1, 0, 1, 1, 1, 1, 0, 1});
+        frameMesh.setIndices(new short[] {0, 1, 2, 2, 3, 0});
     }
 }
