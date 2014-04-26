@@ -58,6 +58,9 @@ public class GameScreen implements Screen {
         
         //update
         fps.update(delta);
+        map.update(delta);
+        
+        
         
         //render
         Gdx.gl.glClearColor(1, 1, 1, 1);

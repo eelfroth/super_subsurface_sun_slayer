@@ -25,6 +25,10 @@ public class Map {
         }
     }
     
+    public void update(float delta){
+        cameraPos++;
+    }
+    
     public void render(ShapeRenderer sh){
         sh.begin(ShapeRenderer.ShapeType.Filled);
         
