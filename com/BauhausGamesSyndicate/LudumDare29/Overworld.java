@@ -20,9 +20,9 @@ public class Overworld {
 
     public Overworld() {        
         chunkgraphic = new Texture[3];//max 3 backgroudn tiles
-        chunkgraphic[0] = new Texture(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/map0.jpg"));
+        chunkgraphic[0] = new Texture(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/map0.png"));
         chunkgraphic[1] = new Texture(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/map1.png"));
-        chunkgraphic[2] = new Texture(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/map1.jpg"));
+        chunkgraphic[2] = new Texture(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/map0.png"));
         
         this.heightmap = new int[200];
         for (int x = 0; x < heightmap.length; x++) {
