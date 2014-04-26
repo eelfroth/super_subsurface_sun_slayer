@@ -37,6 +37,7 @@ public class Chunk {
         else
             x = x % m;
 
+        //check if visible
         if (x<Gdx.graphics.getWidth() && x+Chunk.WIDTH > 0)
            gs.getBatch().draw(texture, x, y);
     };
