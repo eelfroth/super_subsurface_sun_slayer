@@ -22,7 +22,7 @@ public class GameScreen implements Screen {
     private FPSdiag fps;
     private ShapeRenderer shr;
     private static TextureAtlas spritesheet;
-    private boolean world = false; //false: underworld, true: overworld
+    private boolean world = true; //false: underworld, true: overworld
 
     public GameScreen() {
         batch = new SpriteBatch();    
@@ -76,7 +76,7 @@ public class GameScreen implements Screen {
         
         
         //render
-        Gdx.gl.glClearColor(1, 1, 1, 1);
+        Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         
         batch.begin();
