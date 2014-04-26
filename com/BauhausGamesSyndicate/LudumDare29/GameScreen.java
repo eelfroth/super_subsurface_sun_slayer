@@ -9,6 +9,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -24,10 +25,12 @@ public class GameScreen implements Screen {
     private static TextureAtlas spritesheet;
     private boolean world = true; //false: underworld, true: overworld
     private OrthographicCamera camera;
+    private static Texture overlay;
 
     public GameScreen() {
         spritesheet = new TextureAtlas(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/spritesheet.txt"));
-                
+        overlay = new Texture(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/overlay.png"));         
+        
         batch = new SpriteBatch();    
         font = new BitmapFont();
         font.setColor(Color.RED);
@@ -37,7 +40,6 @@ public class GameScreen implements Screen {
         //y-up
         camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        camera.position.set(50 / 2, 50 / 2, 0);
         
         shr.setProjectionMatrix(camera.combined);
         batch.setProjectionMatrix(camera.combined);
@@ -86,17 +88,29 @@ public class GameScreen implements Screen {
         
         camera.translate(Overworld.getCameraPos(), 0);
         camera.update();
-        
-        shr.setProjectionMatrix(camera.combined);
         batch.setProjectionMatrix(camera.combined);
-        camera.translate(-Overworld.getCameraPos(), 0);
+        shr.setProjectionMatrix(camera.combined);
+        
+
         
         if (world)
             overworld.render(this);
         else
             underworld.render(this);
         
+        
+        camera.translate(-Overworld.getCameraPos(), 0);
+        camera.update();
+        shr.setProjectionMatrix(camera.combined);
+        batch.setProjectionMatrix(camera.combined);
+        
+        
         fps.render(shr, font);
+        
+         //overlay
+        batch.begin();
+        batch.draw(overlay, 0, 0);
+        batch.end();
     }
 
     @Override
@@ -122,4 +136,10 @@ public class GameScreen implements Screen {
     public static TextureAtlas getSpritesheet() {
         return spritesheet;
     }
+
+    public OrthographicCamera getCamera() {
+        return camera;
+    }
+    
+    
 }
