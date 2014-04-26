@@ -12,6 +12,7 @@ public class Overworld {
     private final int[] heightmap;
     private final ArrayList<AbstractEntity> entityList = new ArrayList<>();
     private int cameraPos = 0;
+    private int anzMinions = 10;
     private final int height =1080;
     private final int width = 16384;//2^14
 
@@ -20,16 +21,26 @@ public class Overworld {
         for (int x = 0; x < heightmap.length/2; x++) {
             heightmap[x] = (int) (Math.random()*height);
         }
+        
+        for (int i = 0; i <= anzMinions; i++){
+            entityList.add(new Minion(width/2f, height/2f ) );
+        }
     }
     
     public void update(float delta){
+        for( AbstractEntity m: entityList){
+            m.update();
+        }
+        
         cameraPos++;
     }
     
     public void render(GameScreen gs){
        // sh.begin(ShapeRenderer.ShapeType.Filled);
         gs.getBatch().begin();
-        
+        for( AbstractEntity m: entityList){
+            m.render();
+        }
         //render map
 //        for (int x = 0; x < heightmap.length; x++) {
 //            for (int y = 0; y < heightmap[x].length; y++) {
