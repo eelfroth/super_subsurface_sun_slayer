@@ -1,7 +1,7 @@
-package com.BauhausGamesSyndicate.LudumDare29;
+package com.BauhausGamesSyndicate.LudumDare29.GameObjects;
 
 //import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.BauhausGamesSyndicate.LudumDare29.AbstractEntity;
+import com.BauhausGamesSyndicate.LudumDare29.GameObjects.AbstractEntity;
         
 public abstract class AbstractCharacter extends AbstractEntity {
     public float speed;

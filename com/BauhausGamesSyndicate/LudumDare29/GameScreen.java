@@ -2,6 +2,7 @@ package com.BauhausGamesSyndicate.LudumDare29;
 
 
 
+import com.BauhausGamesSyndicate.LudumDare29.GameObjects.Player;
 import com.BauhausGamesSyndicate.LudumDare29.Underworld.Underworld;
 import com.BauhausGamesSyndicate.LudumDare29.overworld.Overworld;
 import com.badlogic.gdx.Gdx;

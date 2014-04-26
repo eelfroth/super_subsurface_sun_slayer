@@ -4,8 +4,9 @@
  * and open the template in the editor.
  */
 
-package com.BauhausGamesSyndicate.LudumDare29;
+package com.BauhausGamesSyndicate.LudumDare29.GameObjects;
 
+import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
 import com.BauhausGamesSyndicate.LudumDare29.overworld.Chunk;
 import com.BauhausGamesSyndicate.LudumDare29.overworld.Eingang;
 import com.BauhausGamesSyndicate.LudumDare29.overworld.Overworld;

@@ -1,7 +1,7 @@
 package com.BauhausGamesSyndicate.LudumDare29.overworld;
 
 
-import com.BauhausGamesSyndicate.LudumDare29.AbstractEntity;
+import com.BauhausGamesSyndicate.LudumDare29.GameObjects.AbstractEntity;
 import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
 import com.BauhausGamesSyndicate.LudumDare29.Minion;
 import com.badlogic.gdx.Gdx;

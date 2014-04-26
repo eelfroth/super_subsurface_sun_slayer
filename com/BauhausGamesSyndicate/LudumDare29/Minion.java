@@ -6,6 +6,7 @@
 
 package com.BauhausGamesSyndicate.LudumDare29;
 
+import com.BauhausGamesSyndicate.LudumDare29.GameObjects.AbstractCharacter;
 import com.BauhausGamesSyndicate.LudumDare29.overworld.Overworld;
 
 
