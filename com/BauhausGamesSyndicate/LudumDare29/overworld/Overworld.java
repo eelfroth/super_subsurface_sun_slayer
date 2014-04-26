@@ -20,6 +20,7 @@ public class Overworld {
     private final int anzMinions = 10;
     private final Chunk[] chunks; 
     private final Texture background;
+    private final Texture overlay;
 
     public Overworld() {        
         chunks = new Chunk[3];//max 3 backgroudn tiles
@@ -28,7 +29,8 @@ public class Overworld {
         chunks[2] = new Chunk(0);
         
         background = new Texture(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/bg.png"));
-         
+        overlay = new Texture(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/overlay.png")); 
+        
         //heightmap generieren
         this.heightmap = new int[200];
         for (int x = 0; x < heightmap.length; x++) {
@@ -63,6 +65,7 @@ public class Overworld {
                gs.getBatch().draw(background, x, y);
         }
          
+        //middleground
         for (Chunk chunk : chunks) {
             chunk.render(gs);
         }
@@ -70,6 +73,9 @@ public class Overworld {
         for( AbstractEntity m: entityList){
             m.render(gs);
         }
+        
+        //overlay
+        gs.getBatch().draw(overlay, 0, 0);
      
         gs.getBatch().end();
         
