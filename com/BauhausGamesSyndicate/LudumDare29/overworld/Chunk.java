@@ -4,19 +4,12 @@
  * and open the template in the editor.
  */
 
-package com.BauhausGamesSyndicate.LudumDare29;
+package com.BauhausGamesSyndicate.LudumDare29.overworld;
 
 /**
  *
  * @author Benedikt Vogler
  */
-public class Underworld {
-    
-    /**
-     * Etwas was passieren sollen wenn die Utnerwelt betreten wird.
-     */
-    public void enter(){
-    
-    }
+public class Chunk {
     
 }
