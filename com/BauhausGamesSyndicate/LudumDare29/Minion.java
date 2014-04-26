@@ -6,7 +6,9 @@
 
 package com.BauhausGamesSyndicate.LudumDare29;
 
+import com.BauhausGamesSyndicate.LudumDare29.overworld.Overworld;
 import com.BauhausGamesSyndicate.LudumDare29.AbstractCharacter;
+
 
 /**
  *
@@ -20,6 +22,7 @@ public class Minion extends AbstractCharacter{
     
     public void update(float x, float y){
         setX(getX() + getSpeed() );
+        setY(Overworld.getHeightmapValue((int) x));
     }
 
     public void render(GameScreen gs){

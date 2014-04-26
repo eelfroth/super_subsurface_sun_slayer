@@ -14,13 +14,13 @@ import java.util.ArrayList;
  * @author Benedikt Vogler
  */
 public class Overworld {
-    private final int[] heightmap;
-    private final ArrayList<AbstractEntity> entityList = new ArrayList<>();
-    private int cameraPos = 0;
-    private final int anzMinions = 10;
-    private final Chunk[] chunks; 
-    private final Texture background;
-    private final Texture overlay;
+    private static int[] heightmap;
+    private static final ArrayList<AbstractEntity> entityList = new ArrayList<>();
+    private static int cameraPos = 0;
+    private static int anzMinions = 10;
+    private static Chunk[] chunks; 
+    private static Texture background;
+    private static Texture overlay;
 
     public Overworld() {        
         chunks = new Chunk[3];//max 3 backgroudn tiles
@@ -32,7 +32,7 @@ public class Overworld {
         overlay = new Texture(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/overlay.png")); 
         
         //heightmap generieren
-        this.heightmap = new int[200];
+        Overworld.heightmap = new int[200];
         for (int x = 0; x < heightmap.length; x++) {
             heightmap[x] = (int) (Math.random()*Chunk.HEIGHT/2);
         }
@@ -102,7 +102,7 @@ public class Overworld {
     * @param sample
     * @return 
     */
-    public int getHeightmapValue(int sample){
+    public static int getHeightmapValue(int sample){
         int m = heightmap.length;
         int i = (sample < 0) ? (m - (Math.abs(sample) % m) ) %m : (sample % m);
         return heightmap[i];
