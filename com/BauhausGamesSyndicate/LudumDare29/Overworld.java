@@ -14,8 +14,8 @@ public class Overworld {
     private final int[] heightmap;
     private final ArrayList<AbstractEntity> entityList = new ArrayList<>();
     private int cameraPos = 0;
-    private final int height =1080;
-    private final int width = 16384;//2^14
+    private final int height =1024;
+    private final int width = 4096;//2^14
     private Texture graphic; 
 
     public Overworld() {
@@ -33,7 +33,7 @@ public class Overworld {
     public void render(GameScreen gs){
        // sh.begin(ShapeRenderer.ShapeType.Filled);
         gs.getBatch().begin();
-        gs.getBatch().draw(graphic, -cameraPos, 0);
+        gs.getBatch().draw(graphic, -cameraPos, Gdx.graphics.getHeight()-height);
         
         //render map
 //        for (int x = 0; x < heightmap.length; x++) {
