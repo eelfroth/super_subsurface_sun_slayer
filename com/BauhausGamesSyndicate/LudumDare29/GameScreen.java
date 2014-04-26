@@ -95,6 +95,8 @@ public class GameScreen implements Screen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         
         camera.translate(Overworld.getCameraPos(), 0);
+        float angle=Overworld.getCameraPos()*360/(float) Overworld.getMapWidth();
+        camera.rotate(-angle);
         camera.update();
         batch.setProjectionMatrix(camera.combined);
         shr.setProjectionMatrix(camera.combined);
@@ -110,6 +112,7 @@ public class GameScreen implements Screen {
         batch.end();
         
         camera.translate(-Overworld.getCameraPos(), 0);
+        camera.rotate(angle);
         camera.update();
         shr.setProjectionMatrix(camera.combined);
         batch.setProjectionMatrix(camera.combined);
