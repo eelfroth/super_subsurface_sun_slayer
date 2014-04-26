@@ -195,10 +195,11 @@ public class Overworld {
     public static int getHeight(int x){
         int y1 = getHeightmapValue(x*heightmap.length/getMapWidth());
         int y2 = getHeightmapValue((x+resolution())*heightmap.length/getMapWidth());
-        float m=(y2-y1)/(float)(resolution()*2);
+        float m=(y2-y1)/(float)(resolution());
+        int detlax = (int) (x-(x/(float)resolution()));
         //y=m*x;
         //System.out.println("m:"+m);
-        return (int) (getHeightmapValue(x*heightmap.length/getMapWidth())+m*(x-x/resolution()));
+        return (int) (getHeightmapValue(x*heightmap.length/getMapWidth())+ m*detlax/resolution());
     }
     
     public static int getMapWidth(){
