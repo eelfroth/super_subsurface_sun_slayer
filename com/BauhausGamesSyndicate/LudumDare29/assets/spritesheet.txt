@@ -46,10 +46,10 @@ burg_k
   index: -1
 enemy
   rotate: false
-  xy: 275, 469
-  size: 66, 76
-  orig: 80, 80
-  offset: 2, 1
+  xy: 356, 193
+  size: 26, 34
+  orig: 36, 36
+  offset: 1, 0
   index: -1
 minion
   rotate: false
@@ -74,10 +74,17 @@ palisaden_k
   index: -1
 player
   rotate: false
-  xy: 275, 547
+  xy: 275, 469
   size: 48, 46
   orig: 50, 50
   offset: 0, 2
+  index: -1
+schwuler_soldat_01_F2
+  rotate: false
+  xy: 321, 297
+  size: 24, 36
+  orig: 36, 36
+  offset: 3, 0
   index: -1
 siedlung_h
   rotate: false
