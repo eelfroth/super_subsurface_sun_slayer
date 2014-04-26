@@ -1,26 +1,25 @@
 package com.BauhausGamesSyndicate.LudumDare29.overworld;
 
+import com.BauhausGamesSyndicate.LudumDare29.GameObjects.AbstractEntity;
 import com.BauhausGamesSyndicate.LudumDare29.GameObjects.Enemy;
-import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 
 /**
  *
  * @author Benedikt Vogler
  */
-public class City extends Sprite {
-    private int x;
-    private int y;
+public class City extends AbstractEntity {
     private float timetillspawn;
     private float timer;
-    private Overworld overworld;
+    private final Overworld overworld;
 
-    public City(Overworld overworld) {
+    public City(Overworld overworld, int x, int y) {
+        super(x, y, "bauernhof_h");
         this.overworld = overworld;
     }
     
     
     
+    @Override
     public void update(float delta){
         timer+=delta;
         if (timer>=timetillspawn) {
@@ -30,7 +29,7 @@ public class City extends Sprite {
     }
 
     private void spawnEnemy() {
-       Enemy enemy = new Enemy(x,y);
+       Enemy enemy = new Enemy(getX(),getY());
        overworld.addEntity(enemy);
     }
 }
