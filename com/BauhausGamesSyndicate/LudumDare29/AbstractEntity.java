@@ -16,7 +16,7 @@ public abstract class AbstractEntity extends Sprite{
         setY(y);
     }
     
-    public void update(float x, float y){
+    public void update(float delta){
         
     }
     

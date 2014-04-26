@@ -25,12 +25,16 @@ public abstract class AbstractCharacter extends AbstractEntity {
         return false;
     }
     
+    public void setSpeed(float speed){
+        this.speed = speed;
+    }
+    
     public float getSpeed(){
         return speed;
     }
     
-    public void update(float x, float y){
- 
+    public void update(float delta){
+       
     }
     public void render(GameScreen gs){
         
