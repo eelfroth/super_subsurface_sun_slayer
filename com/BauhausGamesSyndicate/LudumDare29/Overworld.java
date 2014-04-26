@@ -16,32 +16,42 @@ public class Overworld {
     private int cameraPos = 0;
     private final int height =1024;
     private final int width = 4096;//2^14
-    private Texture graphic; 
+    private Texture[] chunkgraphic; 
 
     public Overworld() {
         this.heightmap = new int[100];
         for (int x = 0; x < heightmap.length/2; x++) {
             heightmap[x] = (int) (Math.random()*height);
         }
-        graphic = new Texture(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/map1.png"));
+        
+        chunkgraphic = new Texture[3];//max 3 backgroudn tiles
+        chunkgraphic[0] = new Texture(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/map1.png"));
+        chunkgraphic[1] = new Texture(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/map2.png"));
+        chunkgraphic[2] = new Texture(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/map1.png"));
     }
     
     public void update(float delta){
-        cameraPos+=delta/5;
+        cameraPos+=delta;
+        cameraPos = cameraPos % (width*chunkgraphic.length);
     }
     
     public void render(GameScreen gs){
        // sh.begin(ShapeRenderer.ShapeType.Filled);
         gs.getBatch().begin();
-        gs.getBatch().draw(graphic, -cameraPos, Gdx.graphics.getHeight()-height);
         
-        //render map
-//        for (int x = 0; x < heightmap.length; x++) {
-//            for (int y = 0; y < heightmap[x].length; y++) {
-//                if (cameraPos<(x+1)*Tile.WIDTH && heightmap[x][y] != null)    //render only if visible
-//                    heightmap[x][y].render(gs, x*Tile.WIDTH-cameraPos,y*Tile.HEIGHT);
-//            }
-//        }
+        //render check left side
+        int tile = cameraPos/width;
+        if (tile >= chunkgraphic.length) tile=0;
+        
+        for (int i = 0; i < chunkgraphic.length; i++) {
+            Texture tex = chunkgraphic[i];
+            int x = -cameraPos+i*width;
+            int y = Gdx.graphics.getHeight()-height; 
+            
+            if (x<Gdx.graphics.getWidth() && x+width > 0)
+               gs.getBatch().draw(chunkgraphic[tile], x, y);
+        }
+        
         
         gs.getBatch().end();
         //sh.end();
@@ -49,6 +59,7 @@ public class Overworld {
     
 /**
  * The resolution of the heightmap
+     * @return 
  */
     public int resolution(){
         return width/heightmap.length;
