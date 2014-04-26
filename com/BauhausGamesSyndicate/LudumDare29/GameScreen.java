@@ -15,7 +15,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 public class GameScreen implements Screen {
     private SpriteBatch batch;
     private BitmapFont font;
-    private Map map;
+    private Overworld map;
     private FPSdiag fps;
     private ShapeRenderer shr;
     private static TextureAtlas spritesheet;
@@ -24,7 +24,7 @@ public class GameScreen implements Screen {
         batch = new SpriteBatch();    
         font = new BitmapFont();
         font.setColor(Color.RED);
-        map = new Map();
+        map = new Overworld();
         fps = new FPSdiag(50, 200);
         shr = new ShapeRenderer();
         
