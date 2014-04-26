@@ -2,6 +2,7 @@ package com.BauhausGamesSyndicate.LudumDare29;
 
 
 
+import com.BauhausGamesSyndicate.LudumDare29.Underworld.Underworld;
 import com.BauhausGamesSyndicate.LudumDare29.overworld.Overworld;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -17,6 +18,7 @@ public class GameScreen implements Screen {
     private SpriteBatch batch;
     private BitmapFont font;
     private Overworld overworld;
+    private Underworld underworld;
     private FPSdiag fps;
     private ShapeRenderer shr;
     private static TextureAtlas spritesheet;
@@ -27,6 +29,7 @@ public class GameScreen implements Screen {
         font.setColor(Color.RED);
         spritesheet = new TextureAtlas(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/spritesheet.txt"));
         overworld = new Overworld();
+        underworld = new Underworld();
         fps = new FPSdiag(50, 200);
         shr = new ShapeRenderer();
         
