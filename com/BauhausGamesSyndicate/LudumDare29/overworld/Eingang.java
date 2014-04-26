@@ -14,8 +14,8 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
  * @author Benedikt Vogler
  */
 public class Eingang{
-    private int x = 2000;
-    private int width = 200;
+    private final int x = 2000;
+    private final int width = 200;
     
     public void render(GameScreen gs){
         ShapeRenderer sh = gs.getShapeRenderer();
