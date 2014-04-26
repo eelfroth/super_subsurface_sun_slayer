@@ -34,7 +34,7 @@ public class Overworld {
         //heightmap generieren
         this.heightmap = new int[200];
         for (int x = 0; x < heightmap.length; x++) {
-            heightmap[x] = (int) (Math.random()*Chunk.HEIGHT);
+            heightmap[x] = (int) (Math.random()*Chunk.HEIGHT/2);
         }
         
         //minnions in liste füllen
