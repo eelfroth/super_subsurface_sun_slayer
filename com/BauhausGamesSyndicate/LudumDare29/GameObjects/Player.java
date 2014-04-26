@@ -27,15 +27,20 @@ public class Player extends AbstractCharacter {
     @Override
     public void update(float delta){   
         super.update(delta);
-        
+        setAcceleration(0);
         if (Gdx.input.isKeyPressed(Keys.D)){
-            setX(getX()+speed*delta);
+            setAcceleration(1);
+            //setX(getX()+speed*delta);
         }
         
         if (Gdx.input.isKeyPressed(Keys.A)){
-            setX(getX()-speed*delta);
+            setAcceleration(-1);
+            //setX(getX()-speed*delta);
         }
-        
+        setAcceleration(getAcceleration() * getAccFactor()    );
+        setVelocity    (getVelocity()     + getAcceleration() );
+        setVelocity    (getVelocity()     * (1 - getFriction()) );
+        setX((getX() + getVelocity()*delta));
         if (Gdx.input.isKeyPressed(Keys.W) && !GameScreen.onOverworld()){
             shouldRaise=true;
         }

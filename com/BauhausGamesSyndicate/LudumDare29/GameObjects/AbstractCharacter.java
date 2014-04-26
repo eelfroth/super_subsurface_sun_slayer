@@ -8,7 +8,7 @@ public abstract class AbstractCharacter extends AbstractEntity {
     public float acceleration;
     public float accFactor;
     public float velocity;
-    public static float friction;
+    public float friction;
     
     public int life;
 
@@ -18,10 +18,14 @@ public abstract class AbstractCharacter extends AbstractEntity {
         
         speed     = 0;
         velocity  = 0;
-        accFactor = 0.2f;
+        accFactor = 0.03f;
         acceleration = 0;
-        friction = 0.01f;
+        friction = 0.03f;
         
+    }
+    
+    public float getFriction(){
+        return this.friction;
     }
     
     public float getVelocity(){
