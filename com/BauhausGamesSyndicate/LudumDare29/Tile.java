@@ -14,9 +14,9 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
  * @author Benedikt Vogler
  */
 public class Tile {
-   private Color color;
-   public static final int WIDTH = 20;
-   public static final int HEIGHT =20;
+   private final Color color;
+   public static final int WIDTH = 320;
+   public static final int HEIGHT = 40;
 
     public Tile(Color color) {
         this.color = color;
