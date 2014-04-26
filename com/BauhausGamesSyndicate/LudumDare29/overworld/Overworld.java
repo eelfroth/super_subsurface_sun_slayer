@@ -3,7 +3,7 @@ package com.BauhausGamesSyndicate.LudumDare29.overworld;
 
 import com.BauhausGamesSyndicate.LudumDare29.GameObjects.AbstractEntity;
 import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
-import com.BauhausGamesSyndicate.LudumDare29.Minion;
+import com.BauhausGamesSyndicate.LudumDare29.GameObjects.Minion;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
@@ -105,8 +105,15 @@ public class Overworld {
         heightmap[64] = 300;
         
         //minnions in liste füllen
-        for (int i = 0; i <= anzMinions; i++){
-            entityList.add(new Minion(Gdx.graphics.getWidth()/2f, Gdx.graphics.getHeight()/2f ) );
+        for (int i = 0; i < anzMinions; i++){
+            entityList.add(new Minion(Gdx.graphics.getWidth()/2f));
+        }
+        
+        //place towns
+        for (int i = 0; i < 200; i++){
+            entityList.add(
+                new City(this, (int) (Math.random() * getMapWidth()), (int) (Chunk.HEIGHT*Math.random()))
+            );
         }
     }
     
@@ -114,8 +121,8 @@ public class Overworld {
         cameraPos = cameraPos % (Chunk.WIDTH*chunks.length);
         
         //update entitys
-        for( AbstractEntity m: entityList){
-            m.update(delta);
+        for (int i = 0; i < entityList.size(); i++) {
+            entityList.get(i).update(delta);
         }
         
     }
