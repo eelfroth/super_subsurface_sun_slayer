@@ -8,7 +8,7 @@ public class Enemy extends AbstractCharacter {
 
     public Enemy(float x, float y) {
         super(x, y, "enemy");
-        setSpeed((float) (0.1f + Math.random()*.4f));
+        setSpeed((float) (0.1f + Math.random()*.2f));
     }
 
     @Override
