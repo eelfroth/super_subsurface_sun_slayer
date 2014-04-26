@@ -14,14 +14,22 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
  * @author Benedikt Vogler
  */
 public class Eingang{
-    int x = 2000;
-    int width = 200;
+    private int x = 2000;
+    private int width = 200;
     
     public void render(GameScreen gs){
         ShapeRenderer sh = gs.getShapeRenderer();
         sh.begin(ShapeRenderer.ShapeType.Filled);
         sh.rect(x, 0, width, 400);
         sh.end();
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getWidth() {
+        return width;
     }
     
 }

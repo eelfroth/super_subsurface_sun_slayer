@@ -196,10 +196,10 @@ public class Overworld {
         int y1 = getHeightmapValue(x*heightmap.length/getMapWidth());
         int y2 = getHeightmapValue((x+resolution())*heightmap.length/getMapWidth());
         float m=(y2-y1)/(float)(resolution());
-        int detlax = (int) (x-(x/(float)resolution()));
+        
+        int deltaX = x%resolution();
         //y=m*x;
-        //System.out.println("m:"+m);
-        return (int) (getHeightmapValue(x*heightmap.length/getMapWidth())+ m*detlax/resolution());
+        return (int) (getHeightmapValue(x*heightmap.length/getMapWidth())+ resolution()*m*(deltaX/(float) resolution()));
     }
     
     public static int getMapWidth(){
@@ -214,5 +214,8 @@ public class Overworld {
         Overworld.cameraPos = cameraPos;
     }
     
+    public Eingang getEingang() {
+        return eingang;
+    }
 
 }
