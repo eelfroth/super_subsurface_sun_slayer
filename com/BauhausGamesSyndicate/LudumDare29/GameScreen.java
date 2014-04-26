@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
 public class GameScreen implements Screen {
@@ -17,6 +18,7 @@ public class GameScreen implements Screen {
     private Map map;
     private FPSdiag fps;
     private ShapeRenderer shr;
+    private static TextureAtlas spritesheet;
 
     public GameScreen() {
         batch = new SpriteBatch();    
@@ -31,7 +33,7 @@ public class GameScreen implements Screen {
         hudCamera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         shr.setProjectionMatrix(hudCamera.combined);
         
-        Tile.loadsheet();
+        spritesheet = new TextureAtlas(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/spritesheet.txt"));
     }
 
 
@@ -96,5 +98,8 @@ public class GameScreen implements Screen {
     public ShapeRenderer getShapeRenderer() {
         return shr;
     }
-    
+
+    public static TextureAtlas getSpritesheet() {
+        return spritesheet;
+    }
 }

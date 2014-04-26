@@ -1,8 +1,6 @@
 package com.BauhausGamesSyndicate.LudumDare29;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 
 /**
  *
@@ -11,7 +9,6 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 public class Tile {
    public static final int WIDTH = 320;
    public static final int HEIGHT = 40;
-   private static TextureAtlas spritesheet;
    private boolean colission = true;
    private int id;
 
@@ -28,12 +25,8 @@ public class Tile {
         }
     }
 
-    public static void loadsheet(){
-        spritesheet = new TextureAtlas(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/spritesheet.txt"));
-    }
-
     void render(GameScreen gs, int xPos, int yPos) {
-        Sprite sprite = new Sprite(spritesheet.findRegion(Integer.toString(id)));
+        Sprite sprite = new Sprite(GameScreen.getSpritesheet().findRegion(Integer.toString(id)));
         sprite.setX(xPos);
         sprite.setY(yPos);
         sprite.draw(gs.getBatch());
