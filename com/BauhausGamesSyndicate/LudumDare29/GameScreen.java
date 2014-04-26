@@ -22,6 +22,7 @@ public class GameScreen implements Screen {
     private FPSdiag fps;
     private ShapeRenderer shr;
     private static TextureAtlas spritesheet;
+    private boolean world = false; //false: underworld, true: overworld
 
     public GameScreen() {
         batch = new SpriteBatch();    
@@ -67,7 +68,10 @@ public class GameScreen implements Screen {
         
         //update
         fps.update(delta);
-        overworld.update(delta);
+        if (world)
+            overworld.update(delta);
+        else
+            underworld.update(delta);
         
         
         
@@ -79,7 +83,10 @@ public class GameScreen implements Screen {
         font.draw(batch, "Hello World", 1920, 200);
         batch.end();
         
-        overworld.render(this);
+        if (world)
+            overworld.render(this);
+        else
+            underworld.render(this);
         
         fps.render(shr, font);
     }

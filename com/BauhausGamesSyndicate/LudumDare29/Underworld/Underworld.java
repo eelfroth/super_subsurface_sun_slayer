@@ -27,4 +27,8 @@ public class Underworld {
         gs.getBatch().draw(texture, 0, 0);
     }
     
+    public void update(float delta){
+    
+    }
+    
 }
