@@ -1,6 +1,7 @@
 
-package com.BauhausGamesSyndicate.LudumDare29;
+package com.BauhausGamesSyndicate.LudumDare29.GameObjects;
 
+import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 
 /**
@@ -15,9 +16,7 @@ public abstract class AbstractEntity extends Sprite{
         setY(y);
     }
     
-    public void update(float delta){
-        
-    }
+    public abstract void update(float delta);
     
     public void render(GameScreen gs){
         draw(gs.getBatch());

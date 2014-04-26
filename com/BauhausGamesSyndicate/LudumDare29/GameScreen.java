@@ -2,6 +2,7 @@ package com.BauhausGamesSyndicate.LudumDare29;
 
 
 
+import com.BauhausGamesSyndicate.LudumDare29.GameObjects.Player;
 import com.BauhausGamesSyndicate.LudumDare29.Underworld.Underworld;
 import com.BauhausGamesSyndicate.LudumDare29.overworld.Overworld;
 import com.badlogic.gdx.Gdx;
@@ -54,7 +55,7 @@ public class GameScreen implements Screen {
     }
 
     public void setWorld(boolean world){
-        this.world = world;
+        GameScreen.world = world;
     }
     @Override
     public void dispose() {

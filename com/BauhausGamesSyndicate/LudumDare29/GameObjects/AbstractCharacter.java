@@ -1,8 +1,8 @@
-package com.BauhausGamesSyndicate.LudumDare29;
+package com.BauhausGamesSyndicate.LudumDare29.GameObjects;
 
-//import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.BauhausGamesSyndicate.LudumDare29.AbstractEntity;
-        
+import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
+import com.BauhausGamesSyndicate.LudumDare29.overworld.Overworld;
+
 public abstract class AbstractCharacter extends AbstractEntity {
     public float speed;
     public float acceleration;
@@ -69,7 +69,10 @@ public abstract class AbstractCharacter extends AbstractEntity {
         return false;
     }
     
+    @Override
     public void update(float delta){
-       
+        if (GameScreen.onOverworld()){
+            setY(Overworld.getHeight((int) getX()));
+        }
     }
 }
