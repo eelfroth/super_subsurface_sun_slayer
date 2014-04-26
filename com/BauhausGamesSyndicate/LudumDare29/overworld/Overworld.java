@@ -68,11 +68,11 @@ public class Overworld {
 //            else
 //                x = x % m;
             
-            if (x<Gdx.graphics.getWidth() && x+Chunk.WIDTH > 0)
+            if (x+background.getWidth() > Overworld.getCameraPos()/2 && x < Gdx.graphics.getWidth()+Overworld.getCameraPos()/2)
                gs.getBatch().draw(background, x, y);
         }
          
-         gs.getCamera().translate(Overworld.getCameraPos()/2, 0);
+        gs.getCamera().translate(Overworld.getCameraPos()/2, 0);
         gs.getCamera().update();
         gs.getBatch().setProjectionMatrix(gs.getCamera().combined);
 
