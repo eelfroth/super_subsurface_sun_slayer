@@ -4,10 +4,9 @@
  * and open the template in the editor.
  */
 
-package com.BauhausGamesSyndicate.LudumDare29;
+package com.BauhausGamesSyndicate.LudumDare29.GameObjects;
 
 import com.BauhausGamesSyndicate.LudumDare29.GameObjects.AbstractCharacter;
-import com.BauhausGamesSyndicate.LudumDare29.overworld.Overworld;
 
 
 /**
@@ -16,20 +15,15 @@ import com.BauhausGamesSyndicate.LudumDare29.overworld.Overworld;
  */
 public class Minion extends AbstractCharacter{
     
-    public Minion(float x, float y){
-        super(x, y, "minion");
+    public Minion(float x){
+        super(x, 0, "minion");
         setSpeed(1f);
     }
     
 
     @Override
     public void update(float delta){
-        setX(getX() + getSpeed());
-        setY(Overworld.getHeightmapValue((int) getX() ));
-    }
-
-    @Override
-    public void render(GameScreen gs){
-        draw(gs.getBatch());
+        super.update(delta);
+        setX(getX() + delta*getSpeed());
     }
 }
