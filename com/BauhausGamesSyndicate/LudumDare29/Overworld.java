@@ -36,7 +36,7 @@ public class Overworld {
         
         //minnions in liste füllen
         for (int i = 0; i <= anzMinions; i++){
-            entityList.add(new Minion(width/2f, height/2f ) );
+            entityList.add(new Minion(Gdx.graphics.getWidth()/2f, Gdx.graphics.getHeight()/2f ) );
         }
     }
     
