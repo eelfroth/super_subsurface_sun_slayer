@@ -5,7 +5,7 @@ import com.BauhausGamesSyndicate.LudumDare29.AbstractEntity;
         
 public abstract class AbstractCharacter extends AbstractEntity {
     public float speed;
-    
+
     public AbstractCharacter(float x, float y, String name){
         super(x, y, name);
     }
@@ -13,9 +13,11 @@ public abstract class AbstractCharacter extends AbstractEntity {
     public void update(){
         
     }
-    
-    public void render(){
+    public void render(GameScreen gs){
         
     }
     
+    public float getSpeed(){
+        return speed;
+    }
 }

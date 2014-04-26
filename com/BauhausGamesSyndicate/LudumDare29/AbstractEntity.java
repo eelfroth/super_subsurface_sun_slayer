@@ -15,14 +15,12 @@ public abstract class AbstractEntity extends Sprite{
         setX(x);
         setY(y);
     }
-
     
-    public void update(float x, float y){
-        setX(x);
-        setY(y);
+    public void update(){
+        
     }
     
     public void render(GameScreen gs){
-        draw(gs.getBatch());
+        
     }
 }

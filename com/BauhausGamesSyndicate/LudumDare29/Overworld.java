@@ -39,7 +39,7 @@ public class Overworld {
        // sh.begin(ShapeRenderer.ShapeType.Filled);
         gs.getBatch().begin();
         for( AbstractEntity m: entityList){
-            m.render();
+            m.render(gs);
         }
         //render map
 //        for (int x = 0; x < heightmap.length; x++) {
