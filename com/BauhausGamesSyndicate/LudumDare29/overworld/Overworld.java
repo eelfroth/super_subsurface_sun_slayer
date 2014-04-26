@@ -219,4 +219,8 @@ public class Overworld {
         return eingang;
     }
 
+    
+    public void addEntity(AbstractEntity entity){
+        entityList.add(entity);
+    }
 }
