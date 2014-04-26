@@ -17,6 +17,7 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
 public class GameScreen implements Screen {
+    private static int wargstospawn;
     private final SpriteBatch batch;
     private final BitmapFont font;
     private static Overworld overworld;
@@ -28,7 +29,8 @@ public class GameScreen implements Screen {
     private static boolean world = false; //false: underworld, true: overworld
     private OrthographicCamera camera;
     private static Texture overlay;
-    private final Player player;
+    private static Player player;
+    private static int money = 100;
 
     public GameScreen() {
         spritesheet = new TextureAtlas(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/spritesheet.txt"));
@@ -171,4 +173,14 @@ public class GameScreen implements Screen {
     public static Overworld getOverworld() {
         return overworld;
     }
+
+    public static Player getPlayer() {
+        return player;
+    }
+    
+    public static void buyWarg(){
+        money--;
+        wargstospawn++;
+    }
+    
 }

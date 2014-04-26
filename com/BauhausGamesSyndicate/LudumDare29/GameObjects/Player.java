@@ -135,5 +135,11 @@ public class Player extends AbstractCharacter {
         }
         menupoint = id;
     }
+
+    public int getMenupoint() {
+        return menupoint;
+    }
+    
+    
     
 }
