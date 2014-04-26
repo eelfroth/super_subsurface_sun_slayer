@@ -17,7 +17,7 @@ import com.badlogic.gdx.graphics.Texture;
 public class Chunk {
     public static final int HEIGHT =1024;
     public static final int WIDTH = 4096;//2^14
-    private Texture texture;
+    private final Texture texture;
     private int id;
 
     public Chunk(int id) {
