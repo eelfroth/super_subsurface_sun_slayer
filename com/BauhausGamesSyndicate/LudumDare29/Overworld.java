@@ -31,7 +31,7 @@ public class Overworld {
     }
     
     public void update(float delta){
-        cameraPos+=delta;
+        cameraPos-=delta;
         cameraPos = cameraPos % (width*chunkgraphic.length);
     }
     
@@ -42,13 +42,18 @@ public class Overworld {
         //render check left side
         int y = Gdx.graphics.getHeight()-height; 
         for (int i = 0; i < chunkgraphic.length; i++) {
-            int x = -cameraPos+i*width;
+            int x = i*width-cameraPos;
+            int m=getMapWidth();
+            if (x < -m)
+                x += m;
+            else
+                x = x % m;
             
             if (x<Gdx.graphics.getWidth() && x+width > 0)
                gs.getBatch().draw(chunkgraphic[i], x, y);
         }
         
-                gs.getFont().draw(gs.getBatch(), Integer.toString(cameraPos), 20, 20);
+        //gs.getFont().draw(gs.getBatch(), Integer.toString(cameraPos), 20, 20);
         gs.getBatch().end();
         
         
@@ -70,7 +75,7 @@ public class Overworld {
      * @return 
  */
     public int resolution(){
-        return (width*chunkgraphic.length)/heightmap.length;
+        return getMapWidth()/heightmap.length;
     }
     
    /**
@@ -80,6 +85,10 @@ public class Overworld {
     */
     public int getHeightmapValue(int sample){
         return heightmap[sample % heightmap.length];
+    }
+    
+    public int getMapWidth(){
+        return width*chunkgraphic.length;
     }
     
 }
