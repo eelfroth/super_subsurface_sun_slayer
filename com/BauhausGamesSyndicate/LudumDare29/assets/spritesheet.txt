@@ -4,14 +4,14 @@ filter: Linear,Linear
 repeat: none
 bauernhof_h
   rotate: false
-  xy: 356, 258
+  xy: 356, 267
   size: 336, 131
   orig: 338, 145
   offset: 2, 8
   index: -1
 bauernhof_k
   rotate: false
-  xy: 428, 391
+  xy: 428, 400
   size: 272, 115
   orig: 338, 145
   offset: 30, 13
@@ -46,17 +46,17 @@ burg_k
   index: -1
 enemy
   rotate: false
-  xy: 356, 193
+  xy: 356, 231
   size: 26, 34
   orig: 36, 36
   offset: 1, 0
   index: -1
 minion
   rotate: false
-  xy: 321, 391
-  size: 66, 76
-  orig: 80, 80
-  offset: 2, 1
+  xy: 356, 193
+  size: 30, 36
+  orig: 36, 36
+  offset: 0, 0
   index: -1
 palisaden_h
   rotate: false
@@ -74,7 +74,7 @@ palisaden_k
   index: -1
 player
   rotate: false
-  xy: 275, 469
+  xy: 275, 452
   size: 48, 46
   orig: 50, 50
   offset: 0, 2
@@ -95,7 +95,7 @@ siedlung_h
   index: -1
 siedlung_k
   rotate: false
-  xy: 428, 508
+  xy: 428, 595
   size: 256, 103
   orig: 316, 137
   offset: 28, 22
@@ -109,7 +109,7 @@ wald_h
   index: -1
 wald_k
   rotate: false
-  xy: 428, 613
+  xy: 275, 517
   size: 256, 76
   orig: 384, 216
   offset: 67, 57
