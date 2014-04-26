@@ -25,7 +25,7 @@ public class GameScreen implements Screen {
         batch = new SpriteBatch();    
         font = new BitmapFont();
         font.setColor(Color.RED);
-        spritesheet = new TextureAtlas(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/spritesheet.txt"));
+        spritesheet = new TextureAtlas(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/spritesheet.txt"));
         map = new Overworld();
         fps = new FPSdiag(50, 200);
         shr = new ShapeRenderer();

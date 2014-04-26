@@ -18,23 +18,21 @@ public class Overworld {
     private final ArrayList<AbstractEntity> entityList = new ArrayList<>();
     private int cameraPos = 0;
     private final int anzMinions = 10;
-    private final int height =1024;
-    private final int width = 4096;//2^14
-    private final Texture[] chunkgraphic; 
+    private final Chunk[] chunks; 
     private final Texture parallax;
 
     public Overworld() {        
-        chunkgraphic = new Texture[3];//max 3 backgroudn tiles
-        chunkgraphic[0] = new Texture(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/map0.png"));
-        chunkgraphic[1] = new Texture(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/map1.png"));
-        chunkgraphic[2] = new Texture(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/map0.png"));
+        chunks = new Chunk[3];//max 3 backgroudn tiles
+        chunks[0] = new Chunk(0);
+        chunks[1] = new Chunk(1);
+        chunks[2] = new Chunk(0);
         
-        parallax = new Texture(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/bg.png"));
+        parallax = new Texture(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/bg.png"));
          
         //heightmap generieren
         this.heightmap = new int[200];
         for (int x = 0; x < heightmap.length; x++) {
-            heightmap[x] = (int) (Math.random()*height);
+            heightmap[x] = (int) (Math.random()*Chunk.HEIGHT);
         }
         
         //minnions in liste füllen
@@ -45,15 +43,14 @@ public class Overworld {
     
     public void update(float delta){
         cameraPos+=delta;
-        cameraPos = cameraPos % (width*chunkgraphic.length);
+        cameraPos = cameraPos % (Chunk.WIDTH*chunks.length);
     }
     
     public void render(GameScreen gs){
-       // sh.begin(ShapeRenderer.ShapeType.Filled);
         gs.getBatch().begin();
         
         //background
-         int y = Gdx.graphics.getHeight()-height; 
+         int y = Gdx.graphics.getHeight()-Chunk.HEIGHT; 
          for (int i = 0; i < getMapWidth()/parallax.getWidth(); i++) {
             int x = i*parallax.getWidth()-cameraPos/2;
 //            int m=getMapWidth();
@@ -62,34 +59,18 @@ public class Overworld {
 //            else
 //                x = x % m;
             
-            if (x<Gdx.graphics.getWidth() && x+width > 0)
+            if (x<Gdx.graphics.getWidth() && x+Chunk.WIDTH > 0)
                gs.getBatch().draw(parallax, x, y);
         }
          
-        //middleground
-        y = Gdx.graphics.getHeight()-height; 
-        for (int i = 0; i < chunkgraphic.length; i++) {
-            int x = i*width-cameraPos;
-            int m=getMapWidth();
-            if (x < -m)
-                x += m;
-            else
-                x = x % m;
-            
-            if (x<Gdx.graphics.getWidth() && x+width > 0)
-               gs.getBatch().draw(chunkgraphic[i], x, y);
+        for (Chunk chunk : chunks) {
+            chunk.render(gs);
         }
          
         for( AbstractEntity m: entityList){
             m.render(gs);
         }
      
-        
-        
-        
-        
-        
-        //gs.getFont().draw(gs.getBatch(), Integer.toString(cameraPos), 20, 20);
         gs.getBatch().end();
         
         
@@ -100,10 +81,6 @@ public class Overworld {
         }
         sh.end();
         
-
-        
-        
-        //sh.end();
     }
     
 /**
@@ -126,7 +103,7 @@ public class Overworld {
     }
     
     public int getMapWidth(){
-        return width*chunkgraphic.length;
+        return Chunk.WIDTH*chunks.length;
     }
     
 }
