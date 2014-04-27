@@ -114,11 +114,6 @@ public class Player extends AbstractCharacter {
                 playSpacial(false);
             }
         }
-        
-        setAcceleration(getAcceleration() * getAccFactor()    );
-        setVelocity    (getVelocity()     + getAcceleration() );
-        setVelocity    (getVelocity()     * (1 - getFriction()) );
-        setX((getX() + getVelocity()*delta));
     }
     
     private void goTo(int id){
