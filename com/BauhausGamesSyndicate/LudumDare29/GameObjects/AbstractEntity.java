@@ -61,7 +61,7 @@ public abstract class AbstractEntity{
         specialTextures = new TextureRegion[specialSteps];
             
          for (int i = 0; i < specialSteps; i++) {
-            specialTextures[i] = GameScreen.getSpritesheet().findRegion(name+""+Integer.toString(i)); 
+            specialTextures[i] = GameScreen.getSpritesheet().findRegion(name+""+Integer.toString(i)+"s"); 
             if (specialTextures[i]==null)
                 System.err.println(name+""+Integer.toString(i));
         }
