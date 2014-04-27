@@ -21,8 +21,8 @@ public abstract class AbstractEntity{
     private float timer = 0;
     private int steptime = 200;//ms
     
-    private TextureRegion[] specialTextures;
-    private TextureRegion[] standardAnimation;
+    private final TextureRegion[] specialTextures;
+    private final TextureRegion[] standardAnimation;
     private boolean flip = false;
     private boolean special =false;
     
