@@ -33,7 +33,7 @@ public abstract class AbstractEntity{
      * @param world true when on overworld, false udnerworld
      */
     public AbstractEntity(float x, float y, String name, boolean world) {
-        walkTextures = new TextureRegion[3];
+        walkTextures = new TextureRegion[1];
         walkTextures[0] = GameScreen.getSpritesheet().findRegion(name);
         this.x = x;
         this.y = y;
@@ -62,8 +62,8 @@ public abstract class AbstractEntity{
             
          for (int i = 0; i < specialSteps; i++) {
             specialTextures[i] = GameScreen.getSpritesheet().findRegion(name+""+Integer.toString(i)+"s"); 
-            if (specialTextures[i]==null)
-                System.err.println(name+""+Integer.toString(i)+"s");
+//            if (specialTextures[i]==null)
+//                System.err.println(name+""+Integer.toString(i)+"s");
         }
     }
 
@@ -166,7 +166,10 @@ public abstract class AbstractEntity{
     }
 
     public void playSpacial(boolean special) {
-        if (this.special!=special) timer=0;
+        if (this.special!=special) {
+            timer=0;
+            step=0;
+        }
         this.special = special;
     }
     

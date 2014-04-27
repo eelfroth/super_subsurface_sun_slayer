@@ -22,9 +22,13 @@ public abstract class Minion extends AbstractCharacter{
     @Override
     public void update(float delta) {
         super.update(delta);
-        if (GameScreen.getPlayer().getX() > getX())
-            acceleration=1;
-        else acceleration=-1;
+        //follow player
+        if (GameScreen.onOverworld()){
+            if (GameScreen.getPlayer().getX() > getX())
+                acceleration=1;
+            else
+                acceleration=-1;
+        }
             
     }
     

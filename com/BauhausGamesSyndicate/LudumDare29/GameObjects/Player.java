@@ -26,6 +26,7 @@ public class Player extends AbstractCharacter {
     
     private int menupoint = 0;
     private static Sound rising;
+    private float attacktimer;
     
     public Player(float x, float y) {
         super(x, y, "overlord", false,10,10);
@@ -103,10 +104,15 @@ public class Player extends AbstractCharacter {
             
         }
         
-        if (GameScreen.onOverworld() && Gdx.input.isKeyPressed(Keys.SPACE)){
-            attack();
+        if (attacktimer>0) {
+            attacktimer-=delta;//currently attacking
+            setVelocity(0);
         } else {
-            playSpacial(false);
+            if (GameScreen.onOverworld() && Gdx.input.isKeyPressed(Keys.SPACE)){
+                attack();
+            } else {
+                playSpacial(false);
+            }
         }
         
         setAcceleration(getAcceleration() * getAccFactor()    );
@@ -151,7 +157,7 @@ public class Player extends AbstractCharacter {
      */
     public void attack(){
         playSpacial(true);
-        setVelocity(0);
+        attacktimer = 2000;
     }
     
     @Override
