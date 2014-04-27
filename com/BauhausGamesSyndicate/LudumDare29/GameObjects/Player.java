@@ -163,6 +163,7 @@ public class Player extends AbstractCharacter {
     public void attack(){
         playSpacial(true);
         attacktimer = 2000;
+        stepsound.stop();
         growlsound.play();
         
     }
