@@ -28,6 +28,7 @@ public class Underworld {
     
     public void render(GameScreen gs){
         gs.getBatch().draw(texture, 0, 0);
+        gs.getFont().draw(gs.getBatch(), "Corpses:"+GameScreen.getMoney(), Gdx.graphics.getHeight()-500, Gdx.graphics.getWidth()-300);
     }
     
     public void update(float delta){
