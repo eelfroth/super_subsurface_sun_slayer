@@ -16,7 +16,7 @@ public class Slender extends Minion {
             0,
             "slender",
             world,
-            5
+            7
         );
     }
     

@@ -55,6 +55,7 @@ public abstract class AbstractEntity{
     };
     
     public void render(GameScreen gs){
+        if (flip && !textures[step].isFlipX())
         gs.getBatch().draw(textures[step], x, y);
     }
 
@@ -114,8 +115,11 @@ public abstract class AbstractEntity{
         this.steptime = steptime;
     }
     
+    /**
+     * 
+     * @param flip
+     */
     public void setFlipHorizontal(boolean flip){
-        if (flip!=this.flip) textures[step].flip(flip, false);
         this.flip=flip;
     }
     
