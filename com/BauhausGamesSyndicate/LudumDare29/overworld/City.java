@@ -16,7 +16,7 @@ public class City extends AbstractEntity {
     private final Eingang eingang;
     
     public City(Overworld overworld, int x, int y, Eingang eingang) {
-        super(x, y, "bauernhof", true);
+        super(x, y, "bauernhof", true, 1,1);
         this.eingang = eingang;      
 
         if((int)(Math.random()*10) > 5){

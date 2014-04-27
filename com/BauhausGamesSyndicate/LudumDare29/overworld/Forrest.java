@@ -18,7 +18,7 @@ public class Forrest extends AbstractEntity {
     public int y;
     private final Overworld overworld;
     public Forrest(Overworld overworld, int x, int y){
-        super(x, y, "wald", true);
+        super(x, y, "wald", true, 1,1);
         if((int)(Math.random()*10) > 5){
             this.setFlipHorizontal(true);
         }

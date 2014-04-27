@@ -26,21 +26,6 @@ public abstract class AbstractEntity{
     private boolean flip = false;
     private boolean special =false;
     
-    /**
-     * 
-     * @param x
-     * @param y
-     * @param name name of sprite in spritesheet
-     * @param world true when on overworld, false udnerworld
-     */
-    public AbstractEntity(float x, float y, String name, boolean world) {
-        standardAnimation = new TextureRegion[1];
-        standardAnimation[0] = GameScreen.getSpritesheet().findRegion(name);
-        life     = 100;
-        this.x = x;
-        this.y = y;
-        this.world = world;
-    }
 
     /**
      * 
@@ -52,7 +37,11 @@ public abstract class AbstractEntity{
      * @param specialSteps  the amount of animation steps for the special
      */
     public AbstractEntity(float x, float y, String name, boolean world, int steps, int specialSteps) {
-        this(x, y, name, world);
+        life     = 100;
+        this.x = x;
+        this.y = y;
+        this.world = world;
+        
         standardAnimation = new TextureRegion[steps];
         for (int i = 0; i < steps; i++) {
             standardAnimation[i] = GameScreen.getSpritesheet().findRegion(name+""+Integer.toString(i)); 
@@ -64,8 +53,8 @@ public abstract class AbstractEntity{
             
          for (int i = 0; i < specialSteps; i++) {
             specialTextures[i] = GameScreen.getSpritesheet().findRegion(name+""+Integer.toString(i)+"s"); 
-//            if (specialTextures[i]==null)
-//                System.err.println(name+""+Integer.toString(i)+"s");
+            if (specialTextures[i]==null)
+                System.err.println(name+""+Integer.toString(i)+"s");
         }
         life = 100;
     }

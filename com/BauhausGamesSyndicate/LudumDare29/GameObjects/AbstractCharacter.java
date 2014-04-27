@@ -94,9 +94,9 @@ public abstract class AbstractCharacter extends AbstractEntity {
         move(delta);
         
         //flip graphic
-        if(getAcceleration()< 0)
+        if(getAcceleration()< 0.1f)
             this.setFlipHorizontal(true);
-        else
+        if(getAcceleration()> 0.1f)
             this.setFlipHorizontal(false);
         
         if (shouldRaise){
