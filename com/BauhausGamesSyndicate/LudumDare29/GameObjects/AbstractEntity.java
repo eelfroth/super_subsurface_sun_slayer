@@ -16,7 +16,7 @@ public abstract class AbstractEntity{
     private boolean flagRemoveFromOverworld;
     private float x;
     private float y;
-    public int life;
+    private int life;
     private int step;
     private float timer = 0;
     private int steptime = 200;//ms
