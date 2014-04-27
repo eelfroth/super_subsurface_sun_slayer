@@ -19,24 +19,21 @@ import com.badlogic.gdx.audio.Sound;
  * @author Jacob Bauer
  */
 public class Player extends AbstractCharacter {
-    private boolean upLocked    = false;
-    private boolean downLocked  = false;
-    private boolean leftLocked  = false;
-    private boolean rightLocked = false;
-    
     private int menupoint = 0;
     private static Sound rising;
     private static Sound growlsound;
     private static Sound stepsound;
-    private boolean stepsound_is_playing;
     private float attacktimer;
+    private float stepX;
+    private float stepY;
+    private int distanceToTravel;
+    private float distanceTraveled;
     
     public Player(float x, float y) {
         super(x, y, "overlord", false,10,10);
         rising = Gdx.audio.newSound(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/rising.mp3"));
         growlsound = Gdx.audio.newSound(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/growlsingle.ogg"));
         stepsound = Gdx.audio.newSound(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/step.wav"));
-        stepsound_is_playing = false;
     }
     
     @Override
@@ -47,12 +44,10 @@ public class Player extends AbstractCharacter {
         if (GameScreen.onOverworld()){
             if (Gdx.input.isKeyPressed(Keys.D)){
                 setAcceleration(1);
-                stepsound.loop(0.1f);
             }
         
             if (Gdx.input.isKeyPressed(Keys.A)){
                 setAcceleration(-1);
-                stepsound.loop(0.1f);
             }
             
             //go down?
@@ -64,63 +59,41 @@ public class Player extends AbstractCharacter {
                 ){
                 descend();
             }
-        }else {
+        }else {//underworld
             
-            if(!isRaising()) setY(Gdx.graphics.getHeight()/20);
-            //move up?
-            if(!Gdx.input.isKeyPressed(Keys.A) && !Gdx.input.isKeyPressed(Keys.D)) {
-                stepsound.stop();
-                stepsound_is_playing = false;
-            }
-            
-            if (Gdx.input.isKeyPressed(Keys.W)&& !upLocked){
-                if(menupoint == 0)
-                    rise();
-                else 
-                    goTo(0);
-                upLocked = true;
-            }else{
-                if(upLocked)
-                    upLocked = false;
-            }
-            if (Gdx.input.isKeyPressed(Keys.D)&& !rightLocked){
-                /*if(menupoint == 1)
-                    goTo(0);
-                if(menupoint == 0 || menupoint == 2)
-                    goTo(3);*/
-                GameScreen.getUnderworld().rotate(-delta/20);
-                if(!stepsound_is_playing) {
-                    stepsound.loop(0.1f);
-                    stepsound_is_playing = true;
+            if(!isRaising()){
+                //    setY(Gdx.graphics.getHeight()/20);
+                
+                
+                
+                if (distanceTraveled<distanceToTravel){//traveling
+                    float dX = stepX*delta/4; 
+                    float dY = stepY*delta/4; 
+                    setX(getX()+dX);
+                    setY(getY()+dY);
+                    distanceTraveled += Math.sqrt(dX*dX+dY*dY);
+                } else {
+                    //rise?
+                    if (Gdx.input.isKeyPressed(Keys.W)){
+                        rise();
+                    }
+
+                    if (Gdx.input.isKeyPressed(Keys.D)){
+                        goTo(3);
+                    }
+
+                    if (Gdx.input.isKeyPressed(Keys.S)){
+                        goTo(2);
+                    }
+
+                    if (Gdx.input.isKeyPressed(Keys.A)){
+                        goTo(1);
+                    }
+                
                 }
-                //rightLocked = true;
-            }else{
-                if(rightLocked)
-                    rightLocked = false;
+                
+
             }
-            if (Gdx.input.isKeyPressed(Keys.S)&& !downLocked){
-                goTo(2);
-                downLocked = true;
-            }else{
-                if(downLocked)
-                    downLocked = false;
-            }
-            if (Gdx.input.isKeyPressed(Keys.A) && !leftLocked){
-                /*if(menupoint == 3)
-                    goTo(0);
-                if(menupoint == 0 || menupoint == 2)
-                    goTo(1);*/
-                GameScreen.getUnderworld().rotate(delta/20);
-                if(!stepsound_is_playing) {
-                    stepsound.loop(0.1f);
-                    stepsound_is_playing = true;
-                }
-                //leftLocked = true;
-            }else{
-                if(leftLocked)
-                    leftLocked = false;
-            }
-            
         }
         
         if (attacktimer>0) {
@@ -135,24 +108,35 @@ public class Player extends AbstractCharacter {
         }
         
         //walkingsound
-        if (getVelocity()<0.1f && getVelocity()>-0.1f)
+        if (getVelocity()<0.1f && getVelocity()>-0.1f){
             stepsound.stop();
+        } else {
+            stepsound.loop(0.7f);
+        }
     }
     
     private void goTo(int id){
-        if (id==2){
-            setX(1000);
-            setY(350);
-        }else if (id==1){
-            setX(580);
-            setY(400);
-        } else if(id==3){
-            setX(1400);
-            setY(600);
-        } else if(id==0){
-            setX(860);
-            setY(500);
+        if (id==2 && menupoint==1){
+            flyTo(1, 2, 300);
+        }else if (id==2 && menupoint==0){
+            flyTo(1, -2, 400);
+        } else if(id==2 && menupoint==3){
+            flyTo(1, -2, 600);
+        } else if(id==1 && menupoint==0){
+            flyTo(-1, 1, 300);
+        } else if(id==1 && menupoint==3){
+            flyTo(1, 2, 300);
+        } else if(id==1 && menupoint==2){
+            flyTo(-2, 1, 500);
+        } else if(id==3 && menupoint==1){
+            flyTo(1, 0.3f, 500);
+        } else if(id==3 && menupoint==0){
+            flyTo(1, 2, 300);
+        } else if(id==3 && menupoint==2){
+            flyTo(1, 2, 300);
         }
+        
+        
         menupoint = id;
     }
 
@@ -189,6 +173,13 @@ public class Player extends AbstractCharacter {
     @Override
     public void fight(AbstractCharacter enemy, float delta) {
         //player does nothing
+    }
+    
+    private void flyTo(float x, float y, int distance){
+        this.stepX = x;
+        this.stepY = y;
+        this.distanceToTravel = distance;
+        this.distanceTraveled=0;
     }
     
     
