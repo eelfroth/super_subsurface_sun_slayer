@@ -29,7 +29,7 @@ public class Chunk {
     
     public void render(GameScreen gs){
         int m=Overworld.getMapWidth();
-        int y = Gdx.graphics.getHeight()-Chunk.HEIGHT; 
+        int y = 0; 
         int x = id*Chunk.WIDTH;
         
         int cc = Overworld.getCameraPos()/4;//current chunk 0-3
