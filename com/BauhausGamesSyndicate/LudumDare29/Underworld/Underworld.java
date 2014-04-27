@@ -2,7 +2,7 @@ package com.BauhausGamesSyndicate.LudumDare29.Underworld;
 
 import com.BauhausGamesSyndicate.LudumDare29.AbstractWorld;
 import com.BauhausGamesSyndicate.LudumDare29.GameObjects.AbstractEntity;
-import com.BauhausGamesSyndicate.LudumDare29.GameObjects.Bat;
+import com.BauhausGamesSyndicate.LudumDare29.GameObjects.Fledermaus;
 import com.BauhausGamesSyndicate.LudumDare29.GameObjects.Slender;
 import com.BauhausGamesSyndicate.LudumDare29.GameObjects.Warg;
 import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
@@ -75,7 +75,7 @@ public class Underworld extends AbstractWorld{
         }
         
         
-        if (Gdx.input.isKeyPressed(Keys.SPACE)){
+        if (!GameScreen.onOverworld() && Gdx.input.isKeyPressed(Keys.SPACE)){
             dt+=delta;
             if (dt > timeTillNextBuy && GameScreen.getPlayer().getMenupoint()==2){
                 buyWarg();
@@ -117,7 +117,7 @@ public class Underworld extends AbstractWorld{
         if (money>0) {
             money--;
             batTospawn++;
-            Bat bat = new Bat(false);
+            Fledermaus bat = new Fledermaus(false);
             bat.rise();
             entityList.add(bat);
             coinsound.play();

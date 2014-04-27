@@ -10,7 +10,6 @@ public abstract class AbstractCharacter extends AbstractEntity {
     public float accFactor;
     public float velocity;
     public float friction;
-    private int direction =1;
     
     public int life;
     private boolean shouldRaise;
@@ -28,7 +27,7 @@ public abstract class AbstractCharacter extends AbstractEntity {
         
     }
     
-    public void move(float delta){
+    public void move(float direction, float delta){
         setAcceleration(direction);
         setAcceleration(getAcceleration() * getAccFactor()    );
         setVelocity    (getVelocity()     + getAcceleration() );
@@ -145,13 +144,4 @@ public abstract class AbstractCharacter extends AbstractEntity {
     public boolean isDescending() {
         return shouldDescend;
     }
-
-    public int getDirection() {
-        return direction;
-    }
-
-    public void setDirection(int direction) {
-        this.direction = direction;
-    }
-    
 }

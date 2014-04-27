@@ -273,7 +273,7 @@ public class Overworld extends AbstractWorld{
         
         //place Forrests
         for (int i = 0; i < anzForrests; i++){
-            int tx = (int) Math.random();
+            int tx = (int) Math.random()*getMapWidth();
             entityList.add(
                 new Forrest(this, tx, 700 )
             );
