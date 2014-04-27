@@ -52,8 +52,8 @@ public class Player extends AbstractCharacter {
             Eingang eingang = GameScreen.getOverworld().getEingang();
             if (
                 Gdx.input.isKeyPressed(Keys.S) &&
-                getX() > eingang.getX() &&
-                getX() < eingang.getX()+eingang.getWidth()
+                getX()+getWidth()/2 > eingang.getX() &&
+                getX()+getWidth()/2 < eingang.getX()+eingang.getWidth()
                 ){
                 descend();
             }
