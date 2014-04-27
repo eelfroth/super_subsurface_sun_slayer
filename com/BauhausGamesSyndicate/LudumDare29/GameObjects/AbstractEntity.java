@@ -33,7 +33,7 @@ public abstract class AbstractEntity{
      * @param world true when on overworld, false udnerworld
      */
     public AbstractEntity(float x, float y, String name, boolean world) {
-        walkTextures = new TextureRegion[3];
+        walkTextures = new TextureRegion[1];
         walkTextures[0] = GameScreen.getSpritesheet().findRegion(name);
         this.x = x;
         this.y = y;
