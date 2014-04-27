@@ -12,17 +12,12 @@ public class City extends AbstractEntity {
     private float timer;
     private final Overworld overworld;
     private final Eingang eingang;
+    
     public City(Overworld overworld, int x, int y, Eingang eingang) {
         super(x, y, "bauernhof_h", true);
-<<<<<<< HEAD
         this.eingang = eingang;
-        if(0 + (int)(Math.random()*10) >= 5){
-            this.setFlip(true, false);
-=======
-        
         if((int)(Math.random()*10) >= 5){
             this.setFlipHorizontal(true);
->>>>>>> 33b467845572ffe5b7ddea011535d265ab4d6c88
         }
         this.overworld = overworld;
     }
