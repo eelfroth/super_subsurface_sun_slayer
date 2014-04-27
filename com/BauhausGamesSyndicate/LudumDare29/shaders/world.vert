@@ -6,8 +6,9 @@ uniform mat4 u_worldView;
 varying vec4 v_color;
 varying vec2 v_texCoords;
 
-uniform float f_stauchfaktor = 0.3;
-uniform float f_ypos = -0.1;
+
+varying float f_stauchfaktor = 0.3;
+varying float f_ypos = -0.1;
 varying vec4 v_parable;
 varying vec4 v_linear;
 varying float v_ynorm;
