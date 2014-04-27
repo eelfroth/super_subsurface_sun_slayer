@@ -21,8 +21,8 @@ public abstract class AbstractEntity{
     private float timer = 0;
     private int steptime = 200;//ms
     
-    private final TextureRegion[] specialTextures;
-    private final TextureRegion[] standardAnimation;
+    private TextureRegion[] specialTextures;
+    private TextureRegion[] standardAnimation;
     private boolean flip = false;
     private boolean special =false;
     
@@ -53,8 +53,8 @@ public abstract class AbstractEntity{
             
          for (int i = 0; i < specialSteps; i++) {
             specialTextures[i] = GameScreen.getSpritesheet().findRegion(name+""+Integer.toString(i)+"s"); 
-            if (specialTextures[i]==null)
-                System.err.println(name+""+Integer.toString(i)+"s");
+            //if (specialTextures[i]==null)
+           //     System.err.println(name+""+Integer.toString(i)+"s");
         }
         life = 100;
     }
