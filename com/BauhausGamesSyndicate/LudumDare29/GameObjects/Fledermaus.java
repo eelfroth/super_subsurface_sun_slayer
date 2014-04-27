@@ -25,10 +25,13 @@ public class Fledermaus extends Minion{
            1
        );
        
+       setSteptime(50);
+       
        //startwerte zugällig, damit die fledermäuse unterschiedlich fliegen;
        y_sin = ((float)Math.random())*1000f;
        x_sin = ((float)Math.random())*1000f;
        y_pos = ((float)Math.random())*100f;
+       setStep((int)(Math.random()*4));
     }  
 
     @Override

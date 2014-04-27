@@ -18,6 +18,7 @@ public abstract class AbstractEntity{
     private float y;
     private float life;
     private int step;
+    private int steps;
     private float timer = 0;
     private int steptime = 200;//ms
     
@@ -41,6 +42,7 @@ public abstract class AbstractEntity{
         this.x = x;
         this.y = y;
         this.world = world;
+        this.steps = steps;
         
         standardAnimation = new TextureRegion[steps];
         for (int i = 0; i < steps; i++) {
@@ -173,6 +175,10 @@ public abstract class AbstractEntity{
             step=0;
         }
         this.special = special;
+    }
+    
+    public void setStep(int step) {
+        this.step = step % steps;
     }
     
 }
