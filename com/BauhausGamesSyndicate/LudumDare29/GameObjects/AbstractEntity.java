@@ -55,8 +55,9 @@ public abstract class AbstractEntity{
     };
     
     public void render(GameScreen gs){
-        if (flip && !textures[step].isFlipX())
-        gs.getBatch().draw(textures[step], x, y);
+        if (flip != textures[step].isFlipX())
+           textures[step].flip(true, false);
+        gs.getBatch().draw(textures[step], x, y-56);
     }
 
     public boolean onOverworld() {
@@ -116,7 +117,7 @@ public abstract class AbstractEntity{
     }
     
     /**
-     * 
+     * True if lef-siided
      * @param flip
      */
     public void setFlipHorizontal(boolean flip){
