@@ -126,23 +126,15 @@ public abstract class AbstractCharacter extends AbstractEntity {
             }
         }
         
-        boolean collide = false;
-        
         //colission check
         for (AbstractEntity entity : GameScreen.getOverworld().getEntityList()) {
             if (entity instanceof AbstractCharacter &&//can typecasting be made
                 ((AbstractCharacter)entity).isEvil()!=isEvil() && //is not same fraction?
                 entity.getX()+entity.getWidth() > getX()
                 && entity.getX() < getX()+entity.getWidth()){
-                collide = true;
+                acceleration=0;
             }
         }
-        
-        if (collide){
-            acceleration=0;
-        //setX(getX() + getAcceleration()*delta*getSpeed());//run to left
-        }
-        
     }
     
     public void rise(){
