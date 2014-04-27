@@ -71,15 +71,7 @@ public abstract class AbstractCharacter extends AbstractEntity {
     public float getSpeed(){
         return speed;
     }
-    
-    public int getLife(){
-        return life;
-    }
-    
-    public void setLife(int life){
-        this.life = life;
-    }
-    
+        
     public boolean isDead(){
         return life <= 0;
     }
