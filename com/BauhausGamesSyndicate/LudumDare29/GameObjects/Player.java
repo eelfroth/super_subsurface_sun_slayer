@@ -28,7 +28,7 @@ public class Player extends AbstractCharacter {
     private static Sound rising;
     
     public Player(float x, float y) {
-        super(x, y, "overlord", false,10,1);
+        super(x, y, "overlord", false,10,10);
         rising = Gdx.audio.newSound(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/rising.mp3"));
     }
     
@@ -101,10 +101,12 @@ public class Player extends AbstractCharacter {
                     leftLocked = false;
             }
             
-            if (GameScreen.onOverworld() && Gdx.input.isKeyPressed(Keys.SPACE)){
-                attack();
-            }
         }
+        
+        if (GameScreen.onOverworld() && Gdx.input.isKeyPressed(Keys.SPACE)){
+            attack();
+        } else 
+            playSpacial(false);
         
         setAcceleration(getAcceleration() * getAccFactor()    );
         setVelocity    (getVelocity()     + getAcceleration() );
@@ -147,7 +149,7 @@ public class Player extends AbstractCharacter {
      * was soll passieren, wenn die SPielfigur angreift?
      */
     public void attack(){
-    
+        playSpacial(true);
     }
     
     @Override
