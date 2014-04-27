@@ -13,7 +13,7 @@ public class Enemy extends AbstractCharacter {
     private final Eingang eingang;
     private boolean arrived;
     public Enemy(float x, float y, boolean world, Eingang eingang) {
-        super(x, y, "enemy", world);
+        super(x, y, "soldat", world);
         arrived = false;
         setDirection(-1);
         setSpeed((float) (0.1f + Math.random()*.2f));

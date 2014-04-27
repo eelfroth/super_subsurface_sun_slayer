@@ -17,7 +17,7 @@ public abstract class AbstractEntity{
     private float x;
     private float y;
     private int step;
-    private float timer;
+    private float timer = 0;
     private int steptime = 1000;//ms
     
     private TextureRegion[] textures;
@@ -31,6 +31,17 @@ public abstract class AbstractEntity{
         this.y = y;
         this.world = world;
     }
+
+    public AbstractEntity(float x, float y, String name, boolean world, int steps) {
+        this(x, y, name, world);
+        textures = new TextureRegion[steps];
+        for (int i = 0; i < steps; i++) {
+            textures[i] = GameScreen.getSpritesheet().findRegion(name+""+Integer.toString(i)); 
+            if (textures[i]==null)
+                System.err.println(name+""+Integer.toString(i));
+        }
+    }
+
     
     public void update(float delta){
         timer+=delta;
