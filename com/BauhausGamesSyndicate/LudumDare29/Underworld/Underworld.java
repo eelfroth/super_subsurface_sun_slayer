@@ -13,7 +13,7 @@ import com.badlogic.gdx.graphics.Texture;
 public class Underworld {
     private final Texture texture;
     private float dt;
-    private final float timeTillNextBuy = 0.5f;
+    private final int timeTillNextBuy = 500;
 
     public Underworld() {
         this.texture = new Texture(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/underworld.jpg"));
@@ -38,6 +38,14 @@ public class Underworld {
             dt+=delta;
             if (dt > timeTillNextBuy && GameScreen.getPlayer().getMenupoint()==2){
                 GameScreen.buyWarg();
+                dt=0;
+            }
+            if (dt > timeTillNextBuy && GameScreen.getPlayer().getMenupoint()==1){
+                GameScreen.buySlender();
+                dt=0;
+            }
+            if (dt > timeTillNextBuy && GameScreen.getPlayer().getMenupoint()==3){
+                GameScreen.buyBat();
                 dt=0;
             }
         }
