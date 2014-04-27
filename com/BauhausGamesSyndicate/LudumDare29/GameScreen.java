@@ -51,6 +51,7 @@ public class GameScreen implements Screen {
 
     private static Player player;
     private static int money = 100;
+    private boolean rotation;
 
 
     public GameScreen() {
@@ -79,7 +80,8 @@ public class GameScreen implements Screen {
 
         //parable settings:
         world_streckfaktor = 0.25f;
-        world_ypos = -0.3f;
+        world_ypos = +0.0f;
+        rotation = false;
         
         //shader
         setupShader();
@@ -134,6 +136,7 @@ public class GameScreen implements Screen {
         frameBuffer.begin();
         {
             camera.translate(Overworld.getCameraPos(), 0);
+            //camera.rotate(-angle);
             camera.update();
             batch.setProjectionMatrix(camera.combined);
             shr.setProjectionMatrix(camera.combined);
@@ -150,6 +153,7 @@ public class GameScreen implements Screen {
 
             
             camera.translate(-Overworld.getCameraPos(), 0);
+            //camera.rotate(angle);
             camera.update();
             shr.setProjectionMatrix(camera.combined);
             batch.setProjectionMatrix(camera.combined);
@@ -159,24 +163,40 @@ public class GameScreen implements Screen {
 
         //2. render framebuffer to frame:
         
-        float angle=Overworld.getCameraPos()*360/(float) Overworld.getMapWidth();
-        camera.rotate(-angle);
-        batch.setProjectionMatrix(camera.combined);
-        shr.setProjectionMatrix(camera.combined);
         
+        
+        
+        shader.begin();
         frameBuffer.getColorBufferTexture().bind();
         //debug_texture.bind();
-        shader.begin();
+        
+        //camera.rotate(-angle);
+        //batch.setProjectionMatrix(camera.combined);
+        //shr.setProjectionMatrix(camera.combined);
+        float angle = Overworld.getCameraPos()*360/(float) Overworld.getMapWidth();
+        if(rotation) worldMatrix.rotate(0,0,1,-angle);
+        
         shader.setUniformMatrix("u_worldView", worldMatrix);
         shader.setUniformi("u_texture", 0);
         shader.setUniformf("f_stauchfaktor", world_streckfaktor);
         shader.setUniformf("f_ypos", world_ypos);
+        //shader.setUniformf("f_resfactor", (float)Gdx.graphics.getWidth()/(float)Gdx.graphics.getHeight());
+        /*
+        StringBuffer result = new StringBuffer();
+        result.append((float)Gdx.graphics.getHeight()/(float)Gdx.graphics.getWidth());
+        String mynewstring = result.toString();
+        Gdx.app.log("f_resfactor:", mynewstring);
+          */  
         frameMesh.render(shader, GL20.GL_TRIANGLES);
+        
+        //camera.rotate(angle);
+        //batch.setProjectionMatrix(camera.combined);
+        //shr.setProjectionMatrix(camera.combined);
+        
+        if(rotation) worldMatrix.rotate(0,0,1,angle);
         shader.end();
         
-        camera.rotate(angle);
-        batch.setProjectionMatrix(camera.combined);
-        shr.setProjectionMatrix(camera.combined);
+        
         
         //overlay
         batch.begin();
@@ -245,8 +265,8 @@ public class GameScreen implements Screen {
         frameBuffer = new FrameBuffer(Pixmap.Format.RGB565 , Gdx.graphics.getWidth(), Gdx.graphics.getWidth(), false);
         
         //generate frameMesh
-        int xQuads = 20;
-        int yQuads = 20;
+        int xQuads = 19;
+        int yQuads = 10;
 
         float[] vertices = new float[xQuads*yQuads*36];
         short[] indices  = new short[xQuads*yQuads*6];
