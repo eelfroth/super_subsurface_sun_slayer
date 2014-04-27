@@ -147,4 +147,9 @@ public class Player extends AbstractCharacter {
     public void attack(){
     
     }
+    
+    @Override
+    public boolean isEvil() {
+        return true;
+    }
 }

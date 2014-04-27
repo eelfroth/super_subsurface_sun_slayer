@@ -20,5 +20,4 @@ public class Slender extends Minion {
             1
         );
     }
-    
 }

@@ -18,5 +18,4 @@ public class Warg extends Minion {
             1
         );
     }
-    
 }
