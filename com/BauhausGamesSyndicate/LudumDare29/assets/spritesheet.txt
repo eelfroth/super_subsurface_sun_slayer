@@ -4,203 +4,266 @@ filter: Linear,Linear
 repeat: none
 bauernhof_h
   rotate: false
-  xy: 391, 2
+  xy: 321, 466
   size: 336, 131
   orig: 338, 145
   offset: 2, 8
   index: -1
 bauernhof_k
   rotate: false
-  xy: 2, 424
+  xy: 932, 817
   size: 272, 115
   orig: 338, 145
   offset: 30, 13
   index: -1
 befestigter_bauernhof_h
   rotate: false
-  xy: 2, 297
+  xy: 630, 999
   size: 287, 125
   orig: 301, 159
   offset: 11, 7
   index: -1
 befestigter_bauernhof_k
   rotate: false
-  xy: 376, 419
+  xy: 356, 1025
   size: 271, 151
   orig: 301, 159
   offset: 0, 4
   index: -1
 burg_h
   rotate: false
-  xy: 2, 2
+  xy: 325, 275
   size: 387, 189
   orig: 395, 195
   offset: 4, 0
   index: -1
 burg_k
   rotate: false
-  xy: 391, 135
+  xy: 311, 870
   size: 317, 153
   orig: 395, 195
   offset: 20, 0
   index: -1
 fledermaus0
   rotate: false
-  xy: 276, 527
+  xy: 1089, 1107
   size: 83, 93
   orig: 83, 93
   offset: 0, 0
   index: -1
 fledermaus1
   rotate: false
-  xy: 276, 432
+  xy: 1004, 1100
   size: 83, 93
   orig: 83, 93
   offset: 0, 0
   index: -1
 fledermaus2
   rotate: false
-  xy: 649, 491
+  xy: 919, 1100
   size: 83, 93
   orig: 83, 93
   offset: 0, 0
   index: -1
 fledermaus3
   rotate: false
-  xy: 291, 337
+  xy: 1105, 1012
   size: 83, 93
   orig: 83, 93
   offset: 0, 0
   index: -1
+overlord0
+  rotate: false
+  xy: 2, 2
+  size: 321, 273
+  orig: 387, 331
+  offset: 56, 38
+  index: -1
+overlord1
+  rotate: false
+  xy: 325, 2
+  size: 317, 271
+  orig: 387, 331
+  offset: 58, 39
+  index: -1
+overlord2
+  rotate: false
+  xy: 644, 2
+  size: 309, 271
+  orig: 387, 331
+  offset: 56, 39
+  index: -1
+overlord3
+  rotate: false
+  xy: 919, 546
+  size: 299, 269
+  orig: 387, 331
+  offset: 58, 35
+  index: -1
+overlord4
+  rotate: false
+  xy: 616, 599
+  size: 301, 269
+  orig: 387, 331
+  offset: 52, 30
+  index: -1
+overlord5
+  rotate: false
+  xy: 2, 823
+  size: 307, 273
+  orig: 387, 331
+  offset: 44, 26
+  index: -1
+overlord6
+  rotate: false
+  xy: 313, 599
+  size: 301, 269
+  orig: 387, 331
+  offset: 52, 30
+  index: -1
+overlord7
+  rotate: false
+  xy: 714, 275
+  size: 299, 269
+  orig: 387, 331
+  offset: 58, 35
+  index: -1
+overlord8
+  rotate: false
+  xy: 2, 550
+  size: 309, 271
+  orig: 387, 331
+  offset: 56, 39
+  index: -1
+overlord9
+  rotate: false
+  xy: 2, 277
+  size: 317, 271
+  orig: 387, 331
+  offset: 58, 39
+  index: -1
 palisaden_h
   rotate: false
-  xy: 2, 646
+  xy: 955, 107
   size: 238, 94
   orig: 248, 98
   offset: 6, 3
   index: -1
 palisaden_k
   rotate: false
-  xy: 242, 646
+  xy: 919, 1012
   size: 184, 86
   orig: 248, 98
   offset: 30, 2
   index: -1
-player0
-  rotate: false
-  xy: 690, 351
-  size: 48, 46
-  orig: 50, 50
-  offset: 0, 2
-  index: -1
 siedlung_h
   rotate: false
-  xy: 388, 290
+  xy: 630, 870
   size: 300, 127
   orig: 316, 137
   offset: 9, 6
   index: -1
 siedlung_k
   rotate: false
-  xy: 2, 541
+  xy: 955, 2
   size: 256, 103
   orig: 316, 137
   offset: 28, 22
   index: -1
 slender0
   rotate: false
-  xy: 649, 419
-  size: 30, 70
+  xy: 659, 526
+  size: 20, 58
   orig: 32, 72
-  offset: 2, 0
+  offset: 6, 7
   index: -1
 slender1
   rotate: false
-  xy: 690, 399
-  size: 30, 70
+  xy: 681, 526
+  size: 18, 58
   orig: 32, 72
-  offset: 2, 0
+  offset: 9, 7
   index: -1
 slender2
   rotate: false
-  xy: 356, 265
-  size: 30, 70
+  xy: 333, 1025
+  size: 20, 60
   orig: 32, 72
-  offset: 2, 0
+  offset: 8, 6
   index: -1
 slender3
   rotate: false
-  xy: 356, 193
-  size: 30, 70
+  xy: 659, 466
+  size: 22, 58
   orig: 32, 72
-  offset: 2, 0
+  offset: 4, 7
   index: -1
 slender4
   rotate: false
-  xy: 710, 279
-  size: 30, 70
+  xy: 1195, 107
+  size: 18, 60
   orig: 32, 72
-  offset: 2, 0
+  offset: 8, 6
   index: -1
 slender5
   rotate: false
-  xy: 710, 207
-  size: 30, 70
+  xy: 683, 466
+  size: 18, 58
   orig: 32, 72
-  offset: 2, 0
+  offset: 9, 7
   index: -1
 slender6
   rotate: false
-  xy: 710, 135
-  size: 30, 70
+  xy: 311, 1025
+  size: 20, 60
   orig: 32, 72
-  offset: 2, 0
+  offset: 8, 6
   index: -1
 soldat0
   rotate: false
-  xy: 291, 297
+  xy: 1015, 275
   size: 24, 36
   orig: 36, 36
   offset: 3, 0
   index: -1
 soldat1
   rotate: false
-  xy: 317, 297
+  xy: 1026, 239
   size: 26, 34
   orig: 36, 36
   offset: 1, 0
   index: -1
 wald_h
   rotate: false
-  xy: 2, 193
+  xy: 2, 1098
   size: 352, 102
   orig: 384, 216
   offset: 0, 45
   index: -1
 wald_k
   rotate: false
-  xy: 428, 622
+  xy: 932, 934
   size: 256, 76
   orig: 384, 216
   offset: 67, 57
   index: -1
 warg0
   rotate: false
-  xy: 503, 586
+  xy: 1026, 203
   size: 69, 34
   orig: 75, 50
   offset: 2, 10
   index: -1
 warg1
   rotate: false
-  xy: 432, 586
+  xy: 955, 239
   size: 69, 34
   orig: 75, 50
   offset: 2, 10
   index: -1
 warg2
   rotate: false
-  xy: 361, 586
+  xy: 955, 203
   size: 69, 34
   orig: 75, 50
   offset: 2, 10

@@ -1,12 +1,14 @@
 package com.BauhausGamesSyndicate.LudumDare29.overworld;
 
 
+import com.BauhausGamesSyndicate.LudumDare29.AbstractWorld;
 import com.BauhausGamesSyndicate.LudumDare29.GameObjects.AbstractEntity;
 import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.math.Matrix4;
 import java.util.ArrayList;
 
 /**
@@ -15,7 +17,7 @@ import java.util.ArrayList;
  * @author Paul Flechsig
  * @author Jacob Bauer
  */
-public class Overworld {
+public class Overworld extends AbstractWorld{
     private final int cityDistToEntrance = 700;
     private static int[] heightmap;
     
@@ -31,7 +33,13 @@ public class Overworld {
     private static Sprite background;
     private final Eingang eingang;
 
-    public Overworld() {        
+    public Overworld() { 
+        super(GameScreen.setupShader( 
+                Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/shaders/world.vert").readString(),
+                Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/shaders/world.frag").readString()), 
+                new Matrix4());
+        matrix.scale(3.0f, 1.2f, 1.0f);
+        
         chunks = new Chunk[4];//max 4 backgroudn tiles
         for (int i = 0; i < chunks.length; i++) {
             chunks[i] = new Chunk(i);
@@ -189,6 +197,71 @@ public class Overworld {
         heightmap[127] = 326;
         heightmap[128] = 300;
         
+        heightmap[129] = 284;
+        heightmap[130] = 263;
+        heightmap[131] = 230;
+        heightmap[132] = 200;
+        heightmap[133] = 163;
+        heightmap[134] = 129;
+        heightmap[135] = 118;
+        heightmap[136] = 121;
+        heightmap[137] = 133;
+        heightmap[138] = 132;
+        heightmap[139] = 153;
+        heightmap[140] = 165;
+        heightmap[141] = 188;
+        heightmap[142] = 218;
+        heightmap[143] = 238;
+        heightmap[144] = 261;
+        heightmap[145] = 294;
+        heightmap[146] = 338;
+        heightmap[147] = 356;
+        heightmap[148] = 386;
+        heightmap[149] = 415;
+        heightmap[150] = 439;
+        heightmap[151] = 464;
+        heightmap[152] = 490;
+        heightmap[153] = 515;
+        heightmap[154] = 537;
+        heightmap[155] = 555;
+        heightmap[156] = 541;
+        heightmap[157] = 505;
+        heightmap[158] = 483;
+        heightmap[159] = 465;
+        heightmap[160] = 471;
+        heightmap[161] = 440;
+        heightmap[162] = 436;
+        heightmap[163] = 460;
+        heightmap[164] = 471;
+        heightmap[165] = 490;
+        heightmap[166] = 537;
+        heightmap[167] = 546;
+        heightmap[168] = 526;
+        heightmap[169] = 502;
+        heightmap[170] = 478;
+        heightmap[171] = 450;
+        heightmap[172] = 426;
+        heightmap[173] = 398;
+        heightmap[174] = 370;
+        heightmap[175] = 369;
+        heightmap[176] = 380;
+        heightmap[177] = 364;
+        heightmap[178] = 347;
+        heightmap[179] = 329;
+        heightmap[180] = 315;
+        heightmap[181] = 306;
+        heightmap[182] = 296;
+        heightmap[183] = 293;
+        heightmap[184] = 294;
+        heightmap[185] = 289;
+        heightmap[186] = 275;
+        heightmap[187] = 278;
+        heightmap[188] = 271;
+        heightmap[189] = 283;
+        heightmap[190] = 290;
+        heightmap[191] = 295;
+        heightmap[192] = 300;
+        
         //place towns
         for (int i = 0; i < anzCitys; i++){
             
@@ -231,11 +304,19 @@ public class Overworld {
         //background
          for (int i = 0; i < getMapWidth()/background.getWidth(); i++) {
             int x = (int) (i*background.getWidth());
-//            int m=getMapWidth();
-//            if (x < -m)
-//                x += m;
-//            else
-//                x = x % m;
+            int m=getMapWidth();
+            
+            int cc = Overworld.getCameraPos()/4;//current chunk 0-3
+
+            if (i >cc+1)
+                x-=m/2;
+        
+            if (x < -m)
+                x += m;
+            else
+                x = x % m;
+            
+
             
         if (x+background.getWidth() > Overworld.getCameraPos()/2 && x < Gdx.graphics.getWidth()+Overworld.getCameraPos()/2)
             gs.getBatch().draw(background, x, 0);

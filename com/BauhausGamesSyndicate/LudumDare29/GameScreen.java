@@ -32,20 +32,17 @@ public class GameScreen implements Screen {
     private final ShapeRenderer shr;
     private static TextureAtlas spritesheet;
     
-    private static boolean world = false; //false: underworld, true: overworld
+    private static AbstractWorld world;
     private final OrthographicCamera camera;
     private static Texture overlay;
     
-    private ShaderProgram shader;
     private FrameBuffer frameBuffer;
     private Mesh frameMesh;
-    private Matrix4 worldMatrix;
     private final Texture debug_texture;
     private boolean rotation;
 
     private static Player player;
     private static int money = 100;
-    private ShaderProgram shaderOverworld;
 
 
     public GameScreen() {
@@ -71,12 +68,13 @@ public class GameScreen implements Screen {
         overworld = new Overworld();
         underworld = new Underworld();
         player = new Player(860, 500);
-
+        
+        world = overworld;
 
         rotation = false;
         
         //shader
-        setupShader();
+        //setupShader();
         
         //framebuffer
         setupFramebuffer();
@@ -117,11 +115,11 @@ public class GameScreen implements Screen {
         frameBuffer.begin();
         {
             batch.begin();
-            if (world) {
+            if (world == overworld) {
                 renderOverworld();
             }
             
-            if (!world) {
+            if (world == underworld) {
                 renderUnderworld();
             }
             batch.end();
@@ -133,7 +131,7 @@ public class GameScreen implements Screen {
         
 
         //2. render framebuffer to frame:
-        renderFramebuffer(shaderOverworld);
+        renderFramebuffer(world);
 
         
         //fps
@@ -173,20 +171,20 @@ public class GameScreen implements Screen {
      * @return 
      */
     public static boolean onOverworld() {
-        return world;
+        if (world == overworld) return true;
+        return false;
     }
     
-    private void setupShader() {
+    public static ShaderProgram setupShader(String vert, String frag) {
+        //Gdx.app.log("Loading shader:", "[vert]\n"+vert+"\n[frag]\n"+frag);
+        ShaderProgram shader;
         ShaderProgram.pedantic = false;
-        shaderOverworld = new ShaderProgram(
-                Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/shaders/world.vert").readString(),
-                Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/shaders/world.frag").readString());
-        if (!shaderOverworld.isCompiled()) {
-            Gdx.app.log("Problem loading shader:", shaderOverworld.getLog());
+        shader = new ShaderProgram(vert, frag);
+        if (!shader.isCompiled()) {
+            Gdx.app.log("Problem loading shader:", shader.getLog());
         }
         
-        worldMatrix = new Matrix4();
-        worldMatrix.scale(3.0f, 1.2f, 1.0f);
+        return shader;
     }
     
     private void setupFramebuffer() {
@@ -314,20 +312,21 @@ public class GameScreen implements Screen {
         player.render(this);
     }
 
-    private void renderFramebuffer(ShaderProgram shader) {
-        shader.begin();
+    private void renderFramebuffer(AbstractWorld world) {
+
         float angle = Overworld.getCameraPos()*360/(float) Overworld.getMapWidth();
-        if(rotation) worldMatrix.rotate(0,0,1,-angle);
+        if(rotation) world.matrix.rotate(0,0,1,-angle);
         
-        shader.setUniformMatrix("u_worldView", worldMatrix);
-        shader.setUniformi("u_texture", 0);
+        world.shader.begin();
+        world.shader.setUniformMatrix("u_worldView", world.matrix);
+        world.shader.setUniformi("u_texture", 0);
+        
 
         frameBuffer.getColorBufferTexture().bind();
         //debug_texture.bind();
-        frameMesh.render(shader, GL20.GL_TRIANGLES);
-        
-        if(rotation) worldMatrix.rotate(0,0,1,angle);
-        shader.end();
+        frameMesh.render(world.shader, GL20.GL_TRIANGLES);
+        world.shader.end();
+        if(rotation) world.matrix.rotate(0,0,1,angle);
     }
 
     public void update(float delta) {
@@ -336,7 +335,8 @@ public class GameScreen implements Screen {
         underworld.update(delta);
         
         player.update(delta);
-        world = player.onOverworld();
+        if(player.onOverworld()) world = overworld;
+        else world = underworld;
         
         Overworld.setCameraPos((int) (player.getX()-Gdx.graphics.getWidth()/2));
     }
