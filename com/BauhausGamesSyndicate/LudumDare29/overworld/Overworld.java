@@ -281,6 +281,11 @@ public class Overworld {
     public void addEntity(AbstractEntity entity){
         entityList.add(entity);
     }
+
+    public ArrayList<AbstractEntity> getEntityList() {
+        return entityList;
+    }
+    
     
     public void renderShapes(ShapeRenderer sh){
         //eingang.render(gs);

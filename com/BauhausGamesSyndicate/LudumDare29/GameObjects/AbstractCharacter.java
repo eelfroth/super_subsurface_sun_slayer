@@ -10,6 +10,7 @@ public abstract class AbstractCharacter extends AbstractEntity {
     public float accFactor;
     public float velocity;
     public float friction;
+    private int direction =1;
     
     public int life;
     private boolean shouldRaise;
@@ -81,6 +82,12 @@ public abstract class AbstractCharacter extends AbstractEntity {
             setY(Overworld.getHeight((int) getX()));
         }
         
+        //flip graphic
+        if(getDirection() == 1)
+            this.setFlip(true, false);
+        else
+            this.setFlip(false, false);
+        
         if (shouldRaise){
             setY(getY()+delta/2);
             
@@ -124,6 +131,13 @@ public abstract class AbstractCharacter extends AbstractEntity {
     public boolean isDescending() {
         return shouldDescend;
     }
-    
+
+    public int getDirection() {
+        return direction;
+    }
+
+    public void setDirection(int direction) {
+        this.direction = direction;
+    }
     
 }

@@ -132,5 +132,4 @@ public class Player extends AbstractCharacter {
     public void dispose(){
         rising.dispose();
     }
-    
 }
