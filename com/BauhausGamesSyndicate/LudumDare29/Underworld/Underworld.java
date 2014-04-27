@@ -6,7 +6,6 @@ import com.BauhausGamesSyndicate.LudumDare29.GameObjects.Fledermaus;
 import com.BauhausGamesSyndicate.LudumDare29.GameObjects.Slender;
 import com.BauhausGamesSyndicate.LudumDare29.GameObjects.Warg;
 import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
-import com.BauhausGamesSyndicate.LudumDare29.overworld.Overworld;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.audio.Sound;
