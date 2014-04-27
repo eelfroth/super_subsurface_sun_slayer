@@ -27,5 +27,5 @@ void main() {
 
     v_beule = vec4(f_ynorm/f_xnorm, f_xnorm/f_ynorm -0.5, 1, 1);
 
-    gl_Position = u_worldView * (a_position * v_beule)  ;
+    gl_Position = u_worldView * (a_position )  ;
 }  
