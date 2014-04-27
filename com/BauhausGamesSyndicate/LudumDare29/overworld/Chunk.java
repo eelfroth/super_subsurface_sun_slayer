@@ -35,7 +35,7 @@ public class Chunk {
         int cc = Overworld.getCameraPos()/4;//current chunk 0-3
 
         if (id >cc+1)
-            x-=m/2;
+            x-=m;
                 
         if (x < -m)
             x += m;
