@@ -16,6 +16,12 @@ import java.util.ArrayList;
 public class Overworld {
     private final int cityDistToEntrance = 700;
     private static int[] heightmap;
+    
+    // x - Positionen der Städte
+    private static int[] citymapX;
+    private static int[] citymapY;
+    private final int anzCitys = 1;
+    
     private static final ArrayList<AbstractEntity> entityList = new ArrayList<>();
     private static int cameraPos = 0;
     private static Chunk[] chunks; 
@@ -29,16 +35,20 @@ public class Overworld {
         }
         
         eingang = new Eingang();
-        
-        
+
         background = new Sprite(new Texture(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/bg.jpg")));
         //background.scale(4);
         
         //heightmap generieren
         Overworld.heightmap = new int[256];
+        Overworld.citymapX = new int[anzCitys];
+        Overworld.citymapY = new int[anzCitys];
 //        for (int x = 0; x < heightmap.length; x++) {
 //            heightmap[x] = (int) (Math.random()*Chunk.HEIGHT/2);
 //        }
+        citymapX[0] = 300;
+        citymapY[0] = 450;
+        
         heightmap[0] = 300;
         heightmap[1] = 327;
         heightmap[2] = 353;
@@ -170,14 +180,12 @@ public class Overworld {
         heightmap[128] = 300;
         
         //place towns
-        for (int i = 0; i < 1000; i++){
-            int sx;
-            do{
-               sx = (int) (Math.random() * getMapWidth());
-            }while( sx > eingang.getX()-eingang.getWidth()-cityDistToEntrance && sx < eingang.getX() + eingang.getWidth()+cityDistToEntrance);
+        for (int i = 0; i < anzCitys; i++){
+            
             entityList.add(
-                new City(this, sx, (int) (Chunk.HEIGHT/4*Math.random()+Chunk.HEIGHT/4), eingang)
+                new City(this, citymapX[i], citymapY[i] , eingang)
             );
+            // (int) (Chunk.HEIGHT/4*Math.random()+Chunk.HEIGHT/4)
         }
     }
     
