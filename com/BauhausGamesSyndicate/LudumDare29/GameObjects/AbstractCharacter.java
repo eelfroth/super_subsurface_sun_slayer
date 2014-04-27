@@ -34,8 +34,8 @@ public abstract class AbstractCharacter extends AbstractEntity {
     
     
     public void move(float delta){
-        setAcceleration(getAcceleration()    );
-        setVelocity    (getVelocity()     + getAcceleration() * getAccFactor() );
+        setAcceleration(getAcceleration()   );
+        setVelocity    (getVelocity()     + getAcceleration()* getAccFactor()   );
         setVelocity    (getVelocity()     * (1 - getFriction()) );
         setX((getX() + getVelocity()*delta));
     }
