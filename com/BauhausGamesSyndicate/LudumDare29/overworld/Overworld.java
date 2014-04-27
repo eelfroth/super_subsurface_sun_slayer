@@ -222,11 +222,19 @@ public class Overworld {
         //background
          for (int i = 0; i < getMapWidth()/background.getWidth(); i++) {
             int x = (int) (i*background.getWidth());
-//            int m=getMapWidth();
-//            if (x < -m)
-//                x += m;
-//            else
-//                x = x % m;
+            int m=getMapWidth();
+            
+            int cc = Overworld.getCameraPos()/4;//current chunk 0-3
+
+            if (i >cc+1)
+                x-=m/2;
+        
+            if (x < -m)
+                x += m;
+            else
+                x = x % m;
+            
+
             
         if (x+background.getWidth() > Overworld.getCameraPos()/2 && x < Gdx.graphics.getWidth()+Overworld.getCameraPos()/2)
             gs.getBatch().draw(background, x, 0);
