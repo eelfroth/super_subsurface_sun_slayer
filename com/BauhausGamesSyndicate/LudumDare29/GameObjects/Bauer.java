@@ -11,5 +11,10 @@ public class Bauer extends AbstractCharacter {
     public Bauer(float x, float y, boolean world, Eingang eingang) {
         super(x, y, "Bauer", world, 1, 1);
     }
+
+    @Override
+    public boolean isEvil() {
+        return false;
+    }
     
 }

@@ -19,8 +19,5 @@ public class Fledermaus extends Minion{
            4,
            1
        );
-    }
-
- 
-    
+    }  
 }
