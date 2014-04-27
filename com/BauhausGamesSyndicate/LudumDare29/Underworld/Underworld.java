@@ -1,5 +1,6 @@
 package com.BauhausGamesSyndicate.LudumDare29.Underworld;
 
+import com.BauhausGamesSyndicate.LudumDare29.AbstractWorld;
 import com.BauhausGamesSyndicate.LudumDare29.GameObjects.AbstractEntity;
 import com.BauhausGamesSyndicate.LudumDare29.GameObjects.Bat;
 import com.BauhausGamesSyndicate.LudumDare29.GameObjects.Slender;
@@ -10,6 +11,7 @@ import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.math.Matrix4;
 import java.util.ArrayList;
 
 /**
@@ -18,7 +20,7 @@ import java.util.ArrayList;
  * @author Paul Flechsig
  * @author Jacob Bauer
  */
-public class Underworld {
+public class Underworld extends AbstractWorld{
     private final Texture texture;
     private float dt;
     private final int timeTillNextBuy = 500;
@@ -30,6 +32,11 @@ public class Underworld {
     private final Sound coinsound;
 
     public Underworld() {
+        super(GameScreen.setupShader( 
+                Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/shaders/under.vert").readString(),
+                Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/shaders/under.frag").readString()), 
+                new Matrix4());
+        
         this.texture = new Texture(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/underworld.jpg"));
         coinsound = Gdx.audio.newSound(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/coin.wav"));
     }

@@ -1,12 +1,14 @@
 package com.BauhausGamesSyndicate.LudumDare29.overworld;
 
 
+import com.BauhausGamesSyndicate.LudumDare29.AbstractWorld;
 import com.BauhausGamesSyndicate.LudumDare29.GameObjects.AbstractEntity;
 import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.math.Matrix4;
 import java.util.ArrayList;
 
 /**
@@ -15,7 +17,7 @@ import java.util.ArrayList;
  * @author Paul Flechsig
  * @author Jacob Bauer
  */
-public class Overworld {
+public class Overworld extends AbstractWorld{
     private final int cityDistToEntrance = 700;
     private static int[] heightmap;
     private static final ArrayList<AbstractEntity> entityList = new ArrayList<>();
@@ -24,7 +26,13 @@ public class Overworld {
     private static Sprite background;
     private final Eingang eingang;
 
-    public Overworld() {        
+    public Overworld() { 
+        super(GameScreen.setupShader( 
+                Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/shaders/world.vert").readString(),
+                Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/shaders/world.frag").readString()), 
+                new Matrix4());
+        matrix.scale(3.0f, 1.2f, 1.0f);
+        
         chunks = new Chunk[4];//max 4 backgroudn tiles
         for (int i = 0; i < chunks.length; i++) {
             chunks[i] = new Chunk(i);
