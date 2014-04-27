@@ -20,7 +20,6 @@ import com.badlogic.gdx.audio.Sound;
  */
 public class Player extends AbstractCharacter {
     private int menupoint = 0;
-    private static Sound rising;
     private static Sound growlsound;
     private static Sound stepsound;
     private float attacktimer;
@@ -30,8 +29,7 @@ public class Player extends AbstractCharacter {
     private float distanceTraveled;
     
     public Player(float x, float y) {
-        super(x, y, "overlord", false,10,10);
-        rising = Gdx.audio.newSound(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/rising.mp3"));
+        super(x, y, "overlord", false,10,9);
         growlsound = Gdx.audio.newSound(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/growlsingle.ogg"));
         stepsound = Gdx.audio.newSound(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/step.wav"));
     }
@@ -149,12 +147,15 @@ public class Player extends AbstractCharacter {
     @Override
     public void rise() {
         super.rise();
-        rising.play();
+        GameScreen.getOverworld().getEingang().rise();
     }
     
-    public void dispose(){
-        rising.dispose();
+    @Override
+    public void descend(){
+        super.descend();
+        GameScreen.getOverworld().getEingang().descend();
     }
+
     
     /**
      * was soll passieren, wenn die SPielfigur angreift?
