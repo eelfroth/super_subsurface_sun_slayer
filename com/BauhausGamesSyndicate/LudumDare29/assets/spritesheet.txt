@@ -2,338 +2,345 @@ spritesheet.png
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-bauernhof_h
+bauernhof0
   rotate: false
-  xy: 391, 2
+  xy: 2, 1414
   size: 336, 131
   orig: 338, 145
   offset: 2, 8
   index: -1
-bauernhof_k
+bauernhof0s
   rotate: false
-  xy: 705, 390
+  xy: 340, 1458
   size: 272, 115
   orig: 338, 145
   offset: 30, 13
   index: -1
-befestigter_bauernhof_h
+befestigter_bauernhof0
   rotate: false
-  xy: 729, 106
+  xy: 391, 1327
   size: 287, 129
   orig: 301, 159
   offset: 11, 4
   index: -1
-befestigter_bauernhof_k
+befestigter_bauernhof0s
   rotate: false
-  xy: 705, 237
+  xy: 1095, 131
   size: 271, 151
   orig: 301, 159
   offset: 0, 4
   index: -1
-burg_h
+burg0
   rotate: false
-  xy: 2, 2
+  xy: 2, 1223
   size: 387, 189
   orig: 395, 195
   offset: 4, 0
   index: -1
-burg_k
+burg0s
   rotate: false
-  xy: 2, 193
+  xy: 776, 2
   size: 317, 153
   orig: 395, 195
   offset: 20, 0
   index: -1
 fledermaus0
   rotate: false
-  xy: 1141, 801
+  xy: 1455, 803
   size: 83, 93
   orig: 83, 93
   offset: 0, 0
   index: -1
 fledermaus1
   rotate: false
-  xy: 1141, 706
+  xy: 1484, 515
   size: 83, 93
   orig: 83, 93
   offset: 0, 0
   index: -1
 fledermaus2
   rotate: false
-  xy: 1130, 898
+  xy: 1471, 420
   size: 83, 93
   orig: 83, 93
   offset: 0, 0
   index: -1
 fledermaus3
   rotate: false
-  xy: 1083, 2
+  xy: 1471, 325
   size: 83, 93
   orig: 83, 93
   offset: 0, 0
   index: -1
 overlord0
   rotate: false
-  xy: 705, 507
+  xy: 1368, 131
   size: 225, 192
   orig: 271, 232
   offset: 39, 27
   index: -1
 overlord0s
   rotate: false
-  xy: 474, 673
+  xy: 1011, 1196
   size: 223, 189
   orig: 283, 233
   offset: 33, 6
   index: -1
 overlord1
   rotate: false
-  xy: 231, 982
+  xy: 1230, 997
   size: 217, 190
   orig: 271, 232
   offset: 46, 27
   index: -1
 overlord1s
   rotate: false
-  xy: 932, 507
+  xy: 1011, 997
   size: 217, 197
   orig: 283, 233
   offset: 44, 6
   index: -1
 overlord2
   rotate: false
-  xy: 239, 788
+  xy: 1236, 803
   size: 217, 192
   orig: 271, 232
   offset: 39, 27
   index: -1
 overlord2s
   rotate: false
-  xy: 470, 264
+  xy: 1013, 284
   size: 233, 213
   orig: 283, 233
   offset: 33, 6
   index: -1
 overlord3
   rotate: false
-  xy: 979, 296
+  xy: 1315, 1375
   size: 203, 188
   orig: 271, 232
   offset: 47, 27
   index: -1
 overlord3s
   rotate: false
-  xy: 2, 802
+  xy: 776, 611
   size: 227, 227
   orig: 283, 233
   offset: 41, 6
   index: -1
 overlord4
   rotate: false
-  xy: 458, 960
+  xy: 895, 1387
   size: 213, 182
   orig: 271, 232
   offset: 35, 27
   index: -1
 overlord4s
   rotate: false
-  xy: 2, 577
+  xy: 776, 386
   size: 235, 223
   orig: 283, 233
   offset: 34, 6
   index: -1
 overlord5
   rotate: false
-  xy: 698, 891
+  xy: 1236, 1189
   size: 215, 184
   orig: 271, 232
   offset: 31, 27
   index: -1
 overlord5s
   rotate: false
-  xy: 239, 348
+  xy: 776, 840
   size: 229, 223
   orig: 283, 233
   offset: 38, 6
   index: -1
 overlord6
   rotate: false
-  xy: 915, 898
+  xy: 680, 1358
   size: 213, 182
   orig: 271, 232
   offset: 35, 27
   index: -1
 overlord6s
   rotate: false
-  xy: 2, 348
+  xy: 776, 157
   size: 235, 227
   orig: 283, 233
   offset: 33, 6
   index: -1
 overlord7
   rotate: false
-  xy: 1018, 106
+  xy: 1110, 1387
   size: 203, 188
   orig: 271, 232
   offset: 47, 27
   index: -1
 overlord7s
   rotate: false
-  xy: 239, 573
+  xy: 776, 1065
   size: 233, 213
   orig: 283, 233
   offset: 33, 6
   index: -1
 overlord8
   rotate: false
-  xy: 474, 479
+  xy: 1013, 499
   size: 229, 192
   orig: 271, 232
   offset: 39, 27
   index: -1
 overlord8s
   rotate: false
-  xy: 2, 1031
+  xy: 1007, 798
   size: 227, 197
   orig: 283, 233
   offset: 34, 6
   index: -1
 overlord9
   rotate: false
-  xy: 922, 706
+  xy: 1263, 611
   size: 217, 190
   orig: 271, 232
   offset: 46, 27
   index: -1
 overlord9s
   rotate: false
-  xy: 699, 701
+  xy: 1248, 325
   size: 221, 188
   orig: 271, 232
   offset: 41, 27
   index: -1
-palisaden_h
+palisaden0
   rotate: false
-  xy: 458, 864
+  xy: 1244, 515
   size: 238, 94
   orig: 248, 98
   offset: 6, 3
   index: -1
-palisaden_k
+palisaden0s
   rotate: false
-  xy: 708, 1077
+  xy: 1397, 2
   size: 184, 86
   orig: 248, 98
   offset: 30, 2
   index: -1
-siedlung_h
+siedlung0
   rotate: false
-  xy: 391, 135
+  xy: 1095, 2
   size: 300, 127
   orig: 316, 137
   offset: 9, 6
   index: -1
-siedlung_k
+siedlung0s
   rotate: false
-  xy: 894, 1082
+  xy: 1005, 693
   size: 256, 103
   orig: 316, 137
   offset: 28, 22
   index: -1
 slender0
   rotate: false
-  xy: 1168, 2
+  xy: 1013, 193
   size: 20, 58
   orig: 32, 72
   offset: 6, 7
   index: -1
 slender1
   rotate: false
-  xy: 321, 255
+  xy: 1477, 898
   size: 18, 58
   orig: 32, 72
   offset: 9, 7
   index: -1
 slender2
   rotate: false
-  xy: 673, 960
+  xy: 1455, 898
   size: 20, 60
   orig: 32, 72
   offset: 8, 6
   index: -1
 slender3
   rotate: false
-  xy: 693, 135
+  xy: 1556, 325
   size: 22, 58
   orig: 32, 72
   offset: 4, 7
   index: -1
 slender4
   rotate: false
-  xy: 1130, 993
+  xy: 636, 1458
   size: 18, 60
   orig: 32, 72
   offset: 8, 6
   index: -1
 slender5
   rotate: false
-  xy: 1184, 296
+  xy: 1556, 385
   size: 18, 58
   orig: 32, 72
   offset: 9, 7
   index: -1
 slender6
   rotate: false
-  xy: 321, 193
+  xy: 614, 1458
   size: 20, 60
   orig: 32, 72
   offset: 8, 6
   index: -1
 soldat0
   rotate: false
-  xy: 1204, 296
+  xy: 340, 1414
   size: 24, 36
   orig: 36, 36
   offset: 3, 0
   index: -1
 soldat1
   rotate: false
-  xy: 978, 237
+  xy: 1397, 90
   size: 26, 34
   orig: 36, 36
   offset: 1, 0
   index: -1
-wald_h
+sonnengottempel0
   rotate: false
-  xy: 729, 2
+  xy: 2, 2
+  size: 772, 1219
+  orig: 840, 1219
+  offset: 50, 0
+  index: -1
+wald0
+  rotate: false
+  xy: 391, 1223
   size: 352, 102
   orig: 384, 216
   offset: 0, 45
   index: -1
-wald_k
+wald0s
   rotate: false
-  xy: 450, 1144
+  xy: 745, 1280
   size: 256, 76
   orig: 384, 216
   offset: 67, 57
   index: -1
 warg0
   rotate: false
-  xy: 302, 1174
+  xy: 1248, 284
   size: 69, 34
   orig: 75, 50
   offset: 2, 10
   index: -1
 warg1
   rotate: false
-  xy: 708, 1165
+  xy: 1013, 157
   size: 69, 34
   orig: 75, 50
   offset: 2, 10
   index: -1
 warg2
   rotate: false
-  xy: 231, 1174
+  xy: 2, 1547
   size: 69, 34
   orig: 75, 50
   offset: 2, 10
