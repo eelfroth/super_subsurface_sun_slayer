@@ -18,12 +18,12 @@ public class LudumDare29 extends Game {
      */
      public static void main(String[] args) {
         LwjglApplicationConfiguration cfg = new LwjglApplicationConfiguration();
-        cfg.title = "hello-world";
+        cfg.title = "Super Subsurface Sun Slayer";
         cfg.width = 1920;
         cfg.height = 1080;
         cfg.foregroundFPS = 0;
         cfg.backgroundFPS =0;
-        cfg.vSyncEnabled = false;
+        cfg.vSyncEnabled = true;
         cfg.initialBackgroundColor = new Color(0,0,0,1);
         cfg.fullscreen = false;
          LwjglApplication lwjglApplication = new LwjglApplication(new LudumDare29(), cfg);
@@ -31,6 +31,7 @@ public class LudumDare29 extends Game {
 
     @Override
     public void create() {
+        //setScreen(new MainMenu());
         setScreen(new GameScreen());
    }
     
