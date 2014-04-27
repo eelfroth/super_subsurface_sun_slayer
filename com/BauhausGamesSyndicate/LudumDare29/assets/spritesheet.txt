@@ -242,21 +242,21 @@ siedlung0s
   index: -1
 slender0
   rotate: false
-  xy: 1013, 193
+  xy: 636, 1458
   size: 20, 58
   orig: 32, 72
   offset: 6, 7
   index: -1
 slender1
   rotate: false
-  xy: 1477, 898
+  xy: 658, 1458
   size: 18, 58
   orig: 32, 72
   offset: 9, 7
   index: -1
 slender2
   rotate: false
-  xy: 1455, 898
+  xy: 1455, 934
   size: 20, 60
   orig: 32, 72
   offset: 8, 6
@@ -270,14 +270,14 @@ slender3
   index: -1
 slender4
   rotate: false
-  xy: 636, 1458
+  xy: 1556, 385
   size: 18, 60
   orig: 32, 72
   offset: 8, 6
   index: -1
 slender5
   rotate: false
-  xy: 1556, 385
+  xy: 1477, 934
   size: 18, 58
   orig: 32, 72
   offset: 9, 7
@@ -298,7 +298,7 @@ soldat0
   index: -1
 soldat1
   rotate: false
-  xy: 1397, 90
+  xy: 745, 1223
   size: 26, 34
   orig: 36, 36
   offset: 1, 0
@@ -326,22 +326,92 @@ wald0s
   index: -1
 warg0
   rotate: false
+  xy: 1455, 898
+  size: 69, 34
+  orig: 75, 50
+  offset: 2, 10
+  index: -1
+warg0s
+  rotate: false
+  xy: 1013, 157
+  size: 69, 35
+  orig: 111, 69
+  offset: 18, 19
+  index: -1
+warg1
+  rotate: false
+  xy: 1397, 90
+  size: 69, 34
+  orig: 75, 50
+  offset: 2, 10
+  index: -1
+warg1s
+  rotate: false
+  xy: 1468, 90
+  size: 65, 23
+  orig: 111, 69
+  offset: 20, 22
+  index: -1
+warg2
+  rotate: false
   xy: 1248, 284
   size: 69, 34
   orig: 75, 50
   offset: 2, 10
   index: -1
-warg1
+warg2s
   rotate: false
-  xy: 1013, 157
-  size: 69, 34
-  orig: 75, 50
-  offset: 2, 10
+  xy: 73, 1547
+  size: 67, 31
+  orig: 111, 69
+  offset: 19, 22
   index: -1
-warg2
+warg3s
+  rotate: false
+  xy: 1013, 194
+  size: 65, 29
+  orig: 111, 69
+  offset: 24, 18
+  index: -1
+warg4s
+  rotate: false
+  xy: 895, 1358
+  size: 67, 27
+  orig: 111, 69
+  offset: 20, 19
+  index: -1
+warg5s
   rotate: false
   xy: 2, 1547
-  size: 69, 34
-  orig: 75, 50
-  offset: 2, 10
+  size: 69, 35
+  orig: 111, 69
+  offset: 18, 19
+  index: -1
+zivi1
+  rotate: false
+  xy: 1497, 934
+  size: 18, 36
+  orig: 22, 36
+  offset: 1, 0
+  index: -1
+zivi2
+  rotate: false
+  xy: 1556, 447
+  size: 18, 36
+  orig: 22, 36
+  offset: 1, 0
+  index: -1
+zivi3
+  rotate: false
+  xy: 614, 1520
+  size: 18, 36
+  orig: 22, 36
+  offset: 1, 0
+  index: -1
+zivi4
+  rotate: false
+  xy: 1013, 225
+  size: 18, 36
+  orig: 22, 36
+  offset: 1, 0
   index: -1

@@ -47,6 +47,11 @@ public class Underworld extends AbstractWorld{
         camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         
         rotation = 0.0f;
+        
+        //debug: spawn fledermäuse am start
+        for(int i=0; i<23; i++) {
+            buyBat();
+        }
     }
     
     
