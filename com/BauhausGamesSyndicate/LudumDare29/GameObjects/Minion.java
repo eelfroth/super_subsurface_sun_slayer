@@ -24,7 +24,7 @@ public class Minion extends AbstractCharacter{
         
         //colission check
         for (AbstractEntity entity : GameScreen.getOverworld().getEntityList()) {
-            if (entity instanceof Enemy && entity.getX()+entity.getWidth() > getX() && entity.getX() < getX()+entity.getWidth()){
+            if (entity instanceof Soldat && entity.getX()+entity.getWidth() > getX() && entity.getX() < getX()+entity.getWidth()){
                 collide = true;
             }
         }
