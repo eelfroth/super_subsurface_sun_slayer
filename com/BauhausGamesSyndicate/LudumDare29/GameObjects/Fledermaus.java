@@ -45,7 +45,7 @@ public class Fledermaus extends Minion{
         
         //den x- und y-koordinaten werden sinuskurven addiert
         y_sin += delta*0.167;
-        setY((getY() + (float)sin(y_sin/147f)*200.0f) + 150.0f + y_pos);
+        setY((getY() + (float)sin(y_sin/147f)*150.0f) + 250.0f + y_pos);
         x_sin += delta*0.167;
         setX(getX() + (float)sin(x_sin/211f)*11f);
         
