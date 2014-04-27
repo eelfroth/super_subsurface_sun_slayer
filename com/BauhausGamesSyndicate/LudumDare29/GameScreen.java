@@ -116,12 +116,12 @@ public class GameScreen implements Screen {
         
         //update
         fps.update(delta);
-        if (world)
-            overworld.update(delta);
-        else
-            underworld.update(delta);
+        overworld.update(delta);
+        underworld.update(delta);
+        
         player.update(delta);
         Overworld.setCameraPos((int) (player.getX()-Gdx.graphics.getWidth()/2));
+        
         
         //render
         Gdx.gl.glClearColor(0, 0, 0, 1);
@@ -138,11 +138,12 @@ public class GameScreen implements Screen {
             batch.setProjectionMatrix(camera.combined);
             shr.setProjectionMatrix(camera.combined);
 
+            batch.begin();
             if (world)
                 overworld.render(this);
             else
                 underworld.render(this);
-            batch.begin();
+
             player.render(this);
             batch.end();
 

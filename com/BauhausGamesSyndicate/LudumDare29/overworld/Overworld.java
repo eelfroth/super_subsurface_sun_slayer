@@ -193,9 +193,7 @@ public class Overworld {
     }
     
     public void render(GameScreen gs){
-        gs.getBatch().begin();
-        
-        int y = Gdx.graphics.getHeight()-Chunk.HEIGHT; 
+         int y = Gdx.graphics.getHeight()-Chunk.HEIGHT; 
         gs.getCamera().translate(-Overworld.getCameraPos()/2, -y);
         gs.getCamera().update();
         gs.getBatch().setProjectionMatrix(gs.getCamera().combined);
@@ -227,18 +225,6 @@ public class Overworld {
         for( AbstractEntity m: entityList){
             m.render(gs);
         }
-        
-        //eingang.render(gs);
-        gs.getBatch().end();
-        
-        
-        ShapeRenderer sh = gs.getShapeRenderer();
-        sh.begin(ShapeRenderer.ShapeType.Line);
-        for (int i = 0; i < heightmap.length; i++) {
-            sh.line(i*resolution(), getHeightmapValue(i), (i+1)*resolution(), getHeightmapValue(i+1));
-        }
-        sh.end();
-        
     }
     
 /**
@@ -294,5 +280,14 @@ public class Overworld {
     
     public void addEntity(AbstractEntity entity){
         entityList.add(entity);
+    }
+    
+    public void renderShapes(ShapeRenderer sh){
+        //eingang.render(gs);
+        sh.begin(ShapeRenderer.ShapeType.Line);
+        for (int i = 0; i < heightmap.length; i++) {
+            sh.line(i*resolution(), getHeightmapValue(i), (i+1)*resolution(), getHeightmapValue(i+1));
+        }
+        sh.end();
     }
 }

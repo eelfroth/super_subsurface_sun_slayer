@@ -25,9 +25,7 @@ public class Underworld {
     }
     
     public void render(GameScreen gs){
-        gs.getBatch().begin();
         gs.getBatch().draw(texture, 0, 0);
-        gs.getBatch().end();
     }
     
     public void update(float delta){
