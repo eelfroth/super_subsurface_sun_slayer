@@ -7,7 +7,6 @@
 package com.BauhausGamesSyndicate.LudumDare29.GameObjects;
 
 import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
-import com.BauhausGamesSyndicate.LudumDare29.overworld.Chunk;
 import com.BauhausGamesSyndicate.LudumDare29.overworld.Eingang;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
@@ -54,9 +53,7 @@ public class Player extends AbstractCharacter {
                 getX() > eingang.getX() &&
                 getX() < eingang.getX()+eingang.getWidth()
                 ){
-                GameScreen.switchWorld();
-                setX(860);
-                setY(500);
+                descend();
             }
         }else {
             //move up?
@@ -103,11 +100,6 @@ public class Player extends AbstractCharacter {
         setVelocity    (getVelocity()     + getAcceleration() );
         setVelocity    (getVelocity()     * (1 - getFriction()) );
         setX((getX() + getVelocity()*delta));
-        
-        //switch
-        if (getY() >= Chunk.HEIGHT){
-            GameScreen.switchWorld();
-        }
     }
     
     private void goTo(int id){
@@ -129,8 +121,5 @@ public class Player extends AbstractCharacter {
 
     public int getMenupoint() {
         return menupoint;
-    }
-    
-    
-    
+    } 
 }

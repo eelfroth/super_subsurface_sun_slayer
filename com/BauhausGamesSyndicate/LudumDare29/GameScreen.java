@@ -81,9 +81,6 @@ public class GameScreen implements Screen {
         setupFramebuffer();
     }
 
-    public void setWorld(boolean world){
-        GameScreen.world = world;
-    }
     @Override
     public void dispose() {
         batch.dispose();
@@ -113,6 +110,8 @@ public class GameScreen implements Screen {
         underworld.update(delta);
         
         player.update(delta);
+        world = player.onOverworld();
+        
         Overworld.setCameraPos((int) (player.getX()-Gdx.graphics.getWidth()/2));
         
         
@@ -221,12 +220,6 @@ public class GameScreen implements Screen {
     public static boolean onOverworld() {
         return world;
     }
-
-    public static void switchWorld(){
-        world = !world;
-        if (!world)
-            underworld.enter();
-    }
     
     private void setupShader() {
         ShaderProgram.pedantic = false;
@@ -322,6 +315,10 @@ public class GameScreen implements Screen {
 
     public static Overworld getOverworld() {
         return overworld;
+    }
+    
+    public static Underworld getUnderworld() {
+        return underworld;
     }
 
     public static Player getPlayer() {

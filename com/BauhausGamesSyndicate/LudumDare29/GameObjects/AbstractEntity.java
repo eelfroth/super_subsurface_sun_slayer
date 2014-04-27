@@ -10,6 +10,8 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
  */
 public abstract class AbstractEntity extends Sprite {
     private boolean world;//false: underworld, true: overworld
+    private boolean flagRemoveFromUnderworld;
+    private boolean flagRemoveFromOverworld;
     
     public AbstractEntity(float x, float y, String name, boolean world) {
         super(GameScreen.getSpritesheet().findRegion(name));
@@ -28,9 +30,27 @@ public abstract class AbstractEntity extends Sprite {
         return world;
     }
     
-    public void switchWolrd(){
+    public void switchWorld(){
         world = !world;
     }
+    
+    public boolean flagRemoveFromUnderworldSet() {
+        return flagRemoveFromUnderworld;
+    }
+
+    public boolean flagRemoveFromOverworldSet() {
+        return flagRemoveFromOverworld;
+    }
+
+    public void setFlagRemoveFromUnderworld() {
+        this.flagRemoveFromUnderworld = true;
+    }
+
+    public void setFlagRemoveFromOverworld() {
+        this.flagRemoveFromOverworld = true;
+    }
+    
+    
     
     
 }

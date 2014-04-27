@@ -13,6 +13,7 @@ public abstract class AbstractCharacter extends AbstractEntity {
     
     public int life;
     private boolean shouldRaise;
+    private boolean shouldDescend;
 
     public AbstractCharacter(float x, float y, String name, boolean world){
         super(x, y, name, world);
@@ -76,21 +77,53 @@ public abstract class AbstractCharacter extends AbstractEntity {
     
     @Override
     public void update(float delta){
-        if (GameScreen.onOverworld()){
+        if (GameScreen.onOverworld() && !shouldRaise && !shouldDescend){
             setY(Overworld.getHeight((int) getX()));
         }
         
         if (shouldRaise){
             setY(getY()+delta/2);
+            
+            if (getY() >= Chunk.HEIGHT){
+                shouldRaise=false;
+                setX(GameScreen.getOverworld().getEingang().getX()+GameScreen.getOverworld().getEingang().getWidth()/2);
+                GameScreen.getOverworld().addEntity(this);
+                setFlagRemoveFromUnderworld();
+                switchWorld();
+            }
         }
         
-        if (shouldRaise && getY() >= Chunk.HEIGHT){
-            shouldRaise=false;
-            setX(GameScreen.getOverworld().getEingang().getX()+GameScreen.getOverworld().getEingang().getWidth()/2);
+        if (shouldDescend){
+            setY(getY()-delta/2);
+            
+            //entering underworld
+            if (getY() < 0){
+                shouldDescend=false;
+                //setX(GameScreen.getOverworld().getEingang().getX() + GameScreen.getOverworld().getEingang().getWidth()/2);
+                GameScreen.getUnderworld().addEntity(this);
+                setFlagRemoveFromOverworld();
+                switchWorld();
+                setX(860);
+                setY(500);
+            }
         }
     }
     
     public void raise(){
         shouldRaise = true;
     }
+    
+    public void descend() {
+        shouldDescend = true;
+    }
+
+    public boolean isRaising() {
+        return shouldRaise;
+    }
+
+    public boolean isDescending() {
+        return shouldDescend;
+    }
+    
+    
 }

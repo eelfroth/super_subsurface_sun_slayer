@@ -48,9 +48,17 @@ public class Underworld {
     }
     
     public void update(float delta){
+        //update objects
         for (int i = 0; i < entityList.size(); i++) {
            entityList.get(i).update(delta);
         }
+        
+        //remove objects
+        for (int i = 0; i < entityList.size(); i++) {
+           if (entityList.get(i).flagRemoveFromUnderworldSet())
+               entityList.remove(i);
+        }
+        
         
         if (Gdx.input.isKeyPressed(Keys.SPACE)){
             dt+=delta;
@@ -100,5 +108,9 @@ public class Underworld {
     
     public int getMoney() {
         return money;
+    }
+    
+    public void addEntity(AbstractEntity entity){
+        entityList.add(entity);
     }
 }
