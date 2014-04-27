@@ -22,6 +22,6 @@ public class Warg extends Minion {
     @Override
     public void fight(AbstractCharacter enemy, float delta) {
         //playSpacial(true);
-        enemy.drainLife((int) (life*delta/4));
+        enemy.drainLife(delta/4);
     }
 }

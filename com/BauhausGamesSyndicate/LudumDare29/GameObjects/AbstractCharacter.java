@@ -70,7 +70,7 @@ public abstract class AbstractCharacter extends AbstractEntity {
  
         
     public boolean isDead(){
-        return life <= 0;
+        return getLife() <= 0;
     }
     
     @Override
@@ -78,6 +78,9 @@ public abstract class AbstractCharacter extends AbstractEntity {
         super.update(delta);
         if (GameScreen.onOverworld() && !shouldRaise && !shouldDescend){
             setY(Overworld.getHeight((int) getX()));
+        }
+        if (isDead()){
+            setFlagRemoveFromOverworld();
         }
         
         move(delta);
@@ -119,7 +122,7 @@ public abstract class AbstractCharacter extends AbstractEntity {
                 ((AbstractCharacter)entity).isEvil()!=isEvil() && //is not same fraction?
                 entity.getX()+entity.getWidth() > getX()&&
                 entity.getX() < getX()+entity.getWidth()){
-                acceleration=0;
+                velocity=0;
                 fight((AbstractCharacter) entity, delta);
             }
         }
