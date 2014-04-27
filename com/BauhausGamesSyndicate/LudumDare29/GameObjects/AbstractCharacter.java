@@ -28,10 +28,18 @@ public abstract class AbstractCharacter extends AbstractEntity {
         
     }
     
+    public void move(float delta){
+        setAcceleration(direction);
+        setAcceleration(getAcceleration() * getAccFactor()    );
+        setVelocity    (getVelocity()     + getAcceleration() );
+        setVelocity    (getVelocity()     * (1 - getFriction()) );
+        setX((getX() + getVelocity()*delta));
+        
+    }
+    
     public AbstractCharacter(float x, float y, String name, boolean world){
         this(x, y, name, world,1);
     }
-    
     
     public float getFriction(){
         return this.friction;
