@@ -24,7 +24,7 @@ public class Overworld extends AbstractWorld{
     // x - Positionen der Städte
     private static int[] citymapX;
     private static int[] citymapY;
-    private final int anzCitys = 4;
+    private final int anzCitys = 6;
     private final int anzForrests = 10;
     
     private static final ArrayList<AbstractEntity> entityList = new ArrayList<>();
@@ -60,12 +60,15 @@ public class Overworld extends AbstractWorld{
         citymapX[0] = 530;
         citymapY[0] = 400;
         citymapX[1] = 880;
-        citymapY[1] = 430;
+        citymapY[1] = 450;
         citymapX[2] = 1200;
-        citymapY[2] = 440;
+        citymapY[2] = 500;
         citymapX[3] = 1100;
-        citymapY[3] = 330;
-        
+        citymapY[3] = 360;
+        citymapX[4] = 2935;
+        citymapY[4] = 485;
+        citymapX[5] = 3400;
+        citymapY[5] = 320;
         
         heightmap[0] = 300;
         heightmap[1] = 327;
