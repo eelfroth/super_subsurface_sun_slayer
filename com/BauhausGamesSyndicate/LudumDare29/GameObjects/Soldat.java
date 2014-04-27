@@ -9,11 +9,11 @@ import com.BauhausGamesSyndicate.LudumDare29.overworld.Eingang;
  * @author Paul Flechsig
  * @author Jacob Bauer
  */
-public class Enemy extends AbstractCharacter {
+public class Soldat extends AbstractCharacter {
     private final Eingang eingang;
     private boolean arrived;
     
-    public Enemy(float x, float y, boolean world, Eingang eingang) {
+    public Soldat(float x, float y, boolean world, Eingang eingang) {
         super(x, y, "soldat", world,2);
         arrived = false;
         setAcceleration(-1);

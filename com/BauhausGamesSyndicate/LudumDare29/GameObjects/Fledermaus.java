@@ -8,9 +8,9 @@ import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
  * @author Paul Flechsig
  * @author Jacob Bauer
  */
-public class Bat extends Minion{
+public class Fledermaus extends Minion{
 
-    public Bat(boolean world) {
+    public Fledermaus(boolean world) {
        super(
            GameScreen.onOverworld()?GameScreen.getOverworld().getEingang().getX():500,
            0,
