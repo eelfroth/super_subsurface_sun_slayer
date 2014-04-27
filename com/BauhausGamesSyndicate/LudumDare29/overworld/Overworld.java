@@ -14,6 +14,7 @@ import java.util.ArrayList;
  * @author Benedikt Vogler
  */
 public class Overworld {
+    private final int cityDistToEntrance = 700;
     private static int[] heightmap;
     private static final ArrayList<AbstractEntity> entityList = new ArrayList<>();
     private static int cameraPos = 0;
@@ -169,9 +170,13 @@ public class Overworld {
         heightmap[128] = 300;
         
         //place towns
-        for (int i = 0; i < 40; i++){
+        for (int i = 0; i < 1000; i++){
+            int sx;
+            do{
+               sx = (int) (Math.random() * getMapWidth());
+            }while( sx > eingang.getX()-eingang.getWidth()-cityDistToEntrance && sx < eingang.getX() + eingang.getWidth()+cityDistToEntrance);
             entityList.add(
-                new City(this, (int) (Math.random() * getMapWidth()), (int) (Chunk.HEIGHT/4*Math.random()+Chunk.HEIGHT/4), eingang)
+                new City(this, sx, (int) (Chunk.HEIGHT/4*Math.random()+Chunk.HEIGHT/4), eingang)
             );
         }
     }
