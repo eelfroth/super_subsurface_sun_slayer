@@ -7,6 +7,8 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 /**
  *
  * @author Benedikt Vogler
+ * @author Paul Flechsig
+ * @author Jacob Bauer
  */
 public abstract class AbstractEntity{
     private boolean world;//false: underworld, true: overworld

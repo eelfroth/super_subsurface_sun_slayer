@@ -12,6 +12,8 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 /**
  *
  * @author Benedikt Vogler
+ * @author Paul Flechsig
+ * @author Jacob Bauer
  */
 public class Eingang{
     private final int x = 2000;

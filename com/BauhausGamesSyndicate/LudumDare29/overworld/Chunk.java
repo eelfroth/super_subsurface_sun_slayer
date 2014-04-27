@@ -13,6 +13,8 @@ import com.badlogic.gdx.graphics.Texture;
 /**
  *
  * @author Benedikt Vogler
+ * @author Paul Flechsig
+ * @author Jacob Bauer
  */
 public class Chunk {
     public static final int HEIGHT =1024;

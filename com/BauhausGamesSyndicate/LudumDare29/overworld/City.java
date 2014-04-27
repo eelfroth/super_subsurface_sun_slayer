@@ -6,6 +6,8 @@ import com.BauhausGamesSyndicate.LudumDare29.GameObjects.Enemy;
 /**
  *
  * @author Benedikt Vogler
+ * @author Paul Flechsig
+ * @author Jacob Bauer
  */
 public class City extends AbstractEntity {
     private float timetillspawn = 10000;

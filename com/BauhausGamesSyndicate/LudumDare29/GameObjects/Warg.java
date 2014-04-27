@@ -9,6 +9,8 @@ package com.BauhausGamesSyndicate.LudumDare29.GameObjects;
 /**
  *
  * @author Benedikt Vogler
+ * @author Paul Flechsig
+ * @author Jacob Bauer
  */
 public class Warg extends Minion {
 

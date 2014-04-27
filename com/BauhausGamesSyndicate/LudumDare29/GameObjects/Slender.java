@@ -5,6 +5,8 @@ import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
 /**
  *
  * @author Benedikt Vogler
+ * @author Paul Flechsig
+ * @author Jacob Bauer
  */
 public class Slender extends Minion {
 

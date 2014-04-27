@@ -6,6 +6,8 @@ import com.BauhausGamesSyndicate.LudumDare29.overworld.Eingang;
 /**
  *
  * @author Benedikt Vogler
+ * @author Paul Flechsig
+ * @author Jacob Bauer
  */
 public class Enemy extends AbstractCharacter {
     private final Eingang eingang;

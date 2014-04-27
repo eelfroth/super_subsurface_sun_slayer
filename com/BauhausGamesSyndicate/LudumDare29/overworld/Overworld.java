@@ -12,6 +12,8 @@ import java.util.ArrayList;
 /**
  *
  * @author Benedikt Vogler
+ * @author Paul Flechsig
+ * @author Jacob Bauer
  */
 public class Overworld {
     private final int cityDistToEntrance = 700;

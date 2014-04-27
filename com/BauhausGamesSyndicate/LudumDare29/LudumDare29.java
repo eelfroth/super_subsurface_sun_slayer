@@ -8,6 +8,8 @@ import com.badlogic.gdx.graphics.Color;
 /**
  *
  * @author Benedikt Vogler
+ * @author Paul Flechsig
+ * @author Jacob Bauer
  */
 public class LudumDare29 extends Game {
 
