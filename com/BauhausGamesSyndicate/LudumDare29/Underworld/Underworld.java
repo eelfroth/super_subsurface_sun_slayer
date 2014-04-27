@@ -6,10 +6,12 @@ import com.BauhausGamesSyndicate.LudumDare29.GameObjects.Fledermaus;
 import com.BauhausGamesSyndicate.LudumDare29.GameObjects.Slender;
 import com.BauhausGamesSyndicate.LudumDare29.GameObjects.Warg;
 import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
+import com.BauhausGamesSyndicate.LudumDare29.overworld.Overworld;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Matrix4;
 import java.util.ArrayList;
@@ -29,7 +31,9 @@ public class Underworld extends AbstractWorld{
     private int wargsTospawn;
     private int slenderTospawn;
     private int batTospawn;
+    private final OrthographicCamera camera;
     private final Sound coinsound;
+    private float rotation;
 
     public Underworld(GameScreen gs) {
         super(GameScreen.setupShader( 
@@ -40,6 +44,10 @@ public class Underworld extends AbstractWorld{
         this.texture = new Texture(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/underworld.jpg"));
         coinsound = Gdx.audio.newSound(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/coin.wav"));
         
+        camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        
+        rotation = 0.0f;
     }
     
     
@@ -52,7 +60,18 @@ public class Underworld extends AbstractWorld{
     
     @Override
     public void render(GameScreen gs){
+        camera.translate(0,Gdx.graphics.getHeight()/2.25f);
+        camera.rotate(rotation);
+        camera.update();
+        gs.getBatch().setProjectionMatrix(camera.combined);
+        
         gs.getBatch().draw(texture, 0, 0);
+        
+        camera.translate(0,-Gdx.graphics.getHeight()/2.25f);
+        camera.rotate(-rotation);
+        camera.update();
+        gs.getBatch().setProjectionMatrix(camera.combined);
+        
         gs.getFont().setColor(new Color(1,1,1,1));
         gs.getFont().draw(gs.getBatch(), "Corpses:"+getMoney(), Gdx.graphics.getHeight()-500, Gdx.graphics.getWidth()-300);
         
@@ -138,5 +157,8 @@ public class Underworld extends AbstractWorld{
 
     public void rotate(float f) {
         //bgmatrix.rotate(0,0,1, f);
+        rotation += f;
+        
+        
     }
 }

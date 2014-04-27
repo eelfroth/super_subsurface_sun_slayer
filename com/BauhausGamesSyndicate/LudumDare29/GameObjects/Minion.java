@@ -1,5 +1,7 @@
 package com.BauhausGamesSyndicate.LudumDare29.GameObjects;
 
+import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
+
 
 /**
  *
@@ -16,4 +18,15 @@ public abstract class Minion extends AbstractCharacter{
     public boolean isEvil() {
         return true;
     }
+
+    @Override
+    public void update(float delta) {
+        super.update(delta);
+        if (GameScreen.getPlayer().getX() > getX())
+            acceleration=1;
+        else acceleration=-1;
+            
+    }
+    
+    
 }
