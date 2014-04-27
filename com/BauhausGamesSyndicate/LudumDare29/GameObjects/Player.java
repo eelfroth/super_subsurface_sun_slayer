@@ -59,8 +59,8 @@ public class Player extends AbstractCharacter {
                 
                 
                 if (distanceTraveled<distanceToTravel){//traveling
-                    float dX = stepX*delta/4; 
-                    float dY = stepY*delta/4; 
+                    float dX = stepX*delta; 
+                    float dY = stepY*delta; 
                     setX(getX()+dX);
                     setY(getY()+dY);
                     distanceTraveled += Math.sqrt(dX*dX+dY*dY);
@@ -119,17 +119,16 @@ public class Player extends AbstractCharacter {
         if (id==2 && menupoint==0){
             flyTo(1, -2, 400);
         }else if (id==0 && menupoint==2){
-            flyTo(-0.5f, 2, 400);
+            flyTo(-1, 2, 400);
         }  else if(id==1 && menupoint==0){
             flyTo(-2, 0.5f, 350);
         }else if(id==3 && menupoint==0){
-            flyTo(1, 0.5f, 400);
+            flyTo(2, 1, 400);
         }else if(id==0 && menupoint==3){
-            flyTo(-1, -0.5f, 400);
+            flyTo(-2, -1, 400);
         } else if (id==0 && menupoint==1){
             flyTo(2, -0.5f, 350);
         } 
-        
         
         menupoint = id;
     }
