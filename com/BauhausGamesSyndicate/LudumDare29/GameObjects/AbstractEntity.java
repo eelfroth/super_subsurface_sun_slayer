@@ -58,6 +58,7 @@ public abstract class AbstractEntity{
             //if (specialTextures[i]==null)
            //     System.err.println(name+""+Integer.toString(i)+"s");
         }
+        
     }
     
     public float getLife(){
@@ -98,7 +99,7 @@ public abstract class AbstractEntity{
         
         if (flip != tex.isFlipX())
            tex.flip(true, false);
-        gs.getBatch().draw(tex, x, y-56);
+        gs.getBatch().draw(tex, x - getWidth()/2, y-56);
     }
 
     public boolean onOverworld() {

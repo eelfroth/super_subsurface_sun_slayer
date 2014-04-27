@@ -20,7 +20,7 @@ public abstract class AbstractCharacter extends AbstractEntity {
         velocity  = 0;
         accFactor = 0.03f;
         acceleration = 0;
-        friction = 0.05f;
+        friction = 0.2f;
         canWalk = true;
     }
     

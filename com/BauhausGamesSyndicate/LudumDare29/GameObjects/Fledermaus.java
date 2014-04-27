@@ -2,6 +2,7 @@ package com.BauhausGamesSyndicate.LudumDare29.GameObjects;
 
 import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
 import com.badlogic.gdx.Gdx;
+import static java.lang.Math.floor;
 import static java.lang.Math.sin;
 
 /**
@@ -50,7 +51,7 @@ public class Fledermaus extends Minion{
         y_sin += delta*0.167;
         setY((getY() + (float)sin(y_sin/147f)*200.0f) + 200.0f + y_pos);
         x_sin += delta*0.167;
-        setX(getX() + (float)sin(x_sin/211f)*11f);
+        setX(getX() + (float)sin(x_sin/211f)*4f);
         
         
         //debug shit
