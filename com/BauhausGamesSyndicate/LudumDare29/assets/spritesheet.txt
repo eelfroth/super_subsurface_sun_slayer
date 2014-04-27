@@ -25,7 +25,7 @@ befestigter_bauernhof_h
   index: -1
 befestigter_bauernhof_k
   rotate: false
-  xy: 2, 541
+  xy: 376, 419
   size: 271, 151
   orig: 301, 159
   offset: 0, 4
@@ -46,126 +46,126 @@ burg_k
   index: -1
 fledermaus0
   rotate: false
-  xy: 634, 435
+  xy: 276, 432
   size: 83, 93
   orig: 83, 93
   offset: 0, 0
   index: -1
 fledermaus1
   rotate: false
-  xy: 276, 509
+  xy: 649, 529
   size: 83, 93
   orig: 83, 93
   offset: 0, 0
   index: -1
 fledermaus2
   rotate: false
-  xy: 291, 414
+  xy: 649, 434
   size: 83, 93
   orig: 83, 93
   offset: 0, 0
   index: -1
 fledermaus3
   rotate: false
-  xy: 291, 319
+  xy: 291, 337
   size: 83, 93
   orig: 83, 93
   offset: 0, 0
   index: -1
 palisaden_h
   rotate: false
-  xy: 275, 604
+  xy: 260, 624
   size: 238, 94
   orig: 248, 98
   offset: 6, 3
   index: -1
 palisaden_k
   rotate: false
-  xy: 515, 602
+  xy: 500, 624
   size: 184, 86
   orig: 248, 98
   offset: 30, 2
   index: -1
 player0
   rotate: false
-  xy: 729, 2
-  size: 1, 1
+  xy: 2, 572
+  size: 48, 46
   orig: 50, 50
-  offset: 0, 49
+  offset: 0, 2
   index: -1
 siedlung_h
   rotate: false
-  xy: 378, 290
+  xy: 388, 290
   size: 300, 127
   orig: 316, 137
   offset: 9, 6
   index: -1
 siedlung_k
   rotate: false
-  xy: 376, 419
+  xy: 2, 624
   size: 256, 103
   orig: 316, 137
   offset: 28, 22
   index: -1
 slender0
   rotate: false
-  xy: 356, 193
-  size: 22, 60
+  xy: 342, 527
+  size: 30, 70
   orig: 32, 72
-  offset: 5, 6
+  offset: 2, 0
   index: -1
 slender1
   rotate: false
-  xy: 680, 354
-  size: 20, 62
+  xy: 310, 527
+  size: 30, 70
   orig: 32, 72
-  offset: 7, 5
+  offset: 2, 0
   index: -1
 slender2
   rotate: false
-  xy: 702, 309
-  size: 20, 62
+  xy: 686, 624
+  size: 30, 70
   orig: 32, 72
-  offset: 8, 5
+  offset: 2, 0
   index: -1
 slender3
   rotate: false
-  xy: 710, 209
-  size: 24, 60
+  xy: 690, 362
+  size: 30, 70
   orig: 32, 72
-  offset: 2, 6
+  offset: 2, 0
   index: -1
 slender4
   rotate: false
-  xy: 702, 373
-  size: 20, 60
+  xy: 690, 290
+  size: 30, 70
   orig: 32, 72
-  offset: 7, 6
+  offset: 2, 0
   index: -1
 slender5
   rotate: false
-  xy: 680, 290
-  size: 20, 62
+  xy: 356, 265
+  size: 30, 70
   orig: 32, 72
-  offset: 7, 5
+  offset: 2, 0
   index: -1
 slender6
   rotate: false
-  xy: 356, 255
-  size: 20, 62
+  xy: 356, 193
+  size: 30, 70
   orig: 32, 72
-  offset: 8, 5
+  offset: 2, 0
   index: -1
 soldat0
   rotate: false
-  xy: 710, 271
+  xy: 710, 135
   size: 24, 36
   orig: 36, 36
   offset: 3, 0
   index: -1
 soldat1
   rotate: false
-  xy: 710, 173
+  xy: 323, 297
   size: 26, 34
   orig: 36, 36
   offset: 1, 0
@@ -179,14 +179,14 @@ wald_h
   index: -1
 wald_k
   rotate: false
-  xy: 361, 524
+  xy: 52, 541
   size: 256, 76
   orig: 384, 216
   offset: 67, 57
   index: -1
 warg0
   rotate: false
-  xy: 710, 135
+  xy: 291, 297
   size: 30, 36
   orig: 36, 36
   offset: 0, 0

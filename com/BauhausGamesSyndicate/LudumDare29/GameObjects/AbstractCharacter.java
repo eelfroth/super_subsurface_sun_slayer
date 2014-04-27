@@ -83,6 +83,7 @@ public abstract class AbstractCharacter extends AbstractEntity {
     
     @Override
     public void update(float delta){
+        super.update(delta);
         if (GameScreen.onOverworld() && !shouldRaise && !shouldDescend){
             setY(Overworld.getHeight((int) getX()));
         }

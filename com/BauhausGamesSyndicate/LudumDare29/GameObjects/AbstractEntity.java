@@ -18,7 +18,7 @@ public abstract class AbstractEntity{
     private float y;
     private int step;
     private float timer = 0;
-    private int steptime = 1000;//ms
+    private int steptime = 200;//ms
     
     private TextureRegion[] textures;
     private boolean flip = false;
@@ -49,7 +49,7 @@ public abstract class AbstractEntity{
             step++;
             timer %= steptime;
         }
-        if (step > textures.length)
+        if (step >= textures.length)
             step=0;
 
     };
