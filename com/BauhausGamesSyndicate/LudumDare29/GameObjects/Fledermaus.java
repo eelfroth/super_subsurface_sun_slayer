@@ -1,6 +1,7 @@
 package com.BauhausGamesSyndicate.LudumDare29.GameObjects;
 
 import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
+import com.badlogic.gdx.Gdx;
 
 /**
  *
@@ -12,7 +13,7 @@ public class Fledermaus extends Minion{
 
     public Fledermaus(boolean world) {
        super(
-           GameScreen.onOverworld()?GameScreen.getOverworld().getEingang().getX():500,
+           GameScreen.onOverworld()?GameScreen.getOverworld().getEingang().getX():Gdx.graphics.getWidth()/2,
            0,
            "fledermaus",
            world,

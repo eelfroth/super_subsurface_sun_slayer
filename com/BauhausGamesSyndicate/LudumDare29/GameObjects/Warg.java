@@ -1,5 +1,8 @@
 package com.BauhausGamesSyndicate.LudumDare29.GameObjects;
 
+import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
+import com.badlogic.gdx.Gdx;
+
 /**
  *
  * @author Benedikt Vogler
@@ -10,8 +13,8 @@ public class Warg extends Minion {
 
     public Warg(boolean world) {
         super(
-            500,
-            500,
+            GameScreen.onOverworld()?GameScreen.getOverworld().getEingang().getX():Gdx.graphics.getWidth()/2,
+            50,
             "warg",
             world,
             3,

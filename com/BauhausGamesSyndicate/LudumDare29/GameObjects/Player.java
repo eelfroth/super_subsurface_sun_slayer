@@ -74,8 +74,12 @@ public class Player extends AbstractCharacter {
                     distanceTraveled += Math.sqrt(dX*dX+dY*dY);
                 } else {
                     //rise?
-                    if (Gdx.input.isKeyPressed(Keys.W)){
+                    if (menupoint==0 && Gdx.input.isKeyPressed(Keys.W)){
                         rise();
+                    }
+                    
+                    if (Gdx.input.isKeyPressed(Keys.W)){
+                        goTo(0);
                     }
 
                     if (Gdx.input.isKeyPressed(Keys.D)){
@@ -116,25 +120,23 @@ public class Player extends AbstractCharacter {
     }
     
     private void goTo(int id){
-        if (id==2 && menupoint==1){
-            flyTo(1, 2, 300);
-        }else if (id==2 && menupoint==0){
-            flyTo(1, -2, 400);
-        } else if(id==2 && menupoint==3){
-            flyTo(1, -2, 600);
-        } else if(id==1 && menupoint==0){
-            flyTo(-1, 1, 300);
-        } else if(id==1 && menupoint==3){
-            flyTo(1, 2, 300);
-        } else if(id==1 && menupoint==2){
-            flyTo(-2, 1, 500);
-        } else if(id==3 && menupoint==1){
-            flyTo(1, 0.3f, 500);
-        } else if(id==3 && menupoint==0){
-            flyTo(1, 2, 300);
-        } else if(id==3 && menupoint==2){
-            flyTo(1, 2, 300);
+        if (menupoint!=0){//if not on throne go back to it first
+            id=0;
         }
+        
+        if (id==2 && menupoint==0){
+            flyTo(1, -2, 400);
+        }else if (id==0 && menupoint==2){
+            flyTo(-0.5f, 2, 400);
+        }  else if(id==1 && menupoint==0){
+            flyTo(-2, 0.5f, 350);
+        }else if(id==3 && menupoint==0){
+            flyTo(1, 0.5f, 400);
+        }else if(id==0 && menupoint==3){
+            flyTo(-1, -0.5f, 400);
+        } else if (id==0 && menupoint==1){
+            flyTo(2, -0.5f, 350);
+        } 
         
         
         menupoint = id;
