@@ -15,6 +15,7 @@ import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.VertexAttribute;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.glutils.FrameBuffer;
@@ -177,10 +178,10 @@ public class GameScreen implements Screen {
         
         //overlay
         batch.begin();
-        batch.draw(overlay, 0, 0);
-        batch.draw(overlay, 0, 0);
-        batch.draw(overlay, 0, 0);
-        batch.draw(overlay, 0, 0);
+        Sprite sprite = new Sprite(overlay);
+        sprite.scale(6);
+        sprite.draw(batch);
+        //batch.draw(overlay, 0, 0);
         batch.end();
         
         //fps
