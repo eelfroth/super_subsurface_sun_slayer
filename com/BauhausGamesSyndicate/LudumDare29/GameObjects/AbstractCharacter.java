@@ -10,6 +10,7 @@ public abstract class AbstractCharacter extends AbstractEntity {
     private float velocity;
     private float friction;
     
+    private boolean canWalk;
     private boolean shouldRaise;
     private boolean shouldDescend;
 
@@ -20,8 +21,17 @@ public abstract class AbstractCharacter extends AbstractEntity {
         accFactor = 0.03f;
         acceleration = 0;
         friction = 0.05f;
-        
+        canWalk = false;
     }
+    
+    public void setCanWalk(boolean can){
+        this.canWalk = can;
+    }
+    
+    public boolean getCanWalk(){
+        return this.canWalk;
+    }
+    
     
     public void move(float delta){
         setAcceleration(getAcceleration()    );
@@ -65,10 +75,7 @@ public abstract class AbstractCharacter extends AbstractEntity {
     public void setAccFactor(float fac){
         this.accFactor = fac;
     }
-    
-
- 
-        
+         
     public boolean isDead(){
         return getLife() <= 0;
     }
@@ -82,8 +89,8 @@ public abstract class AbstractCharacter extends AbstractEntity {
         if (isDead()){
             setFlagRemoveFromOverworld();
         }
-        
-        move(delta);
+        if(getCanWalk())
+            move(delta);
         
         //flip graphic
         if(getVelocity()< -0.1f)
@@ -122,8 +129,12 @@ public abstract class AbstractCharacter extends AbstractEntity {
                 ((AbstractCharacter)entity).isEvil()!=isEvil() && //is not same fraction?
                 entity.getX()+entity.getWidth() > getX()&&
                 entity.getX() < getX()+entity.getWidth()){
-                velocity=0;
-                fight((AbstractCharacter) entity, delta);
+                if(!(this instanceof Player)){ 
+                    setCanWalk(false);
+                    fight((AbstractCharacter) entity, delta);
+                }
+            }else{
+                setCanWalk(true);
             }
         }
     }
