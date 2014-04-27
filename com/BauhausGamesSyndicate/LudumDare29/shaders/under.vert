@@ -21,8 +21,8 @@ void main() {
 
     //v_parable = vec4(0, (a_position.x*a_position.x * 0.3) + -0.1, 0, 0);
     
-    f_ynorm = (a_position.y+3)/5.0;
-    f_xnorm = (a_position.x+3)/5.0;
+    f_ynorm = (a_position.y+3.0)/5.0;
+    f_xnorm = (a_position.x+3.0)/5.0;
     //v_linear = vec4(v_ynorm * 0.25, 1, 1, 1);
 
     v_beule = vec4(f_ynorm/f_xnorm, f_xnorm/f_ynorm -0.5, 1, 1);
