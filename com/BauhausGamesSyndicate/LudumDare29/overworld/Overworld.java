@@ -283,6 +283,7 @@ public class Overworld extends AbstractWorld{
         }
     }
     
+    @Override
     public void update(float delta){
         cameraPos = cameraPos % (Chunk.WIDTH*chunks.length);
         
@@ -298,6 +299,7 @@ public class Overworld extends AbstractWorld{
         }
     }
     
+    @Override
     public void render(GameScreen gs){
         int y = Gdx.graphics.getHeight()-Chunk.HEIGHT; 
         gs.getCamera().translate(-Overworld.getCameraPos()/2, -y);

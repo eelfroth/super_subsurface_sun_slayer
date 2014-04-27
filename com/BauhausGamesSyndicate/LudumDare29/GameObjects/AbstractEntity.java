@@ -20,24 +20,49 @@ public abstract class AbstractEntity{
     private float timer = 0;
     private int steptime = 200;//ms
     
-    private TextureRegion[] textures;
+    private TextureRegion[] specialTextures;
+    private TextureRegion[] walkTextures;
     private boolean flip = false;
+    private boolean special =false;
     
-    
+    /**
+     * 
+     * @param x
+     * @param y
+     * @param name name of sprite in spritesheet
+     * @param world 
+     */
     public AbstractEntity(float x, float y, String name, boolean world) {
-        textures = new TextureRegion[3];
-        textures[0] = GameScreen.getSpritesheet().findRegion(name);
+        walkTextures = new TextureRegion[3];
+        walkTextures[0] = GameScreen.getSpritesheet().findRegion(name);
         this.x = x;
         this.y = y;
         this.world = world;
     }
 
-    public AbstractEntity(float x, float y, String name, boolean world, int steps) {
+    /**
+     * 
+     * @param x
+     * @param y
+     * @param name name of sprite in spritesheet
+     * @param world
+     * @param steps the amount of animation steps for walking
+     * @param specialSteps  the amount of animation steps for the special
+     */
+    public AbstractEntity(float x, float y, String name, boolean world, int steps, int specialSteps) {
         this(x, y, name, world);
-        textures = new TextureRegion[steps];
+        walkTextures = new TextureRegion[steps];
         for (int i = 0; i < steps; i++) {
-            textures[i] = GameScreen.getSpritesheet().findRegion(name+""+Integer.toString(i)); 
-            if (textures[i]==null)
+            walkTextures[i] = GameScreen.getSpritesheet().findRegion(name+""+Integer.toString(i)); 
+            if (walkTextures[i]==null)
+                System.err.println(name+""+Integer.toString(i));
+        }
+        
+        specialTextures = new TextureRegion[specialSteps];
+            
+         for (int i = 0; i < specialSteps; i++) {
+            specialTextures[i] = GameScreen.getSpritesheet().findRegion(name+""+Integer.toString(i)); 
+            if (specialTextures[i]==null)
                 System.err.println(name+""+Integer.toString(i));
         }
     }
@@ -49,15 +74,21 @@ public abstract class AbstractEntity{
             step++;
             timer %= steptime;
         }
-        if (step >= textures.length)
+        if (step >= specialTextures.length)
             step=0;
 
     };
     
     public void render(GameScreen gs){
-        if (flip != textures[step].isFlipX())
-           textures[step].flip(true, false);
-        gs.getBatch().draw(textures[step], x, y-56);
+        TextureRegion tex;
+        if (special)
+            tex = specialTextures[step];
+        else
+            tex = walkTextures[step];
+        
+        if (flip != tex.isFlipX())
+           tex.flip(true, false);
+        gs.getBatch().draw(tex, x, y-56);
     }
 
     public boolean onOverworld() {
@@ -101,11 +132,11 @@ public abstract class AbstractEntity{
     }
     
     public int getWidth() {
-        return textures[step].getRegionWidth();
+        return walkTextures[step].getRegionWidth();
     }
     
     public int getHeight() {
-        return textures[step].getRegionHeight();
+        return walkTextures[step].getRegionHeight();
     }
 
     /**
@@ -123,7 +154,13 @@ public abstract class AbstractEntity{
     public void setFlipHorizontal(boolean flip){
         this.flip=flip;
     }
-    
-    
+
+    public boolean playingSpecial() {
+        return special;
+    }
+
+    public void playSpacial(boolean special) {
+        this.special = special;
+    }
     
 }

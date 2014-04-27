@@ -70,11 +70,12 @@ public class Player extends AbstractCharacter {
                     upLocked = false;
             }
             if (Gdx.input.isKeyPressed(Keys.D)&& !rightLocked){
-                if(menupoint == 1)
+                /*if(menupoint == 1)
                     goTo(0);
                 if(menupoint == 0 || menupoint == 2)
-                    goTo(3);
-                rightLocked = true;
+                    goTo(3);*/
+                GameScreen.getUnderworld().rotate(-1.0f);
+                //rightLocked = true;
             }else{
                 if(rightLocked)
                     rightLocked = false;
@@ -87,14 +88,19 @@ public class Player extends AbstractCharacter {
                     downLocked = false;
             }
             if (Gdx.input.isKeyPressed(Keys.A) && !leftLocked){
-                if(menupoint == 3)
+                /*if(menupoint == 3)
                     goTo(0);
                 if(menupoint == 0 || menupoint == 2)
-                    goTo(1);
-                leftLocked = true;
+                    goTo(1);*/
+                GameScreen.getUnderworld().rotate(1.0f);
+                //leftLocked = true;
             }else{
                 if(leftLocked)
                     leftLocked = false;
+            }
+            
+            if (GameScreen.onOverworld() && Gdx.input.isKeyPressed(Keys.SPACE)){
+                attack();
             }
         }
         
@@ -133,5 +139,12 @@ public class Player extends AbstractCharacter {
     
     public void dispose(){
         rising.dispose();
+    }
+    
+    /**
+     * was soll passieren, wenn die SPielfigur angreift?
+     */
+    public void attack(){
+    
     }
 }
