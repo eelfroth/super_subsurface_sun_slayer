@@ -6,8 +6,7 @@ uniform mat4 u_worldView;
 varying vec4 v_color;
 varying vec2 v_texCoords;
 
-uniform float f_stauchfaktor = 0.3;
-uniform float f_ypos = -0.1;
+
 varying vec4 v_parable;
 varying vec4 v_linear;
 varying float v_ynorm;
@@ -21,7 +20,7 @@ void main() {
     v_color = vec4(1, 1, 1, 1);
     v_texCoords = a_texCoord0;
 
-    v_parable = vec4(0, (a_position.x*a_position.x * f_stauchfaktor) + f_ypos, 0, 0);
+    v_parable = vec4(0, (a_position.x*a_position.x * 0.3) + -0.1, 0, 0);
     
     v_resfactor = vec4(f_width/f_height, f_height/f_width, 1, 1);
     

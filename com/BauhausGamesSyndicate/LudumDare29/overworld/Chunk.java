@@ -29,13 +29,13 @@ public class Chunk {
     
     public void render(GameScreen gs){
         int m=Overworld.getMapWidth();
-        int y = Gdx.graphics.getHeight()-Chunk.HEIGHT; 
+        int y = 0; 
         int x = id*Chunk.WIDTH;
         
         int cc = Overworld.getCameraPos()/4;//current chunk 0-3
 
         if (id >cc+1)
-            x-=m/2;
+            x-=m;
                 
         if (x < -m)
             x += m;
