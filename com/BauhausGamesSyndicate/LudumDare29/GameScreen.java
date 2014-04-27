@@ -327,17 +327,23 @@ public class GameScreen implements Screen {
     }
     
     public static void buyWarg(){
-        money--;
-        wargsTospawn++;
+        if (money>0) {
+            money--;
+            wargsTospawn++;
+        }
     }
     
     public static void buySlender(){
-        money--;
-        slenderTospawn++;
+        if (money>0) {
+            money--;
+            slenderTospawn++;
+        }
     }
     public static void buyBat(){
-        money--;
-        batTospawn++;
+        if (money>0) {
+            money--;
+            batTospawn++;
+        }
     }
 
     public static int getMoney() {
