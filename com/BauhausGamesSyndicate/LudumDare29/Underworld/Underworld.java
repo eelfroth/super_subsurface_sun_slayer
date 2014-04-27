@@ -3,6 +3,7 @@ package com.BauhausGamesSyndicate.LudumDare29.Underworld;
 import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 
 /**
@@ -28,6 +29,7 @@ public class Underworld {
     
     public void render(GameScreen gs){
         gs.getBatch().draw(texture, 0, 0);
+        gs.getFont().setColor(new Color(1,1,1,1));
         gs.getFont().draw(gs.getBatch(), "Corpses:"+GameScreen.getMoney(), Gdx.graphics.getHeight()-500, Gdx.graphics.getWidth()-300);
     }
     
