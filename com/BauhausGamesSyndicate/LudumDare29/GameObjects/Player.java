@@ -28,6 +28,7 @@ public class Player extends AbstractCharacter {
     private static Sound rising;
     private static Sound growlsound;
     private static Sound stepsound;
+    private boolean stepsound_is_playing;
     private float attacktimer;
     
     public Player(float x, float y) {
@@ -35,6 +36,7 @@ public class Player extends AbstractCharacter {
         rising = Gdx.audio.newSound(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/rising.mp3"));
         growlsound = Gdx.audio.newSound(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/growlsingle.ogg"));
         stepsound = Gdx.audio.newSound(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/step.wav"));
+        stepsound_is_playing = false;
     }
     
     @Override
@@ -45,12 +47,12 @@ public class Player extends AbstractCharacter {
         if (GameScreen.onOverworld()){
             if (Gdx.input.isKeyPressed(Keys.D)){
                 setAcceleration(1);
-                stepsound.loop();
+                stepsound.loop(0.1f);
             }
         
             if (Gdx.input.isKeyPressed(Keys.A)){
                 setAcceleration(-1);
-                stepsound.loop();
+                stepsound.loop(0.1f);
             }
             
             //go down?
@@ -66,6 +68,11 @@ public class Player extends AbstractCharacter {
             
             if(!isRaising()) setY(Gdx.graphics.getHeight()/20);
             //move up?
+            if(!Gdx.input.isKeyPressed(Keys.A) && !Gdx.input.isKeyPressed(Keys.D)) {
+                stepsound.stop();
+                stepsound_is_playing = false;
+            }
+            
             if (Gdx.input.isKeyPressed(Keys.W)&& !upLocked){
                 if(menupoint == 0)
                     rise();
@@ -81,7 +88,11 @@ public class Player extends AbstractCharacter {
                     goTo(0);
                 if(menupoint == 0 || menupoint == 2)
                     goTo(3);*/
-                GameScreen.getUnderworld().rotate(-1.0f);
+                GameScreen.getUnderworld().rotate(-delta/20);
+                if(!stepsound_is_playing) {
+                    stepsound.loop(0.1f);
+                    stepsound_is_playing = true;
+                }
                 //rightLocked = true;
             }else{
                 if(rightLocked)
@@ -99,7 +110,11 @@ public class Player extends AbstractCharacter {
                     goTo(0);
                 if(menupoint == 0 || menupoint == 2)
                     goTo(1);*/
-                GameScreen.getUnderworld().rotate(1.0f);
+                GameScreen.getUnderworld().rotate(delta/20);
+                if(!stepsound_is_playing) {
+                    stepsound.loop(0.1f);
+                    stepsound_is_playing = true;
+                }
                 //leftLocked = true;
             }else{
                 if(leftLocked)
