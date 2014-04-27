@@ -11,13 +11,11 @@ public abstract class AbstractCharacter extends AbstractEntity {
     public float velocity;
     public float friction;
     
-    public int life;
     private boolean shouldRaise;
     private boolean shouldDescend;
 
     public AbstractCharacter(float x, float y, String name, boolean world, int steps, int specialSteps){
         super(x, y, name, world,steps, specialSteps);
-        life     = 100;
         
         speed     = 0;
         velocity  = 0;
