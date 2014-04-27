@@ -26,16 +26,6 @@ public abstract class AbstractEntity{
     private boolean flip = false;
     private boolean special =false;
     
-     public AbstractEntity(float x, float y, String lebend, String tot, boolean world) {
-        walkTextures = new TextureRegion[2];
-        walkTextures[0] = GameScreen.getSpritesheet().findRegion(lebend);
-        walkTextures[1] = GameScreen.getSpritesheet().findRegion(tot);
-        life     = 100;
-        this.x = x;
-        this.y = y;
-        this.world = world;
-    }
-    
     /**
      * 
      * @param x
@@ -88,9 +78,6 @@ public abstract class AbstractEntity{
         this.life = life;
     }
     
-    public void setTextureRegion(String name){
-        walkTextures[0] = GameScreen.getSpritesheet().findRegion(name);
-    }
     public void update(float delta){
         timer+=delta;
         
@@ -113,10 +100,7 @@ public abstract class AbstractEntity{
         if (special)
             tex = specialTextures[step];
         else
-            if(life <= 0)
-                tex = walkTextures[1];
-            else 
-                tex = walkTextures[0];
+            tex = walkTextures[step];
         
         if (flip != tex.isFlipX())
            tex.flip(true, false);
