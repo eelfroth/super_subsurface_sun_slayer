@@ -72,7 +72,7 @@ public class Underworld extends AbstractWorld{
         }
         
         
-        if (Gdx.input.isKeyPressed(Keys.SPACE)){
+        if (!GameScreen.onOverworld() && Gdx.input.isKeyPressed(Keys.SPACE)){
             dt+=delta;
             if (dt > timeTillNextBuy && GameScreen.getPlayer().getMenupoint()==2){
                 buyWarg();
