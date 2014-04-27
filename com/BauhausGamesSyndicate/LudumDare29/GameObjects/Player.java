@@ -62,7 +62,7 @@ public class Player extends AbstractCharacter {
             //move up?
             if (Gdx.input.isKeyPressed(Keys.W)&& !upLocked){
                 if(menupoint == 0)
-                    shouldRaise=true;
+                    raise();
                 else 
                     goTo(0);
                 upLocked = true;
@@ -104,19 +104,10 @@ public class Player extends AbstractCharacter {
         setVelocity    (getVelocity()     * (1 - getFriction()) );
         setX((getX() + getVelocity()*delta));
         
-
-        
         //switch
-        if (shouldRaise && getY() >= Chunk.HEIGHT){
+        if (getY() >= Chunk.HEIGHT){
             GameScreen.switchWorld();
-            shouldRaise=false;
-            setX(GameScreen.getOverworld().getEingang().getX()+GameScreen.getOverworld().getEingang().getWidth()/2);
         }
-        
-        if (shouldRaise){
-            setY(getY()+delta/2);
-        }
-             
     }
     
     private void goTo(int id){

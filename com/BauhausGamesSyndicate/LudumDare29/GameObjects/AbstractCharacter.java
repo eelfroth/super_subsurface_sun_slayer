@@ -1,6 +1,7 @@
 package com.BauhausGamesSyndicate.LudumDare29.GameObjects;
 
 import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
+import com.BauhausGamesSyndicate.LudumDare29.overworld.Chunk;
 import com.BauhausGamesSyndicate.LudumDare29.overworld.Overworld;
 
 public abstract class AbstractCharacter extends AbstractEntity {
@@ -11,6 +12,7 @@ public abstract class AbstractCharacter extends AbstractEntity {
     public float friction;
     
     public int life;
+    private boolean shouldRaise;
 
     public AbstractCharacter(float x, float y, String name){
         super(x, y, name);
@@ -78,5 +80,18 @@ public abstract class AbstractCharacter extends AbstractEntity {
         if (GameScreen.onOverworld()){
             setY(Overworld.getHeight((int) getX()));
         }
+        
+        if (shouldRaise){
+            setY(getY()+delta/2);
+        }
+        
+        if (shouldRaise && getY() >= Chunk.HEIGHT){
+            shouldRaise=false;
+            setX(GameScreen.getOverworld().getEingang().getX()+GameScreen.getOverworld().getEingang().getWidth()/2);
+        }
+    }
+    
+    public void raise(){
+        shouldRaise = true;
     }
 }

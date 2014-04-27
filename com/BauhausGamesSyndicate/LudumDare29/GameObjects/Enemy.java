@@ -24,7 +24,6 @@ public class Enemy extends AbstractCharacter {
         }
         super.update(delta);
         setX(getX() + direction*delta*getSpeed());//run to left
-        
     }
     
     
