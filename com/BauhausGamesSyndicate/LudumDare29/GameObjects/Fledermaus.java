@@ -16,7 +16,8 @@ public class Fledermaus extends Minion{
            0,
            "fledermaus",
            world,
-           4
+           4,
+           1
        );
     }
 

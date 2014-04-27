@@ -28,7 +28,7 @@ public class Player extends AbstractCharacter {
     private static Sound rising;
     
     public Player(float x, float y) {
-        super(x, y, "overlord", false,10);
+        super(x, y, "overlord", false,10,1);
         rising = Gdx.audio.newSound(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/rising.mp3"));
     }
     

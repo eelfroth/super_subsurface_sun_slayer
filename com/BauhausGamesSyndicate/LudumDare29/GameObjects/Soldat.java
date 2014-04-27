@@ -14,7 +14,7 @@ public class Soldat extends AbstractCharacter {
     private boolean arrived;
     
     public Soldat(float x, float y, boolean world, Eingang eingang) {
-        super(x, y, "soldat", world,2);
+        super(x, y, "soldat", world,2,1);
         arrived = false;
         setAcceleration(-1);
         setSpeed((float) (0.1f + Math.random()*.2f));

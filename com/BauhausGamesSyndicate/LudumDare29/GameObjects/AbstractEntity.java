@@ -30,7 +30,7 @@ public abstract class AbstractEntity{
      * @param x
      * @param y
      * @param name name of sprite in spritesheet
-     * @param world 
+     * @param world true when on overworld, false udnerworld
      */
     public AbstractEntity(float x, float y, String name, boolean world) {
         walkTextures = new TextureRegion[3];
@@ -45,7 +45,7 @@ public abstract class AbstractEntity{
      * @param x
      * @param y
      * @param name name of sprite in spritesheet
-     * @param world
+     * @param world true when on overworld, false udnerworld
      * @param steps the amount of animation steps for walking
      * @param specialSteps  the amount of animation steps for the special
      */
@@ -70,13 +70,19 @@ public abstract class AbstractEntity{
     
     public void update(float delta){
         timer+=delta;
+        
         if (timer>steptime){
-            step++;
-            timer %= steptime;
+                step++;
+                timer %= steptime;
         }
-        if (step >= specialTextures.length)
-            step=0;
-
+        
+        if (!special){
+            if (step >= walkTextures.length)
+                step=0;
+        } else {
+            if (step >= specialTextures.length)
+                step=0;
+        }
     };
     
     public void render(GameScreen gs){
@@ -160,6 +166,7 @@ public abstract class AbstractEntity{
     }
 
     public void playSpacial(boolean special) {
+        if (special) timer=0;
         this.special = special;
     }
     
