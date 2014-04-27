@@ -1,5 +1,7 @@
 package com.BauhausGamesSyndicate.LudumDare29.GameObjects;
 
+import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
+
 
 
 /**
@@ -8,8 +10,8 @@ package com.BauhausGamesSyndicate.LudumDare29.GameObjects;
  */
 public class Minion extends AbstractCharacter{
     
-    public Minion(float x){
-        super(x, 0, "minion");
+    public Minion(float x, float y, boolean world){
+        super(x, y, "minion", world);
         setSpeed((float) (0.1f + Math.random()*.2f));
     }
     
@@ -17,6 +19,17 @@ public class Minion extends AbstractCharacter{
     @Override
     public void update(float delta){
         super.update(delta);
-        setX(getX() + delta*getSpeed());
+        boolean collide = false;
+        
+        //colission check
+        for (AbstractEntity entity : GameScreen.getOverworld().getEntityList()) {
+            if (entity instanceof Enemy && entity.getX()+entity.getWidth() > getX() && entity.getX() < getX()+entity.getWidth()){
+                collide = true;
+            }
+        }
+        
+        if (!collide){
+            setX(getX() + getDirection()*delta*getSpeed());//run to left
+        }
     }
 }

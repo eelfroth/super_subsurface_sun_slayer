@@ -21,14 +21,8 @@ import com.badlogic.gdx.graphics.glutils.FrameBuffer;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Matrix4;
-import static java.lang.Math.floor;
-import java.util.ArrayList;
-import java.util.List;
 
 public class GameScreen implements Screen {
-    private static int wargsTospawn;
-    private static int slenderTospawn;
-    private static int batTospawn;
     private final SpriteBatch batch;
     private final BitmapFont font;
     private static Overworld overworld;
@@ -48,10 +42,10 @@ public class GameScreen implements Screen {
     private final Texture debug_texture;
     private float world_streckfaktor;
     private final float world_ypos;
+    private boolean rotation;
 
     private static Player player;
     private static int money = 100;
-    private boolean rotation;
 
 
     public GameScreen() {
@@ -90,9 +84,6 @@ public class GameScreen implements Screen {
         setupFramebuffer();
     }
 
-    public void setWorld(boolean world){
-        GameScreen.world = world;
-    }
     @Override
     public void dispose() {
         batch.dispose();
@@ -122,6 +113,8 @@ public class GameScreen implements Screen {
         underworld.update(delta);
         
         player.update(delta);
+        world = player.onOverworld();
+        
         Overworld.setCameraPos((int) (player.getX()-Gdx.graphics.getWidth()/2));
         
         
@@ -135,12 +128,13 @@ public class GameScreen implements Screen {
         
         frameBuffer.begin();
         {
-            camera.translate(Overworld.getCameraPos(), 0);
-            //camera.rotate(-angle);
-            camera.update();
-            batch.setProjectionMatrix(camera.combined);
-            shr.setProjectionMatrix(camera.combined);
-
+            if (world) {
+                camera.translate(Overworld.getCameraPos(), 0);
+                camera.update();
+                batch.setProjectionMatrix(camera.combined);
+                shr.setProjectionMatrix(camera.combined);
+            }
+            
             batch.begin();
             {
                 if (world)
@@ -150,22 +144,19 @@ public class GameScreen implements Screen {
                 player.render(this);
             }
             batch.end();
-
             
-            camera.translate(-Overworld.getCameraPos(), 0);
-            //camera.rotate(angle);
-            camera.update();
-            shr.setProjectionMatrix(camera.combined);
-            batch.setProjectionMatrix(camera.combined);
+             if (world) {
+                camera.translate(-Overworld.getCameraPos(), 0);
+                camera.update();
+                shr.setProjectionMatrix(camera.combined);
+                batch.setProjectionMatrix(camera.combined);
+            }
         }
         frameBuffer.end();
         
 
         //2. render framebuffer to frame:
-        
-        
-        
-        
+
         shader.begin();
         frameBuffer.getColorBufferTexture().bind();
         //debug_texture.bind();
@@ -195,8 +186,6 @@ public class GameScreen implements Screen {
         
         if(rotation) worldMatrix.rotate(0,0,1,angle);
         shader.end();
-        
-        
         
         //overlay
         batch.begin();
@@ -241,12 +230,6 @@ public class GameScreen implements Screen {
      */
     public static boolean onOverworld() {
         return world;
-    }
-
-    public static void switchWorld(){
-        world = !world;
-        if (!world)
-            underworld.enter();
     }
     
     private void setupShader() {
@@ -344,28 +327,12 @@ public class GameScreen implements Screen {
     public static Overworld getOverworld() {
         return overworld;
     }
+    
+    public static Underworld getUnderworld() {
+        return underworld;
+    }
 
     public static Player getPlayer() {
         return player;
     }
-    
-    public static void buyWarg(){
-        money--;
-        wargsTospawn++;
-    }
-    
-    public static void buySlender(){
-        money--;
-        slenderTospawn++;
-    }
-    public static void buyBat(){
-        money--;
-        batTospawn++;
-    }
-
-    public static int getMoney() {
-        return money;
-    }
-    
-    
 }

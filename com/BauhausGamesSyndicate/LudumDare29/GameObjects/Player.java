@@ -7,28 +7,27 @@
 package com.BauhausGamesSyndicate.LudumDare29.GameObjects;
 
 import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
-import com.BauhausGamesSyndicate.LudumDare29.overworld.Chunk;
 import com.BauhausGamesSyndicate.LudumDare29.overworld.Eingang;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.audio.Sound;
 
 /**
  *
  * @author Benedikt Vogler
  */
 public class Player extends AbstractCharacter {
-    private boolean shouldRaise = false;
-    
     private boolean upLocked    = false;
     private boolean downLocked  = false;
     private boolean leftLocked  = false;
     private boolean rightLocked = false;
     
-    private float speed=1/8f;
     private int menupoint = 0;
+    private static Sound rising;
     
     public Player(float x, float y) {
-        super(x, y, "player");
+        super(x, y, "player", false);
+        rising = Gdx.audio.newSound(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/rising.mp3"));
     }
     
     @Override
@@ -54,15 +53,13 @@ public class Player extends AbstractCharacter {
                 getX() > eingang.getX() &&
                 getX() < eingang.getX()+eingang.getWidth()
                 ){
-                GameScreen.switchWorld();
-                setX(860);
-                setY(500);
+                descend();
             }
         }else {
             //move up?
             if (Gdx.input.isKeyPressed(Keys.W)&& !upLocked){
                 if(menupoint == 0)
-                    shouldRaise=true;
+                    rise();
                 else 
                     goTo(0);
                 upLocked = true;
@@ -103,20 +100,6 @@ public class Player extends AbstractCharacter {
         setVelocity    (getVelocity()     + getAcceleration() );
         setVelocity    (getVelocity()     * (1 - getFriction()) );
         setX((getX() + getVelocity()*delta));
-        
-
-        
-        //switch
-        if (shouldRaise && getY() >= Chunk.HEIGHT){
-            GameScreen.switchWorld();
-            shouldRaise=false;
-            setX(GameScreen.getOverworld().getEingang().getX()+GameScreen.getOverworld().getEingang().getWidth()/2);
-        }
-        
-        if (shouldRaise){
-            setY(getY()+delta/2);
-        }
-             
     }
     
     private void goTo(int id){
@@ -138,8 +121,15 @@ public class Player extends AbstractCharacter {
 
     public int getMenupoint() {
         return menupoint;
+    } 
+
+    @Override
+    public void rise() {
+        super.rise();
+        rising.play();
     }
     
-    
-    
+    public void dispose(){
+        rising.dispose();
+    }
 }

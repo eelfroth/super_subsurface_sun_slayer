@@ -13,7 +13,7 @@ public class City extends AbstractEntity {
     private final Overworld overworld;
 
     public City(Overworld overworld, int x, int y) {
-        super(x, y, "bauernhof_h");
+        super(x, y, "bauernhof_h", true);
         
         if(0 + (int)(Math.random()*10) >= 5){
             this.setFlip(true, false);
@@ -33,7 +33,7 @@ public class City extends AbstractEntity {
     }
 
     private void spawnEnemy() {
-       Enemy enemy = new Enemy(getX(),getY());
+       Enemy enemy = new Enemy(getX(),getY(), onOverworld());
        overworld.addEntity(enemy);
     }
 }

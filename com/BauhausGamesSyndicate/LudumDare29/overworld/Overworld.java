@@ -169,15 +169,10 @@ public class Overworld {
         heightmap[127] = 326;
         heightmap[128] = 300;
         
-        //minnions in liste füllen
-        for (int i = 0; i < 10; i++){
-            entityList.add(new Minion(Gdx.graphics.getWidth()/2f));
-        }
-        
         //place towns
-        for (int i = 0; i < 200; i++){
+        for (int i = 0; i < 40; i++){
             entityList.add(
-                new City(this, (int) (Math.random() * getMapWidth()), (int) (Chunk.HEIGHT/2*Math.random()))
+                new City(this, (int) (Math.random() * getMapWidth()), (int) (Chunk.HEIGHT/4*Math.random()+Chunk.HEIGHT/4))
             );
         }
     }
@@ -189,11 +184,16 @@ public class Overworld {
         for (int i = 0; i < entityList.size(); i++) {
             entityList.get(i).update(delta);
         }
-        
+
+        //remove objects
+        for (int i = 0; i < entityList.size(); i++) {
+           if (entityList.get(i).flagRemoveFromOverworldSet())
+               entityList.remove(i);
+        }
     }
     
     public void render(GameScreen gs){
-         int y = Gdx.graphics.getHeight()-Chunk.HEIGHT; 
+        int y = Gdx.graphics.getHeight()-Chunk.HEIGHT; 
         gs.getCamera().translate(-Overworld.getCameraPos()/2, -y);
         gs.getCamera().update();
         gs.getBatch().setProjectionMatrix(gs.getCamera().combined);
@@ -281,6 +281,11 @@ public class Overworld {
     public void addEntity(AbstractEntity entity){
         entityList.add(entity);
     }
+
+    public ArrayList<AbstractEntity> getEntityList() {
+        return entityList;
+    }
+    
     
     public void renderShapes(ShapeRenderer sh){
         //eingang.render(gs);

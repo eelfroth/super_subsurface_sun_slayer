@@ -1,6 +1,7 @@
 package com.BauhausGamesSyndicate.LudumDare29.GameObjects;
 
 import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
+import com.BauhausGamesSyndicate.LudumDare29.overworld.Chunk;
 import com.BauhausGamesSyndicate.LudumDare29.overworld.Overworld;
 
 public abstract class AbstractCharacter extends AbstractEntity {
@@ -9,11 +10,14 @@ public abstract class AbstractCharacter extends AbstractEntity {
     public float accFactor;
     public float velocity;
     public float friction;
+    private int direction =1;
     
     public int life;
+    private boolean shouldRaise;
+    private boolean shouldDescend;
 
-    public AbstractCharacter(float x, float y, String name){
-        super(x, y, name);
+    public AbstractCharacter(float x, float y, String name, boolean world){
+        super(x, y, name, world);
         life     = 100;
         
         speed     = 0;
@@ -69,14 +73,71 @@ public abstract class AbstractCharacter extends AbstractEntity {
     }
     
     public boolean isDead(){
-        if(life <= 0) return true;
-        return false;
+        return life <= 0;
     }
     
     @Override
     public void update(float delta){
-        if (GameScreen.onOverworld()){
+        if (GameScreen.onOverworld() && !shouldRaise && !shouldDescend){
             setY(Overworld.getHeight((int) getX()));
         }
+        
+        //flip graphic
+        if(getDirection() == 1)
+            this.setFlip(true, false);
+        else
+            this.setFlip(false, false);
+        
+        if (shouldRaise){
+            setY(getY()+delta/2);
+            
+            if (getY() >= Chunk.HEIGHT){
+                shouldRaise=false;
+                setX(GameScreen.getOverworld().getEingang().getX()+GameScreen.getOverworld().getEingang().getWidth()/2);
+                GameScreen.getOverworld().addEntity(this);
+                setFlagRemoveFromUnderworld();
+                switchWorld();
+            }
+        }
+        
+        if (shouldDescend){
+            setY(getY()-delta/2);
+            
+            //entering underworld
+            if (getY() < 0){
+                shouldDescend=false;
+                //setX(GameScreen.getOverworld().getEingang().getX() + GameScreen.getOverworld().getEingang().getWidth()/2);
+                GameScreen.getUnderworld().addEntity(this);
+                setFlagRemoveFromOverworld();
+                switchWorld();
+                setX(860);
+                setY(500);
+            }
+        }
     }
+    
+    public void rise(){
+        shouldRaise = true;
+    }
+    
+    public void descend() {
+        shouldDescend = true;
+    }
+
+    public boolean isRaising() {
+        return shouldRaise;
+    }
+
+    public boolean isDescending() {
+        return shouldDescend;
+    }
+
+    public int getDirection() {
+        return direction;
+    }
+
+    public void setDirection(int direction) {
+        this.direction = direction;
+    }
+    
 }
