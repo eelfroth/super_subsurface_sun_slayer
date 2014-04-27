@@ -21,9 +21,6 @@ import com.badlogic.gdx.graphics.glutils.FrameBuffer;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Matrix4;
-import static java.lang.Math.floor;
-import java.util.ArrayList;
-import java.util.List;
 
 public class GameScreen implements Screen {
     private static int wargsTospawn;
