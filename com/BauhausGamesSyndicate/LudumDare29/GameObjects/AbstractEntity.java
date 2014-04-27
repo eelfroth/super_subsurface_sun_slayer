@@ -42,7 +42,6 @@ public abstract class AbstractEntity{
     };
     
     public void render(GameScreen gs){
-        textures[step].flip(flip, false);
         gs.getBatch().draw(textures[step], x, y);
     }
 
@@ -103,6 +102,7 @@ public abstract class AbstractEntity{
     }
     
     public void setFlipHorizontal(boolean flip){
+        if (flip!=this.flip) textures[step].flip(flip, false);
         this.flip=flip;
     }
     

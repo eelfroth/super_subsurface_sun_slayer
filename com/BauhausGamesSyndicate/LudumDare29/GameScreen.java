@@ -40,8 +40,6 @@ public class GameScreen implements Screen {
     private Mesh frameMesh;
     private Matrix4 worldMatrix;
     private final Texture debug_texture;
-    private float world_streckfaktor;
-    private final float world_ypos;
     private boolean rotation;
 
     private static Player player;
@@ -72,9 +70,7 @@ public class GameScreen implements Screen {
         underworld = new Underworld();
         player = new Player(860, 500);
 
-        //parable settings:
-        world_streckfaktor = 0.25f;
-        world_ypos = +0.0f;
+
         rotation = false;
         
         //shader
@@ -165,12 +161,11 @@ public class GameScreen implements Screen {
         //batch.setProjectionMatrix(camera.combined);
         //shr.setProjectionMatrix(camera.combined);
         float angle = Overworld.getCameraPos()*360/(float) Overworld.getMapWidth();
+       //Matrix4 temp = worldMatrix;
         if(rotation) worldMatrix.rotate(0,0,1,-angle);
         
         shader.setUniformMatrix("u_worldView", worldMatrix);
         shader.setUniformi("u_texture", 0);
-        shader.setUniformf("f_stauchfaktor", world_streckfaktor);
-        shader.setUniformf("f_ypos", world_ypos);
         //shader.setUniformf("f_resfactor", (float)Gdx.graphics.getWidth()/(float)Gdx.graphics.getHeight());
         /*
         StringBuffer result = new StringBuffer();
@@ -183,12 +178,13 @@ public class GameScreen implements Screen {
         //camera.rotate(angle);
         //batch.setProjectionMatrix(camera.combined);
         //shr.setProjectionMatrix(camera.combined);
-        
-        if(rotation) worldMatrix.rotate(0,0,1,angle);
         shader.end();
         
         //overlay
         batch.begin();
+        batch.draw(overlay, 0, 0);
+        batch.draw(overlay, 0, 0);
+        batch.draw(overlay, 0, 0);
         batch.draw(overlay, 0, 0);
         batch.end();
         
@@ -242,6 +238,7 @@ public class GameScreen implements Screen {
         }
         
         worldMatrix = new Matrix4();
+        worldMatrix.scale(3.0f, 1.2f, 1.0f);
     }
     
     private void setupFramebuffer() {
