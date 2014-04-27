@@ -292,8 +292,7 @@ public class GameScreen implements Screen {
         //move camera
         camera.translate(Overworld.getCameraPos(), 0);
         camera.update();
-        batch.setProjectionMatrix(camera.combined);
-        shr.setProjectionMatrix(camera.combined);
+        //batch.setProjectionMatrix(camera.combined);
 
         //render
         overworld.render(this);
@@ -302,14 +301,24 @@ public class GameScreen implements Screen {
         //move camera back
         camera.translate(-Overworld.getCameraPos(), 0);
         camera.update();
-        shr.setProjectionMatrix(camera.combined);
         batch.setProjectionMatrix(camera.combined);
     }
 
     private void renderUnderworld() {
         //render
+        camera.translate(0, Gdx.graphics.getHeight());
+        camera.update();
+        batch.setProjectionMatrix(camera.combined);
+        shr.setProjectionMatrix(camera.combined);
+
         underworld.render(this);
         player.render(this);
+        
+        //move camera back
+        camera.translate(0, -Gdx.graphics.getHeight());
+        camera.update();
+        shr.setProjectionMatrix(camera.combined);
+        batch.setProjectionMatrix(camera.combined);
     }
 
     private void renderFramebuffer(AbstractWorld world) {

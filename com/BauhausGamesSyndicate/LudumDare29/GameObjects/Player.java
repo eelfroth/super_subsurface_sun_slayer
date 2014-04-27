@@ -58,6 +58,8 @@ public class Player extends AbstractCharacter {
                 descend();
             }
         }else {
+            
+            if(!isRaising()) setY(Gdx.graphics.getHeight()/20);
             //move up?
             if (Gdx.input.isKeyPressed(Keys.W)&& !upLocked){
                 if(menupoint == 0)
