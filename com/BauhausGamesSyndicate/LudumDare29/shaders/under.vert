@@ -9,7 +9,9 @@ varying vec2 v_texCoords;
 
 //varying vec4 v_parable;
 //varying vec4 v_linear;
-//varying float v_ynorm;
+varying float f_ynorm;
+varying float f_xnorm;
+varying vec4 v_beule;
 
 
 
@@ -19,8 +21,11 @@ void main() {
 
     //v_parable = vec4(0, (a_position.x*a_position.x * 0.3) + -0.1, 0, 0);
     
-    //v_ynorm = (a_position.y+3.0)/2.0;
+    f_ynorm = (a_position.y+3)/5.0;
+    f_xnorm = (a_position.x+3)/5.0;
     //v_linear = vec4(v_ynorm * 0.25, 1, 1, 1);
 
-    gl_Position = u_worldView * (a_position )  ;
+    v_beule = vec4(f_ynorm/f_xnorm, f_xnorm/f_ynorm -0.5, 1, 1);
+
+    gl_Position = u_worldView * (a_position * v_beule)  ;
 }  
