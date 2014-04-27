@@ -29,7 +29,7 @@ public class Player extends AbstractCharacter {
     private float distanceTraveled;
     
     public Player(float x, float y) {
-        super(x, y, "overlord", false,10,10);
+        super(x, y, "overlord", false,10,9);
         growlsound = Gdx.audio.newSound(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/growlsingle.ogg"));
         stepsound = Gdx.audio.newSound(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/step.wav"));
     }
