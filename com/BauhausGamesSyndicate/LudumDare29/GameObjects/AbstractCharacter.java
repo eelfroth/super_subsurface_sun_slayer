@@ -109,7 +109,7 @@ public abstract class AbstractCharacter extends AbstractEntity {
         }
     }
     
-    public void raise(){
+    public void rise(){
         shouldRaise = true;
     }
     

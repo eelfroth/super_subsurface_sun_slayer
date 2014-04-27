@@ -10,24 +10,24 @@ import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
 import com.BauhausGamesSyndicate.LudumDare29.overworld.Eingang;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.audio.Sound;
 
 /**
  *
  * @author Benedikt Vogler
  */
 public class Player extends AbstractCharacter {
-    private boolean shouldRaise = false;
-    
     private boolean upLocked    = false;
     private boolean downLocked  = false;
     private boolean leftLocked  = false;
     private boolean rightLocked = false;
     
-    private float speed=1/8f;
     private int menupoint = 0;
+    private static Sound rising;
     
     public Player(float x, float y) {
         super(x, y, "player", false);
+        rising = Gdx.audio.newSound(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/rising.mp3"));
     }
     
     @Override
@@ -59,7 +59,7 @@ public class Player extends AbstractCharacter {
             //move up?
             if (Gdx.input.isKeyPressed(Keys.W)&& !upLocked){
                 if(menupoint == 0)
-                    raise();
+                    rise();
                 else 
                     goTo(0);
                 upLocked = true;
@@ -122,4 +122,15 @@ public class Player extends AbstractCharacter {
     public int getMenupoint() {
         return menupoint;
     } 
+
+    @Override
+    public void rise() {
+        super.rise();
+        rising.play();
+    }
+    
+    public void dispose(){
+        rising.dispose();
+    }
+    
 }

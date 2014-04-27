@@ -7,6 +7,7 @@ import com.BauhausGamesSyndicate.LudumDare29.GameObjects.Warg;
 import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import java.util.ArrayList;
@@ -24,9 +25,11 @@ public class Underworld {
     private int wargsTospawn;
     private int slenderTospawn;
     private int batTospawn;
+    private final Sound coinsound;
 
     public Underworld() {
         this.texture = new Texture(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/underworld.jpg"));
+        coinsound = Gdx.audio.newSound(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/coin.wav"));
     }
     
     
@@ -82,8 +85,9 @@ public class Underworld {
             money--;
             wargsTospawn++;
             Warg warg = new Warg(false);
-            warg.raise();
+            warg.rise();
             entityList.add(warg);
+            coinsound.play();
         }
     }
     
@@ -92,8 +96,9 @@ public class Underworld {
             money--;
             slenderTospawn++;
             Slender slender = new Slender(false);
-            slender.raise();
+            slender.rise();
             entityList.add(slender);
+            coinsound.play();
         }
     }
     public void buyBat(){
@@ -101,8 +106,9 @@ public class Underworld {
             money--;
             batTospawn++;
             Bat bat = new Bat(false);
-            bat.raise();
+            bat.rise();
             entityList.add(bat);
+            coinsound.play();
         }
     }
     
@@ -112,5 +118,9 @@ public class Underworld {
     
     public void addEntity(AbstractEntity entity){
         entityList.add(entity);
+    }
+    
+    public void dispose(){
+        coinsound.dispose();
     }
 }
