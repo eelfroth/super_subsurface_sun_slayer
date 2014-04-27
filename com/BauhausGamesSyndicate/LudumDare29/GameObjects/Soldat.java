@@ -16,9 +16,9 @@ public class Soldat extends AbstractCharacter {
     public Soldat(float x, float y, boolean world, Eingang eingang) {
         super(x, y, "soldat", world,2,1);
         arrived = false;
-        setFriction(0);
+        setFriction(0.5f);
         setAcceleration(-1);
-        setSpeed((float) (0.1f + Math.random()*.2f));
+        //setSpeed((float) (0.1f + Math.random()*.2f));
         this.eingang = eingang;
         if(getX() < eingang.getX()+eingang.getWidth()/2+getAcceleration()*eingang.getWidth()){
             setAcceleration(1);
@@ -49,8 +49,9 @@ public class Soldat extends AbstractCharacter {
     }
     
     @Override
-    public void fight(AbstractCharacter enemy) {
+    public void fight(AbstractCharacter enemy, float delta) {
         //playSpacial(true);
+        enemy.drainLife(delta/4);
     }
     
 }

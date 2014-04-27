@@ -5,11 +5,10 @@ import com.BauhausGamesSyndicate.LudumDare29.overworld.Chunk;
 import com.BauhausGamesSyndicate.LudumDare29.overworld.Overworld;
 
 public abstract class AbstractCharacter extends AbstractEntity {
-    public float speed;
-    public float acceleration;
-    public float accFactor;
-    public float velocity;
-    public float friction;
+    private float acceleration;
+    private float accFactor;
+    private float velocity;
+    private float friction;
     
     private boolean shouldRaise;
     private boolean shouldDescend;
@@ -17,7 +16,6 @@ public abstract class AbstractCharacter extends AbstractEntity {
     public AbstractCharacter(float x, float y, String name, boolean world, int steps, int specialSteps){
         super(x, y, name, world,steps, specialSteps);
         
-        speed     = 0;
         velocity  = 0;
         accFactor = 0.03f;
         acceleration = 0;
@@ -26,8 +24,8 @@ public abstract class AbstractCharacter extends AbstractEntity {
     }
     
     public void move(float delta){
-        setAcceleration(getAcceleration() * getAccFactor()    );
-        setVelocity    (getVelocity()     + getAcceleration() );
+        setAcceleration(getAcceleration()    );
+        setVelocity    (getVelocity()     + getAcceleration() * getAccFactor() );
         setVelocity    (getVelocity()     * (1 - getFriction()) );
         setX((getX() + getVelocity()*delta));
     }
@@ -68,16 +66,11 @@ public abstract class AbstractCharacter extends AbstractEntity {
         this.accFactor = fac;
     }
     
-    public void setSpeed(float speed){
-        this.speed = speed;
-    }
-    
-    public float getSpeed(){
-        return speed;
-    }
+
+ 
         
     public boolean isDead(){
-        return life <= 0;
+        return getLife() <= 0;
     }
     
     @Override
@@ -85,6 +78,9 @@ public abstract class AbstractCharacter extends AbstractEntity {
         super.update(delta);
         if (GameScreen.onOverworld() && !shouldRaise && !shouldDescend){
             setY(Overworld.getHeight((int) getX()));
+        }
+        if (isDead()){
+            setFlagRemoveFromOverworld();
         }
         
         move(delta);
@@ -126,8 +122,8 @@ public abstract class AbstractCharacter extends AbstractEntity {
                 ((AbstractCharacter)entity).isEvil()!=isEvil() && //is not same fraction?
                 entity.getX()+entity.getWidth() > getX()&&
                 entity.getX() < getX()+entity.getWidth()){
-                acceleration=0;
-                fight((AbstractCharacter) entity);
+                velocity=0;
+                fight((AbstractCharacter) entity, delta);
             }
         }
     }
@@ -153,6 +149,7 @@ public abstract class AbstractCharacter extends AbstractEntity {
     /**
      * What should happen during fighting
      * @param enemy the enemy you are fighting
+     * @param delta
      */
-    public abstract void fight(AbstractCharacter enemy);
+    public abstract void fight(AbstractCharacter enemy, float delta);
 }

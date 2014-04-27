@@ -22,7 +22,7 @@ public class Fledermaus extends Minion{
     }  
 
     @Override
-    public void fight(AbstractCharacter enemy) {
+    public void fight(AbstractCharacter enemy, float delta) {
         //playSpacial(true);
     }
 }

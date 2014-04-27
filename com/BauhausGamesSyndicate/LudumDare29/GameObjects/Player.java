@@ -135,7 +135,7 @@ public class Player extends AbstractCharacter {
         }
         
         //walkingsound
-        if (velocity<0.1f && velocity>-0.1f)
+        if (getVelocity()<0.1f && getVelocity()>-0.1f)
             stepsound.stop();
     }
     
@@ -187,7 +187,7 @@ public class Player extends AbstractCharacter {
     }
 
     @Override
-    public void fight(AbstractCharacter enemy) {
+    public void fight(AbstractCharacter enemy, float delta) {
         //player does nothing
     }
     

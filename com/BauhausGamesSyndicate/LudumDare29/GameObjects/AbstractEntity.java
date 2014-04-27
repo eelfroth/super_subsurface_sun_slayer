@@ -16,7 +16,7 @@ public abstract class AbstractEntity{
     private boolean flagRemoveFromOverworld;
     private float x;
     private float y;
-    public int life;
+    private float life;
     private int step;
     private float timer = 0;
     private int steptime = 200;//ms
@@ -37,7 +37,7 @@ public abstract class AbstractEntity{
      * @param specialSteps  the amount of animation steps for the special
      */
     public AbstractEntity(float x, float y, String name, boolean world, int steps, int specialSteps) {
-        life     = 100;
+        life    = 100;
         this.x = x;
         this.y = y;
         this.world = world;
@@ -53,21 +53,20 @@ public abstract class AbstractEntity{
             
          for (int i = 0; i < specialSteps; i++) {
             specialTextures[i] = GameScreen.getSpritesheet().findRegion(name+""+Integer.toString(i)+"s"); 
-            if (specialTextures[i]==null)
-                System.err.println(name+""+Integer.toString(i)+"s");
+            //if (specialTextures[i]==null)
+           //     System.err.println(name+""+Integer.toString(i)+"s");
         }
-        life = 100;
     }
     
-    public int getLife(){
+    public float getLife(){
         return this.life;
     }
     
-    public void setLife(int life){
+    public void setLife(float life){
         this.life = life;
     }
     
-    public void drainLife(int life){
+    public void drainLife(float life){
         this.life -= life;
     }
     
