@@ -166,7 +166,10 @@ public abstract class AbstractEntity{
     }
 
     public void playSpacial(boolean special) {
-        if (this.special!=special) timer=0;
+        if (this.special!=special) {
+            timer=0;
+            step=0;
+        }
         this.special = special;
     }
     
