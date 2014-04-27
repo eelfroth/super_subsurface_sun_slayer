@@ -26,11 +26,15 @@ public class Player extends AbstractCharacter {
     
     private int menupoint = 0;
     private static Sound rising;
+    private static Sound growlsound;
+    private static Sound stepsound;
     private float attacktimer;
     
     public Player(float x, float y) {
         super(x, y, "overlord", false,10,10);
         rising = Gdx.audio.newSound(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/rising.mp3"));
+        growlsound = Gdx.audio.newSound(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/growlsingle.ogg"));
+        stepsound = Gdx.audio.newSound(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/step.wav"));
     }
     
     @Override
@@ -41,11 +45,13 @@ public class Player extends AbstractCharacter {
         if (GameScreen.onOverworld()){
             if (Gdx.input.isKeyPressed(Keys.D)){
                 setAcceleration(1);
+                stepsound.loop();
                 //setX(getX()+speed*delta);
             }
         
             if (Gdx.input.isKeyPressed(Keys.A)){
                 setAcceleration(-1);
+                stepsound.loop();
                 //setX(getX()-speed*delta);
             }
             
@@ -115,10 +121,9 @@ public class Player extends AbstractCharacter {
             }
         }
         
-        setAcceleration(getAcceleration() * getAccFactor()    );
-        setVelocity    (getVelocity()     + getAcceleration() );
-        setVelocity    (getVelocity()     * (1 - getFriction()) );
-        setX((getX() + getVelocity()*delta));
+        //walkingsound
+        if (velocity<0.1f && velocity>-0.1f)
+            stepsound.stop();
     }
     
     private void goTo(int id){
@@ -158,6 +163,8 @@ public class Player extends AbstractCharacter {
     public void attack(){
         playSpacial(true);
         attacktimer = 2000;
+        growlsound.play();
+        
     }
     
     @Override

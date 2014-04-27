@@ -16,6 +16,7 @@ public abstract class AbstractEntity{
     private boolean flagRemoveFromOverworld;
     private float x;
     private float y;
+    public int life;
     private int step;
     private float timer = 0;
     private int steptime = 200;//ms
@@ -24,6 +25,16 @@ public abstract class AbstractEntity{
     private TextureRegion[] walkTextures;
     private boolean flip = false;
     private boolean special =false;
+    
+     public AbstractEntity(float x, float y, String lebend, String tot, boolean world) {
+        walkTextures = new TextureRegion[2];
+        walkTextures[0] = GameScreen.getSpritesheet().findRegion(lebend);
+        walkTextures[1] = GameScreen.getSpritesheet().findRegion(tot);
+        life     = 100;
+        this.x = x;
+        this.y = y;
+        this.world = world;
+    }
     
     /**
      * 
@@ -35,6 +46,7 @@ public abstract class AbstractEntity{
     public AbstractEntity(float x, float y, String name, boolean world) {
         walkTextures = new TextureRegion[1];
         walkTextures[0] = GameScreen.getSpritesheet().findRegion(name);
+        life     = 100;
         this.x = x;
         this.y = y;
         this.world = world;
@@ -65,9 +77,20 @@ public abstract class AbstractEntity{
 //            if (specialTextures[i]==null)
 //                System.err.println(name+""+Integer.toString(i)+"s");
         }
+        life = 100;
     }
-
     
+    public int getLife(){
+        return this.life;
+    }
+    
+    public void setLife(int life){
+        this.life = life;
+    }
+    
+    public void setTextureRegion(String name){
+        walkTextures[0] = GameScreen.getSpritesheet().findRegion(name);
+    }
     public void update(float delta){
         timer+=delta;
         
@@ -90,7 +113,10 @@ public abstract class AbstractEntity{
         if (special)
             tex = specialTextures[step];
         else
-            tex = walkTextures[step];
+            if(life <= 0)
+                tex = walkTextures[1];
+            else 
+                tex = walkTextures[0];
         
         if (flip != tex.isFlipX())
            tex.flip(true, false);

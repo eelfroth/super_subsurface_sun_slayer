@@ -7,6 +7,7 @@
 package com.BauhausGamesSyndicate.LudumDare29.overworld;
 
 import com.BauhausGamesSyndicate.LudumDare29.GameObjects.AbstractEntity;
+import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
 
 /**
  *
@@ -15,19 +16,17 @@ import com.BauhausGamesSyndicate.LudumDare29.GameObjects.AbstractEntity;
 public class Forrest extends AbstractEntity {
     public int x;
     public int y;
+    public int life;
     private final Overworld overworld;
     public Forrest(Overworld overworld, int x, int y){
-        super(x, y, "wald_h", true);
+        super(x, y, "wald_h", "wald_k", true);
         if((int)(Math.random()*10) > 5){
             this.setFlipHorizontal(true);
         }
         this.overworld = overworld;
+        setLife(0);
     }
     
-    @Override
-    public void update(float delta){
-        
-    }
     /*
     public void photosynthesis(){
         // make some fresh air in code 
