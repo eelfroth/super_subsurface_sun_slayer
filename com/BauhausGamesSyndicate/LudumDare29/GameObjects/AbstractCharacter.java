@@ -84,9 +84,9 @@ public abstract class AbstractCharacter extends AbstractEntity {
         
         //flip graphic
         if(getDirection() == 1)
-            this.setFlip(true, false);
+            this.setFlipHorizontal(true);
         else
-            this.setFlip(false, false);
+            this.setFlipHorizontal(false);
         
         if (shouldRaise){
             setY(getY()+delta/2);
