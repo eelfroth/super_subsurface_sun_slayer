@@ -51,7 +51,7 @@ public class Soldat extends AbstractCharacter {
     @Override
     public void fight(AbstractCharacter enemy, float delta) {
         //playSpacial(true);
-        enemy.drainLife((int) (life*delta/4));
+        enemy.drainLife((int) (getLife()*delta/4));
     }
     
 }

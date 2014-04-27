@@ -70,7 +70,7 @@ public abstract class AbstractCharacter extends AbstractEntity {
  
         
     public boolean isDead(){
-        return life <= 0;
+        return getLife() <= 0;
     }
     
     @Override
