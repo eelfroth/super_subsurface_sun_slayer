@@ -30,7 +30,7 @@ public class Minion extends AbstractCharacter{
         }
         
         if (!collide){
-            setX(getX() + getDirection()*delta*getSpeed());//run to left
+            setX(getX() + getAcceleration()*delta*getSpeed());//run to left
         }
     }
 }

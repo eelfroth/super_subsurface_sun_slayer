@@ -16,13 +16,13 @@ public class Enemy extends AbstractCharacter {
     public Enemy(float x, float y, boolean world, Eingang eingang) {
         super(x, y, "soldat", world,2);
         arrived = false;
-        setDirection(-1);
+        setAcceleration(-1);
         setSpeed((float) (0.1f + Math.random()*.2f));
         this.eingang = eingang;
-        if(getX() < eingang.getX()+eingang.getWidth()/2+getDirection()*eingang.getWidth()){
-            setDirection(1);
+        if(getX() < eingang.getX()+eingang.getWidth()/2+getAcceleration()*eingang.getWidth()){
+            setAcceleration(1);
         }else{
-            setDirection(-1);
+            setAcceleration(-1);
         }
     }
 
@@ -35,10 +35,10 @@ public class Enemy extends AbstractCharacter {
         }
         */
         if(arrived){
-            setDirection(0);
+            setAcceleration(0);
         }
-        if(getX() > eingang.getX()-eingang.getWidth()/2 && getDirection() == 1 ||
-           getX() < eingang.getX()+eingang.getWidth()*1.5 && getDirection() == -1)
+        if(getX() > eingang.getX()-eingang.getWidth()/2 && getAcceleration() == 1 ||
+           getX() < eingang.getX()+eingang.getWidth()*1.5 && getAcceleration() == -1)
             arrived = true;
 
         boolean collide = false;
@@ -51,7 +51,7 @@ public class Enemy extends AbstractCharacter {
         }
         
         if (!collide){
-            setX(getX() + getDirection()*delta*getSpeed());//run to left
+            setX(getX() + getAcceleration()*delta*getSpeed());//run to left
         }
     }
     
