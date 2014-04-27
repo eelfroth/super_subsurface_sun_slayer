@@ -22,7 +22,7 @@ public abstract class AbstractEntity{
     private int steptime = 200;//ms
     
     private TextureRegion[] specialTextures;
-    private TextureRegion[] walkTextures;
+    private TextureRegion[] standardAnimation;
     private boolean flip = false;
     private boolean special =false;
     
@@ -34,8 +34,8 @@ public abstract class AbstractEntity{
      * @param world true when on overworld, false udnerworld
      */
     public AbstractEntity(float x, float y, String name, boolean world) {
-        walkTextures = new TextureRegion[1];
-        walkTextures[0] = GameScreen.getSpritesheet().findRegion(name);
+        standardAnimation = new TextureRegion[1];
+        standardAnimation[0] = GameScreen.getSpritesheet().findRegion(name);
         life     = 100;
         this.x = x;
         this.y = y;
@@ -53,10 +53,10 @@ public abstract class AbstractEntity{
      */
     public AbstractEntity(float x, float y, String name, boolean world, int steps, int specialSteps) {
         this(x, y, name, world);
-        walkTextures = new TextureRegion[steps];
+        standardAnimation = new TextureRegion[steps];
         for (int i = 0; i < steps; i++) {
-            walkTextures[i] = GameScreen.getSpritesheet().findRegion(name+""+Integer.toString(i)); 
-            if (walkTextures[i]==null)
+            standardAnimation[i] = GameScreen.getSpritesheet().findRegion(name+""+Integer.toString(i)); 
+            if (standardAnimation[i]==null)
                 System.err.println(name+""+Integer.toString(i));
         }
         
@@ -87,7 +87,7 @@ public abstract class AbstractEntity{
         }
         
         if (!special){
-            if (step >= walkTextures.length)
+            if (step >= standardAnimation.length)
                 step=0;
         } else {
             if (step >= specialTextures.length)
@@ -100,7 +100,7 @@ public abstract class AbstractEntity{
         if (special)
             tex = specialTextures[step];
         else
-            tex = walkTextures[step];
+            tex = standardAnimation[step];
         
         if (flip != tex.isFlipX())
            tex.flip(true, false);
@@ -148,11 +148,11 @@ public abstract class AbstractEntity{
     }
     
     public int getWidth() {
-        return walkTextures[step].getRegionWidth();
+        return standardAnimation[step].getRegionWidth();
     }
     
     public int getHeight() {
-        return walkTextures[step].getRegionHeight();
+        return standardAnimation[step].getRegionHeight();
     }
 
     /**
