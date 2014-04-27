@@ -18,14 +18,15 @@ import java.util.ArrayList;
  * @author Jacob Bauer
  */
 public class Overworld extends AbstractWorld{
-    private final int cityDistToEntrance = 700;
     private static int[] heightmap;
     
     // x - Positionen der Städte
     private static int[] citymapX;
     private static int[] citymapY;
-    private final int anzCitys = 6;
-    private final int anzForrests = 10;
+    private static int[] forestmapX;
+    private static int[] forestmapY;
+    private final int anzCitys   = 8;
+    private final int anzForests = 8;
     
     private static final ArrayList<AbstractEntity> entityList = new ArrayList<>();
     private static int cameraPos = 0;
@@ -54,6 +55,8 @@ public class Overworld extends AbstractWorld{
         Overworld.heightmap = new int[256];
         Overworld.citymapX = new int[anzCitys];
         Overworld.citymapY = new int[anzCitys];
+        Overworld.forestmapX = new int[anzForests];
+        Overworld.forestmapY = new int[anzForests];
 //        for (int x = 0; x < heightmap.length; x++) {
 //            heightmap[x] = (int) (Math.random()*Chunk.HEIGHT/2);
 //        }
@@ -69,6 +72,27 @@ public class Overworld extends AbstractWorld{
         citymapY[4] = 485;
         citymapX[5] = 3400;
         citymapY[5] = 320;
+        citymapX[6] = 3600;
+        citymapY[6] = 300;
+        citymapX[7] = 3850;
+        citymapY[7] = 330;
+        
+        forestmapX[0] = 530;
+        forestmapY[0] = 400;
+        forestmapX[1] = 880;
+        forestmapY[1] = 450;
+        forestmapX[2] = 1200;
+        forestmapY[2] = 500;
+        forestmapX[3] = 1100;
+        forestmapY[3] = 360;
+        forestmapX[4] = 2935;
+        forestmapY[4] = 485;
+        forestmapX[5] = 3400;
+        forestmapY[5] = 320;
+        forestmapX[6] = 3600;
+        forestmapY[6] = 300;
+        forestmapX[7] = 3850;
+        forestmapY[7] = 330;
         
         heightmap[0] = 300;
         heightmap[1] = 327;
@@ -275,10 +299,9 @@ public class Overworld extends AbstractWorld{
         }
         
         //place Forrests
-        for (int i = 0; i < anzForrests; i++){
-            int tx = (int) Math.random()*getMapWidth();
+        for (int i = 0; i < anzForests; i++){
             entityList.add(
-                new Forrest(this, tx, 700 )
+                new Forrest(this, forestmapX[i], forestmapY[i])
             );
         }
     }
