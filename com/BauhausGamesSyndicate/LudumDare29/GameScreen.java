@@ -139,23 +139,20 @@ public class GameScreen implements Screen {
             shr.setProjectionMatrix(camera.combined);
 
             batch.begin();
-            if (world)
-                overworld.render(this);
-            else
-                underworld.render(this);
-
-            player.render(this);
+            {
+                if (world)
+                    overworld.render(this);
+                else
+                    underworld.render(this);
+                player.render(this);
+            }
             batch.end();
 
+            
             camera.translate(-Overworld.getCameraPos(), 0);
             camera.update();
             shr.setProjectionMatrix(camera.combined);
             batch.setProjectionMatrix(camera.combined);
-
-            //overlay
-            batch.begin();
-            batch.draw(overlay, 0, 0);
-            batch.end();
         }
         frameBuffer.end();
         
@@ -180,6 +177,11 @@ public class GameScreen implements Screen {
         camera.rotate(angle);
         batch.setProjectionMatrix(camera.combined);
         shr.setProjectionMatrix(camera.combined);
+        
+        //overlay
+        batch.begin();
+        batch.draw(overlay, 0, 0);
+        batch.end();
         
         //fps
         fps.render(shr, font);
@@ -283,36 +285,40 @@ public class GameScreen implements Screen {
                      -0.1f-1, 0.1f, 0, 1, 1, 1, 1, 0, 1});
         frameMesh.setIndices(new short[] {0,1,2,2,3,0});*/
         
-        //debug
-        StringBuffer result = new StringBuffer();
-        for (int i = 0; i < vertices.length; i++) {
-           if((i)%9 == 0) result.append("\n");
-           if((i)%36 == 0)  {
-               result.append("Quad ");
-               result.append(i/36);
-               result.append(":\n");
-           }
-           result.append( vertices[i] );
-           result.append("\t");
-           
-        }
-        String mynewstring = result.toString();
-        Gdx.app.log("frameMesh vertices:", mynewstring + "\n");
+        boolean debug=false;
         
-        result = new StringBuffer();
-        for (int i = 0; i < indices.length; i++) {
-           //if((i)%9 == 0) result.append("\n");
-           if((i)%6 == 0)  {
-               result.append("\nQuad ");
-               result.append(i/6);
-               result.append(":\n");
-           }
-           result.append( indices[i] );
-           result.append("\t");
-           
+        //debug
+        if (debug){
+            StringBuffer result = new StringBuffer();
+            for (int i = 0; i < vertices.length; i++) {
+               if((i)%9 == 0) result.append("\n");
+               if((i)%36 == 0)  {
+                   result.append("Quad ");
+                   result.append(i/36);
+                   result.append(":\n");
+               }
+               result.append( vertices[i] );
+               result.append("\t");
+
+            }
+            String mynewstring = result.toString();
+            Gdx.app.log("frameMesh vertices:", mynewstring + "\n");
+
+            result = new StringBuffer();
+            for (int i = 0; i < indices.length; i++) {
+               //if((i)%9 == 0) result.append("\n");
+               if((i)%6 == 0)  {
+                   result.append("\nQuad ");
+                   result.append(i/6);
+                   result.append(":\n");
+               }
+               result.append( indices[i] );
+               result.append("\t");
+
+            }
+            mynewstring = result.toString();
+            Gdx.app.log("frameMesh indices:", mynewstring);
         }
-        mynewstring = result.toString();
-        Gdx.app.log("frameMesh indices:", mynewstring);
     }
 
     public static Overworld getOverworld() {
@@ -336,4 +342,10 @@ public class GameScreen implements Screen {
         money--;
         batTospawn++;
     }
+
+    public static int getMoney() {
+        return money;
+    }
+    
+    
 }
