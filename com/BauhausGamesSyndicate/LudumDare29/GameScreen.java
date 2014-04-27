@@ -23,9 +23,6 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Matrix4;
 
 public class GameScreen implements Screen {
-    private static int wargsTospawn;
-    private static int slenderTospawn;
-    private static int batTospawn;
     private final SpriteBatch batch;
     private final BitmapFont font;
     private static Overworld overworld;
@@ -47,7 +44,6 @@ public class GameScreen implements Screen {
     private final float world_ypos;
 
     private static Player player;
-    private static int money = 100;
 
 
     public GameScreen() {
@@ -325,30 +321,4 @@ public class GameScreen implements Screen {
     public static Player getPlayer() {
         return player;
     }
-    
-    public static void buyWarg(){
-        if (money>0) {
-            money--;
-            wargsTospawn++;
-        }
-    }
-    
-    public static void buySlender(){
-        if (money>0) {
-            money--;
-            slenderTospawn++;
-        }
-    }
-    public static void buyBat(){
-        if (money>0) {
-            money--;
-            batTospawn++;
-        }
-    }
-
-    public static int getMoney() {
-        return money;
-    }
-    
-    
 }

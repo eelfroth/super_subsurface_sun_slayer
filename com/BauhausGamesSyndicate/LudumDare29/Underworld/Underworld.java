@@ -1,10 +1,12 @@
 package com.BauhausGamesSyndicate.LudumDare29.Underworld;
 
+import com.BauhausGamesSyndicate.LudumDare29.GameObjects.AbstractEntity;
 import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import java.util.ArrayList;
 
 /**
  *
@@ -14,6 +16,11 @@ public class Underworld {
     private final Texture texture;
     private float dt;
     private final int timeTillNextBuy = 500;
+    private final ArrayList<AbstractEntity> entityList = new ArrayList<>();
+    private int money = 100;
+    private int wargsTospawn;
+    private int slenderTospawn;
+    private int batTospawn;
 
     public Underworld() {
         this.texture = new Texture(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/underworld.jpg"));
@@ -30,25 +37,48 @@ public class Underworld {
     public void render(GameScreen gs){
         gs.getBatch().draw(texture, 0, 0);
         gs.getFont().setColor(new Color(1,1,1,1));
-        gs.getFont().draw(gs.getBatch(), "Corpses:"+GameScreen.getMoney(), Gdx.graphics.getHeight()-500, Gdx.graphics.getWidth()-300);
+        gs.getFont().draw(gs.getBatch(), "Corpses:"+getMoney(), Gdx.graphics.getHeight()-500, Gdx.graphics.getWidth()-300);
     }
     
     public void update(float delta){
         if (Gdx.input.isKeyPressed(Keys.SPACE)){
             dt+=delta;
             if (dt > timeTillNextBuy && GameScreen.getPlayer().getMenupoint()==2){
-                GameScreen.buyWarg();
+                buyWarg();
                 dt=0;
             }
             if (dt > timeTillNextBuy && GameScreen.getPlayer().getMenupoint()==1){
-                GameScreen.buySlender();
+                buySlender();
                 dt=0;
             }
             if (dt > timeTillNextBuy && GameScreen.getPlayer().getMenupoint()==3){
-                GameScreen.buyBat();
+                buyBat();
                 dt=0;
             }
         }
     }
     
+    public void buyWarg(){
+        if (money>0) {
+            money--;
+            wargsTospawn++;
+        }
+    }
+    
+    public void buySlender(){
+        if (money>0) {
+            money--;
+            slenderTospawn++;
+        }
+    }
+    public void buyBat(){
+        if (money>0) {
+            money--;
+            batTospawn++;
+        }
+    }
+    
+    public int getMoney() {
+        return money;
+    }
 }
