@@ -40,6 +40,10 @@ public abstract class AbstractCharacter extends AbstractEntity {
         return this.friction;
     }
     
+    public void setFriction(float friction){
+        this.friction = friction;
+    }
+    
     public float getVelocity(){
         return this.velocity;
     }
