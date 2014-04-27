@@ -172,7 +172,7 @@ public class Overworld {
         //place towns
         for (int i = 0; i < 40; i++){
             entityList.add(
-                new City(this, (int) (Math.random() * getMapWidth()), (int) (Chunk.HEIGHT/4*Math.random()+Chunk.HEIGHT/4))
+                new City(this, (int) (Math.random() * getMapWidth()), (int) (Chunk.HEIGHT/4*Math.random()+Chunk.HEIGHT/4), eingang)
             );
         }
     }

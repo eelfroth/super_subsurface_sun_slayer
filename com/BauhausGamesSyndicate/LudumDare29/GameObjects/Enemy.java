@@ -1,22 +1,31 @@
 package com.BauhausGamesSyndicate.LudumDare29.GameObjects;
 
 import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
+import com.BauhausGamesSyndicate.LudumDare29.overworld.Eingang;
 
 /**
  *
  * @author Benedikt Vogler
  */
 public class Enemy extends AbstractCharacter {
-    public Enemy(float x, float y, boolean world) {
+    private final Eingang eingang;
+    public Enemy(float x, float y, boolean world, Eingang eingang) {
         super(x, y, "enemy", world);
         setDirection(-1);
         setSpeed((float) (0.1f + Math.random()*.2f));
+        this.eingang = eingang;
     }
 
-    @Override
     public void update(float delta) {
+        /*
         if((int)(Math.random()*100) == 23){
             setDirection(-1*getDirection());
+        }
+        */
+        if(getX() < eingang.getX()+eingang.getWidth()/2){
+            setDirection(1);
+        }else{
+            setDirection(-1);
         }
         super.update(delta);
 

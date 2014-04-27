@@ -11,10 +11,10 @@ public class City extends AbstractEntity {
     private float timetillspawn = 10000;
     private float timer;
     private final Overworld overworld;
-
-    public City(Overworld overworld, int x, int y) {
+    private final Eingang eingang;
+    public City(Overworld overworld, int x, int y, Eingang eingang) {
         super(x, y, "bauernhof_h", true);
-        
+        this.eingang = eingang;
         if(0 + (int)(Math.random()*10) >= 5){
             this.setFlip(true, false);
         }
@@ -33,7 +33,7 @@ public class City extends AbstractEntity {
     }
 
     private void spawnEnemy() {
-       Enemy enemy = new Enemy(getX(),getY(), onOverworld());
+       Enemy enemy = new Enemy(getX(),getY(), onOverworld(), eingang);
        overworld.addEntity(enemy);
     }
 }
