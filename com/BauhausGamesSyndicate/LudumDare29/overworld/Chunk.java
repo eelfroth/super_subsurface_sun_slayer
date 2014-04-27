@@ -18,7 +18,7 @@ public class Chunk {
     public static final int HEIGHT =1024;
     public static final int WIDTH = 4096;//2^14
     private final Texture texture;
-    private int id;
+    private final int id;
 
     public Chunk(int id) {
         this.id = id;
@@ -28,16 +28,22 @@ public class Chunk {
     
     
     public void render(GameScreen gs){
-        int y = Gdx.graphics.getHeight()-Chunk.HEIGHT; 
-        int x = id*Chunk.WIDTH-0;
         int m=Overworld.getMapWidth();
+        int y = Gdx.graphics.getHeight()-Chunk.HEIGHT; 
+        int x = id*Chunk.WIDTH;
+        
+        int cc = Overworld.getCameraPos()/4;//current chunk 0-3
+
+        if (id >cc+1)
+            x-=m/2;
+                
         if (x < -m)
             x += m;
         else
             x = x % m;
 
         //check if visible
-        if (x+Chunk.WIDTH > Overworld.getCameraPos() && x < Gdx.graphics.getWidth()+Overworld.getCameraPos())
+       // if (x+Chunk.WIDTH > Overworld.getCameraPos() && x < Gdx.graphics.getWidth()+Overworld.getCameraPos())
            gs.getBatch().draw(texture, x, y);
     };
 }
