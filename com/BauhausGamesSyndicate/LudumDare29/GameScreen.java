@@ -66,7 +66,7 @@ public class GameScreen implements Screen {
         
         //game data
         overworld = new Overworld();
-        underworld = new Underworld();
+        underworld = new Underworld(this);
         player = new Player(860, 500);
         
         world = overworld;

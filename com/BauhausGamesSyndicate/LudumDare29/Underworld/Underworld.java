@@ -31,7 +31,7 @@ public class Underworld extends AbstractWorld{
     private int batTospawn;
     private final Sound coinsound;
 
-    public Underworld() {
+    public Underworld(GameScreen gs) {
         super(GameScreen.setupShader( 
                 Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/shaders/under.vert").readString(),
                 Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/shaders/under.frag").readString()), 
@@ -39,6 +39,7 @@ public class Underworld extends AbstractWorld{
         
         this.texture = new Texture(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/underworld.jpg"));
         coinsound = Gdx.audio.newSound(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/coin.wav"));
+        
     }
     
     
@@ -49,6 +50,7 @@ public class Underworld extends AbstractWorld{
     
     }
     
+    @Override
     public void render(GameScreen gs){
         gs.getBatch().draw(texture, 0, 0);
         gs.getFont().setColor(new Color(1,1,1,1));
@@ -59,6 +61,7 @@ public class Underworld extends AbstractWorld{
         }
     }
     
+    @Override
     public void update(float delta){
         //update objects
         for (int i = 0; i < entityList.size(); i++) {
@@ -131,5 +134,9 @@ public class Underworld extends AbstractWorld{
     
     public void dispose(){
         coinsound.dispose();
+    }
+
+    public void rotate(float f) {
+        //bgmatrix.rotate(0,0,1, f);
     }
 }
