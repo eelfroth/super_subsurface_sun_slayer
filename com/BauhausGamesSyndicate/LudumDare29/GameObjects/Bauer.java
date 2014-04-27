@@ -20,6 +20,7 @@ public class Bauer extends AbstractCharacter {
     @Override
     public void fight(AbstractCharacter enemy) {
         //bauer macht nichts
+        // von wegen der sorgt für das Essen in der Gesellschaft!
     }
     
     
