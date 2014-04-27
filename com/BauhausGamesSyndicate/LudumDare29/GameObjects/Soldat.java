@@ -35,12 +35,16 @@ public class Soldat extends AbstractCharacter {
             setDirection(-1*getDirection());
         }
         */
-        if(arrived){
-            setAcceleration(0);
+        if(getX() > GameScreen.getPlayer().getX()) setAcceleration(-1);
+        else setAcceleration(1);
+       
+        if(getX() > eingang.getX()-eingang.getWidth()/2   && getAcceleration() == 1 ||
+           getX() < eingang.getX()+eingang.getWidth()*1.5 && getAcceleration() == -1){
+            setCanWalk(false);
+        }else{
+            setCanWalk(true);
         }
-        if(getX() > eingang.getX()-eingang.getWidth()/2 && getAcceleration() == 1 ||
-           getX() < eingang.getX()+eingang.getWidth()*1.5 && getAcceleration() == -1)
-            arrived = true;
+              
     }
     
     @Override
