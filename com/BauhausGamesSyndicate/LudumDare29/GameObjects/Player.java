@@ -105,8 +105,9 @@ public class Player extends AbstractCharacter {
         
         if (GameScreen.onOverworld() && Gdx.input.isKeyPressed(Keys.SPACE)){
             attack();
-        } else 
+        } else {
             playSpacial(false);
+        }
         
         setAcceleration(getAcceleration() * getAccFactor()    );
         setVelocity    (getVelocity()     + getAcceleration() );
@@ -150,6 +151,7 @@ public class Player extends AbstractCharacter {
      */
     public void attack(){
         playSpacial(true);
+        setVelocity(0);
     }
     
     @Override
