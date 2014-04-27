@@ -15,8 +15,8 @@ public class City extends AbstractEntity {
     public City(Overworld overworld, int x, int y) {
         super(x, y, "bauernhof_h", true);
         
-        if(0 + (int)(Math.random()*10) >= 5){
-            this.setFlip(true, false);
+        if((int)(Math.random()*10) >= 5){
+            this.setFlipHorizontal(true);
         }
         this.overworld = overworld;
     }

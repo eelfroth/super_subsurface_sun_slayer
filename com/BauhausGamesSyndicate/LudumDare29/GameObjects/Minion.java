@@ -1,6 +1,7 @@
 package com.BauhausGamesSyndicate.LudumDare29.GameObjects;
 
 import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
+import com.badlogic.gdx.graphics.g2d.Animation;
 
 
 
