@@ -18,14 +18,15 @@ import java.util.ArrayList;
  * @author Jacob Bauer
  */
 public class Overworld extends AbstractWorld{
-    private final int cityDistToEntrance = 700;
     private static int[] heightmap;
     
     // x - Positionen der Städte
     private static int[] citymapX;
     private static int[] citymapY;
-    private final int anzCitys = 4;
-    private final int anzForrests = 10;
+    private static int[] forestmapX;
+    private static int[] forestmapY;
+    private final int anzCitys   = 8;
+    private final int anzForests = 11;
     
     private static final ArrayList<AbstractEntity> entityList = new ArrayList<>();
     private static int cameraPos = 0;
@@ -54,18 +55,50 @@ public class Overworld extends AbstractWorld{
         Overworld.heightmap = new int[256];
         Overworld.citymapX = new int[anzCitys];
         Overworld.citymapY = new int[anzCitys];
+        Overworld.forestmapX = new int[anzForests];
+        Overworld.forestmapY = new int[anzForests];
 //        for (int x = 0; x < heightmap.length; x++) {
 //            heightmap[x] = (int) (Math.random()*Chunk.HEIGHT/2);
 //        }
         citymapX[0] = 530;
         citymapY[0] = 400;
         citymapX[1] = 880;
-        citymapY[1] = 430;
+        citymapY[1] = 450;
         citymapX[2] = 1200;
-        citymapY[2] = 440;
+        citymapY[2] = 500;
         citymapX[3] = 1100;
-        citymapY[3] = 330;
+        citymapY[3] = 360;
+        citymapX[4] = 2940;
+        citymapY[4] = 485;
+        citymapX[5] = 3400;
+        citymapY[5] = 320;
+        citymapX[6] = 3600;
+        citymapY[6] = 300;
+        citymapX[7] = 3850;
+        citymapY[7] = 330;
         
+        forestmapX[0] = 300;
+        forestmapY[0] = 430;
+        forestmapX[1] = 1000;
+        forestmapY[1] = 440;
+        forestmapX[2] = 2550;
+        forestmapY[2] = 420;
+        forestmapX[3] = 1200;
+        forestmapY[3] = 340;
+        forestmapX[4] = 3000;
+        forestmapY[4] = 400;
+        forestmapX[5] = 3400;
+        forestmapY[5] = 220;
+        forestmapX[6] = 3600;
+        forestmapY[6] = 200;
+        forestmapX[7] = 3850;
+        forestmapY[7] = 230;
+        forestmapX[8] = 3500;
+        forestmapY[8] = 200;
+        forestmapX[9] = 3200;
+        forestmapY[9] = 250;
+        forestmapX[10] = 3650;
+        forestmapY[10] = 270;
         
         heightmap[0] = 300;
         heightmap[1] = 327;
@@ -272,10 +305,9 @@ public class Overworld extends AbstractWorld{
         }
         
         //place Forrests
-        for (int i = 0; i < anzForrests; i++){
-            int tx = (int) Math.random()*getMapWidth();
+        for (int i = 0; i < anzForests; i++){
             entityList.add(
-                new Forrest(this, tx, 700 )
+                new Forrest(this, forestmapX[i], forestmapY[i])
             );
         }
     }

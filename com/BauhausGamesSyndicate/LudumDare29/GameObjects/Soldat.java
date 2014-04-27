@@ -14,7 +14,7 @@ public class Soldat extends AbstractCharacter {
     private boolean arrived;
     
     public Soldat(float x, float y, boolean world, Eingang eingang) {
-        super(x, y, "soldat", world,2);
+        super(x, y, "soldat", world,2,1);
         arrived = false;
         setAcceleration(-1);
         setSpeed((float) (0.1f + Math.random()*.2f));
@@ -40,21 +40,12 @@ public class Soldat extends AbstractCharacter {
         if(getX() > eingang.getX()-eingang.getWidth()/2 && getAcceleration() == 1 ||
            getX() < eingang.getX()+eingang.getWidth()*1.5 && getAcceleration() == -1)
             arrived = true;
-
-        boolean collide = false;
-        
-        //colission check
-        for (AbstractEntity entity : GameScreen.getOverworld().getEntityList()) {
-            if (entity instanceof Minion && entity.getX()+entity.getWidth() > getX() && entity.getX() < getX()+entity.getWidth()){
-                collide = true;
-            }
-        }
-        
-        if (!collide){
-            setX(getX() + getAcceleration()*delta*getSpeed());//run to left
-        }
     }
     
+    @Override
+    public boolean isEvil() {
+        return false;
+    }
     
     
 }

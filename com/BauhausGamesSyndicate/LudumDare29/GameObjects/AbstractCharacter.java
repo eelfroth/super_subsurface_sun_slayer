@@ -15,8 +15,8 @@ public abstract class AbstractCharacter extends AbstractEntity {
     private boolean shouldRaise;
     private boolean shouldDescend;
 
-    public AbstractCharacter(float x, float y, String name, boolean world, int steps){
-        super(x, y, name, world,steps);
+    public AbstractCharacter(float x, float y, String name, boolean world, int steps, int specialSteps){
+        super(x, y, name, world,steps, specialSteps);
         life     = 100;
         
         speed     = 0;
@@ -27,17 +27,15 @@ public abstract class AbstractCharacter extends AbstractEntity {
         
     }
     
-    public void move(float direction, float delta){
-        setAcceleration(direction);
+    public void move(float delta){
         setAcceleration(getAcceleration() * getAccFactor()    );
         setVelocity    (getVelocity()     + getAcceleration() );
         setVelocity    (getVelocity()     * (1 - getFriction()) );
         setX((getX() + getVelocity()*delta));
-        
     }
     
     public AbstractCharacter(float x, float y, String name, boolean world){
-        this(x, y, name, world,1);
+        this(x, y, name, world,1,1);
     }
     
     public float getFriction(){
@@ -95,6 +93,8 @@ public abstract class AbstractCharacter extends AbstractEntity {
             setY(Overworld.getHeight((int) getX()));
         }
         
+        move(delta);
+        
         //flip graphic
         if(getAcceleration()< 0)
             this.setFlipHorizontal(true);
@@ -111,9 +111,7 @@ public abstract class AbstractCharacter extends AbstractEntity {
                 setFlagRemoveFromUnderworld();
                 switchWorld();
             }
-        }
-        
-        if (shouldDescend){
+        }else if (shouldDescend){
             setY(getY()-delta/2);
             
             //entering underworld
@@ -125,6 +123,16 @@ public abstract class AbstractCharacter extends AbstractEntity {
                 switchWorld();
                 setX(860);
                 setY(500);
+            }
+        }
+        
+        //colission check
+        for (AbstractEntity entity : GameScreen.getOverworld().getEntityList()) {
+            if (entity instanceof AbstractCharacter &&//can typecasting be made
+                ((AbstractCharacter)entity).isEvil()!=isEvil() && //is not same fraction?
+                entity.getX()+entity.getWidth() > getX()
+                && entity.getX() < getX()+entity.getWidth()){
+                acceleration=0;
             }
         }
     }
@@ -144,4 +152,6 @@ public abstract class AbstractCharacter extends AbstractEntity {
     public boolean isDescending() {
         return shouldDescend;
     }
+    
+    public abstract boolean isEvil();
 }

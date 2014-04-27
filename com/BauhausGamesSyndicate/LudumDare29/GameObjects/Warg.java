@@ -14,8 +14,8 @@ public class Warg extends Minion {
             500,
             "warg",
             world,
-            3
+            3,
+            1
         );
     }
-    
 }
