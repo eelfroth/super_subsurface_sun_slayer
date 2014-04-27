@@ -46,21 +46,21 @@ burg_k
   index: -1
 fledermaus0
   rotate: false
-  xy: 276, 432
+  xy: 276, 527
   size: 83, 93
   orig: 83, 93
   offset: 0, 0
   index: -1
 fledermaus1
   rotate: false
-  xy: 649, 529
+  xy: 276, 432
   size: 83, 93
   orig: 83, 93
   offset: 0, 0
   index: -1
 fledermaus2
   rotate: false
-  xy: 649, 434
+  xy: 649, 491
   size: 83, 93
   orig: 83, 93
   offset: 0, 0
@@ -74,21 +74,21 @@ fledermaus3
   index: -1
 palisaden_h
   rotate: false
-  xy: 260, 624
+  xy: 2, 646
   size: 238, 94
   orig: 248, 98
   offset: 6, 3
   index: -1
 palisaden_k
   rotate: false
-  xy: 500, 624
+  xy: 242, 646
   size: 184, 86
   orig: 248, 98
   offset: 30, 2
   index: -1
 player0
   rotate: false
-  xy: 2, 572
+  xy: 690, 351
   size: 48, 46
   orig: 50, 50
   offset: 0, 2
@@ -102,70 +102,70 @@ siedlung_h
   index: -1
 siedlung_k
   rotate: false
-  xy: 2, 624
+  xy: 2, 541
   size: 256, 103
   orig: 316, 137
   offset: 28, 22
   index: -1
 slender0
   rotate: false
-  xy: 342, 527
+  xy: 649, 419
   size: 30, 70
   orig: 32, 72
   offset: 2, 0
   index: -1
 slender1
   rotate: false
-  xy: 310, 527
+  xy: 690, 399
   size: 30, 70
   orig: 32, 72
   offset: 2, 0
   index: -1
 slender2
   rotate: false
-  xy: 686, 624
+  xy: 356, 265
   size: 30, 70
   orig: 32, 72
   offset: 2, 0
   index: -1
 slender3
   rotate: false
-  xy: 690, 362
+  xy: 356, 193
   size: 30, 70
   orig: 32, 72
   offset: 2, 0
   index: -1
 slender4
   rotate: false
-  xy: 690, 290
+  xy: 710, 279
   size: 30, 70
   orig: 32, 72
   offset: 2, 0
   index: -1
 slender5
   rotate: false
-  xy: 356, 265
+  xy: 710, 207
   size: 30, 70
   orig: 32, 72
   offset: 2, 0
   index: -1
 slender6
   rotate: false
-  xy: 356, 193
+  xy: 710, 135
   size: 30, 70
   orig: 32, 72
   offset: 2, 0
   index: -1
 soldat0
   rotate: false
-  xy: 710, 135
+  xy: 291, 297
   size: 24, 36
   orig: 36, 36
   offset: 3, 0
   index: -1
 soldat1
   rotate: false
-  xy: 323, 297
+  xy: 317, 297
   size: 26, 34
   orig: 36, 36
   offset: 1, 0
@@ -179,15 +179,29 @@ wald_h
   index: -1
 wald_k
   rotate: false
-  xy: 52, 541
+  xy: 428, 622
   size: 256, 76
   orig: 384, 216
   offset: 67, 57
   index: -1
 warg0
   rotate: false
-  xy: 291, 297
-  size: 30, 36
-  orig: 36, 36
-  offset: 0, 0
+  xy: 503, 586
+  size: 69, 34
+  orig: 75, 50
+  offset: 2, 10
+  index: -1
+warg1
+  rotate: false
+  xy: 432, 586
+  size: 69, 34
+  orig: 75, 50
+  offset: 2, 10
+  index: -1
+warg2
+  rotate: false
+  xy: 361, 586
+  size: 69, 34
+  orig: 75, 50
+  offset: 2, 10
   index: -1
