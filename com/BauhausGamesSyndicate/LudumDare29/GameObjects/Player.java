@@ -46,13 +46,11 @@ public class Player extends AbstractCharacter {
             if (Gdx.input.isKeyPressed(Keys.D)){
                 setAcceleration(1);
                 stepsound.loop();
-                //setX(getX()+speed*delta);
             }
         
             if (Gdx.input.isKeyPressed(Keys.A)){
                 setAcceleration(-1);
                 stepsound.loop();
-                //setX(getX()-speed*delta);
             }
             
             //go down?

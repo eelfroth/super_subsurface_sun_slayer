@@ -67,6 +67,10 @@ public abstract class AbstractEntity{
         this.life = life;
     }
     
+    public void drainLife(int life){
+        this.life -= life;
+    }
+    
     public void update(float delta){
         timer+=delta;
         

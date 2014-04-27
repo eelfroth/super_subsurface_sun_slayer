@@ -75,15 +75,7 @@ public abstract class AbstractCharacter extends AbstractEntity {
     public float getSpeed(){
         return speed;
     }
-    
-    public int getLife(){
-        return life;
-    }
-    
-    public void setLife(int life){
-        this.life = life;
-    }
-    
+        
     public boolean isDead(){
         return life <= 0;
     }
@@ -98,9 +90,9 @@ public abstract class AbstractCharacter extends AbstractEntity {
         move(delta);
         
         //flip graphic
-        if(getAcceleration()< 0.1f)
+        if(getVelocity()< -0.1f)
             this.setFlipHorizontal(true);
-        if(getAcceleration()> 0.1f)
+        if(getVelocity()> 0.1f)
             this.setFlipHorizontal(false);
         
         if (shouldRaise){
