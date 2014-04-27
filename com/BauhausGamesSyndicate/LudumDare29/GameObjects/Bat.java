@@ -8,8 +8,8 @@ import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
  */
 public class Bat extends Minion{
 
-    public Bat() {
-       super(GameScreen.onOverworld()?GameScreen.getOverworld().getEingang().getX():500,0);
+    public Bat(boolean world) {
+       super(GameScreen.onOverworld()?GameScreen.getOverworld().getEingang().getX():500,0,world);
     }
 
  

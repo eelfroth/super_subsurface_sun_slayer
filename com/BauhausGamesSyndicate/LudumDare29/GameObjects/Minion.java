@@ -8,8 +8,8 @@ package com.BauhausGamesSyndicate.LudumDare29.GameObjects;
  */
 public class Minion extends AbstractCharacter{
     
-    public Minion(float x, float y){
-        super(x, y, "minion");
+    public Minion(float x, float y, boolean world){
+        super(x, y, "minion", world);
         setSpeed((float) (0.1f + Math.random()*.2f));
     }
     

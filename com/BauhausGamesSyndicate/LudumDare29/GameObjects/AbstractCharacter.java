@@ -14,8 +14,8 @@ public abstract class AbstractCharacter extends AbstractEntity {
     public int life;
     private boolean shouldRaise;
 
-    public AbstractCharacter(float x, float y, String name){
-        super(x, y, name);
+    public AbstractCharacter(float x, float y, String name, boolean world){
+        super(x, y, name, world);
         life     = 100;
         
         speed     = 0;
@@ -71,8 +71,7 @@ public abstract class AbstractCharacter extends AbstractEntity {
     }
     
     public boolean isDead(){
-        if(life <= 0) return true;
-        return false;
+        return life <= 0;
     }
     
     @Override

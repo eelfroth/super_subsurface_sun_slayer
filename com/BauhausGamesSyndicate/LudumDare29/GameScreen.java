@@ -126,11 +126,12 @@ public class GameScreen implements Screen {
         
         frameBuffer.begin();
         {
-            camera.translate(Overworld.getCameraPos(), 0);
-            camera.update();
-            batch.setProjectionMatrix(camera.combined);
-            shr.setProjectionMatrix(camera.combined);
-
+            if (world) {
+                camera.translate(Overworld.getCameraPos(), 0);
+                camera.update();
+                batch.setProjectionMatrix(camera.combined);
+                shr.setProjectionMatrix(camera.combined);
+            }
             batch.begin();
             {
                 if (world)
@@ -141,11 +142,12 @@ public class GameScreen implements Screen {
             }
             batch.end();
 
-            
-            camera.translate(-Overworld.getCameraPos(), 0);
-            camera.update();
-            shr.setProjectionMatrix(camera.combined);
-            batch.setProjectionMatrix(camera.combined);
+            if (world) {
+                camera.translate(-Overworld.getCameraPos(), 0);
+                camera.update();
+                shr.setProjectionMatrix(camera.combined);
+                batch.setProjectionMatrix(camera.combined);
+            }
         }
         frameBuffer.end();
         
@@ -153,9 +155,11 @@ public class GameScreen implements Screen {
         //2. render framebuffer to frame:
         
         float angle=Overworld.getCameraPos()*360/(float) Overworld.getMapWidth();
-        camera.rotate(-angle);
-        batch.setProjectionMatrix(camera.combined);
-        shr.setProjectionMatrix(camera.combined);
+        if (world) {
+            camera.rotate(-angle);
+            batch.setProjectionMatrix(camera.combined);
+            shr.setProjectionMatrix(camera.combined);
+        }
         
         frameBuffer.getColorBufferTexture().bind();
         //debug_texture.bind();
@@ -167,9 +171,11 @@ public class GameScreen implements Screen {
         frameMesh.render(shader, GL20.GL_TRIANGLES);
         shader.end();
         
-        camera.rotate(angle);
-        batch.setProjectionMatrix(camera.combined);
-        shr.setProjectionMatrix(camera.combined);
+        if (world) {
+            camera.rotate(angle);
+            batch.setProjectionMatrix(camera.combined);
+            shr.setProjectionMatrix(camera.combined);
+        }
         
         //overlay
         batch.begin();

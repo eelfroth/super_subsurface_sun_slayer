@@ -1,6 +1,9 @@
 package com.BauhausGamesSyndicate.LudumDare29.Underworld;
 
 import com.BauhausGamesSyndicate.LudumDare29.GameObjects.AbstractEntity;
+import com.BauhausGamesSyndicate.LudumDare29.GameObjects.Bat;
+import com.BauhausGamesSyndicate.LudumDare29.GameObjects.Slender;
+import com.BauhausGamesSyndicate.LudumDare29.GameObjects.Warg;
 import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
@@ -38,9 +41,17 @@ public class Underworld {
         gs.getBatch().draw(texture, 0, 0);
         gs.getFont().setColor(new Color(1,1,1,1));
         gs.getFont().draw(gs.getBatch(), "Corpses:"+getMoney(), Gdx.graphics.getHeight()-500, Gdx.graphics.getWidth()-300);
+        
+        for (int i = 0; i < entityList.size(); i++) {
+           entityList.get(i).render(gs);
+        }
     }
     
     public void update(float delta){
+        for (int i = 0; i < entityList.size(); i++) {
+           entityList.get(i).update(delta);
+        }
+        
         if (Gdx.input.isKeyPressed(Keys.SPACE)){
             dt+=delta;
             if (dt > timeTillNextBuy && GameScreen.getPlayer().getMenupoint()==2){
@@ -62,6 +73,9 @@ public class Underworld {
         if (money>0) {
             money--;
             wargsTospawn++;
+            Warg warg = new Warg(false);
+            warg.raise();
+            entityList.add(warg);
         }
     }
     
@@ -69,12 +83,18 @@ public class Underworld {
         if (money>0) {
             money--;
             slenderTospawn++;
+            Slender slender = new Slender(false);
+            slender.raise();
+            entityList.add(slender);
         }
     }
     public void buyBat(){
         if (money>0) {
             money--;
             batTospawn++;
+            Bat bat = new Bat(false);
+            bat.raise();
+            entityList.add(bat);
         }
     }
     

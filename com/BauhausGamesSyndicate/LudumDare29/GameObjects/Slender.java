@@ -8,8 +8,8 @@ import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
  */
 public class Slender extends Minion {
 
-    public Slender() {
-        super(GameScreen.onOverworld()?GameScreen.getOverworld().getEingang().getX():500,0);
+    public Slender(boolean world) {
+        super(GameScreen.onOverworld()?GameScreen.getOverworld().getEingang().getX():500,0,world);
     }
     
 }

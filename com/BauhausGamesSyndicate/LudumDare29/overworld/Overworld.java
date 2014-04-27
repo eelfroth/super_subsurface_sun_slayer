@@ -171,7 +171,7 @@ public class Overworld {
         
         //minnions in liste füllen
         for (int i = 0; i < 10; i++){
-            entityList.add(new Minion(Gdx.graphics.getWidth()/2f,0));
+            entityList.add(new Minion(Gdx.graphics.getWidth()/2f,0,true));
         }
         
         //place towns

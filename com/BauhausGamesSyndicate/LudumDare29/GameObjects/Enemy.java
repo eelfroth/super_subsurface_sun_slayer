@@ -6,8 +6,8 @@ package com.BauhausGamesSyndicate.LudumDare29.GameObjects;
  */
 public class Enemy extends AbstractCharacter {
     public int direction;
-    public Enemy(float x, float y) {
-        super(x, y, "enemy");
+    public Enemy(float x, float y, boolean world) {
+        super(x, y, "enemy", world);
         direction = -1;
         setSpeed((float) (0.1f + Math.random()*.2f));
     }

@@ -28,7 +28,7 @@ public class Player extends AbstractCharacter {
     private int menupoint = 0;
     
     public Player(float x, float y) {
-        super(x, y, "player");
+        super(x, y, "player", false);
     }
     
     @Override
