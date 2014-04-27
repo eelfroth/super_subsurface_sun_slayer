@@ -18,4 +18,9 @@ public class Warg extends Minion {
             1
         );
     }
+    
+    @Override
+    public void fight(AbstractCharacter enemy) {
+        //playSpacial(true);
+    }
 }

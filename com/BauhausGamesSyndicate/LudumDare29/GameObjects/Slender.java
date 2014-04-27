@@ -20,4 +20,9 @@ public class Slender extends Minion {
             1
         );
     }
+    
+    @Override
+    public void fight(AbstractCharacter enemy) {
+        //slender does nothing
+    }
 }

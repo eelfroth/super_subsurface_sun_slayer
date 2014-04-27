@@ -16,5 +16,12 @@ public class Bauer extends AbstractCharacter {
     public boolean isEvil() {
         return false;
     }
+
+    @Override
+    public void fight(AbstractCharacter enemy) {
+        //bauer macht nichts
+    }
+    
+    
     
 }

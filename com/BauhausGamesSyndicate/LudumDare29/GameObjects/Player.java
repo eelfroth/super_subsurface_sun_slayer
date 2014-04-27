@@ -172,4 +172,11 @@ public class Player extends AbstractCharacter {
     public boolean isEvil() {
         return true;
     }
+
+    @Override
+    public void fight(AbstractCharacter enemy) {
+        //player does nothing
+    }
+    
+    
 }

@@ -128,9 +128,10 @@ public abstract class AbstractCharacter extends AbstractEntity {
         for (AbstractEntity entity : GameScreen.getOverworld().getEntityList()) {
             if (entity instanceof AbstractCharacter &&//can typecasting be made
                 ((AbstractCharacter)entity).isEvil()!=isEvil() && //is not same fraction?
-                entity.getX()+entity.getWidth() > getX()
-                && entity.getX() < getX()+entity.getWidth()){
+                entity.getX()+entity.getWidth() > getX()&&
+                entity.getX() < getX()+entity.getWidth()){
                 acceleration=0;
+                fight((AbstractCharacter) entity);
             }
         }
     }
@@ -152,4 +153,10 @@ public abstract class AbstractCharacter extends AbstractEntity {
     }
     
     public abstract boolean isEvil();
+    
+    /**
+     * What should happen during fighting
+     * @param enemy the enemy you are fighting
+     */
+    public abstract void fight(AbstractCharacter enemy);
 }

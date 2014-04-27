@@ -47,5 +47,9 @@ public class Soldat extends AbstractCharacter {
         return false;
     }
     
+    @Override
+    public void fight(AbstractCharacter enemy) {
+        //playSpacial(true);
+    }
     
 }
