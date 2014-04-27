@@ -25,7 +25,7 @@ void main() {
     
     v_resfactor = vec4(f_width/f_height, f_height/f_width, 1, 1);
     
-    v_ynorm = (a_position.y+3)/4;
+    v_ynorm = (a_position.y+3.0)/4.0;
     v_linear = vec4(v_ynorm, 1, 1, 1);
     //a_position.x = a_position.x/2 * (a_position.y*a_position.y)/(a_position.y);
 
