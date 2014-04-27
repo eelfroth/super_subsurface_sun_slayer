@@ -193,8 +193,8 @@ public class GameScreen implements Screen {
         frameBuffer = new FrameBuffer(Pixmap.Format.RGBA8888 , Gdx.graphics.getWidth(), Gdx.graphics.getWidth(), false);
         
         //generate frameMesh
-        int xQuads = 19;
-        int yQuads = 10;
+        int xQuads = 23;
+        int yQuads = 23;
 
         float[] vertices = new float[xQuads*yQuads*36];
         short[] indices  = new short[xQuads*yQuads*6];
