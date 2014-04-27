@@ -22,7 +22,7 @@ public class Overworld {
     // x - Positionen der Städte
     private static int[] citymapX;
     private static int[] citymapY;
-    private final int anzCitys = 1;
+    private final int anzCitys = 4;
     
     private static final ArrayList<AbstractEntity> entityList = new ArrayList<>();
     private static int cameraPos = 0;
@@ -48,8 +48,15 @@ public class Overworld {
 //        for (int x = 0; x < heightmap.length; x++) {
 //            heightmap[x] = (int) (Math.random()*Chunk.HEIGHT/2);
 //        }
-        citymapX[0] = 300;
-        citymapY[0] = 450;
+        citymapX[0] = 530;
+        citymapY[0] = 400;
+        citymapX[1] = 880;
+        citymapY[1] = 430;
+        citymapX[2] = 1200;
+        citymapY[2] = 440;
+        citymapX[3] = 1100;
+        citymapY[3] = 330;
+        
         
         heightmap[0] = 300;
         heightmap[1] = 327;
