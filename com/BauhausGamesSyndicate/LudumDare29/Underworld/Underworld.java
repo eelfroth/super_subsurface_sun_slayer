@@ -12,6 +12,7 @@ import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Matrix4;
 import java.util.ArrayList;
 
@@ -27,11 +28,9 @@ public class Underworld extends AbstractWorld{
     private final int timeTillNextBuy = 500;
     private final ArrayList<AbstractEntity> entityList = new ArrayList<>();
     private int money = 100;
-    private int wargsTospawn;
-    private int slenderTospawn;
-    private int batTospawn;
     private final OrthographicCamera camera;
-    private final Sound coinsound;
+    private final Sound buySound;
+    private final Sprite[] icons;
     private float rotation;
 
     public Underworld(GameScreen gs) {
@@ -41,7 +40,29 @@ public class Underworld extends AbstractWorld{
                 new Matrix4());
         
         this.texture = new Texture(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/underworld.jpg"));
-        coinsound = Gdx.audio.newSound(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/coin.wav"));
+        
+        icons = new Sprite[6];
+        icons[0] = new Sprite(GameScreen.getSpritesheet().findRegion("icobat0"));
+        icons[0].setX(1600);
+        icons[0].setY(600);
+        icons[1] = new Sprite(GameScreen.getSpritesheet().findRegion("icowarg0"));
+        icons[1].setX(1600);
+        icons[1].setY(180);
+        icons[2] = new Sprite(GameScreen.getSpritesheet().findRegion("icoslender0"));
+        icons[2].setX(200);
+        icons[2].setY(700);
+        icons[3] = new Sprite(GameScreen.getSpritesheet().findRegion("icobat1"));
+        icons[3].setX(1600);
+        icons[3].setY(600);
+        icons[4] = new Sprite(GameScreen.getSpritesheet().findRegion("icowarg1"));
+        icons[4].setX(1600);
+        icons[4].setY(180);
+        icons[5] = new Sprite(GameScreen.getSpritesheet().findRegion("icoslender1"));
+        icons[5].setX(200);
+        icons[5].setY(700);
+        
+        
+        buySound = Gdx.audio.newSound(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/coin.wav"));
         
         camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
@@ -65,23 +86,36 @@ public class Underworld extends AbstractWorld{
     @Override
     public void render(GameScreen gs){
         camera.translate(0,Gdx.graphics.getHeight()/2.25f);
-        camera.rotate(rotation);
+        //camera.rotate(rotation);
         camera.update();
         gs.getBatch().setProjectionMatrix(camera.combined);
         
         gs.getBatch().draw(texture, 0, 0);
         
         camera.translate(0,-Gdx.graphics.getHeight()/2.25f);
-        camera.rotate(-rotation);
+        //camera.rotate(-rotation);
         camera.update();
         gs.getBatch().setProjectionMatrix(camera.combined);
         
         gs.getFont().setColor(new Color(1,1,1,1));
-        gs.getFont().draw(gs.getBatch(), "Corpses:"+getMoney(), Gdx.graphics.getHeight()-500, Gdx.graphics.getWidth()-300);
+        gs.getFont().draw(gs.getBatch(), "Corpses:"+getMoney(), 200, 300);
         
         for (int i = 0; i < entityList.size(); i++) {
            entityList.get(i).render(gs);
         }
+        
+        if (GameScreen.getPlayer().getMenupoint() == 3 && Gdx.input.isKeyPressed(Keys.SPACE))
+            icons[3].draw(gs.getBatch());    
+        else
+            icons[0].draw(gs.getBatch());
+        if (GameScreen.getPlayer().getMenupoint() == 2 && Gdx.input.isKeyPressed(Keys.SPACE))
+            icons[4].draw(gs.getBatch());    
+        else
+            icons[1].draw(gs.getBatch());
+        if (GameScreen.getPlayer().getMenupoint() == 1 && Gdx.input.isKeyPressed(Keys.SPACE))
+            icons[5].draw(gs.getBatch());    
+        else
+            icons[2].draw(gs.getBatch());
     }
     
     @Override
@@ -118,32 +152,29 @@ public class Underworld extends AbstractWorld{
     public void buyWarg(){
         if (money>0) {
             money--;
-            wargsTospawn++;
             Warg warg = new Warg(false);
             warg.rise();
             entityList.add(warg);
-            coinsound.play();
+            buySound.play();
         }
     }
     
     public void buySlender(){
         if (money>0) {
             money--;
-            slenderTospawn++;
             Slender slender = new Slender(false);
             slender.rise();
             entityList.add(slender);
-            coinsound.play();
+            buySound.play();
         }
     }
     public void buyBat(){
         if (money>0) {
             money--;
-            batTospawn++;
             Fledermaus bat = new Fledermaus(false);
             bat.rise();
             entityList.add(bat);
-            coinsound.play();
+            buySound.play();
         }
     }
     
@@ -156,7 +187,7 @@ public class Underworld extends AbstractWorld{
     }
     
     public void dispose(){
-        coinsound.dispose();
+        buySound.dispose();
     }
 
     public void rotate(float f) {
