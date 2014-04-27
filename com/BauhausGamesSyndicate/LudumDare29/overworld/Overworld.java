@@ -23,6 +23,7 @@ public class Overworld {
     private static int[] citymapX;
     private static int[] citymapY;
     private final int anzCitys = 4;
+    private final int anzForrests = 10;
     
     private static final ArrayList<AbstractEntity> entityList = new ArrayList<>();
     private static int cameraPos = 0;
@@ -195,6 +196,14 @@ public class Overworld {
                 new City(this, citymapX[i], citymapY[i] , eingang)
             );
             // (int) (Chunk.HEIGHT/4*Math.random()+Chunk.HEIGHT/4)
+        }
+        
+        //place Forrests
+        for (int i = 0; i < anzForrests; i++){
+            int tx = (int) Math.random();
+            entityList.add(
+                new Forrest(this, tx, 700 )
+            );
         }
     }
     
