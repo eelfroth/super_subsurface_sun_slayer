@@ -172,7 +172,7 @@ public class Player extends AbstractCharacter {
     }
 
     @Override
-    public void fight(AbstractCharacter enemy) {
+    public void fight(AbstractCharacter enemy, float delta) {
         //player does nothing
     }
     

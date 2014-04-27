@@ -22,7 +22,7 @@ public class Slender extends Minion {
     }
     
     @Override
-    public void fight(AbstractCharacter enemy) {
+    public void fight(AbstractCharacter enemy, float delta) {
         //slender does nothing
     }
 }

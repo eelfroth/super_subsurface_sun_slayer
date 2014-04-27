@@ -127,7 +127,7 @@ public abstract class AbstractCharacter extends AbstractEntity {
                 entity.getX()+entity.getWidth() > getX()&&
                 entity.getX() < getX()+entity.getWidth()){
                 acceleration=0;
-                fight((AbstractCharacter) entity);
+                fight((AbstractCharacter) entity, delta);
             }
         }
     }
@@ -154,5 +154,5 @@ public abstract class AbstractCharacter extends AbstractEntity {
      * What should happen during fighting
      * @param enemy the enemy you are fighting
      */
-    public abstract void fight(AbstractCharacter enemy);
+    public abstract void fight(AbstractCharacter enemy, float delta);
 }
