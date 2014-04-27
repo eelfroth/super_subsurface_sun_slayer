@@ -17,8 +17,8 @@ public abstract class AbstractEntity{
     private float x;
     private float y;
     private int step;
-    private float timer;
-    private int steptime = 1000;//ms
+    private float timer = 0;
+    private int steptime = 200;//ms
     
     private TextureRegion[] textures;
     private boolean flip = false;
@@ -31,6 +31,17 @@ public abstract class AbstractEntity{
         this.y = y;
         this.world = world;
     }
+
+    public AbstractEntity(float x, float y, String name, boolean world, int steps) {
+        this(x, y, name, world);
+        textures = new TextureRegion[steps];
+        for (int i = 0; i < steps; i++) {
+            textures[i] = GameScreen.getSpritesheet().findRegion(name+""+Integer.toString(i)); 
+            if (textures[i]==null)
+                System.err.println(name+""+Integer.toString(i));
+        }
+    }
+
     
     public void update(float delta){
         timer+=delta;
@@ -38,13 +49,15 @@ public abstract class AbstractEntity{
             step++;
             timer %= steptime;
         }
-        if (step > textures.length)
+        if (step >= textures.length)
             step=0;
 
     };
     
     public void render(GameScreen gs){
-        gs.getBatch().draw(textures[step], x, y);
+        if (flip != textures[step].isFlipX())
+           textures[step].flip(true, false);
+        gs.getBatch().draw(textures[step], x, y-56);
     }
 
     public boolean onOverworld() {
@@ -103,8 +116,11 @@ public abstract class AbstractEntity{
         this.steptime = steptime;
     }
     
+    /**
+     * True if lef-siided
+     * @param flip
+     */
     public void setFlipHorizontal(boolean flip){
-        if (flip!=this.flip) textures[step].flip(flip, false);
         this.flip=flip;
     }
     

@@ -12,8 +12,9 @@ import com.BauhausGamesSyndicate.LudumDare29.overworld.Eingang;
 public class Enemy extends AbstractCharacter {
     private final Eingang eingang;
     private boolean arrived;
+    
     public Enemy(float x, float y, boolean world, Eingang eingang) {
-        super(x, y, "enemy", world);
+        super(x, y, "soldat", world,2);
         arrived = false;
         setDirection(-1);
         setSpeed((float) (0.1f + Math.random()*.2f));
@@ -25,7 +26,9 @@ public class Enemy extends AbstractCharacter {
         }
     }
 
+    @Override
     public void update(float delta) {
+        super.update(delta);
         /*
         if((int)(Math.random()*100) == 23){
             setDirection(-1*getDirection());
@@ -37,7 +40,7 @@ public class Enemy extends AbstractCharacter {
         if(getX() > eingang.getX()-eingang.getWidth()/2 && getDirection() == 1 ||
            getX() < eingang.getX()+eingang.getWidth()*1.5 && getDirection() == -1)
             arrived = true;
-        super.update(delta);
+
         boolean collide = false;
         
         //colission check

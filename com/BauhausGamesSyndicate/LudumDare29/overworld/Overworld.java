@@ -20,6 +20,12 @@ import java.util.ArrayList;
 public class Overworld extends AbstractWorld{
     private final int cityDistToEntrance = 700;
     private static int[] heightmap;
+    
+    // x - Positionen der Städte
+    private static int[] citymapX;
+    private static int[] citymapY;
+    private final int anzCitys = 4;
+    
     private static final ArrayList<AbstractEntity> entityList = new ArrayList<>();
     private static int cameraPos = 0;
     private static Chunk[] chunks; 
@@ -39,16 +45,27 @@ public class Overworld extends AbstractWorld{
         }
         
         eingang = new Eingang();
-        
-        
+
         background = new Sprite(new Texture(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/bg.jpg")));
         //background.scale(4);
         
         //heightmap generieren
         Overworld.heightmap = new int[256];
+        Overworld.citymapX = new int[anzCitys];
+        Overworld.citymapY = new int[anzCitys];
 //        for (int x = 0; x < heightmap.length; x++) {
 //            heightmap[x] = (int) (Math.random()*Chunk.HEIGHT/2);
 //        }
+        citymapX[0] = 530;
+        citymapY[0] = 400;
+        citymapX[1] = 880;
+        citymapY[1] = 430;
+        citymapX[2] = 1200;
+        citymapY[2] = 440;
+        citymapX[3] = 1100;
+        citymapY[3] = 330;
+        
+        
         heightmap[0] = 300;
         heightmap[1] = 327;
         heightmap[2] = 353;
@@ -179,15 +196,78 @@ public class Overworld extends AbstractWorld{
         heightmap[127] = 326;
         heightmap[128] = 300;
         
+        heightmap[129] = 284;
+        heightmap[130] = 263;
+        heightmap[131] = 230;
+        heightmap[132] = 200;
+        heightmap[133] = 163;
+        heightmap[134] = 129;
+        heightmap[135] = 118;
+        heightmap[136] = 121;
+        heightmap[137] = 133;
+        heightmap[138] = 132;
+        heightmap[139] = 153;
+        heightmap[140] = 165;
+        heightmap[141] = 188;
+        heightmap[142] = 218;
+        heightmap[143] = 238;
+        heightmap[144] = 261;
+        heightmap[145] = 294;
+        heightmap[146] = 338;
+        heightmap[147] = 356;
+        heightmap[148] = 386;
+        heightmap[149] = 415;
+        heightmap[150] = 439;
+        heightmap[151] = 464;
+        heightmap[152] = 490;
+        heightmap[153] = 515;
+        heightmap[154] = 537;
+        heightmap[155] = 555;
+        heightmap[156] = 541;
+        heightmap[157] = 505;
+        heightmap[158] = 483;
+        heightmap[159] = 465;
+        heightmap[160] = 471;
+        heightmap[161] = 440;
+        heightmap[162] = 436;
+        heightmap[163] = 460;
+        heightmap[164] = 471;
+        heightmap[165] = 490;
+        heightmap[166] = 537;
+        heightmap[167] = 546;
+        heightmap[168] = 526;
+        heightmap[169] = 502;
+        heightmap[170] = 478;
+        heightmap[171] = 450;
+        heightmap[172] = 426;
+        heightmap[173] = 398;
+        heightmap[174] = 370;
+        heightmap[175] = 369;
+        heightmap[176] = 380;
+        heightmap[177] = 364;
+        heightmap[178] = 347;
+        heightmap[179] = 329;
+        heightmap[180] = 315;
+        heightmap[181] = 306;
+        heightmap[182] = 296;
+        heightmap[183] = 293;
+        heightmap[184] = 294;
+        heightmap[185] = 289;
+        heightmap[186] = 275;
+        heightmap[187] = 278;
+        heightmap[188] = 271;
+        heightmap[189] = 283;
+        heightmap[190] = 290;
+        heightmap[191] = 295;
+        heightmap[192] = 300;
+        
         //place towns
-        for (int i = 0; i < 1000; i++){
-            int sx;
-            do{
-               sx = (int) (Math.random() * getMapWidth());
-            }while( sx > eingang.getX()-eingang.getWidth()-cityDistToEntrance && sx < eingang.getX() + eingang.getWidth()+cityDistToEntrance);
+        for (int i = 0; i < anzCitys; i++){
+            
             entityList.add(
-                new City(this, sx, (int) (Chunk.HEIGHT/4*Math.random()+Chunk.HEIGHT/4), eingang)
+                new City(this, citymapX[i], citymapY[i] , eingang)
             );
+            // (int) (Chunk.HEIGHT/4*Math.random()+Chunk.HEIGHT/4)
         }
     }
     
@@ -215,11 +295,19 @@ public class Overworld extends AbstractWorld{
         //background
          for (int i = 0; i < getMapWidth()/background.getWidth(); i++) {
             int x = (int) (i*background.getWidth());
-//            int m=getMapWidth();
-//            if (x < -m)
-//                x += m;
-//            else
-//                x = x % m;
+            int m=getMapWidth();
+            
+            int cc = Overworld.getCameraPos()/4;//current chunk 0-3
+
+            if (i >cc+1)
+                x-=m/2;
+        
+            if (x < -m)
+                x += m;
+            else
+                x = x % m;
+            
+
             
         if (x+background.getWidth() > Overworld.getCameraPos()/2 && x < Gdx.graphics.getWidth()+Overworld.getCameraPos()/2)
             gs.getBatch().draw(background, x, 0);
