@@ -171,7 +171,7 @@ public class Overworld {
         
         //minnions in liste füllen
         for (int i = 0; i < 10; i++){
-            entityList.add(new Minion(Gdx.graphics.getWidth()/2f));
+            entityList.add(new Minion(Gdx.graphics.getWidth()/2f,0));
         }
         
         //place towns
@@ -193,7 +193,7 @@ public class Overworld {
     }
     
     public void render(GameScreen gs){
-         int y = Gdx.graphics.getHeight()-Chunk.HEIGHT; 
+        int y = Gdx.graphics.getHeight()-Chunk.HEIGHT; 
         gs.getCamera().translate(-Overworld.getCameraPos()/2, -y);
         gs.getCamera().update();
         gs.getBatch().setProjectionMatrix(gs.getCamera().combined);
