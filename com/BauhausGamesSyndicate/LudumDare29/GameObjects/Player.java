@@ -96,6 +96,10 @@ public class Player extends AbstractCharacter {
                 if(leftLocked)
                     leftLocked = false;
             }
+            
+            if (GameScreen.onOverworld() && Gdx.input.isKeyPressed(Keys.SPACE)){
+                attack();
+            }
         }
         
         setAcceleration(getAcceleration() * getAccFactor()    );
@@ -133,5 +137,12 @@ public class Player extends AbstractCharacter {
     
     public void dispose(){
         rising.dispose();
+    }
+    
+    /**
+     * was soll passieren, wenn die SPielfigur angreift?
+     */
+    public void attack(){
+    
     }
 }
