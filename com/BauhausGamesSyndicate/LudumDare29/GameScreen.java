@@ -106,83 +106,35 @@ public class GameScreen implements Screen {
         delta *= 1000;
         
         //update
-        fps.update(delta);
-        overworld.update(delta);
-        underworld.update(delta);
-        
-        player.update(delta);
-        world = player.onOverworld();
-        
-        Overworld.setCameraPos((int) (player.getX()-Gdx.graphics.getWidth()/2));
+        update(delta);
         
         
-        //render
+        //clear
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        
-        
-                
+                 
         //1. render game world to framebuffer:
-        
         frameBuffer.begin();
         {
             batch.begin();
             if (world) {
-                //move camera
-                camera.translate(Overworld.getCameraPos(), 0);
-                camera.update();
-                batch.setProjectionMatrix(camera.combined);
-                shr.setProjectionMatrix(camera.combined);
-                
-                //render
-                overworld.render(this);
-                player.render(this);
-                
-                //move camera back
-                camera.translate(-Overworld.getCameraPos(), 0);
-                camera.update();
-                shr.setProjectionMatrix(camera.combined);
-                batch.setProjectionMatrix(camera.combined);
+                renderOverworld();
             }
             
             if (!world) {
-                //render
-                underworld.render(this);
-                player.render(this);
+                renderUnderworld();
             }
-            
             batch.end();
+            
+            //overlay
+            renderOverlay();
         }
         frameBuffer.end();
         
 
         //2. render framebuffer to frame:
-        
-        //if(world) {
-        shader = shaderOverworld;
-        
-        shader.begin();
+        renderFramebuffer(shaderOverworld);
 
-        float angle = Overworld.getCameraPos()*360/(float) Overworld.getMapWidth();
-        if(rotation) worldMatrix.rotate(0,0,1,-angle);
-        
-        shader.setUniformMatrix("u_worldView", worldMatrix);
-        shader.setUniformi("u_texture", 0);
-
-        frameBuffer.getColorBufferTexture().bind();
-        //debug_texture.bind();
-        frameMesh.render(shader, GL20.GL_TRIANGLES);
-        
-        if(rotation) worldMatrix.rotate(0,0,1,angle);
-        shader.end();
-        
-        //overlay
-        batch.begin();
-        Sprite sprite = new Sprite(overlay);
-        sprite.scale(6);
-        sprite.draw(batch);
-        //batch.draw(overlay, 0, 0);
-        batch.end();
         
         //fps
         fps.render(shr, font);
@@ -238,11 +190,11 @@ public class GameScreen implements Screen {
     }
     
     private void setupFramebuffer() {
-        frameBuffer = new FrameBuffer(Pixmap.Format.RGB565 , Gdx.graphics.getWidth(), Gdx.graphics.getWidth(), false);
+        frameBuffer = new FrameBuffer(Pixmap.Format.RGBA8888 , Gdx.graphics.getWidth(), Gdx.graphics.getWidth(), false);
         
         //generate frameMesh
-        int xQuads = 19;
-        int yQuads = 10;
+        int xQuads = 23;
+        int yQuads = 23;
 
         float[] vertices = new float[xQuads*yQuads*36];
         short[] indices  = new short[xQuads*yQuads*6];
@@ -327,5 +279,65 @@ public class GameScreen implements Screen {
 
     public static Player getPlayer() {
         return player;
+    }
+
+    private void renderOverlay() {
+        batch.begin();
+        Sprite sprite = new Sprite(overlay);
+        sprite.scale(6);
+        sprite.draw(batch);
+        //batch.draw(overlay, 0, 0);
+        batch.end();
+    }
+
+    private void renderOverworld() {
+        //move camera
+        camera.translate(Overworld.getCameraPos(), 0);
+        camera.update();
+        batch.setProjectionMatrix(camera.combined);
+        shr.setProjectionMatrix(camera.combined);
+
+        //render
+        overworld.render(this);
+        player.render(this);
+
+        //move camera back
+        camera.translate(-Overworld.getCameraPos(), 0);
+        camera.update();
+        shr.setProjectionMatrix(camera.combined);
+        batch.setProjectionMatrix(camera.combined);
+    }
+
+    private void renderUnderworld() {
+        //render
+        underworld.render(this);
+        player.render(this);
+    }
+
+    private void renderFramebuffer(ShaderProgram shader) {
+        shader.begin();
+        float angle = Overworld.getCameraPos()*360/(float) Overworld.getMapWidth();
+        if(rotation) worldMatrix.rotate(0,0,1,-angle);
+        
+        shader.setUniformMatrix("u_worldView", worldMatrix);
+        shader.setUniformi("u_texture", 0);
+
+        frameBuffer.getColorBufferTexture().bind();
+        //debug_texture.bind();
+        frameMesh.render(shader, GL20.GL_TRIANGLES);
+        
+        if(rotation) worldMatrix.rotate(0,0,1,angle);
+        shader.end();
+    }
+
+    public void update(float delta) {
+        fps.update(delta);
+        overworld.update(delta);
+        underworld.update(delta);
+        
+        player.update(delta);
+        world = player.onOverworld();
+        
+        Overworld.setCameraPos((int) (player.getX()-Gdx.graphics.getWidth()/2));
     }
 }

@@ -15,6 +15,8 @@ import java.util.ArrayList;
 /**
  *
  * @author Benedikt Vogler
+ * @author Paul Flechsig
+ * @author Jacob Bauer
  */
 public class Underworld {
     private final Texture texture;

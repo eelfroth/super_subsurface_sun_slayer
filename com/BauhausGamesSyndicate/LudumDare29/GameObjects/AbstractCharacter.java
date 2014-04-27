@@ -16,8 +16,8 @@ public abstract class AbstractCharacter extends AbstractEntity {
     private boolean shouldRaise;
     private boolean shouldDescend;
 
-    public AbstractCharacter(float x, float y, String name, boolean world){
-        super(x, y, name, world);
+    public AbstractCharacter(float x, float y, String name, boolean world, int steps){
+        super(x, y, name, world,steps);
         life     = 100;
         
         speed     = 0;
@@ -27,6 +27,11 @@ public abstract class AbstractCharacter extends AbstractEntity {
         friction = 0.05f;
         
     }
+    
+    public AbstractCharacter(float x, float y, String name, boolean world){
+        this(x, y, name, world,1);
+    }
+    
     
     public float getFriction(){
         return this.friction;

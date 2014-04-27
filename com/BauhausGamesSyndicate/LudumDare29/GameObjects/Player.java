@@ -15,6 +15,8 @@ import com.badlogic.gdx.audio.Sound;
 /**
  *
  * @author Benedikt Vogler
+ * @author Paul Flechsig
+ * @author Jacob Bauer
  */
 public class Player extends AbstractCharacter {
     private boolean upLocked    = false;

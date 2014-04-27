@@ -11,8 +11,8 @@ import com.badlogic.gdx.graphics.g2d.Animation;
  */
 public class Minion extends AbstractCharacter{
     
-    public Minion(float x, float y, boolean world){
-        super(x, y, "minion", world);
+    public Minion(float x, float y, String name,boolean world, int steps){
+        super(x, y, name, world, steps);
         setSpeed((float) (0.1f + Math.random()*.2f));
     }
     
