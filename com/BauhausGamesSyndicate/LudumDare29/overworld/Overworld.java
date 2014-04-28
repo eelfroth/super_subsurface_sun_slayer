@@ -131,10 +131,10 @@ public class Overworld extends AbstractWorld{
         heightmap[28] = 372;
         heightmap[29] = 355;
         heightmap[30] = 346;
-        heightmap[31] = 318;
-        heightmap[32] = 300;
-        heightmap[33] = 300;
-        heightmap[34] = 300;
+        heightmap[31] = 360;
+        heightmap[32] = 380;
+        heightmap[33] = 385;
+        heightmap[34] = 370;
         heightmap[35] = 341;
         heightmap[36] = 354;
         heightmap[37] = 364;
