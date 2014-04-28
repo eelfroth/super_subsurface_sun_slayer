@@ -205,6 +205,10 @@ public abstract class AbstractCharacter extends AbstractEntity {
          return Tuning.CHARACTER_UNDERWORLD_START_LOCATION_Y;
     }
     
+    /**
+     * is character in contact with enemy?
+     * @return 
+     */
     public boolean isFighting(){
         return fighting;
     };
