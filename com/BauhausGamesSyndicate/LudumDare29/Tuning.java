@@ -139,8 +139,5 @@ public final class Tuning {
         public static float PALA_DAMAGE_PER_ATTACK = 8f;
     
     
-
-    
-    
     
 }

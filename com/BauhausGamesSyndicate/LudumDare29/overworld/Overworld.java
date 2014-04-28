@@ -3,6 +3,7 @@ package com.BauhausGamesSyndicate.LudumDare29.overworld;
 
 import com.BauhausGamesSyndicate.LudumDare29.AbstractWorld;
 import com.BauhausGamesSyndicate.LudumDare29.GameObjects.AbstractEntity;
+import com.BauhausGamesSyndicate.LudumDare29.GameObjects.Unicorn;
 import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
@@ -392,6 +393,9 @@ public class Overworld extends AbstractWorld{
         
         // add CastleOfLight
         entityList.add(new CastleOfLight(this, 10306, 520));
+        
+        // add uber pr unicorn
+        entityList.add(new Unicorn(-556, 520, true));
     }
     
     @Override
