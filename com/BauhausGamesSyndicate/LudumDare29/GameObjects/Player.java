@@ -24,6 +24,7 @@ public class Player extends AbstractCharacter {
     
     public Player(float x, float y) {
         super(x, y, "overlord", false,10,9);
+        setAccFactor(0.05f);
         growlsound = Gdx.audio.newSound(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/growlsingle.ogg"));
         stepsound = Gdx.audio.newSound(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/step.wav"));
     }
