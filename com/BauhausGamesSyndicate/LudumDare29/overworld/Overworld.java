@@ -379,6 +379,15 @@ public class Overworld extends AbstractWorld{
         // add Bauernhof 2
         entityList.add(new Bauernhof2(this, 4000, 300));
         
+        // add Burg
+        entityList.add(new Burg(this, 5450, 440));
+        
+        // add Siedlung
+        entityList.add(new Siedlung(this, 4940, 350));
+        
+        // add Fortress
+        entityList.add(new Fortress(this, 6890, 400));
+        
         // add CastleOfLight
         entityList.add(new CastleOfLight(this, 10306, 520));
     }
