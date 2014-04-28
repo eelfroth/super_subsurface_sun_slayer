@@ -1,6 +1,7 @@
 package com.BauhausGamesSyndicate.LudumDare29.overworld;
 
 import com.BauhausGamesSyndicate.LudumDare29.GameObjects.AbstractEntity;
+import com.BauhausGamesSyndicate.LudumDare29.GameObjects.Bauer;
 import com.BauhausGamesSyndicate.LudumDare29.GameObjects.Soldat;
 
 /**
@@ -35,7 +36,7 @@ public class City extends AbstractEntity {
     }
 
     private void spawnEnemy() {
-       Soldat enemy = new Soldat(getX(),getY(), onOverworld(), eingang);
+       Bauer enemy = new Bauer(getX(),getY(), onOverworld(), eingang);
        overworld.addEntity(enemy);
     }
 }

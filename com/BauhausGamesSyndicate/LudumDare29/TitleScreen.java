@@ -24,6 +24,7 @@ class TitleScreen implements Screen {
     public TitleScreen() {
         background = new Sprite(new Texture(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/tb0.png")));
         jingle = Gdx.audio.newSound(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/jingle.ogg"));
+
     }
 
     @Override
