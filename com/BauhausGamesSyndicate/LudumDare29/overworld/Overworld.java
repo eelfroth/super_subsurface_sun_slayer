@@ -365,7 +365,7 @@ public class Overworld extends AbstractWorld{
         for (int i = 0; i < anzCitys; i++){
             
             entityList.add(
-                new City(this, citymapX[i], citymapY[i] , eingang)
+                new City(this, citymapX[i], citymapY[i])
             );
             // (int) (Chunk.HEIGHT/4*Math.random()+Chunk.HEIGHT/4)
         }
