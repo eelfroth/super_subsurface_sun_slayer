@@ -2,6 +2,7 @@ package com.BauhausGamesSyndicate.LudumDare29.GameObjects;
 
 import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
 import com.badlogic.gdx.Gdx;
+import static java.lang.Math.floor;
 import static java.lang.Math.sin;
 
 /**
@@ -25,10 +26,13 @@ public class Fledermaus extends Minion{
            1
        );
        
+       setSteptime(50);
+       
        //startwerte zugällig, damit die fledermäuse unterschiedlich fliegen;
        y_sin = ((float)Math.random())*1000f;
        x_sin = ((float)Math.random())*1000f;
        y_pos = ((float)Math.random())*100f;
+       setStep((int)(Math.random()*4));
     }  
 
     @Override
@@ -45,9 +49,9 @@ public class Fledermaus extends Minion{
         
         //den x- und y-koordinaten werden sinuskurven addiert
         y_sin += delta*0.167;
-        setY((getY() + (float)sin(y_sin/147f)*200.0f) + 150.0f + y_pos);
+        setY((getY() + (float)sin(y_sin/147f)*200.0f) + 200.0f + y_pos);
         x_sin += delta*0.167;
-        setX(getX() + (float)sin(x_sin/211f)*11f);
+        setX(getX() + (float)sin(x_sin/211f)*4f);
         
         
         //debug shit

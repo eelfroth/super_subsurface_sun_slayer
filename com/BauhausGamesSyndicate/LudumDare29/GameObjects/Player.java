@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package com.BauhausGamesSyndicate.LudumDare29.GameObjects;
 
 import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
@@ -20,7 +14,6 @@ import com.badlogic.gdx.audio.Sound;
  */
 public class Player extends AbstractCharacter {
     private int menupoint = 0;
-    private static Sound rising;
     private static Sound growlsound;
     private static Sound stepsound;
     private float attacktimer;
@@ -30,8 +23,7 @@ public class Player extends AbstractCharacter {
     private float distanceTraveled;
     
     public Player(float x, float y) {
-        super(x, y, "overlord", false,10,10);
-        rising = Gdx.audio.newSound(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/rising.mp3"));
+        super(x, y, "overlord", false,10,9);
         growlsound = Gdx.audio.newSound(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/growlsingle.ogg"));
         stepsound = Gdx.audio.newSound(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/step.wav"));
     }
@@ -67,8 +59,8 @@ public class Player extends AbstractCharacter {
                 
                 
                 if (distanceTraveled<distanceToTravel){//traveling
-                    float dX = stepX*delta/4; 
-                    float dY = stepY*delta/4; 
+                    float dX = stepX*delta; 
+                    float dY = stepY*delta; 
                     setX(getX()+dX);
                     setY(getY()+dY);
                     distanceTraveled += Math.sqrt(dX*dX+dY*dY);
@@ -127,17 +119,16 @@ public class Player extends AbstractCharacter {
         if (id==2 && menupoint==0){
             flyTo(1, -2, 400);
         }else if (id==0 && menupoint==2){
-            flyTo(-0.5f, 2, 400);
+            flyTo(-1, 2, 400);
         }  else if(id==1 && menupoint==0){
             flyTo(-2, 0.5f, 350);
         }else if(id==3 && menupoint==0){
-            flyTo(1, 0.5f, 400);
+            flyTo(2, 1, 400);
         }else if(id==0 && menupoint==3){
-            flyTo(-1, -0.5f, 400);
+            flyTo(-2, -1, 400);
         } else if (id==0 && menupoint==1){
             flyTo(2, -0.5f, 350);
         } 
-        
         
         menupoint = id;
     }
@@ -149,12 +140,15 @@ public class Player extends AbstractCharacter {
     @Override
     public void rise() {
         super.rise();
-        rising.play();
+        GameScreen.getOverworld().getEingang().rise();
     }
     
-    public void dispose(){
-        rising.dispose();
+    @Override
+    public void descend(){
+        super.descend();
+        GameScreen.getOverworld().getEingang().descend();
     }
+
     
     /**
      * was soll passieren, wenn die SPielfigur angreift?

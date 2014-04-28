@@ -18,6 +18,7 @@ public abstract class AbstractEntity{
     private float y;
     private float life;
     private int step;
+    private int steps;
     private float timer = 0;
     private int steptime = 200;//ms
     
@@ -41,6 +42,7 @@ public abstract class AbstractEntity{
         this.x = x;
         this.y = y;
         this.world = world;
+        this.steps = steps;
         
         standardAnimation = new TextureRegion[steps];
         for (int i = 0; i < steps; i++) {
@@ -56,6 +58,7 @@ public abstract class AbstractEntity{
             //if (specialTextures[i]==null)
            //     System.err.println(name+""+Integer.toString(i)+"s");
         }
+        
     }
     
     public float getLife(){
@@ -96,7 +99,7 @@ public abstract class AbstractEntity{
         
         if (flip != tex.isFlipX())
            tex.flip(true, false);
-        gs.getBatch().draw(tex, x, y-56);
+        gs.getBatch().draw(tex, x - getWidth()/2, y-56);
     }
 
     public boolean onOverworld() {
@@ -173,6 +176,10 @@ public abstract class AbstractEntity{
             step=0;
         }
         this.special = special;
+    }
+    
+    public void setStep(int step) {
+        this.step = step % steps;
     }
     
 }

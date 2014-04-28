@@ -25,7 +25,7 @@ befestigter_bauernhof0
   index: -1
 befestigter_bauernhof0s
   rotate: false
-  xy: 1095, 131
+  xy: 745, 1280
   size: 271, 151
   orig: 301, 159
   offset: 0, 4
@@ -46,77 +46,119 @@ burg0s
   index: -1
 fledermaus0
   rotate: false
-  xy: 1455, 803
+  xy: 1435, 1218
   size: 83, 93
   orig: 83, 93
   offset: 0, 0
   index: -1
 fledermaus1
   rotate: false
-  xy: 1484, 515
+  xy: 1435, 1123
   size: 83, 93
   orig: 83, 93
   offset: 0, 0
   index: -1
 fledermaus2
   rotate: false
-  xy: 1471, 420
+  xy: 1526, 940
   size: 83, 93
   orig: 83, 93
   offset: 0, 0
   index: -1
 fledermaus3
   rotate: false
-  xy: 1471, 325
+  xy: 1441, 940
   size: 83, 93
   orig: 83, 93
   offset: 0, 0
   index: -1
+icobat0
+  rotate: false
+  xy: 1441, 780
+  size: 128, 158
+  orig: 618, 256
+  offset: 211, 45
+  index: -1
+icobat1
+  rotate: false
+  xy: 1305, 1410
+  size: 192, 130
+  orig: 618, 256
+  offset: 177, 63
+  index: -1
+icoslender0
+  rotate: false
+  xy: 1013, 381
+  size: 138, 216
+  orig: 618, 256
+  offset: 30, 15
+  index: -1
+icoslender1
+  rotate: false
+  xy: 1013, 157
+  size: 138, 222
+  orig: 618, 256
+  offset: 30, 14
+  index: -1
+icowarg0
+  rotate: false
+  xy: 1235, 1170
+  size: 198, 142
+  orig: 618, 256
+  offset: 388, 49
+  index: -1
+icowarg1
+  rotate: false
+  xy: 1230, 1026
+  size: 198, 142
+  orig: 618, 256
+  offset: 388, 49
+  index: -1
 overlord0
   rotate: false
-  xy: 1368, 131
+  xy: 1382, 387
   size: 225, 192
   orig: 271, 232
   offset: 39, 27
   index: -1
 overlord0s
   rotate: false
-  xy: 1011, 1196
+  xy: 1397, 2
   size: 223, 189
   orig: 283, 233
   offset: 33, 6
   index: -1
 overlord1
   rotate: false
-  xy: 1230, 997
+  xy: 1011, 1036
   size: 217, 190
   orig: 271, 232
   offset: 46, 27
   index: -1
 overlord1s
   rotate: false
-  xy: 1011, 997
+  xy: 1372, 581
   size: 217, 197
   orig: 283, 233
   offset: 44, 6
   index: -1
 overlord2
   rotate: false
-  xy: 1236, 803
+  xy: 1007, 842
   size: 217, 192
   orig: 271, 232
   offset: 39, 27
   index: -1
 overlord2s
   rotate: false
-  xy: 1013, 284
+  xy: 1153, 131
   size: 233, 213
   orig: 283, 233
   offset: 33, 6
   index: -1
 overlord3
   rotate: false
-  xy: 1315, 1375
+  xy: 885, 1433
   size: 203, 188
   orig: 271, 232
   offset: 47, 27
@@ -130,7 +172,7 @@ overlord3s
   index: -1
 overlord4
   rotate: false
-  xy: 895, 1387
+  xy: 1226, 842
   size: 213, 182
   orig: 271, 232
   offset: 35, 27
@@ -144,7 +186,7 @@ overlord4s
   index: -1
 overlord5
   rotate: false
-  xy: 1236, 1189
+  xy: 1018, 1228
   size: 215, 184
   orig: 271, 232
   offset: 31, 27
@@ -158,7 +200,7 @@ overlord5s
   index: -1
 overlord6
   rotate: false
-  xy: 680, 1358
+  xy: 1090, 1414
   size: 213, 182
   orig: 271, 232
   offset: 35, 27
@@ -172,7 +214,7 @@ overlord6s
   index: -1
 overlord7
   rotate: false
-  xy: 1110, 1387
+  xy: 680, 1433
   size: 203, 188
   orig: 271, 232
   offset: 47, 27
@@ -186,42 +228,35 @@ overlord7s
   index: -1
 overlord8
   rotate: false
-  xy: 1013, 499
+  xy: 1388, 193
   size: 229, 192
   orig: 271, 232
   offset: 39, 27
   index: -1
 overlord8s
   rotate: false
-  xy: 1007, 798
+  xy: 1153, 346
   size: 227, 197
   orig: 283, 233
   offset: 34, 6
   index: -1
 overlord9
   rotate: false
-  xy: 1263, 611
+  xy: 1153, 545
   size: 217, 190
   orig: 271, 232
   offset: 46, 27
   index: -1
-overlord9s
-  rotate: false
-  xy: 1248, 325
-  size: 221, 188
-  orig: 271, 232
-  offset: 41, 27
-  index: -1
 palisaden0
   rotate: false
-  xy: 1244, 515
+  xy: 1235, 1314
   size: 238, 94
   orig: 248, 98
   offset: 6, 3
   index: -1
 palisaden0s
   rotate: false
-  xy: 1397, 2
+  xy: 1430, 1035
   size: 184, 86
   orig: 248, 98
   offset: 30, 2
@@ -235,49 +270,49 @@ siedlung0
   index: -1
 siedlung0s
   rotate: false
-  xy: 1005, 693
+  xy: 1090, 737
   size: 256, 103
   orig: 316, 137
   offset: 28, 22
   index: -1
 slender0
   rotate: false
-  xy: 636, 1458
+  xy: 1591, 1123
   size: 20, 58
   orig: 32, 72
   offset: 6, 7
   index: -1
 slender1
   rotate: false
-  xy: 658, 1458
+  xy: 636, 1458
   size: 18, 58
   orig: 32, 72
   offset: 9, 7
   index: -1
 slender2
   rotate: false
-  xy: 1455, 934
+  xy: 680, 1327
   size: 20, 60
   orig: 32, 72
   offset: 8, 6
   index: -1
 slender3
   rotate: false
-  xy: 1556, 325
+  xy: 1348, 737
   size: 22, 58
   orig: 32, 72
   offset: 4, 7
   index: -1
 slender4
   rotate: false
-  xy: 1556, 385
+  xy: 1571, 780
   size: 18, 60
   orig: 32, 72
   offset: 8, 6
   index: -1
 slender5
   rotate: false
-  xy: 1477, 934
+  xy: 1520, 1196
   size: 18, 58
   orig: 32, 72
   offset: 9, 7
@@ -319,63 +354,63 @@ wald0
   index: -1
 wald0s
   rotate: false
-  xy: 745, 1280
+  xy: 1305, 1542
   size: 256, 76
   orig: 384, 216
   offset: 67, 57
   index: -1
 warg0
   rotate: false
-  xy: 1455, 898
+  xy: 1520, 1160
   size: 69, 34
   orig: 75, 50
   offset: 2, 10
   index: -1
 warg0s
   rotate: false
-  xy: 1013, 157
+  xy: 1520, 1123
   size: 69, 35
   orig: 111, 69
   offset: 18, 19
   index: -1
 warg1
   rotate: false
-  xy: 1397, 90
+  xy: 2, 1584
   size: 69, 34
   orig: 75, 50
   offset: 2, 10
   index: -1
 warg1s
   rotate: false
-  xy: 1468, 90
+  xy: 1090, 1598
   size: 65, 23
   orig: 111, 69
   offset: 20, 22
   index: -1
 warg2
   rotate: false
-  xy: 1248, 284
+  xy: 73, 1547
   size: 69, 34
   orig: 75, 50
   offset: 2, 10
   index: -1
 warg2s
   rotate: false
-  xy: 73, 1547
+  xy: 1372, 780
   size: 67, 31
   orig: 111, 69
   offset: 19, 22
   index: -1
 warg3s
   rotate: false
-  xy: 1013, 194
+  xy: 144, 1547
   size: 65, 29
   orig: 111, 69
   offset: 24, 18
   index: -1
 warg4s
   rotate: false
-  xy: 895, 1358
+  xy: 1348, 813
   size: 67, 27
   orig: 111, 69
   offset: 20, 19
@@ -389,28 +424,56 @@ warg5s
   index: -1
 zivi1
   rotate: false
-  xy: 1497, 934
+  xy: 1540, 1196
+  size: 16, 30
+  orig: 22, 36
+  offset: 3, 0
+  index: -1
+zivi1s
+  rotate: false
+  xy: 1571, 842
   size: 18, 36
   orig: 22, 36
   offset: 1, 0
   index: -1
 zivi2
   rotate: false
-  xy: 1556, 447
+  xy: 1520, 1256
+  size: 16, 30
+  orig: 22, 36
+  offset: 3, 0
+  index: -1
+zivi2s
+  rotate: false
+  xy: 702, 1327
   size: 18, 36
   orig: 22, 36
   offset: 1, 0
   index: -1
 zivi3
   rotate: false
-  xy: 614, 1520
+  xy: 73, 1583
+  size: 18, 30
+  orig: 22, 36
+  offset: 2, 0
+  index: -1
+zivi3s
+  rotate: false
+  xy: 680, 1389
   size: 18, 36
   orig: 22, 36
   offset: 1, 0
   index: -1
 zivi4
   rotate: false
-  xy: 1013, 225
+  xy: 1591, 581
+  size: 16, 30
+  orig: 22, 36
+  offset: 3, 0
+  index: -1
+zivi4s
+  rotate: false
+  xy: 614, 1520
   size: 18, 36
   orig: 22, 36
   offset: 1, 0
