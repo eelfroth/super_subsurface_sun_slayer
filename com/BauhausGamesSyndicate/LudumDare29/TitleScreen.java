@@ -53,7 +53,6 @@ class TitleScreen implements Screen {
     @Override
     public void render(float delta) {
         camera.update();
-        //Gdx.gl20.glViewport(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         batch.setProjectionMatrix(camera.combined);
 
         batch.begin();

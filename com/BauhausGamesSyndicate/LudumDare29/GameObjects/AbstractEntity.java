@@ -5,7 +5,6 @@ import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
 import com.BauhausGamesSyndicate.LudumDare29.Tuning;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.math.Matrix4;
 
 /**
  *
@@ -20,16 +19,15 @@ public abstract class AbstractEntity{
     private float x;
     private float y;
     private float life;
-    private int step;
-    private int steps;
+    private int step;//current animation
+    private int steps;//amount of steps
     private float timer = 0;
     private int steptime = 200;//ms
     private float rotation;
-    private Matrix4 projectionMatrix;
     private boolean walkOnCeilingHax;
     
-    private TextureRegion[] specialTextures;
-    private TextureRegion[] standardAnimation;
+    private final TextureRegion[] specialTextures;
+    private final TextureRegion[] standardAnimation;
     private boolean flip = false;
     private boolean special =false;
     
@@ -66,8 +64,6 @@ public abstract class AbstractEntity{
         }
         
         rotation = 0;
-        projectionMatrix = new Matrix4();
-        //projectionMatrix.setToOrtho2D(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
     }
     
     public float getLife(){
@@ -224,7 +220,7 @@ public abstract class AbstractEntity{
     
     public void activateWalkOnCeilingHax() {
        walkOnCeilingHax = true;
-       projectionMatrix.setToOrtho2D(-Gdx.graphics.getWidth()/2, -Gdx.graphics.getHeight()/2, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+       //projectionMatrix.setToOrtho2D(-Gdx.graphics.getWidth()/2, -Gdx.graphics.getHeight()/2, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
     }
     
     public void deactivateWalkOnCeilingHax() {

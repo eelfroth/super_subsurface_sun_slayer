@@ -134,8 +134,8 @@ public abstract class AbstractCharacter extends AbstractEntity {
                     GameScreen.getUnderworld().addEntity(this);
                     setFlagRemoveFromOverworld();
                     switchWorld();
-                    setY(Gdx.graphics.getWidth()/2);
-                    setX(Gdx.graphics.getHeight());
+                    setY(540);
+                    setX(960);
                     setAcceleration(0);
                 }
             } else {
@@ -149,10 +149,7 @@ public abstract class AbstractCharacter extends AbstractEntity {
         }
         
         //colission check
-        
-        if(collideWithEnemy(delta)){ 
-            fighting = true;//setCanWalk(false);
-        }else fighting=false;
+        fighting = collideWithEnemy(delta);
          
     }
     
