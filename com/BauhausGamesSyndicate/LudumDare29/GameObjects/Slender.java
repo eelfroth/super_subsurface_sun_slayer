@@ -1,7 +1,7 @@
 package com.BauhausGamesSyndicate.LudumDare29.GameObjects;
 
-import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
-import com.badlogic.gdx.Gdx;
+import com.BauhausGamesSyndicate.LudumDare29.Tuning;
+
 
 /**
  *
@@ -18,8 +18,11 @@ public class Slender extends Minion {
             "slender",
             world,
             7,
-            1
+            7
         );
+        setAccFactor(Tuning.SLENDER_ACCELERATION_FACTOR);
+        setFriction(Tuning.SLENDER_FRICTION);
+        setLife(Tuning.SLENDER_LIFE);
     }
     
     @Override

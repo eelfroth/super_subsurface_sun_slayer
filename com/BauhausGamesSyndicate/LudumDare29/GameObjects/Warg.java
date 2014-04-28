@@ -1,7 +1,6 @@
 package com.BauhausGamesSyndicate.LudumDare29.GameObjects;
 
-import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
-import com.badlogic.gdx.Gdx;
+import com.BauhausGamesSyndicate.LudumDare29.Tuning;
 
 /**
  *
@@ -18,14 +17,16 @@ public class Warg extends Minion {
             "warg",
             world,
             3,
-            1
+            3
         );
-        //setAccFactor(0.02f);
+        setAccFactor(Tuning.WARG_ACCELERATION_FACTOR);
+        setFriction(Tuning.WARG_FRICTION);
+        setLife(Tuning.WARG_LIFE);
     }
     
     @Override
     public void fight(AbstractCharacter enemy, float delta) {
-        //playSpacial(true);
+        playSpecial(true);
         enemy.drainLife(delta/4);
     }
     

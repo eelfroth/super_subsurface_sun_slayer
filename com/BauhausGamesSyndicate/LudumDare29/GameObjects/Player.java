@@ -1,6 +1,7 @@
 package com.BauhausGamesSyndicate.LudumDare29.GameObjects;
 
 import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
+import com.BauhausGamesSyndicate.LudumDare29.Tuning;
 import com.BauhausGamesSyndicate.LudumDare29.overworld.Eingang;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
@@ -13,6 +14,10 @@ import com.badlogic.gdx.audio.Sound;
  * @author Jacob Bauer
  */
 public class Player extends AbstractCharacter {
+    
+    //wohin fallen
+    
+    
     private int menupoint = 0;
     private static Sound growlsound;
     private static Sound stepsound;
@@ -24,7 +29,10 @@ public class Player extends AbstractCharacter {
     
     public Player(float x, float y) {
         super(x, y, "overlord", false,10,9);
-        setAccFactor(0.05f);
+        setAccFactor(Tuning.PLAYER_ACCELERATION_FACTOR);
+        setFriction(Tuning.PLAYER_FRICTION);
+        setLife(Tuning.PLAYER_LIFE);
+        
         growlsound = Gdx.audio.newSound(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/growlsingle.ogg"));
         stepsound = Gdx.audio.newSound(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/step.wav"));
     }
@@ -112,7 +120,7 @@ public class Player extends AbstractCharacter {
         }
         
         if (id==2 && menupoint==0){
-            flyTo(1, -2, 520);
+            flyTo(1, -2, 420);
         }else if (id==0 && menupoint==2){
             flyTo(-1, 2, 420);
         }  else if(id==1 && menupoint==0){
@@ -162,6 +170,25 @@ public class Player extends AbstractCharacter {
         stepsound.stop();
         growlsound.play();
         
+        int attXpos;
+        int attackRadius =50;
+        
+        if (isFlipped())
+            attXpos= -100;
+        else
+            attXpos= 100;
+        
+            
+        for (AbstractEntity entity : GameScreen.getOverworld().getEntityList()) {
+            if (
+                entity instanceof AbstractCharacter &&
+                !((AbstractCharacter)entity).isEvil() &&
+                entity.getX()-getX() > attXpos - attackRadius &&
+                entity.getX()-getX() < attXpos + attackRadius
+                )
+                entity.drainLife(100);
+        }
+        
     }
     
     @Override
@@ -184,11 +211,22 @@ public class Player extends AbstractCharacter {
     @Override
     public void  onDescend(){
         setX(1020);
-        setY(550);
+        //setY(Tuning.SET);
     }
 
     @Override
     public void onRise(){
         //nothing
     }
+    
+
+    @Override
+    public float getStartLocation() {
+         return Tuning.PLAYER_UNDERWORLD_START_LOCATION_Y;
+    }
+    
+    public boolean isAttacking(){
+        return attacktimer>0;
+    }
+
 }

@@ -14,13 +14,12 @@ import com.BauhausGamesSyndicate.LudumDare29.Tuning;
  *
  * @author Paul
  */
-public class CastleOfLight extends AbstractSpawn{
-    public CastleOfLight(Overworld overworld, int x, int y){
-        super(overworld, x, y, "sonnengottempel");
-        setOverallQuantity(Tuning.CASTLEOFLIGHT_QUANTITY);
-        setLQuantity(Tuning.CASTLEOFLIGHT_SPAWN_LANZE_RATE);
-        setRQuantity(Tuning.CASTLEOFLIGHT_SPAWN_RITTER_RATE);
-        setPQuantity(Tuning.CASTLEOFLIGHT_SPAWN_PALA_RATE);
+public class Fortress extends AbstractSpawn{
+    public Fortress(Overworld overworld, int x, int y){
+        super(overworld, x, y, "palisaden");
+        setOverallQuantity(Tuning.BURG_QUANTITY);
+        setLQuantity(Tuning.FORTRESS_SPAWN_LANZE_RATE);
+        setRQuantity(Tuning.FORTRESS_SPAWN_RITTER_RATE);
+        setBQuantity(Tuning.FORTRESS_SPAWN_BAUER_RATE);
     } 
 }
- 

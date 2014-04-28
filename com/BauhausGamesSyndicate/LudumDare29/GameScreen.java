@@ -28,8 +28,8 @@ public class GameScreen implements Screen {
     private final BitmapFont font;
     private static Overworld overworld;
     private static Underworld underworld;
-    private final FPSdiag fps;
-    private final ShapeRenderer shr;
+    //private final FPSdiag fps;
+    //private final ShapeRenderer shr;
     private static TextureAtlas spritesheet;
     
     private static AbstractWorld world;
@@ -39,6 +39,8 @@ public class GameScreen implements Screen {
     private FrameBuffer frameBuffer;
     private Mesh frameMesh;
     private final Texture debug_texture;
+    private Sprite hudSprite;
+    
     private boolean rotation;
     private static Music underworldMusic;
     private static Music overworldMusic;
@@ -50,6 +52,8 @@ public class GameScreen implements Screen {
         spritesheet = new TextureAtlas(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/spritesheet.txt"));
         overlay = new Texture(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/overlay.png"));
         debug_texture = new Texture(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/mapping.png"));
+        hudSprite = new Sprite(spritesheet.findRegion("overlord4"));
+        hudSprite.setX(1980-hudSprite.getWidth());
   //      debug_texture = new Texture(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/gruppennfohto.jpg"));
         
         GameScreen.underworldMusic = Gdx.audio.newMusic(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/underworldLoop.ogg"));
@@ -61,22 +65,21 @@ public class GameScreen implements Screen {
         batch = new SpriteBatch();    
         font = new BitmapFont();
         font.setColor(Color.RED);
-        fps = new FPSdiag(50, 200);
-        shr = new ShapeRenderer();
+        //fps = new FPSdiag(50, 200);
+        //shr = new ShapeRenderer();
         
         //y-up
         camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        camera.setToOrtho(false, 1920, 1080);
+        //camera.zoom = 1/(Gdx.graphics.getWidth()/1920f);
         
-        shr.setProjectionMatrix(camera.combined);
+        //shr.setProjectionMatrix(camera.combined);
         batch.setProjectionMatrix(camera.combined);
         
         //game data
-        overworld = new Overworld();
+        world = overworld = new Overworld();
         underworld = new Underworld(this);
         player = new Player(1020, 550);
-        
-        world = underworld;
 
         rotation = false;
 
@@ -126,6 +129,7 @@ public class GameScreen implements Screen {
             if (world == underworld) {
                 renderUnderworld();
             }
+            hudSprite.draw(batch);
             batch.end();
             
             //overlay
@@ -136,8 +140,6 @@ public class GameScreen implements Screen {
 
         //2. render framebuffer to frame:
         renderFramebuffer(world);
-
-        
         //fps
         //fps.render(shr, font);
     }
@@ -158,9 +160,6 @@ public class GameScreen implements Screen {
         return font;
     }
 
-    public ShapeRenderer getShapeRenderer() {
-        return shr;
-    }
 
     public static TextureAtlas getSpritesheet() {
         return spritesheet;
@@ -175,8 +174,7 @@ public class GameScreen implements Screen {
      * @return 
      */
     public static boolean onOverworld() {
-        if (world == overworld) return true;
-        return false;
+        return world == overworld;
     }
     
     public static ShaderProgram setupShader(String vert, String frag) {
@@ -202,7 +200,7 @@ public class GameScreen implements Screen {
         short[] indices  = new short[xQuads*yQuads*6];
         
         float[] quadVertices = new float[36];
-        short[] quadIndices = new short[6];
+        short[] quadIndices;
         
         boolean backwards = true;
         
@@ -296,7 +294,7 @@ public class GameScreen implements Screen {
         //move camera
         camera.translate(Overworld.getCameraPos(), 0);
         camera.update();
-        //batch.setProjectionMatrix(camera.combined);
+        batch.setProjectionMatrix(camera.combined);
 
         //render
         overworld.render(this);
@@ -309,20 +307,9 @@ public class GameScreen implements Screen {
     }
 
     private void renderUnderworld() {
-        //render
-        camera.translate(0, Gdx.graphics.getHeight());
-        camera.update();
-        batch.setProjectionMatrix(camera.combined);
-        shr.setProjectionMatrix(camera.combined);
-
         underworld.render(this);
         player.render(this);
         
-        //move camera back
-        camera.translate(0, -Gdx.graphics.getHeight());
-        camera.update();
-        shr.setProjectionMatrix(camera.combined);
-        batch.setProjectionMatrix(camera.combined);
     }
 
     private void renderFramebuffer(AbstractWorld world) {
@@ -343,7 +330,7 @@ public class GameScreen implements Screen {
     }
 
     public void update(float delta) {
-        fps.update(delta);
+        //fps.update(delta);
         overworld.update(delta);
         underworld.update(delta);
         
@@ -353,7 +340,7 @@ public class GameScreen implements Screen {
         else
             world = underworld;
         
-        Overworld.setCameraPos((int) (player.getX()-Gdx.graphics.getWidth()/2));
+        Overworld.setCameraPos((int) (player.getX()-960));
     }
     
     public static void switchWorld(boolean world){

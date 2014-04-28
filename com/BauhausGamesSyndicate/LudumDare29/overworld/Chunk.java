@@ -45,7 +45,7 @@ public class Chunk {
             x = x % m;
 
         //check if visible
-       // if (x+Chunk.WIDTH > Overworld.getCameraPos() && x < Gdx.graphics.getWidth()+Overworld.getCameraPos())
+        if (x+Chunk.WIDTH > Overworld.getCameraPos() && x < 1920+Overworld.getCameraPos())
            gs.getBatch().draw(texture, x, y);
     };
 }

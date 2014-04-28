@@ -29,7 +29,7 @@ public class Overworld extends AbstractWorld{
     private final int anzCitys   = 8;
     private final int anzForests = 11;
     
-    private static final ArrayList<AbstractEntity> entityList = new ArrayList<>();
+    private static final ArrayList<AbstractEntity> entityList = new ArrayList<>(400);//max 400 sprites
     private static int cameraPos = 0;
     private static Chunk[] chunks; 
     private static Sprite background;
@@ -367,7 +367,7 @@ public class Overworld extends AbstractWorld{
         for (int i = 0; i < anzCitys; i++){
             
             entityList.add(
-                new City(this, citymapX[i], citymapY[i])
+                new Bauernhof(this, citymapX[i], citymapY[i])
             );
             // (int) (Chunk.HEIGHT/4*Math.random()+Chunk.HEIGHT/4)
         }
@@ -378,6 +378,8 @@ public class Overworld extends AbstractWorld{
                 new Forrest(this, forestmapX[i], forestmapY[i])
             );
         }
+        // add Bauernhof 2
+        entityList.add(new Bauernhof2(this, 4000, 300));
         
         // add CastleOfLight
         entityList.add(new CastleOfLight(this, 10306, 520));
@@ -401,8 +403,8 @@ public class Overworld extends AbstractWorld{
     
     @Override
     public void render(GameScreen gs){
-        int y = Gdx.graphics.getHeight()-Chunk.HEIGHT; 
-        gs.getCamera().translate(-Overworld.getCameraPos()/2, -y);
+        //int y = 1080-Chunk.HEIGHT; 
+        gs.getCamera().translate(-Overworld.getCameraPos()/2, 0);//half speed for parralax
         gs.getCamera().update();
         gs.getBatch().setProjectionMatrix(gs.getCamera().combined);
         
@@ -423,11 +425,11 @@ public class Overworld extends AbstractWorld{
             
 
             
-        if (x+background.getWidth() > Overworld.getCameraPos()/2 && x < Gdx.graphics.getWidth()+Overworld.getCameraPos()/2)
+        if (x+background.getWidth() > Overworld.getCameraPos()/2 && x < 1920+Overworld.getCameraPos()/2)
             gs.getBatch().draw(background, x, 0);
         }
          
-        gs.getCamera().translate(Overworld.getCameraPos()/2, y);
+        gs.getCamera().translate(Overworld.getCameraPos()/2, 0);
         gs.getCamera().update();
         gs.getBatch().setProjectionMatrix(gs.getCamera().combined);
 

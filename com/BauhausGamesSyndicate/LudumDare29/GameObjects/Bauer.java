@@ -9,13 +9,14 @@ import com.BauhausGamesSyndicate.LudumDare29.overworld.Eingang;
  */
 public class Bauer extends AbstractCharacter {
 
+    private boolean fearOnlyAttacks = false;
     private int dTimer;
     private int dTimerMax = 500;
     private float homeX;
     private float reach = 600;
     
     public Bauer(float x, float y, boolean world) {
-        super(x, y, "zivi", world, 1, 1);
+        super(x, y, "zivi", world, 4, 4);
         homeX = x;
         setFriction(0.5f);
         setAccFactor(getAccFactor() + (float) (Math.random()*0.1));
@@ -36,15 +37,18 @@ public class Bauer extends AbstractCharacter {
                    setAcceleration(1);
             }
             */
-            if(GameScreen.getPlayer().getX() > getX() - reach/2 && // wenn player in Heimat eindringt
+            if(GameScreen.getPlayer().getX() > getX() - reach/2 && // wenn player in Hder nähe
                GameScreen.getPlayer().getX() < getX() + reach/2){
-               setX(getX() + getAcceleration()*2); // wengl durchdrehen!
-               playSpecial(true);
-               if(GameScreen.getPlayer().getX() > getX()) // und auf player zugehen
-                   setAcceleration(-1);
-               else
-                   setAcceleration(1);
-
+               if(GameScreen.getPlayer().isAttacking() || !fearOnlyAttacks ){
+                    setX(getX() + getAcceleration()*2); // wengl durchdrehen!
+                    playSpecial(true);
+                    if(GameScreen.getPlayer().getX() > getX()) // vor player wegrennen
+                        setAcceleration(-1);
+                    else
+                        setAcceleration(1);
+               }else{
+                   playSpecial(false);
+               }
             }else{
                 playSpecial(false);
                 dTimer += delta;
@@ -54,6 +58,12 @@ public class Bauer extends AbstractCharacter {
                         setAcceleration(getAcceleration()*(-1));
                     }
                 }
+                if(2068 < getX() && 2160 > getX()) {
+                    
+                    
+                    setAcceleration(getAcceleration()*(-1));
+                    setX(getX() + getAcceleration()*2); // wengl durchdrehen!
+                }
             }
         }
         
@@ -62,15 +72,13 @@ public class Bauer extends AbstractCharacter {
         if(getAcceleration()> 0.1f)
             setFlipHorizontal(false);
         
-        Eingang e = GameScreen.getOverworld().getEingang();
-        if(2110 < getX() && 2130 > getX()) {
+        if(2078 < getX() && 2150 > getX()) {
             descend();
         }
         
         if(isDescending()) {
             playSpecial(true);
             setAcceleration(0);
-            playSpecial(true);
         }
     }
     

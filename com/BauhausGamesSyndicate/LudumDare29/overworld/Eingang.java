@@ -30,10 +30,10 @@ public class Eingang{
     
     
     public void render(GameScreen gs){
-        ShapeRenderer sh = gs.getShapeRenderer();
-        sh.begin(ShapeRenderer.ShapeType.Filled);
-        sh.rect(x, 0, width, 400);
-        sh.end();
+        //ShapeRenderer sh = gs.getShapeRenderer();
+//        sh.begin(ShapeRenderer.ShapeType.Filled);
+//        sh.rect(x, 0, width, 400);
+//        sh.end();
     }
 
     public int getX() {
