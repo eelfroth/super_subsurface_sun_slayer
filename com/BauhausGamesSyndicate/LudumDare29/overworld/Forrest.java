@@ -15,7 +15,7 @@ public class Forrest extends AbstractEntity {
             this.setFlipHorizontal(true);
         }
         this.overworld = overworld;
-        setLife(0);
+        setLife(25);
     }
     
     /*
