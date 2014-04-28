@@ -21,7 +21,7 @@ public class Ritter extends AbstractCharacter {
     private float reach = 600;
     
     public Ritter(float x, float y, boolean world) {
-        super(x, y, "reiter", world,2,1);
+        super(x, y, "reiter", world,4,3);
 
         arrived = false;
         homeX = x;

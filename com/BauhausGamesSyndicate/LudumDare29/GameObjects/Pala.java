@@ -21,7 +21,7 @@ public class Pala extends AbstractCharacter {
     private float reach = 600;
     
     public Pala(float x, float y, boolean world) {
-        super(x, y, "pala", world,2,1);
+        super(x, y, "pala", world,4,4);
 
         arrived = false;
         homeX = x;

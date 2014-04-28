@@ -17,7 +17,7 @@ public class Lanze extends AbstractCharacter {
     private float reach = 600;
     
     public Lanze(float x, float y, boolean world) {
-        super(x, y, "lanze", world,2,1);
+        super(x, y, "lanze", world,4,3);
 
         arrived = false;
         homeX = x;
