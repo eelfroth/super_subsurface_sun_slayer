@@ -20,7 +20,7 @@ public abstract class AbstractCharacter extends AbstractEntity {
         velocity  = 0;
         accFactor = 0.03f;
         acceleration = 0;
-        friction = 0.2f;
+        friction = 0.05f;
         canWalk = true;
     }
     
@@ -118,8 +118,8 @@ public abstract class AbstractCharacter extends AbstractEntity {
                 GameScreen.getUnderworld().addEntity(this);
                 setFlagRemoveFromOverworld();
                 switchWorld();
-                setX(860);
-                setY(500);
+                setX(1020);
+                setY(550);
             }
         }
         

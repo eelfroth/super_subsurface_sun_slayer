@@ -18,7 +18,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
  * @author Jacob Bauer
  */
 public class Eingang{
-    private final int x = 2000;
+    private final int x = 2120;
     private final int width = 200;
     private static Sound rising;
     private static Sound descend;

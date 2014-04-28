@@ -71,9 +71,9 @@ public class GameScreen implements Screen {
         //game data
         overworld = new Overworld();
         underworld = new Underworld(this);
-        player = new Player(860, 500);
+        player = new Player(1020, 550);
         
-        world = overworld;
+        world = underworld;
 
         rotation = false;
 
@@ -81,7 +81,7 @@ public class GameScreen implements Screen {
         setupFramebuffer();
         
         jingle = Gdx.audio.newSound(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/jingle.ogg"));
-        jingle.play();
+        //jingle.play();
     }
 
     @Override

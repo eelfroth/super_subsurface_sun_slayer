@@ -20,7 +20,7 @@ public class Warg extends Minion {
             3,
             1
         );
-        setAccFactor(1f);
+        //setAccFactor(0.02f);
     }
     
     @Override
