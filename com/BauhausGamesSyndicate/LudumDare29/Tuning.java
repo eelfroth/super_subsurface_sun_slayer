@@ -66,24 +66,31 @@ public final class Tuning {
     //public final String BAUERNHOF_ = "bauernhof";
     public final static int BAUERNHOF_QUANTITY = 1;
     public final static int BAUERNHOF_SPAWN_BAUER_RATE = 1;
+    public final static int BAUERNHOF_MAX_BAUERN = 10;
     
     // Siedlung
     //public final String BAUERNHOF_ = "bauernhof";
     public final static int SIEDLUNG_QUANTITY = 2;
     public final static int SIEDLUNG_SPAWN_BAUER_RATE = 1;
+    public final static int SIEDLUNG_MAX_BAUERN = 23;
     
     // City2 bef Bauernhof
     //public final String BAUERNHOF2_NAME = "befestigter_bauernhof";
     public final static int BAUERNHOF2_QUANTITY = 2;
     public final static int BAUERNHOF2_SPAWN_BAUER_RATE = 2;
     public final static int BAUERNHOF2_SPAWN_LANZE_RATE = 1;
+    public final static int BAUERNHOF2_MAX_BAUERN = 15;
+    public final static int BAUERNHOF2_MAX_LANZEN = 5;
     
     // CASTLE Burg
     //public final String BURG_NAME = "burg";
     public final static int BURG_QUANTITY = 6;
     public final static int BURG_SPAWN_PALA_RATE   = 1;
     public final static int BURG_SPAWN_LANZE_RATE  = 2;
-    public final static int BURG_SPAWN_RITTER_RATE = 1;
+    public final static int BURG_SPAWN_RITTER_RATE = 2;
+    public final static int BURG_MAX_LANZEN = 10;
+    public final static int BURG_MAX_PALA = 5;
+    public final static int BURG_MAX_RITTER = 8;
     
     // FORTRESS Palisaden
     //public final String FORTRESS_NAME = "palisaden";
@@ -91,6 +98,9 @@ public final class Tuning {
     public final static int FORTRESS_SPAWN_BAUER_RATE  = 2;
     public final static int FORTRESS_SPAWN_LANZE_RATE  = 3;
     public final static int FORTRESS_SPAWN_RITTER_RATE = 3;
+    public final static int FORTRESS_MAX_RITTER = 4;
+    public final static int FORTRESS_MAX_LANZEN = 15;
+    public final static int FORTRESS_MAX_BAUERN = 30;
     
     // CASTLEOFLIGHT
     //public final String CASTLEOFLIGHT_NAME = "sonnengotttempel";
@@ -98,6 +108,10 @@ public final class Tuning {
     public final static int CASTLEOFLIGHT_SPAWN_PALA_RATE   = 2; // 50
     public final static int CASTLEOFLIGHT_SPAWN_LANZE_RATE  = 3; // 30
     public final static int CASTLEOFLIGHT_SPAWN_RITTER_RATE = 2; // 20
+    public final static int CASTLEOFLIGHT_MAX_RITTER = 30;
+    public final static int CASTLEOFLIGHT_MAX_PALA = 20;
+    public final static int CASTLEOFLIGHT_MAX_LANZEN = 40;
+    
     
     
     

@@ -19,5 +19,8 @@ public class Burg extends AbstractSpawn{
         setLQuantity(Tuning.BURG_SPAWN_LANZE_RATE);
         setRQuantity(Tuning.BURG_SPAWN_RITTER_RATE);
         setPQuantity(Tuning.BURG_SPAWN_PALA_RATE);
+        setMaxLanzen(Tuning.BURG_MAX_LANZEN);
+        setMaxRitter(Tuning.BURG_MAX_RITTER);
+        setMaxPala(Tuning.BURG_MAX_PALA);
     } 
 }

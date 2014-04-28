@@ -86,6 +86,6 @@ public class Reiter extends AbstractCharacter {
     
     @Override
     public void onDeath() {
-        //nothing
+        home.anzRitter -= 1;
     }
 }

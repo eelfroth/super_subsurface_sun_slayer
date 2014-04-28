@@ -92,6 +92,6 @@ public class Pala extends AbstractCharacter {
     
     @Override
     public void onDeath() {
-        //nothing
+        home.anzPala -= 1;
     }
 }
