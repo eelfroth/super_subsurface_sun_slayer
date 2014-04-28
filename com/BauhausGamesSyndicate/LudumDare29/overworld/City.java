@@ -33,7 +33,10 @@ public class City extends AbstractEntity {
     }
 
     private void spawnEnemy() {
-
+       /*
+          100% Bauern 
+          Quantity: 1
+       */
        Bauer enemy = new Bauer(getX(),getY(), onOverworld());
 
        overworld.addEntity(enemy);

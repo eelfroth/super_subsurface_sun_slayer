@@ -7,7 +7,7 @@
 package com.BauhausGamesSyndicate.LudumDare29.overworld;
 
 import com.BauhausGamesSyndicate.LudumDare29.GameObjects.AbstractEntity;
-import com.BauhausGamesSyndicate.LudumDare29.GameObjects.Soldat;
+import com.BauhausGamesSyndicate.LudumDare29.GameObjects.Lanze;
 
 /**
  *
@@ -34,7 +34,13 @@ public class CastleOfLight extends AbstractEntity {
     }
 
     private void spawnEnemy() {
-       Soldat enemy = new Soldat(getX(),getY(), onOverworld());
+       /*
+          50% Pala
+          30% Ritter
+          20% Lanze
+          Quantity: 15
+       */
+       Lanze enemy = new Lanze(getX(),getY(), onOverworld());
        overworld.addEntity(enemy);
     }
 }
