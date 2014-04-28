@@ -9,6 +9,7 @@ import com.BauhausGamesSyndicate.LudumDare29.overworld.Eingang;
  */
 public class Bauer extends AbstractCharacter {
 
+    private boolean fearOnlyAttacks = false;
     private int dTimer;
     private int dTimerMax = 500;
     private float homeX;
@@ -36,15 +37,18 @@ public class Bauer extends AbstractCharacter {
                    setAcceleration(1);
             }
             */
-            if(GameScreen.getPlayer().getX() > getX() - reach/2 && // wenn player in Heimat eindringt
+            if(GameScreen.getPlayer().getX() > getX() - reach/2 && // wenn player in Hder nähe
                GameScreen.getPlayer().getX() < getX() + reach/2){
-               setX(getX() + getAcceleration()*2); // wengl durchdrehen!
-               playSpecial(true);
-               if(GameScreen.getPlayer().getX() > getX()) // und auf player zugehen
-                   setAcceleration(-1);
-               else
-                   setAcceleration(1);
-
+               if(GameScreen.getPlayer().isAttacking() || !fearOnlyAttacks ){
+                    setX(getX() + getAcceleration()*2); // wengl durchdrehen!
+                    playSpecial(true);
+                    if(GameScreen.getPlayer().getX() > getX()) // vor player wegrennen
+                        setAcceleration(-1);
+                    else
+                        setAcceleration(1);
+               }else{
+                   playSpecial(false);
+               }
             }else{
                 playSpecial(false);
                 dTimer += delta;
