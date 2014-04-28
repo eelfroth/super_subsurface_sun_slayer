@@ -312,7 +312,7 @@ slender0
   index: -1
 slender1
   rotate: false
-  xy: 1648, 678
+  xy: 1670, 618
   size: 18, 58
   orig: 32, 72
   offset: 9, 7
@@ -340,7 +340,7 @@ slender4
   index: -1
 slender5
   rotate: false
-  xy: 1696, 322
+  xy: 1648, 678
   size: 18, 58
   orig: 32, 72
   offset: 9, 7
@@ -351,20 +351,6 @@ slender6
   size: 20, 60
   orig: 32, 72
   offset: 8, 6
-  index: -1
-soldat0
-  rotate: false
-  xy: 1360, 303
-  size: 24, 36
-  orig: 36, 36
-  offset: 3, 0
-  index: -1
-soldat1
-  rotate: false
-  xy: 1696, 286
-  size: 26, 34
-  orig: 36, 36
-  offset: 1, 0
   index: -1
 sonnengottempel0
   rotate: false
@@ -459,7 +445,7 @@ zivi0
   index: -1
 zivi0s
   rotate: false
-  xy: 1696, 382
+  xy: 1668, 678
   size: 18, 36
   orig: 22, 36
   offset: 1, 0
@@ -473,7 +459,7 @@ zivi1
   index: -1
 zivi1s
   rotate: false
-  xy: 1670, 618
+  xy: 1669, 1223
   size: 18, 36
   orig: 22, 36
   offset: 1, 0
@@ -487,7 +473,7 @@ zivi2
   index: -1
 zivi2s
   rotate: false
-  xy: 1669, 1223
+  xy: 1188, 755
   size: 18, 36
   orig: 22, 36
   offset: 1, 0
@@ -501,7 +487,7 @@ zivi3
   index: -1
 zivi3s
   rotate: false
-  xy: 1188, 755
+  xy: 1360, 303
   size: 18, 36
   orig: 22, 36
   offset: 1, 0
