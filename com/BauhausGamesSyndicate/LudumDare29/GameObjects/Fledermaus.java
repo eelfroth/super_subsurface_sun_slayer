@@ -2,9 +2,7 @@ package com.BauhausGamesSyndicate.LudumDare29.GameObjects;
 
 import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
 import com.BauhausGamesSyndicate.LudumDare29.Tuning;
-import com.BauhausGamesSyndicate.LudumDare29.overworld.Eingang;
 import com.badlogic.gdx.Gdx;
-import static java.lang.Math.floor;
 import static java.lang.Math.sin;
 
 /**
@@ -43,7 +41,7 @@ public class Fledermaus extends Minion{
 
     @Override
     public void fight(AbstractCharacter enemy, float delta) {
-        //playSpacial(true);
+        //playSpecial(true);
     }
     
     @Override

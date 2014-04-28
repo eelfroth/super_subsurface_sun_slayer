@@ -29,7 +29,7 @@ public class GameScreen implements Screen {
     private final BitmapFont font;
     private static Overworld overworld;
     private static Underworld underworld;
-    private final FPSdiag fps;
+    //private final FPSdiag fps;
     //private final ShapeRenderer shr;
     private static TextureAtlas spritesheet;
     
@@ -60,23 +60,21 @@ public class GameScreen implements Screen {
         batch = new SpriteBatch();    
         font = new BitmapFont();
         font.setColor(Color.RED);
-        fps = new FPSdiag(50, 200);
+        //fps = new FPSdiag(50, 200);
         //shr = new ShapeRenderer();
         
         //y-up
         camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        camera.zoom = 1/(Gdx.graphics.getWidth()/1920f);
+        camera.setToOrtho(false, 1920, 1080);
+        //camera.zoom = 1/(Gdx.graphics.getWidth()/1920f);
         
         //shr.setProjectionMatrix(camera.combined);
         batch.setProjectionMatrix(camera.combined);
         
         //game data
-        overworld = new Overworld();
+        world = overworld = new Overworld();
         underworld = new Underworld(this);
         player = new Player(1020, 550);
-        
-        world = underworld;
 
         rotation = false;
 
@@ -338,7 +336,7 @@ public class GameScreen implements Screen {
     }
 
     public void update(float delta) {
-        fps.update(delta);
+        //fps.update(delta);
         overworld.update(delta);
         underworld.update(delta);
         
@@ -346,6 +344,6 @@ public class GameScreen implements Screen {
         if(player.onOverworld()) world = overworld;
         else world = underworld;
         
-        Overworld.setCameraPos((int) (player.getX()-Gdx.graphics.getWidth()/2));
+        Overworld.setCameraPos((int) (player.getX()-960));
     }
 }

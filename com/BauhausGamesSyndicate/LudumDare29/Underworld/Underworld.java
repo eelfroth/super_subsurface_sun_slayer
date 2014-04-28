@@ -27,7 +27,7 @@ public class Underworld extends AbstractWorld{
     private final Texture texture;
     private float dt;
     private final int timeTillNextBuy = Tuning.TIME_BETWEEN_BUY;
-    private final ArrayList<AbstractEntity> entityList = new ArrayList<>();
+    private final ArrayList<AbstractEntity> entityList = new ArrayList<>(400);//max 400 sprites
     private int money = 100;
     private final OrthographicCamera camera;
     private final Sound buySound;
@@ -47,7 +47,7 @@ public class Underworld extends AbstractWorld{
         icons[0].setX(1600);
         icons[0].setY(600);
         icons[1] = new Sprite(GameScreen.getSpritesheet().findRegion("icowarg0"));
-        icons[1].setX(1200);
+        icons[1].setX(1500);
         icons[1].setY(100);
         icons[2] = new Sprite(GameScreen.getSpritesheet().findRegion("icoslender0"));
         icons[2].setX(180);
@@ -56,7 +56,7 @@ public class Underworld extends AbstractWorld{
         icons[3].setX(1600);
         icons[3].setY(600);
         icons[4] = new Sprite(GameScreen.getSpritesheet().findRegion("icowarg1"));
-        icons[4].setX(1200);
+        icons[4].setX(1500);
         icons[4].setY(100);
         icons[5] = new Sprite(GameScreen.getSpritesheet().findRegion("icoslender1"));
         icons[5].setX(180);

@@ -22,6 +22,8 @@ public abstract class AbstractCharacter extends AbstractEntity {
     private boolean shouldRise;
     private boolean shouldDescend;
     
+    private boolean fighting = false;
+    
     
     
     
@@ -149,8 +151,8 @@ public abstract class AbstractCharacter extends AbstractEntity {
         //colission check
         
         if(collideWithEnemy(delta)){ 
-            //setCanWalk(false);
-        }
+            fighting = true;//setCanWalk(false);
+        }else fighting=false;
          
     }
     
@@ -161,7 +163,6 @@ public abstract class AbstractCharacter extends AbstractEntity {
                 ((AbstractCharacter)entity).isEvil()!= this.isEvil() && //is not same fraction?
                 entity.getX()+entity.getWidth() > getX()&&
                 entity.getX() < getX()+entity.getWidth()){
-                playSpecial(true);
                 fight((AbstractCharacter) entity, delta);
                 colissionWithEnemy=true;
             }
@@ -202,4 +203,12 @@ public abstract class AbstractCharacter extends AbstractEntity {
     public float getStartLocation() {
          return Tuning.CHARACTER_UNDERWORLD_START_LOCATION_Y;
     }
+    
+    /**
+     * is character in contact with enemy?
+     * @return 
+     */
+    public boolean isFighting(){
+        return fighting;
+    };
 }
