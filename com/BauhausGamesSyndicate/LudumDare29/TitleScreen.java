@@ -30,7 +30,7 @@ class TitleScreen implements Screen {
     private Music title;
     private final Game ld;
     private Sprite currentBurg;
-    private SpriteBatch batch;
+    private final SpriteBatch batch;
     private final OrthographicCamera camera;
 
     public TitleScreen(Game ld) {

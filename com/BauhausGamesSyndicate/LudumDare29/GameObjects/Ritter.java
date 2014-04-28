@@ -59,7 +59,7 @@ public class Ritter extends AbstractCharacter {
     
     @Override
     public void fight(AbstractCharacter enemy, float delta) {
-        //playSpacial(true);
+        playSpecial(true);
         enemy.drainLife(delta/4);
     }
     
