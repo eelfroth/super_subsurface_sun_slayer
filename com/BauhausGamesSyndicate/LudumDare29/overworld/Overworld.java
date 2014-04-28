@@ -410,8 +410,8 @@ public class Overworld extends AbstractWorld{
     
     @Override
     public void render(GameScreen gs){
-        int y = Gdx.graphics.getHeight()-Chunk.HEIGHT; 
-        gs.getCamera().translate(-Overworld.getCameraPos()/2, -y);
+        //int y = 1080-Chunk.HEIGHT; 
+        gs.getCamera().translate(-Overworld.getCameraPos()/2, 0);//half speed for parralax
         gs.getCamera().update();
         gs.getBatch().setProjectionMatrix(gs.getCamera().combined);
         
@@ -432,11 +432,11 @@ public class Overworld extends AbstractWorld{
             
 
             
-        if (x+background.getWidth() > Overworld.getCameraPos()/2 && x < Gdx.graphics.getWidth()+Overworld.getCameraPos()/2)
+        if (x+background.getWidth() > Overworld.getCameraPos()/2 && x < 1920+Overworld.getCameraPos()/2)
             gs.getBatch().draw(background, x, 0);
         }
          
-        gs.getCamera().translate(Overworld.getCameraPos()/2, y);
+        gs.getCamera().translate(Overworld.getCameraPos()/2, 0);
         gs.getCamera().update();
         gs.getBatch().setProjectionMatrix(gs.getCamera().combined);
 

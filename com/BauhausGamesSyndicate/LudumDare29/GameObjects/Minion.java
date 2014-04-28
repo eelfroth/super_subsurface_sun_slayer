@@ -52,10 +52,10 @@ public abstract class Minion extends AbstractCharacter{
                    leaveScreen = true;
                else {
                    leaveScreen = false;
-                   //setX((float)Math.sin(getX()/1000)*570+Gdx.graphics.getWidth()/2+20);
-                   //setY((float)Math.cos(getX()/1000)*520+Gdx.graphics.getHeight()/2 -10);
-                   setX(Gdx.graphics.getWidth());
-                   setY(Gdx.graphics.getHeight()-15);
+                   //setX((float)Math.sin(getX()/1000)*570+960+20);
+                   //setY((float)Math.cos(getX()/1000)*520+960 -10);
+                   setX(960);
+                   setY(540-15);
                    rise();
                }
             }
