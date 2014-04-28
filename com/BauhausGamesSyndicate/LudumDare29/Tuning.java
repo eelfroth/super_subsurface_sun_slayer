@@ -32,5 +32,7 @@ public final class Tuning {
     public final static float PLAYER_UNDERWORLD_START_LOCATION_Y   = 550;
     
     
+    public final static int TIME_BETWEEN_BUY = 500;
+    
     
 }
