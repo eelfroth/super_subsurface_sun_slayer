@@ -25,8 +25,6 @@ public class Soldat extends AbstractCharacter {
         dTimer = 0;
         setFriction(0.5f);
         setAccFactor(getAccFactor() + (float) (Math.random()*0.1));
-        //setAccFactor(0.03f + (int)Math.random()*0.5f);
-        //setSpeed((float) (0.1f + Math.random()*.2f));
         setAcceleration(-1);
     }
 
@@ -52,8 +50,8 @@ public class Soldat extends AbstractCharacter {
         }
         if(GameScreen.getPlayer().getX() > homeX - reach/2 && // wenn player in Heimat eindringt
            GameScreen.getPlayer().getX() < homeX + reach/2){
-           setX(getX() + getAcceleration()*2);
-           if(GameScreen.getPlayer().getX() > getX())
+           setX(getX() + getAcceleration()*2); // wengl durchdrehen!
+           if(GameScreen.getPlayer().getX() > getX()) // und auf player zugehen
                setAcceleration(1);
            else
                setAcceleration(-1);

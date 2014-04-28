@@ -170,7 +170,7 @@ public abstract class AbstractEntity{
         return special;
     }
 
-    public void playSpacial(boolean special) {
+    public void playSpecial(boolean special) {
         if (this.special!=special) {
             timer=0;
             step=0;

@@ -94,7 +94,7 @@ public class Player extends AbstractCharacter {
             if (GameScreen.onOverworld() && Gdx.input.isKeyPressed(Keys.SPACE)){
                 attack();
             } else {
-                playSpacial(false);
+                playSpecial(false);
             }
         }
         
@@ -149,7 +149,7 @@ public class Player extends AbstractCharacter {
      * was soll passieren, wenn die SPielfigur angreift?
      */
     public void attack(){
-        playSpacial(true);
+        playSpecial(true);
         attacktimer = 2000;
         stepsound.stop();
         growlsound.play();

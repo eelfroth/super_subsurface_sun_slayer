@@ -9,6 +9,7 @@ public abstract class AbstractCharacter extends AbstractEntity {
     private float accFactor;
     private float velocity;
     private float friction;
+    private int verticalOffset;
     
     private boolean canWalk;
     private boolean shouldRaise;
@@ -17,6 +18,7 @@ public abstract class AbstractCharacter extends AbstractEntity {
     public AbstractCharacter(float x, float y, String name, boolean world, int steps, int specialSteps){
         super(x, y, name, world,steps, specialSteps);
         
+        verticalOffset = -(int) (Math.random()*20);
         velocity  = 0;
         accFactor = 0.03f;
         acceleration = 0;
@@ -84,7 +86,7 @@ public abstract class AbstractCharacter extends AbstractEntity {
     public void update(float delta){
         super.update(delta);
         if (GameScreen.onOverworld() && !shouldRaise && !shouldDescend){
-            setY(Overworld.getHeight((int) getX()));
+            setY(Overworld.getHeight((int) getX())+ verticalOffset);
         }
         if (isDead()){
             setFlagRemoveFromOverworld();
