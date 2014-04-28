@@ -376,6 +376,8 @@ public class Overworld extends AbstractWorld{
                 new Forrest(this, forestmapX[i], forestmapY[i])
             );
         }
+        // add Bauernhof 2
+        entityList.add(new Bauernhof2(this, 4000, 300));
         
         // add CastleOfLight
         entityList.add(new CastleOfLight(this, 10306, 520));

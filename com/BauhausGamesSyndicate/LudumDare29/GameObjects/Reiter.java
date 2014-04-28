@@ -6,7 +6,7 @@ import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
  *
  * @author Paul
  */
-public class Ritter extends AbstractCharacter {
+public class Reiter extends AbstractCharacter {
     private boolean arrived;
     
     private int dTimer;
@@ -14,7 +14,7 @@ public class Ritter extends AbstractCharacter {
     private float homeX;
     private float reach = 600;
     
-    public Ritter(float x, float y, boolean world) {
+    public Reiter(float x, float y, boolean world) {
         super(x, y, "reiter", world,4,3);
 
         arrived = false;

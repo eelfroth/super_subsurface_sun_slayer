@@ -10,7 +10,7 @@ import com.BauhausGamesSyndicate.LudumDare29.GameObjects.AbstractEntity;
 import com.BauhausGamesSyndicate.LudumDare29.GameObjects.Bauer;
 import com.BauhausGamesSyndicate.LudumDare29.GameObjects.Lanze;
 import com.BauhausGamesSyndicate.LudumDare29.GameObjects.Pala;
-import com.BauhausGamesSyndicate.LudumDare29.GameObjects.Ritter;
+import com.BauhausGamesSyndicate.LudumDare29.GameObjects.Reiter;
 import com.BauhausGamesSyndicate.LudumDare29.Tuning;
 
 /**
@@ -95,25 +95,25 @@ public class AbstractSpawn extends AbstractEntity {
     private void spawnEnemy() {
        
         if(BauerQuantity != 0){
-            for(int i=0; i < (int)Math.floor(overallQuantity*((float)BauerQuantity/100)); i++){
+            for(int i=0; i < (int)(overallQuantity*((float)BauerQuantity/100)); i++){
                 Bauer enemy = new Bauer(getX(),getY(), onOverworld());
                 overworld.addEntity(enemy);
             }
         }
         if(LanzeQuantity != 0){
-            for(int i=0; i < (int)Math.floor(overallQuantity*((float)LanzeQuantity/100)) ; i++){
+            for(int i=0; i < (int)(overallQuantity*((float)LanzeQuantity/100)) ; i++){
                 Lanze enemy = new Lanze(getX(),getY(), onOverworld());
                 overworld.addEntity(enemy);
             }
         }
         if(RitterQuantity != 0){
-            for(int i=0; i < (int)Math.floor(overallQuantity*((float)RitterQuantity/100)) ; i++){
-                Ritter enemy = new Ritter(getX(),getY(), onOverworld());
+            for(int i=0; i < (int)(overallQuantity*((float)RitterQuantity/100)) ; i++){
+                Reiter enemy = new Reiter(getX(),getY(), onOverworld());
                 overworld.addEntity(enemy);
             }
         }
         if(PalaQuantity != 0){
-            for(int i=0; i < (int)Math.floor(overallQuantity*((float)PalaQuantity/100)) ; i++){
+            for(int i=0; i < (int)(overallQuantity*((float)PalaQuantity/100)) ; i++){
                 Pala enemy = new Pala(getX(),getY(), onOverworld());
                 overworld.addEntity(enemy);
             }
