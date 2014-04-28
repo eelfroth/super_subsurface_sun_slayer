@@ -90,6 +90,7 @@ public class Underworld extends AbstractWorld{
         camera.translate(0,Gdx.graphics.getHeight()/2.25f);
         //camera.rotate(rotation);
         camera.update();
+        camera.zoom = 1.2f;
         gs.getBatch().setProjectionMatrix(camera.combined);
         
         gs.getBatch().draw(texture, 0, 0);
