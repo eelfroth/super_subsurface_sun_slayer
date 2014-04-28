@@ -1,6 +1,7 @@
 package com.BauhausGamesSyndicate.LudumDare29.GameObjects;
 
 import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
+import com.BauhausGamesSyndicate.LudumDare29.overworld.Eingang;
 import com.badlogic.gdx.Gdx;
 import static java.lang.Math.floor;
 import static java.lang.Math.sin;
@@ -18,8 +19,8 @@ public class Fledermaus extends Minion{
 
     public Fledermaus(boolean world) {
        super(
-           GameScreen.onOverworld()?GameScreen.getOverworld().getEingang().getX():Gdx.graphics.getWidth()/2,
-           0,
+           GameScreen.onOverworld()?GameScreen.getOverworld().getEingang().getX():(Gdx.graphics.getWidth()/2)+50,
+           Gdx.graphics.getHeight()/2,
            "fledermaus",
            world,
            4,
@@ -43,27 +44,47 @@ public class Fledermaus extends Minion{
     @Override
     public void update(float delta) {
         super.update(delta);
+        deactivateWalkOnCeilingHax();
         
         //(debug) unendlich leben
         setLife(1003577);
         
         //den x- und y-koordinaten werden sinuskurven addiert
-        y_sin += delta*0.167;
-        setY((getY() + (float)sin(y_sin/147f)*200.0f) + 200.0f + y_pos);
-        x_sin += delta*0.167;
-        setX(getX() + (float)sin(x_sin/211f)*4f);
+        if(onOverworld()) {
+            if(!isDescending()) {
+                y_sin += delta*0.167;
+                setY((getY() + (float)sin(y_sin/147f)*200.0f) + 200.0f + y_pos);
+                }
+                x_sin += delta*0.167;
+                setX(getX() + (float)sin(x_sin/211f)*11f);
+        }
+        else {
+            if(!isRising()){
+                y_sin += delta*0.167;
+                setY((Gdx.graphics.getHeight()/2) + ((float)sin(y_sin/147f)*350.0f));
+            }
+            x_sin += delta*0.167;
+            setX((Gdx.graphics.getWidth()/2) + (float)sin(x_sin/211f)*350.0f);
+        }
         
+        if(GameScreen.getPlayer().isRising() && !onOverworld()) {
+                rise();
+        }
         
         //debug shit
-        boolean debug = false;
+        boolean debug = true;
         if(debug) {
             StringBuffer result = new StringBuffer();
+            result.append(getX());
             result.append("\t");
-            result.append(y_sin);
-            result.append("\t");
-            result.append((float)sin(y_sin/100)*100);
             String mynewstring = result.toString();
             Gdx.app.log("", mynewstring);
         }
+    }
+    
+    @Override
+    public void  onDescend(){
+        setX(1020);
+        setY(550);
     }
 }

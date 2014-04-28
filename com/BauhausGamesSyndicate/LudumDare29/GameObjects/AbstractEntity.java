@@ -2,7 +2,9 @@
 package com.BauhausGamesSyndicate.LudumDare29.GameObjects;
 
 import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.Matrix4;
 
 /**
  *
@@ -21,6 +23,9 @@ public abstract class AbstractEntity{
     private int steps;
     private float timer = 0;
     private int steptime = 200;//ms
+    private float rotation;
+    private Matrix4 projectionMatrix;
+    private boolean walkOnCeilingHax;
     
     private TextureRegion[] specialTextures;
     private TextureRegion[] standardAnimation;
@@ -59,6 +64,9 @@ public abstract class AbstractEntity{
            //     System.err.println(name+""+Integer.toString(i)+"s");
         }
         
+        rotation = 0;
+        projectionMatrix = new Matrix4();
+        //projectionMatrix.setToOrtho2D(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
     }
     
     public float getLife(){
@@ -99,7 +107,22 @@ public abstract class AbstractEntity{
         
         if (flip != tex.isFlipX())
            tex.flip(true, false);
-        gs.getBatch().draw(tex, x - getWidth()/2, y-56);
+        //activateWalkOnCeilingHax();
+        if(walkOnCeilingHax){
+            float a=(float)(x)/1000;
+            //gs.getBatch().getProjectionMatrix().rotate(0, 0, 1, a);
+            //Matrix4 mat = gs.getBatch().getProjectionMatrix();
+            //gs.getBatch().getProjectionMatrix().rotate(1, 1, 0, a);
+            gs.getBatch().draw(tex,(float)Math.sin(a)*570+Gdx.graphics.getWidth()/2+20,(float)Math.cos(a)*520+Gdx.graphics.getHeight()/2 -10);
+            //gs.getBatch().getProjectionMatrix().rotate(1,1,0,-a);
+            //gs.getBatch().setProjectionMatrix(mat);
+        }
+        else {;
+            //projectionMatrix.rotate(0, 0, 1, rotation);
+            //gs.getBatch().setProjectionMatrix(projectionMatrix);
+            gs.getBatch().draw(tex, x - getWidth()/2, y-56);
+            //projectionMatrix.rotate(0, 0, 1, -rotation);
+        }
     }
 
     public boolean onOverworld() {
@@ -170,7 +193,7 @@ public abstract class AbstractEntity{
         return special;
     }
 
-    public void playSpacial(boolean special) {
+    public void playSpecial(boolean special) {
         if (this.special!=special) {
             timer=0;
             step=0;
@@ -182,4 +205,24 @@ public abstract class AbstractEntity{
         this.step = step % steps;
     }
     
+    public float getRotation() {
+        return rotation;
+    }
+    
+    public void setRotation(float r) {
+        rotation = r;
+    }
+    
+    public boolean getWalkOnCeilingHax() {
+       return walkOnCeilingHax;
+    }
+    
+    public void activateWalkOnCeilingHax() {
+       walkOnCeilingHax = true;
+       projectionMatrix.setToOrtho2D(-Gdx.graphics.getWidth()/2, -Gdx.graphics.getHeight()/2, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+    }
+    
+    public void deactivateWalkOnCeilingHax() {
+       walkOnCeilingHax = false;
+    }
 }

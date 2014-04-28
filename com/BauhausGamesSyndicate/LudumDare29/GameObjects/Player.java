@@ -24,6 +24,7 @@ public class Player extends AbstractCharacter {
     
     public Player(float x, float y) {
         super(x, y, "overlord", false,10,9);
+        setAccFactor(0.05f);
         growlsound = Gdx.audio.newSound(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/growlsingle.ogg"));
         stepsound = Gdx.audio.newSound(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/step.wav"));
     }
@@ -53,7 +54,7 @@ public class Player extends AbstractCharacter {
             }
         }else {//underworld
             
-            if(!isRaising()){
+            if(!isRising()){
                 //    setY(Gdx.graphics.getHeight()/20);
                 
                 
@@ -93,7 +94,7 @@ public class Player extends AbstractCharacter {
             if (GameScreen.onOverworld() && Gdx.input.isKeyPressed(Keys.SPACE)){
                 attack();
             } else {
-                playSpacial(false);
+                playSpecial(false);
             }
         }
         
@@ -111,17 +112,17 @@ public class Player extends AbstractCharacter {
         }
         
         if (id==2 && menupoint==0){
-            flyTo(1, -2, 400);
+            flyTo(1, -2, 520);
         }else if (id==0 && menupoint==2){
-            flyTo(-1, 2, 400);
+            flyTo(-1, 2, 420);
         }  else if(id==1 && menupoint==0){
-            flyTo(-2, 0.5f, 350);
+            flyTo(-2, 0.5f, 470);
         }else if(id==3 && menupoint==0){
-            flyTo(2, 1, 400);
+            flyTo(2, 1, 520);
         }else if(id==0 && menupoint==3){
-            flyTo(-2, -1, 400);
+            flyTo(-2, -1, 520);
         } else if (id==0 && menupoint==1){
-            flyTo(2, -0.5f, 350);
+            flyTo(2, -0.5f, 470);
         } 
         
         menupoint = id;
@@ -156,7 +157,7 @@ public class Player extends AbstractCharacter {
      * was soll passieren, wenn die SPielfigur angreift?
      */
     public void attack(){
-        playSpacial(true);
+        playSpecial(true);
         attacktimer = 2000;
         stepsound.stop();
         growlsound.play();
@@ -180,5 +181,14 @@ public class Player extends AbstractCharacter {
         this.distanceTraveled=0;
     }
     
-    
+    @Override
+    public void  onDescend(){
+        setX(1020);
+        setY(550);
+    }
+
+    @Override
+    public void onRise(){
+        //nothing
+    }
 }

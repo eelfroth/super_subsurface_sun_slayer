@@ -9,6 +9,7 @@ public abstract class AbstractCharacter extends AbstractEntity {
     private float accFactor;
     private float velocity;
     private float friction;
+    private int verticalOffset;
     
     private boolean canWalk;
     private boolean shouldRaise;
@@ -17,10 +18,11 @@ public abstract class AbstractCharacter extends AbstractEntity {
     public AbstractCharacter(float x, float y, String name, boolean world, int steps, int specialSteps){
         super(x, y, name, world,steps, specialSteps);
         
+        verticalOffset = -(int) (Math.random()*20);
         velocity  = 0;
         accFactor = 0.03f;
         acceleration = 0;
-        friction = 0.2f;
+        friction = 0.05f;
         canWalk = true;
     }
     
@@ -84,7 +86,7 @@ public abstract class AbstractCharacter extends AbstractEntity {
     public void update(float delta){
         super.update(delta);
         if (GameScreen.onOverworld() && !shouldRaise && !shouldDescend){
-            setY(Overworld.getHeight((int) getX()));
+            setY(Overworld.getHeight((int) getX())+ verticalOffset);
         }
         if (isDead()){
             setFlagRemoveFromOverworld();
@@ -107,9 +109,10 @@ public abstract class AbstractCharacter extends AbstractEntity {
                 GameScreen.getOverworld().addEntity(this);
                 setFlagRemoveFromUnderworld();
                 switchWorld();
+                onRise();
             }
         }else if (shouldDescend){
-            setY(getY()-delta/2);
+            setY(getY()-(delta/8));
             
             //entering underworld
             if (getY() < 0){
@@ -118,8 +121,7 @@ public abstract class AbstractCharacter extends AbstractEntity {
                 GameScreen.getUnderworld().addEntity(this);
                 setFlagRemoveFromOverworld();
                 switchWorld();
-                setX(860);
-                setY(500);
+                onDescend();
             }
         }
         
@@ -145,13 +147,14 @@ public abstract class AbstractCharacter extends AbstractEntity {
     
     public void rise(){
         shouldRaise = true;
+        deactivateWalkOnCeilingHax();
     }
     
     public void descend() {
         shouldDescend = true;
     }
 
-    public boolean isRaising() {
+    public boolean isRising() {
         return shouldRaise;
     }
 
@@ -167,4 +170,8 @@ public abstract class AbstractCharacter extends AbstractEntity {
      * @param delta
      */
     public abstract void fight(AbstractCharacter enemy, float delta);
+
+    public abstract void onDescend();
+
+    public abstract void onRise();
 }
