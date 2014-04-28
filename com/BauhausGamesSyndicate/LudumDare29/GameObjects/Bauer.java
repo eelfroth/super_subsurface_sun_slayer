@@ -102,7 +102,7 @@ public class Bauer extends AbstractCharacter {
 
     private void doAnything() {
         for(int i=0; i<23; i++) {
-            /* SMOKE_WEED_EVERYDAY */
+            /* ANYTHING */
         }
     } 
     
