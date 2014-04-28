@@ -112,7 +112,7 @@ public class Player extends AbstractCharacter {
         }
         
         if (id==2 && menupoint==0){
-            flyTo(1, -2, 520);
+            flyTo(1, -2, 420);
         }else if (id==0 && menupoint==2){
             flyTo(-1, 2, 420);
         }  else if(id==1 && menupoint==0){
@@ -153,6 +153,25 @@ public class Player extends AbstractCharacter {
         attacktimer = 2000;
         stepsound.stop();
         growlsound.play();
+        
+        int attXpos;
+        int attackRadius =50;
+        
+        if (isFlipped())
+            attXpos= -100;
+        else
+            attXpos= 100;
+        
+            
+        for (AbstractEntity entity : GameScreen.getOverworld().getEntityList()) {
+            if (
+                entity instanceof AbstractCharacter &&
+                !((AbstractCharacter)entity).isEvil() &&
+                entity.getX()-getX() > attXpos - attackRadius &&
+                entity.getX()-getX() < attXpos + attackRadius
+                )
+                entity.drainLife(100);
+        }
         
     }
     
