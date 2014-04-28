@@ -19,7 +19,7 @@ public class Soldat extends AbstractCharacter {
     private float reach = 500;
     
     public Soldat(float x, float y, boolean world, Eingang eingang) {
-        super(x, y, "soldat", world,2,1);
+        super(x, y, "lanze", world,4,1);
         arrived = false;
         homeX = x;
         dTimer = 0;
