@@ -30,7 +30,7 @@ public class GameScreen implements Screen {
     private static Overworld overworld;
     private static Underworld underworld;
     private final FPSdiag fps;
-    private final ShapeRenderer shr;
+    //private final ShapeRenderer shr;
     private static TextureAtlas spritesheet;
     
     private static AbstractWorld world;
@@ -57,14 +57,14 @@ public class GameScreen implements Screen {
         font = new BitmapFont();
         font.setColor(Color.RED);
         fps = new FPSdiag(50, 200);
-        shr = new ShapeRenderer();
+        //shr = new ShapeRenderer();
         
         //y-up
         camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         camera.zoom = 1/(Gdx.graphics.getWidth()/1920f);
         
-        shr.setProjectionMatrix(camera.combined);
+        //shr.setProjectionMatrix(camera.combined);
         batch.setProjectionMatrix(camera.combined);
         
         //game data
@@ -154,9 +154,6 @@ public class GameScreen implements Screen {
         return font;
     }
 
-    public ShapeRenderer getShapeRenderer() {
-        return shr;
-    }
 
     public static TextureAtlas getSpritesheet() {
         return spritesheet;
@@ -308,7 +305,7 @@ public class GameScreen implements Screen {
         camera.translate(0, Gdx.graphics.getHeight());
         camera.update();
         batch.setProjectionMatrix(camera.combined);
-        shr.setProjectionMatrix(camera.combined);
+        //shr.setProjectionMatrix(camera.combined);
 
         underworld.render(this);
         player.render(this);
@@ -316,7 +313,7 @@ public class GameScreen implements Screen {
         //move camera back
         camera.translate(0, -Gdx.graphics.getHeight());
         camera.update();
-        shr.setProjectionMatrix(camera.combined);
+        //shr.setProjectionMatrix(camera.combined);
         batch.setProjectionMatrix(camera.combined);
     }
 
