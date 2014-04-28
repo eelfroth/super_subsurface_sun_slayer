@@ -26,6 +26,7 @@ class TitleScreen implements Screen {
     private Sound jingle;
     private Music title;
     private final Game ld;
+    private Sprite currentBurg;
 
     public TitleScreen(Game ld) {
         spritesheet = new TextureAtlas(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/title/spritesheet.txt"));
@@ -34,6 +35,9 @@ class TitleScreen implements Screen {
         jingle = Gdx.audio.newSound(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/title/jingle.ogg"));
         title = Gdx.audio.newMusic(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/title/title.ogg"));
         this.ld = ld;
+        currentBurg = new Sprite(spritesheet.findRegion("tb0"));
+        currentBurg.setX(940);
+        currentBurg.setY(440);
 
     }
 
@@ -42,12 +46,17 @@ class TitleScreen implements Screen {
         SpriteBatch batch = new SpriteBatch();
         batch.begin();
         background.draw(batch);
+        currentBurg.draw(batch);
         batch.end();
         
         if (Gdx.input.isKeyPressed(Keys.ENTER) ||Gdx.input.isKeyPressed(Keys.SPACE)){
             ld.setScreen(new GameScreen());
             dispose();
         }
+        
+        currentBurg = new Sprite(spritesheet.findRegion("tb"+(int)(Math.random()*7)));
+        currentBurg.setX(940);
+        currentBurg.setY(440);
     }
 
     @Override

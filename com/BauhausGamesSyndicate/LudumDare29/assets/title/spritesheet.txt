@@ -4,28 +4,28 @@ filter: Linear,Linear
 repeat: none
 tb0
   rotate: false
-  xy: 772, 1084
+  xy: 1146, 1370
   size: 372, 284
   orig: 1920, 1080
   offset: 947, 430
   index: -1
 tb1
   rotate: false
-  xy: 398, 1084
+  xy: 1146, 1084
   size: 372, 284
   orig: 1920, 1080
   offset: 947, 430
   index: -1
 tb2
   rotate: false
-  xy: 772, 1084
+  xy: 772, 1370
   size: 372, 284
   orig: 1920, 1080
   offset: 947, 430
   index: -1
 tb3
   rotate: false
-  xy: 2, 1084
+  xy: 2, 1370
   size: 394, 284
   orig: 1920, 1080
   offset: 948, 430
@@ -46,7 +46,7 @@ tb5
   index: -1
 tb6
   rotate: false
-  xy: 772, 1084
+  xy: 398, 1370
   size: 372, 284
   orig: 1920, 1080
   offset: 947, 430
