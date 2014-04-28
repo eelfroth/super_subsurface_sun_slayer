@@ -113,6 +113,8 @@ public class Player extends AbstractCharacter {
         } else {
             stepsound.loop(0.7f);
         }
+        
+        stormIntoBattle = Gdx.input.isKeyPressed(Keys.E);
     }
     
     private void goTo(int id){

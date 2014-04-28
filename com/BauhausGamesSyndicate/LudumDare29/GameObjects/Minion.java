@@ -31,7 +31,10 @@ public abstract class Minion extends AbstractCharacter{
         if(onOverworld()) {
             if (GameScreen.onOverworld()){
                 if(stormIntoBattle){
-                    setAcceleration(1);
+                    if(GameScreen.getPlayer().isFlipped())
+                        setAcceleration(-1);
+                    else
+                        setAcceleration(1);
                 }
                 else {
                     if (GameScreen.getPlayer().getX() > getX())
