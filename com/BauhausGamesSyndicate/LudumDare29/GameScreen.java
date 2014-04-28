@@ -62,6 +62,7 @@ public class GameScreen implements Screen {
         //y-up
         camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        camera.zoom = 1/(Gdx.graphics.getWidth()/1920f);
         
         shr.setProjectionMatrix(camera.combined);
         batch.setProjectionMatrix(camera.combined);
