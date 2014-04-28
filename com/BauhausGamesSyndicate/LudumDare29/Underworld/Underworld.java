@@ -118,7 +118,7 @@ public class Underworld extends AbstractWorld{
         
         //remove objects
         for (int i = 0; i < entityList.size(); i++) {
-           if (entityList.get(i).flagRemoveFromUnderworldSet())
+           if (entityList.get(i).isFlagRemoveFromUnderworldSet())
                entityList.remove(i);
         }
         
