@@ -1,5 +1,6 @@
 package com.BauhausGamesSyndicate.LudumDare29.GameObjects;
 
+import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
 import com.BauhausGamesSyndicate.LudumDare29.Tuning;
 
 /**
@@ -22,6 +23,15 @@ public class Warg extends Minion {
         setAccFactor(Tuning.WARG_ACCELERATION_FACTOR);
         setFriction(Tuning.WARG_FRICTION);
         setLife(Tuning.WARG_LIFE);
+    }
+    
+    @Override
+    public void update(float delta) {
+        super.update(delta);
+        if(GameScreen.getPlayer().getStormIntoBattle())
+            stormIntoBattle();
+        else
+            retreat();
     }
     
     @Override
