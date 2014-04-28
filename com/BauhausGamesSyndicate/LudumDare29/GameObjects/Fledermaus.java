@@ -14,6 +14,7 @@ import static java.lang.Math.sin;
 public class Fledermaus extends Minion{
     private float y_sin;
     private float x_sin;
+    private float x_pos;
     private float y_pos;
 
     public Fledermaus(boolean world) {
@@ -36,6 +37,7 @@ public class Fledermaus extends Minion{
        y_sin = ((float)Math.random())*1000f;
        x_sin = ((float)Math.random())*1000f;
        y_pos = ((float)Math.random())*100f;
+       x_pos = 0f;
        setStep((int)(Math.random()*4));
     }  
 
@@ -60,7 +62,7 @@ public class Fledermaus extends Minion{
                 setY((getY() + (float)sin(y_sin/147f)*200.0f) + 200.0f + y_pos);
                 }
                 x_sin += delta*0.167;
-                setX(getX() + (float)sin(x_sin/211f)*11f);
+                setAcceleration((float)sin(x_sin/211f)*0.1f);
         }
         else {
             if(!isRising()){
@@ -68,7 +70,9 @@ public class Fledermaus extends Minion{
                 setY((Gdx.graphics.getHeight()/2) + ((float)sin(y_sin/147f)*350.0f));
             }
             x_sin += delta*0.167;
-            setX((960/2) + (float)sin(x_sin/211f)*350.0f);
+
+            //setX((Gdx.graphics.getWidth()/2) + (float)sin(x_sin/211f)*350.0f);
+            setAcceleration((float)sin(x_sin/211f)*0.1f);
         }
         
         if(GameScreen.getPlayer().isRising() && !onOverworld()) {
