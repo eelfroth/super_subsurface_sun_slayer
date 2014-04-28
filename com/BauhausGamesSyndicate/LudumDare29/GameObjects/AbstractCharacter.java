@@ -147,23 +147,26 @@ public abstract class AbstractCharacter extends AbstractEntity {
         }
         
         //colission check
-        /*
-        if(collide()){ 
-            setCanWalk(false);
-            // fight((AbstractCharacter) entity, delta);
+        
+        if(collideWithEnemy(delta)){ 
+            //setCanWalk(false);
         }
-        */ 
+         
     }
     
-    public boolean collide(){
+    public boolean collideWithEnemy(float delta){
+        boolean colissionWithEnemy = false;
         for (AbstractEntity entity : GameScreen.getOverworld().getEntityList()) {
             if (entity instanceof AbstractCharacter &&//can typecasting be made
                 ((AbstractCharacter)entity).isEvil()!= this.isEvil() && //is not same fraction?
                 entity.getX()+entity.getWidth() > getX()&&
-                entity.getX() < getX()+entity.getWidth())
-                return true;
+                entity.getX() < getX()+entity.getWidth()){
+                playSpecial(true);
+                fight((AbstractCharacter) entity, delta);
+                colissionWithEnemy=true;
+            }
         }
-        return false;        
+        return colissionWithEnemy;        
     }
     
     public void rise(){

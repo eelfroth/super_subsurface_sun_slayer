@@ -208,8 +208,13 @@ public class Player extends AbstractCharacter {
         //nothing
     }
     
+
     @Override
     public float getStartLocation() {
          return Tuning.PLAYER_UNDERWORLD_START_LOCATION_Y;
     }
+    public boolean isAttacking(){
+        return attacktimer>0;
+    }
+
 }

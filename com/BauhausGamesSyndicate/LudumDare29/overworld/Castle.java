@@ -1,28 +1,29 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
 package com.BauhausGamesSyndicate.LudumDare29.overworld;
 
 import com.BauhausGamesSyndicate.LudumDare29.GameObjects.AbstractEntity;
-import com.BauhausGamesSyndicate.LudumDare29.GameObjects.Bauer;
+import com.BauhausGamesSyndicate.LudumDare29.GameObjects.Lanze;
 
 /**
  *
- * @author Benedikt Vogler
- * @author Paul Flechsig
- * @author Jacob Bauer
+ * @author Paul
  */
-public class City extends AbstractEntity {
+public class Castle extends AbstractEntity {
     private float timetillspawn = 1000;
     private float timer;
     private final Overworld overworld;
     
-    public City(Overworld overworld, int x, int y) {
-        super(x, y, "bauernhof", true, 1,1);  
-
-        if((int)(Math.random()*10) > 5){
-            this.setFlipHorizontal(true);
-        }
+    public Castle(Overworld overworld, int x, int y) {
+        super(x, y, "burg", true, 1,1);   
         this.overworld = overworld;
     }
     
+   
     @Override
     public void update(float delta){
         timer+=delta;
@@ -34,11 +35,12 @@ public class City extends AbstractEntity {
 
     private void spawnEnemy() {
        /*
-          100% Bauern 
-          Quantity: 1
+          50% Ritter
+          40% Lanze
+          10% Pala
+          Quantity: 6
        */
-       Bauer enemy = new Bauer(getX(),getY(), onOverworld());
-
+       Lanze enemy = new Lanze(getX(),getY(), onOverworld());
        overworld.addEntity(enemy);
     }
 }

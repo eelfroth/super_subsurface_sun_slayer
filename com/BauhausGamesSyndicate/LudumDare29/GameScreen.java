@@ -40,6 +40,8 @@ public class GameScreen implements Screen {
     private FrameBuffer frameBuffer;
     private Mesh frameMesh;
     private final Texture debug_texture;
+    private Sprite hudSprite;
+    
     private boolean rotation;
 
     private static Player player;
@@ -50,6 +52,8 @@ public class GameScreen implements Screen {
         spritesheet = new TextureAtlas(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/spritesheet.txt"));
         overlay = new Texture(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/overlay.png"));
         debug_texture = new Texture(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/mapping.png"));
+        hudSprite = new Sprite(spritesheet.findRegion("overlord4"));
+        hudSprite.setX(1980-hudSprite.getWidth());
   //      debug_texture = new Texture(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/gruppennfohto.jpg"));
         
         
@@ -122,6 +126,7 @@ public class GameScreen implements Screen {
             if (world == underworld) {
                 renderUnderworld();
             }
+            hudSprite.draw(batch);
             batch.end();
             
             //overlay
@@ -132,8 +137,6 @@ public class GameScreen implements Screen {
 
         //2. render framebuffer to frame:
         renderFramebuffer(world);
-
-        
         //fps
         //fps.render(shr, font);
     }

@@ -1,7 +1,6 @@
 package com.BauhausGamesSyndicate.LudumDare29.GameObjects;
 
 import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
-import com.BauhausGamesSyndicate.LudumDare29.overworld.Eingang;
 
 /**
  *
@@ -9,7 +8,7 @@ import com.BauhausGamesSyndicate.LudumDare29.overworld.Eingang;
  * @author Paul Flechsig
  * @author Jacob Bauer
  */
-public class Soldat extends AbstractCharacter {
+public class Lanze extends AbstractCharacter {
     private boolean arrived;
     
     private int dTimer;
@@ -17,8 +16,8 @@ public class Soldat extends AbstractCharacter {
     private float homeX;
     private float reach = 600;
     
-    public Soldat(float x, float y, boolean world) {
-        super(x, y, "soldat", world,2,1);
+    public Lanze(float x, float y, boolean world) {
+        super(x, y, "lanze", world,2,1);
 
         arrived = false;
         homeX = x;
@@ -57,9 +56,9 @@ public class Soldat extends AbstractCharacter {
                setAcceleration(-1);
            
         }  
-        if(getAcceleration()>-0.1f)
+        if(getAcceleration()<-0.1f)
             setFlipHorizontal(true);
-        if(getAcceleration()< 0.1f)
+        if(getAcceleration()> 0.1f)
             setFlipHorizontal(false);
     }
     
