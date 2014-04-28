@@ -13,15 +13,18 @@ public class Soldat extends AbstractCharacter {
     private final Eingang eingang;
     private boolean arrived;
     
+    private int dTimer;
+    private int dTimerMax = 500;
     private float homeX;
     private float reach = 500;
     
     public Soldat(float x, float y, boolean world, Eingang eingang) {
-        super(x, y, "soldat", world,2,1);
+        super(x, y, "lanze", world,4,1);
         arrived = false;
         homeX = x;
+        dTimer = 0;
         setFriction(0.5f);
-        setAccFactor(0.03f + (int)Math.random()*0.5f);
+        //setAccFactor(0.03f + (int)Math.random()*0.5f);
         //setSpeed((float) (0.1f + Math.random()*.2f));
         this.eingang = eingang;
         if( (Math.random()*2)-1 > 0)
@@ -32,16 +35,32 @@ public class Soldat extends AbstractCharacter {
 
     @Override
     public void update(float delta) {
-        super.update(delta); 
+        super.update(delta);
+        /*
+        dTimer += delta;
+        if(dTimer >= dTimerMax){
+            dTimer %= dTimerMax;
+            if(Math.random()*20 < 5)
+                setAcceleration(getAcceleration()*(-1));
+        }
+        */
         if(getX() < homeX - reach/2 ||
-           getX() > homeX + reach/2){
-           setAcceleration(getAcceleration()*(-1) );
-           setX(getX() + getAcceleration()*5);
-        }else if(GameScreen.getPlayer().getX() > homeX - reach/2 && // wenn player in Heimat eindringt
-                 GameScreen.getPlayer().getX() < homeX + reach/2){
-                if(getX() > GameScreen.getPlayer().getX()) setAcceleration(-1);
-                else setAcceleration(1);
+           getX() > homeX + reach){
+           if(getX() > homeX)
+               setAcceleration(-1);
+           else
+               setAcceleration(1);
+        }
+        if(GameScreen.getPlayer().getX() > homeX - reach/2 && // wenn player in Heimat eindringt
+           GameScreen.getPlayer().getX() < homeX + reach){
+           setX(getX() + getAcceleration()*3);
+           if(GameScreen.getPlayer().getX() > getX())
+               setAcceleration(1);
+           else
+               setAcceleration(-1);
+           
         }  
+     
     }
     
     

@@ -72,17 +72,11 @@ public class Player extends AbstractCharacter {
                     
                     if (Gdx.input.isKeyPressed(Keys.W)){
                         goTo(0);
-                    }
-
-                    if (Gdx.input.isKeyPressed(Keys.D)){
+                    } else if (Gdx.input.isKeyPressed(Keys.D)){
                         goTo(3);
-                    }
-
-                    if (Gdx.input.isKeyPressed(Keys.S)){
+                    }else if (Gdx.input.isKeyPressed(Keys.S)){
                         goTo(2);
-                    }
-
-                    if (Gdx.input.isKeyPressed(Keys.A)){
+                    }else if (Gdx.input.isKeyPressed(Keys.A)){
                         goTo(1);
                     }
                 

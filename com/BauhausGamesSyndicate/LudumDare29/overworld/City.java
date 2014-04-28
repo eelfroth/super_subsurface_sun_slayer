@@ -10,7 +10,7 @@ import com.BauhausGamesSyndicate.LudumDare29.GameObjects.Soldat;
  * @author Jacob Bauer
  */
 public class City extends AbstractEntity {
-    private float timetillspawn = 5000;
+    private float timetillspawn = 1000;
     private float timer;
     private final Overworld overworld;
     private final Eingang eingang;
