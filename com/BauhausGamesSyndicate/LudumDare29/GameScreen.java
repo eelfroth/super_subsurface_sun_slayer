@@ -344,6 +344,6 @@ public class GameScreen implements Screen {
         if(player.onOverworld()) world = overworld;
         else world = underworld;
         
-        Overworld.setCameraPos((int) (player.getX()-Gdx.graphics.getWidth()/2));
+        Overworld.setCameraPos((int) (player.getX()-960));
     }
 }
