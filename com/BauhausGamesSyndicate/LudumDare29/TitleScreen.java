@@ -17,6 +17,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.math.Vector3;
 
 /**
  *
@@ -30,7 +31,7 @@ class TitleScreen implements Screen {
     private final Game ld;
     private Sprite currentBurg;
     private SpriteBatch batch;
-    private OrthographicCamera camera;
+    private final OrthographicCamera camera;
 
     public TitleScreen(Game ld) {
         spritesheet = new TextureAtlas(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/title/spritesheet.txt"));
@@ -38,8 +39,7 @@ class TitleScreen implements Screen {
         
         batch = new SpriteBatch();
         camera = new OrthographicCamera();
-        camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        camera.zoom = 1/(Gdx.graphics.getWidth()/1920f);
+        camera.setToOrtho(false, 1920, 1080);
         
         jingle = Gdx.audio.newSound(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/title/jingle.ogg"));
         title = Gdx.audio.newMusic(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/title/title.ogg"));
@@ -53,6 +53,7 @@ class TitleScreen implements Screen {
     @Override
     public void render(float delta) {
         camera.update();
+        //Gdx.gl20.glViewport(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         batch.setProjectionMatrix(camera.combined);
 
         batch.begin();
@@ -65,6 +66,15 @@ class TitleScreen implements Screen {
             Gdx.input.isKeyPressed(Keys.SPACE)){
             ld.setScreen(new GameScreen());
             dispose();
+        }
+        
+        if (Gdx.input.isKeyPressed(Keys.F)){
+            Gdx.graphics.setDisplayMode(Gdx.graphics.getDesktopDisplayMode());
+        }
+        
+        if (Gdx.input.isKeyPressed(Keys.ESCAPE)){
+            dispose();
+            Gdx.app.exit();
         }
         
         currentBurg = new Sprite(spritesheet.findRegion("tb"+(int)(Math.random()*7)));

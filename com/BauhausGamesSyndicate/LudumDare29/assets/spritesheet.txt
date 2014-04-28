@@ -116,28 +116,49 @@ icowarg1
   index: -1
 lanze0
   rotate: false
-  xy: 1599, 1223
+  xy: 1377, 1620
   size: 68, 50
+  orig: 80, 56
+  offset: 0, 3
+  index: -1
+lanze0s
+  rotate: false
+  xy: 1055, 1560
+  size: 80, 48
   orig: 80, 56
   offset: 0, 3
   index: -1
 lanze1
   rotate: false
-  xy: 1055, 1612
+  xy: 1449, 1568
   size: 70, 50
   orig: 80, 56
   offset: 0, 3
   index: -1
-lanze2
+lanze1s
   rotate: false
   xy: 1525, 1223
+  size: 80, 54
+  orig: 80, 56
+  offset: 0, 2
+  index: -1
+lanze2
+  rotate: false
+  xy: 1140, 1465
   size: 72, 50
   orig: 80, 56
   offset: 1, 3
   index: -1
+lanze2s
+  rotate: false
+  xy: 1607, 1223
+  size: 80, 48
+  orig: 80, 56
+  offset: 0, 3
+  index: -1
 lanze3
   rotate: false
-  xy: 1055, 1560
+  xy: 1377, 1568
   size: 70, 50
   orig: 80, 56
   offset: 0, 3
@@ -277,7 +298,7 @@ overlord9
   index: -1
 palisaden0
   rotate: false
-  xy: 1127, 1568
+  xy: 1137, 1568
   size: 238, 94
   orig: 248, 98
   offset: 6, 3
@@ -389,28 +410,28 @@ warg0s
   index: -1
 warg1
   rotate: false
-  xy: 1367, 1568
+  xy: 1447, 1620
   size: 69, 34
   orig: 75, 50
   offset: 2, 10
   index: -1
 warg1s
   rotate: false
-  xy: 1367, 1604
+  xy: 1447, 1656
   size: 65, 23
   orig: 111, 69
   offset: 20, 22
   index: -1
 warg2
   rotate: false
-  xy: 1140, 1465
+  xy: 1140, 1517
   size: 69, 34
   orig: 75, 50
   offset: 2, 10
   index: -1
 warg2s
   rotate: false
-  xy: 1140, 1501
+  xy: 1055, 1610
   size: 67, 31
   orig: 111, 69
   offset: 19, 22
@@ -438,28 +459,28 @@ warg5s
   index: -1
 zivi0
   rotate: false
-  xy: 1367, 1629
+  xy: 1208, 755
   size: 16, 30
   orig: 22, 36
   offset: 3, 0
   index: -1
 zivi0s
   rotate: false
-  xy: 1668, 678
+  xy: 1214, 1465
   size: 18, 36
   orig: 22, 36
   offset: 1, 0
   index: -1
 zivi1
   rotate: false
-  xy: 1438, 1568
+  xy: 1374, 270
   size: 16, 30
   orig: 22, 36
   offset: 3, 0
   index: -1
 zivi1s
   rotate: false
-  xy: 1669, 1223
+  xy: 1689, 1223
   size: 18, 36
   orig: 22, 36
   offset: 1, 0
@@ -480,7 +501,7 @@ zivi2s
   index: -1
 zivi3
   rotate: false
-  xy: 1211, 1465
+  xy: 1668, 678
   size: 16, 30
   orig: 22, 36
   offset: 3, 0

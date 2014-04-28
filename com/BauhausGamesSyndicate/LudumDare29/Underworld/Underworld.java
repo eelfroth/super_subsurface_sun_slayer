@@ -46,20 +46,20 @@ public class Underworld extends AbstractWorld{
         icons[0].setX(1600);
         icons[0].setY(600);
         icons[1] = new Sprite(GameScreen.getSpritesheet().findRegion("icowarg0"));
-        icons[1].setX(1600);
-        icons[1].setY(180);
+        icons[1].setX(1200);
+        icons[1].setY(100);
         icons[2] = new Sprite(GameScreen.getSpritesheet().findRegion("icoslender0"));
-        icons[2].setX(200);
-        icons[2].setY(700);
+        icons[2].setX(180);
+        icons[2].setY(600);
         icons[3] = new Sprite(GameScreen.getSpritesheet().findRegion("icobat1"));
         icons[3].setX(1600);
         icons[3].setY(600);
         icons[4] = new Sprite(GameScreen.getSpritesheet().findRegion("icowarg1"));
-        icons[4].setX(1600);
-        icons[4].setY(180);
+        icons[4].setX(1200);
+        icons[4].setY(100);
         icons[5] = new Sprite(GameScreen.getSpritesheet().findRegion("icoslender1"));
-        icons[5].setX(200);
-        icons[5].setY(700);
+        icons[5].setX(180);
+        icons[5].setY(600);
         
         
         buySound = Gdx.audio.newSound(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/coin.wav"));
