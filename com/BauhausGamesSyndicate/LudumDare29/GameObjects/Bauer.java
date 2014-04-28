@@ -58,16 +58,6 @@ public class Bauer extends AbstractCharacter {
                     setAcceleration(getAcceleration()*(-1));
                     setX(getX() + getAcceleration()*2); // wengl durchdrehen!
                 }
-                /*
-                Eingang e = GameScreen.getOverworld().getEingang();
-                if(getX() > e.getX() - e.getWidth()/2 &&
-                   getX() < e.getX() + e.getWidth()/2){
-                    if(getX() > e.getX())
-                        setAcceleration(-1);
-                    else
-                        setAcceleration(1);
-                }
-                */
             }
         }
         
