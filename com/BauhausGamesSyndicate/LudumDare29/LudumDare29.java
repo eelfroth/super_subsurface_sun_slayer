@@ -31,8 +31,8 @@ public class LudumDare29 extends Game {
 
     @Override
     public void create() {
-        //setScreen(new MainMenu());
-        setScreen(new GameScreen());
+        setScreen(new TitleScreen());
+        //setScreen(new GameScreen());
    }
     
 }

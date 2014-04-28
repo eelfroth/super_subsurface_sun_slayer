@@ -124,23 +124,23 @@ lanze0
 lanze1
   rotate: false
   xy: 76, 1547
-  size: 68, 50
+  size: 70, 50
   orig: 80, 56
   offset: 0, 3
   index: -1
 lanze2
   rotate: false
-  xy: 1520, 1123
-  size: 68, 50
+  xy: 2, 1547
+  size: 72, 50
   orig: 80, 56
   offset: 1, 3
   index: -1
 lanze3
   rotate: false
-  xy: 2, 1547
-  size: 72, 50
+  xy: 1520, 1123
+  size: 70, 50
   orig: 80, 56
-  offset: 1, 3
+  offset: 0, 3
   index: -1
 overlord0
   rotate: false
@@ -305,14 +305,14 @@ siedlung0s
   index: -1
 slender0
   rotate: false
-  xy: 1590, 1123
+  xy: 636, 1458
   size: 20, 58
   orig: 32, 72
   offset: 6, 7
   index: -1
 slender1
   rotate: false
-  xy: 702, 1327
+  xy: 658, 1458
   size: 18, 58
   orig: 32, 72
   offset: 9, 7
@@ -340,7 +340,7 @@ slender4
   index: -1
 slender5
   rotate: false
-  xy: 636, 1458
+  xy: 702, 1327
   size: 18, 58
   orig: 32, 72
   offset: 9, 7
@@ -389,14 +389,14 @@ wald0s
   index: -1
 warg0
   rotate: false
-  xy: 146, 1584
+  xy: 148, 1584
   size: 69, 34
   orig: 75, 50
   offset: 2, 10
   index: -1
 warg0s
   rotate: false
-  xy: 217, 1547
+  xy: 219, 1547
   size: 69, 35
   orig: 111, 69
   offset: 18, 19
@@ -431,7 +431,7 @@ warg2s
   index: -1
 warg3s
   rotate: false
-  xy: 217, 1584
+  xy: 219, 1584
   size: 65, 29
   orig: 111, 69
   offset: 24, 18
@@ -445,14 +445,14 @@ warg4s
   index: -1
 warg5s
   rotate: false
-  xy: 146, 1547
+  xy: 148, 1547
   size: 69, 35
   orig: 111, 69
   offset: 18, 19
   index: -1
 zivi0
   rotate: false
-  xy: 722, 1327
+  xy: 366, 1414
   size: 16, 30
   orig: 22, 36
   offset: 3, 0
@@ -466,28 +466,28 @@ zivi0s
   index: -1
 zivi1
   rotate: false
-  xy: 656, 1458
+  xy: 722, 1327
   size: 16, 30
   orig: 22, 36
   offset: 3, 0
   index: -1
 zivi1s
   rotate: false
-  xy: 1590, 1183
+  xy: 680, 1389
   size: 18, 36
   orig: 22, 36
   offset: 1, 0
   index: -1
 zivi2
   rotate: false
-  xy: 288, 1547
+  xy: 290, 1547
   size: 16, 30
   orig: 22, 36
   offset: 3, 0
   index: -1
 zivi2s
   rotate: false
-  xy: 680, 1389
+  xy: 614, 1520
   size: 18, 36
   orig: 22, 36
   offset: 1, 0
@@ -501,7 +501,7 @@ zivi3
   index: -1
 zivi3s
   rotate: false
-  xy: 614, 1520
+  xy: 1592, 1123
   size: 18, 36
   orig: 22, 36
   offset: 1, 0
