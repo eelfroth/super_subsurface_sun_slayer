@@ -17,6 +17,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.math.Vector3;
 
 /**
  *
@@ -39,7 +40,7 @@ class TitleScreen implements Screen {
         batch = new SpriteBatch();
         camera = new OrthographicCamera();
         camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        camera.zoom = 1/(Gdx.graphics.getWidth()/1920f);
+        //camera.project(Vector3.Zero, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         
         jingle = Gdx.audio.newSound(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/title/jingle.ogg"));
         title = Gdx.audio.newMusic(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/title/title.ogg"));
@@ -53,6 +54,7 @@ class TitleScreen implements Screen {
     @Override
     public void render(float delta) {
         camera.update();
+        Gdx.gl20.glViewport(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         batch.setProjectionMatrix(camera.combined);
 
         batch.begin();
