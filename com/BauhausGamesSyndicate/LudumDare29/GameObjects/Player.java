@@ -202,4 +202,9 @@ public class Player extends AbstractCharacter {
     public void onRise(){
         //nothing
     }
+    
+    public boolean isAttacking(){
+        return attacktimer>0;
+    }
+    
 }
