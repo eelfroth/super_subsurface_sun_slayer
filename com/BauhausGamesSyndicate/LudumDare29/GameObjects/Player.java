@@ -112,7 +112,7 @@ public class Player extends AbstractCharacter {
         }
         
         if (id==2 && menupoint==0){
-            flyTo(1, -2, 520);
+            flyTo(1, -2, 420);
         }else if (id==0 && menupoint==2){
             flyTo(-1, 2, 420);
         }  else if(id==1 && menupoint==0){
