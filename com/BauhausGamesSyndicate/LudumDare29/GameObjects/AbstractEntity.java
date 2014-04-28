@@ -44,7 +44,7 @@ public abstract class AbstractEntity{
      * @param specialSteps  the amount of animation steps for the special
      */
     public AbstractEntity(float x, float y, String name, boolean world, int steps, int specialSteps) {
-        life    = Tuning.ENTITY_LIFE;
+        life = Tuning.ENTITY_LIFE;
         this.x = x;
         this.y = y;
         this.world = world;

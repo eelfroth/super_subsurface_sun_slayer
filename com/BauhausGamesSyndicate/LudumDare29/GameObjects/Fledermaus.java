@@ -28,6 +28,10 @@ public class Fledermaus extends Minion{
            1
        );
        
+        setAccFactor(Tuning.BAT_ACCELERATION_FACTOR);
+        setFriction(Tuning.BAT_FRICTION);
+        setLife(Tuning.BAT_LIFE);
+       
        setSteptime(50);
        
        //startwerte zugällig, damit die fledermäuse unterschiedlich fliegen;

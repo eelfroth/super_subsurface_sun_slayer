@@ -1,5 +1,7 @@
 package com.BauhausGamesSyndicate.LudumDare29.GameObjects;
 
+import com.BauhausGamesSyndicate.LudumDare29.Tuning;
+
 /**
  *
  * @author Benedikt Vogler
@@ -17,7 +19,9 @@ public class Warg extends Minion {
             3,
             3
         );
-        //setAccFactor(0.02f);
+        setAccFactor(Tuning.WARG_ACCELERATION_FACTOR);
+        setFriction(Tuning.WARG_FRICTION);
+        setLife(Tuning.WARG_LIFE);
     }
     
     @Override

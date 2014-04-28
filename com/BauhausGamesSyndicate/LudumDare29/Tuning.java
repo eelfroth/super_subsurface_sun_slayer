@@ -33,12 +33,30 @@ public final class Tuning {
     public final static float PLAYER_ACCELERATION_FACTOR = 0.03f;
     public final static float PLAYER_FRICTION = 0.05f;
     public final static float PLAYER_UNDERWORLD_START_LOCATION_Y = 550f;
+    public final static float PLAYER_LIFE = 100f;
+    public final static float PLAYER_DAMAGE_PER_ATTACK = 10f;
+    
+    /*---WARG---*/
+    public final static float WARG_ACCELERATION_FACTOR = 0.03f;
+    public final static float WARG_FRICTION = 0.03f;
+    public final static float WARG_LIFE = 15f;
+    public final static float WARG_DAMAGE_PER_ATTACK = 3f;
+    
+    /*---SLENDER---*/
+    public final static float SLENDER_ACCELERATION_FACTOR = 0.02f;
+    public final static float SLENDER_FRICTION = 0.05f;
+    public final static float SLENDER_LIFE = 5f;
+    
+    /*---BAT---*/
+    public static float BAT_ACCELERATION_FACTOR = 0.3f;
+    public static float BAT_FRICTION = 0.03f;
+    public static float BAT_LIFE = 20f;
     
     /*---KAUFMENÜ---*/
     public final static int TIME_BETWEEN_BUY = 500;
-    public final static int WARG_KOSTEN = 0;
-    public final static int SLENDER_KOSTEN = 0;
-    public final static int BAT_KOSTEN = 0;
+    public final static int WARG_KOSTEN = 5;
+    public final static int SLENDER_KOSTEN = 1;
+    public final static int BAT_KOSTEN = 10;
     
     
     /*---SPAWNING---*/
@@ -75,6 +93,7 @@ public final class Tuning {
     public final static int CASTLEOFLIGHT_SPAWN_PALA_RATE   = 50; // 50
     public final static int CASTLEOFLIGHT_SPAWN_LANZE_RATE  = 30; // 30
     public final static int CASTLEOFLIGHT_SPAWN_RITTER_RATE = 20; // 20
+    
     
     
 }

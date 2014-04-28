@@ -29,11 +29,12 @@ public class Player extends AbstractCharacter {
     
     public Player(float x, float y) {
         super(x, y, "overlord", false,10,9);
-        setAccFactor(0.05f);
+        setAccFactor(Tuning.PLAYER_ACCELERATION_FACTOR);
+        setFriction(Tuning.PLAYER_FRICTION);
+        setLife(Tuning.PLAYER_LIFE);
+        
         growlsound = Gdx.audio.newSound(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/growlsingle.ogg"));
         stepsound = Gdx.audio.newSound(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/step.wav"));
-        setAcceleration(Tuning.PLAYER_ACCELERATION_FACTOR);
-        setFriction(Tuning.PLAYER_FRICTION);
     }
     
     @Override
@@ -215,6 +216,7 @@ public class Player extends AbstractCharacter {
     public float getStartLocation() {
          return Tuning.PLAYER_UNDERWORLD_START_LOCATION_Y;
     }
+    
     public boolean isAttacking(){
         return attacktimer>0;
     }
