@@ -24,4 +24,10 @@ public class Forrest extends AbstractEntity {
    
     }
    */
+
+    @Override
+    public void onDeath() {
+    }
+    
+    
 }

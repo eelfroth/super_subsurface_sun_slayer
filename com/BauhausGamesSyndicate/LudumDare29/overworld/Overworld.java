@@ -409,7 +409,7 @@ public class Overworld extends AbstractWorld{
 
         //remove objects
         for (int i = 0; i < entityList.size(); i++) {
-           if (entityList.get(i).flagRemoveFromOverworldSet())
+           if (entityList.get(i).isFlagRemoveFromOverworldSet())
                entityList.remove(i);
         }
     }
