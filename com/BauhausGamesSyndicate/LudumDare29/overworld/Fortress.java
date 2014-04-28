@@ -24,5 +24,6 @@ public class Fortress extends AbstractSpawn{
         setMaxLanzen(Tuning.FORTRESS_MAX_LANZEN);
         setMaxRitter(Tuning.FORTRESS_MAX_RITTER);
         setMaxBauern(Tuning.FORTRESS_MAX_BAUERN);
+        setLife(Tuning.FORTRESS_LIFE);
     } 
 }

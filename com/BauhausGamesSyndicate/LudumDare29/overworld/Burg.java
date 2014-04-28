@@ -22,5 +22,6 @@ public class Burg extends AbstractSpawn{
         setMaxLanzen(Tuning.BURG_MAX_LANZEN);
         setMaxRitter(Tuning.BURG_MAX_RITTER);
         setMaxPala(Tuning.BURG_MAX_PALA);
+        setLife(Tuning.BURG_LIFE);
     } 
 }
