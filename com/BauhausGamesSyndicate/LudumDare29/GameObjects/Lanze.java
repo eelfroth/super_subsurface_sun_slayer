@@ -46,35 +46,36 @@ public class Lanze extends AbstractCharacter {
         }
         */
         
-        
-        if(getX() < homeX - reach/2 ||
-           getX() > homeX + reach/2){
-           if(getX() > homeX)
-               setAcceleration(-1);
-           else
-               setAcceleration(1);
-        }
-        if(GameScreen.getPlayer().getX() > homeX - reach/2 && // wenn player in Heimat eindringt
-           GameScreen.getPlayer().getX() < homeX + reach/2){
-           setX(getX() + getAcceleration()*2); // wengl durchdrehen!
-           if(GameScreen.getPlayer().getX() > getX()) // und auf player zugehen
-               setAcceleration(1);
-           else
-               setAcceleration(-1);
-           
-        }else{// change direction sometimes
-            dTimer += delta;
-            if(dTimer >= dTimerMax){
-                dTimer %= dTimerMax;
-                if((int)(Math.random()*50) < 5){
-                    setAcceleration(getAcceleration()*(-1));
-                }
+        if(!isFighting()) {
+            if(getX() < homeX - reach/2 ||
+               getX() > homeX + reach/2){
+               if(getX() > homeX)
+                   setAcceleration(-1);
+               else
+                   setAcceleration(1);
             }
-        }  
-        if(getAcceleration()<-0.1f)
-            setFlipHorizontal(true);
-        if(getAcceleration()> 0.1f)
-            setFlipHorizontal(false);
+            if(GameScreen.getPlayer().getX() > homeX - reach/2 && // wenn player in Heimat eindringt
+               GameScreen.getPlayer().getX() < homeX + reach/2){
+               setX(getX() + getAcceleration()*2); // wengl durchdrehen!
+               if(GameScreen.getPlayer().getX() > getX()) // und auf player zugehen
+                   setAcceleration(1);
+               else
+                   setAcceleration(-1);
+
+            }else{// change direction sometimes
+                dTimer += delta;
+                if(dTimer >= dTimerMax){
+                    dTimer %= dTimerMax;
+                    if((int)(Math.random()*50) < 5){
+                        setAcceleration(getAcceleration()*(-1));
+                    }
+                }
+            }  
+            if(getAcceleration()<-0.1f)
+                setFlipHorizontal(true);
+            if(getAcceleration()> 0.1f)
+                setFlipHorizontal(false);
+        }
     }
     
     
@@ -88,6 +89,8 @@ public class Lanze extends AbstractCharacter {
         //playSpacial(true);
         if(!hasDrainedLife())
             enemy.drainLife(Tuning.LANZE_DAMAGE_PER_ATTACK);
+        
+        setAcceleration(0);
     }
     
     @Override

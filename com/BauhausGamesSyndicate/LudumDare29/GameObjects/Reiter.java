@@ -1,6 +1,7 @@
 package com.BauhausGamesSyndicate.LudumDare29.GameObjects;
 
 import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
+import com.BauhausGamesSyndicate.LudumDare29.Tuning;
 import com.BauhausGamesSyndicate.LudumDare29.overworld.AbstractSpawn;
 
 /**
@@ -23,43 +24,48 @@ public class Reiter extends AbstractCharacter {
         homeX = x;
         this.home = home;
         dTimer = 0;
-        setFriction(0.5f);
-        setAccFactor(getAccFactor() + (float) (Math.random()*0.1));
         setAcceleration(-1);
+        
+        setAccFactor(Tuning.PALA_ACCELERATION_FACTOR + (float) (Math.random()*0.1));
+        setFriction(Tuning.PALA_FRICTION);
+        setLife(Tuning.PALA_LIFE);
     }
 
     @Override
     public void update(float delta) {
         super.update(delta);
         
-        if(getX() < homeX - reach/2 ||
-           getX() > homeX + reach/2){
-           if(getX() > homeX)
-               setAcceleration(-1);
-           else
-               setAcceleration(1);
-        }
-        if(GameScreen.getPlayer().getX() > homeX - reach/2 && // wenn player in Heimat eindringt
-           GameScreen.getPlayer().getX() < homeX + reach/2){
-           setX(getX() + getAcceleration()*2); // wengl durchdrehen!
-           if(GameScreen.getPlayer().getX() > getX()) // und auf player zugehen
-               setAcceleration(1);
-           else
-               setAcceleration(-1);
-           
-        }else{// change direction sometimes
-            dTimer += delta;
-            if(dTimer >= dTimerMax){
-                dTimer %= dTimerMax;
-                if((int)(Math.random()*50) < 5){
-                    setAcceleration(getAcceleration()*(-1));
-                }
+        
+        if(!isFighting()) {
+            if(getX() < homeX - reach/2 ||
+               getX() > homeX + reach/2){
+               if(getX() > homeX)
+                   setAcceleration(-1);
+               else
+                   setAcceleration(1);
             }
-        }    
-        if(getAcceleration()<-0.1f)
-            setFlipHorizontal(true);
-        if(getAcceleration()> 0.1f)
-            setFlipHorizontal(false);
+            if(GameScreen.getPlayer().getX() > homeX - reach/2 && // wenn player in Heimat eindringt
+               GameScreen.getPlayer().getX() < homeX + reach/2){
+               setX(getX() + getAcceleration()*2); // wengl durchdrehen!
+               if(GameScreen.getPlayer().getX() > getX()) // und auf player zugehen
+                   setAcceleration(1);
+               else
+                   setAcceleration(-1);
+
+            }else{// change direction sometimes
+                dTimer += delta;
+                if(dTimer >= dTimerMax){
+                    dTimer %= dTimerMax;
+                    if((int)(Math.random()*50) < 5){
+                        setAcceleration(getAcceleration()*(-1));
+                    }
+                }
+            }    
+            if(getAcceleration()<-0.1f)
+                setFlipHorizontal(true);
+            if(getAcceleration()> 0.1f)
+                setFlipHorizontal(false);
+        }
     }
     
     
@@ -71,7 +77,10 @@ public class Reiter extends AbstractCharacter {
     @Override
     public void fight(AbstractCharacter enemy, float delta) {
         playSpecial(true);
-        enemy.drainLife(delta/4);
+        if(!hasDrainedLife())
+            enemy.drainLife(Tuning.REITER_DAMAGE_PER_ATTACK);
+        
+        setAcceleration(0);
     }
     
     @Override
