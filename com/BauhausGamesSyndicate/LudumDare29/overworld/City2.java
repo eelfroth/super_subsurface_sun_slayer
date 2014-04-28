@@ -8,42 +8,17 @@ package com.BauhausGamesSyndicate.LudumDare29.overworld;
 
 import com.BauhausGamesSyndicate.LudumDare29.GameObjects.AbstractEntity;
 import com.BauhausGamesSyndicate.LudumDare29.GameObjects.Bauer;
+import com.BauhausGamesSyndicate.LudumDare29.Tuning;
 
 /**
  *
  * @author Paul
  */
-public class City2 extends AbstractEntity {
-    private float timetillspawn = 1000;
-    private float timer;
-    private final Overworld overworld;
-    
-    public City2(Overworld overworld, int x, int y) {
-        super(x, y, "befestigter_bauernhof", true, 1,1);  
-
-        if((int)(Math.random()*10) > 5){
-            this.setFlipHorizontal(true);
-        }
-        this.overworld = overworld;
-    }
-    
-    @Override
-    public void update(float delta){
-        timer+=delta;
-        if (timer>=timetillspawn) {
-            timer = 0;
-            spawnEnemy();
-        }
-    }
-
-    private void spawnEnemy() {
-       /*
-          70% Bauern 
-          30% Lanze
-          Quantity: 2
-       */
-       Bauer enemy = new Bauer(getX(),getY(), onOverworld());
-
-       overworld.addEntity(enemy);
-    }
+public class City2 extends AbstractSpawn{
+    public City2(Overworld overworld, int x, int y){
+        super(overworld, x, y, "bauernhof");
+        setOverallQuantity(Tuning.BAUERNHOF2_QUANTITY);
+        setBQuantity(Tuning.BAUERNHOF2_SPAWN_BAUER_RATE);
+        setLQuantity(Tuning.BAUERNHOF2_SPAWN_LANZE_RATE);
+    } 
 }
