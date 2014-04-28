@@ -19,7 +19,7 @@ public abstract class AbstractCharacter extends AbstractEntity {
     private int verticalOffset;
     
     private boolean canWalk;
-    private boolean shouldRaise;
+    private boolean shouldRise;
     private boolean shouldDescend;
     
     
@@ -29,11 +29,11 @@ public abstract class AbstractCharacter extends AbstractEntity {
     public AbstractCharacter(float x, float y, String name, boolean world, int steps, int specialSteps){
         super(x, y, name, world,steps, specialSteps);
         
-        verticalOffset = -(int) (Math.random()*20);
+        verticalOffset = -(int) (Math.random()*Tuning.VERTICAL_OFFSET);
         velocity  = 0;
-        accFactor = 0.03f;
+        accFactor = Tuning.ACCELERATION_FACTOR;
         acceleration = 0;
-        friction = 0.05f;
+        friction = Tuning.FRICTION;
         canWalk = true;
     }
     
@@ -96,7 +96,7 @@ public abstract class AbstractCharacter extends AbstractEntity {
     @Override
     public void update(float delta){
         super.update(delta);
-        if (GameScreen.onOverworld() && !shouldRaise && !shouldDescend){
+        if (GameScreen.onOverworld() && !shouldRise && !shouldDescend){
             setY(Overworld.getHeight((int) getX())+ verticalOffset);
         }
         if (isDead()){
@@ -111,11 +111,11 @@ public abstract class AbstractCharacter extends AbstractEntity {
         if(getVelocity()> 0.1f)
             this.setFlipHorizontal(false);
         
-        if (shouldRaise){
-            setY(getY()+delta/2);
+        if (shouldRise){
+            setY(getY()+delta*Tuning.RISE_SPEED);
             
             if (getY() >= Chunk.HEIGHT){
-                shouldRaise=false;
+                shouldRise=false;
                 setX(GameScreen.getOverworld().getEingang().getX()+GameScreen.getOverworld().getEingang().getWidth()/2);
                 GameScreen.getOverworld().addEntity(this);
                 setFlagRemoveFromUnderworld();
@@ -123,7 +123,7 @@ public abstract class AbstractCharacter extends AbstractEntity {
                 onRise();
             }
         } else if (shouldDescend){
-            setY(getY()-(delta/8));
+            setY(getY()-(delta*Tuning.DESCEND_SPEED));
             
             //entering underworld
             if(onOverworld()) {
@@ -170,7 +170,7 @@ public abstract class AbstractCharacter extends AbstractEntity {
     }
     
     public void rise(){
-        shouldRaise = true;
+        shouldRise = true;
         deactivateWalkOnCeilingHax();
     }
     
@@ -179,7 +179,7 @@ public abstract class AbstractCharacter extends AbstractEntity {
     }
 
     public boolean isRising() {
-        return shouldRaise;
+        return shouldRise;
     }
 
     public boolean isDescending() {
