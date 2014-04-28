@@ -13,6 +13,8 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
  * @author Jacob Bauer
  */
 public abstract class AbstractEntity{
+    private static TextureRegion[] todesAnimation = new TextureRegion[4];
+    
     private boolean world;//false: underworld, true: overworld
     private boolean flagRemoveFromUnderworld;
     private boolean flagRemoveFromOverworld;
