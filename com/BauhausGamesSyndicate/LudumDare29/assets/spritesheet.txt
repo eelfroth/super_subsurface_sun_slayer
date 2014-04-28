@@ -450,56 +450,56 @@ warg5s
   orig: 111, 69
   offset: 18, 19
   index: -1
-zivi1
+zivi0
   rotate: false
   xy: 722, 1327
   size: 16, 30
   orig: 22, 36
   offset: 3, 0
   index: -1
-zivi1s
+zivi0s
   rotate: false
   xy: 1571, 842
   size: 18, 36
   orig: 22, 36
   offset: 1, 0
   index: -1
-zivi2
+zivi1
   rotate: false
   xy: 656, 1458
   size: 16, 30
   orig: 22, 36
   offset: 3, 0
   index: -1
-zivi2s
+zivi1s
   rotate: false
   xy: 1590, 1183
   size: 18, 36
   orig: 22, 36
   offset: 1, 0
   index: -1
-zivi3
+zivi2
   rotate: false
   xy: 288, 1547
-  size: 18, 30
+  size: 16, 30
   orig: 22, 36
-  offset: 2, 0
+  offset: 3, 0
   index: -1
-zivi3s
+zivi2s
   rotate: false
   xy: 680, 1389
   size: 18, 36
   orig: 22, 36
   offset: 1, 0
   index: -1
-zivi4
+zivi3
   rotate: false
   xy: 1591, 581
   size: 16, 30
   orig: 22, 36
   offset: 3, 0
   index: -1
-zivi4s
+zivi3s
   rotate: false
   xy: 614, 1520
   size: 18, 36
