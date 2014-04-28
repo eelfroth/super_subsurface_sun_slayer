@@ -70,6 +70,7 @@ public class Bauer extends AbstractCharacter {
         if(isDescending()) {
             playSpecial(true);
             setAcceleration(0);
+            playSpecial(true);
         }
     }
     
