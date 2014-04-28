@@ -101,16 +101,20 @@ public abstract class AbstractEntity{
     
     public void render(GameScreen gs){
         TextureRegion tex;
-        if (special)
+        if (special){
             tex = specialTextures[step];
-        else
+            if (tex==null) Gdx.app.error("Sprites", "special texture "+step+" missing");
+        }
+        else {
             tex = standardAnimation[step];
+            if (tex==null) Gdx.app.error("Sprites", "standard texture "+step+" missing");
+        }
         
         if (flip != tex.isFlipX())
            tex.flip(true, false);
         //activateWalkOnCeilingHax();
         if(walkOnCeilingHax){
-            float a=(float)(x)/1000;
+            float a=x/1000;
             //gs.getBatch().getProjectionMatrix().rotate(0, 0, 1, a);
             //Matrix4 mat = gs.getBatch().getProjectionMatrix();
             //gs.getBatch().getProjectionMatrix().rotate(1, 1, 0, a);
