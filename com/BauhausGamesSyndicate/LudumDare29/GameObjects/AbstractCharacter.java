@@ -4,13 +4,9 @@ import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
 import com.BauhausGamesSyndicate.LudumDare29.Tuning;
 import com.BauhausGamesSyndicate.LudumDare29.overworld.Chunk;
 import com.BauhausGamesSyndicate.LudumDare29.overworld.Overworld;
-import com.badlogic.gdx.Gdx;
 
 
 public abstract class AbstractCharacter extends AbstractEntity {
-    
-    //wohin fallen
-    
     
     private float acceleration;
     private float accFactor;
@@ -50,9 +46,7 @@ public abstract class AbstractCharacter extends AbstractEntity {
     
     
     public void move(float delta){
-        setAcceleration(getAcceleration()   );
-        setVelocity    (getVelocity()     + getAcceleration()* getAccFactor()   );
-        setVelocity    (getVelocity()     * (1 - getFriction()) );
+        setVelocity    ((getVelocity()+ getAcceleration()* getAccFactor())     * (1 - getFriction()) );
         setX((getX() + getVelocity()*delta));
     }
     
@@ -103,8 +97,11 @@ public abstract class AbstractCharacter extends AbstractEntity {
             setY(Overworld.getHeight((int) getX())+ verticalOffset);
         }
         if (isDead()){
+            if  (!flagRemoveFromOverworldSet())
+                onDeath();
             setFlagRemoveFromOverworld();
         }
+        
         if(getCanWalk())
             move(delta);
         

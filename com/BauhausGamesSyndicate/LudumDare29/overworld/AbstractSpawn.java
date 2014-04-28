@@ -124,32 +124,40 @@ public class AbstractSpawn extends AbstractEntity {
 
     private void spawnEnemy() {
        
-        if(BauerQuantity != 0 && anzBauern+overallQuantity*BauerQuantity < maxBauern ){
+        if(BauerQuantity != 0){
             for(int i=0; i < overallQuantity*BauerQuantity; i++){
-                Bauer enemy = new Bauer(getX(),getY(), onOverworld(), this);
-                overworld.addEntity(enemy);
-                anzBauern++;
+                if(anzBauern < maxBauern){
+                    Bauer enemy = new Bauer(getX(),getY(), onOverworld(), this);
+                    overworld.addEntity(enemy);
+                    anzBauern++;
+                }
             }
         }
-        if(LanzeQuantity != 0 && anzLanzen+overallQuantity*LanzeQuantity < maxLanzen){
+        if(LanzeQuantity != 0){
             for(int i=0; i < overallQuantity*LanzeQuantity ; i++){
-                Lanze enemy = new Lanze(getX(),getY(), onOverworld(), this);
-                overworld.addEntity(enemy);
-                anzLanzen++;
+                if(anzLanzen < maxLanzen){
+                    Lanze enemy = new Lanze(getX(),getY(), onOverworld(), this);
+                    overworld.addEntity(enemy);
+                    anzLanzen++;
+                }
             }
         }
-        if(RitterQuantity != 0 && anzRitter+overallQuantity*RitterQuantity < maxRitter){
+        if(RitterQuantity != 0){
             for(int i=0; i < overallQuantity*RitterQuantity ; i++){
-                Reiter enemy = new Reiter(getX(),getY(), onOverworld(), this);
-                overworld.addEntity(enemy);
-                anzRitter++;
+                if(anzRitter < maxRitter){
+                    Reiter enemy = new Reiter(getX(),getY(), onOverworld(), this);
+                    overworld.addEntity(enemy);
+                    anzRitter++;
+                }
             }
         }
-        if(PalaQuantity != 0 && anzPala+overallQuantity*PalaQuantity < maxPala){
+        if(PalaQuantity != 0){
             for(int i=0; i < overallQuantity*PalaQuantity ; i++){
-                Pala enemy = new Pala(getX(),getY(), onOverworld(), this);
-                overworld.addEntity(enemy);
-                anzPala++;
+                if(anzPala < maxPala){
+                    Pala enemy = new Pala(getX(),getY(), onOverworld(), this);
+                    overworld.addEntity(enemy);
+                    anzPala++;
+                }
             }
         }
     }
