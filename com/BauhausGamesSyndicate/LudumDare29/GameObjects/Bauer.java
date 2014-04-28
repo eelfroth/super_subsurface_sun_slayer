@@ -26,38 +26,51 @@ public class Bauer extends AbstractCharacter {
     public void update(float delta) {
         super.update(delta);
         
-        /*
-        if(getX() < homeX - reach/2 ||
-           getX() > homeX + reach/2){
-           if(getX() > homeX)
-               setAcceleration(-1);
-           else
-               setAcceleration(1);
-        }
-        */
-        if(GameScreen.getPlayer().getX() > getX() - reach/2 && // wenn player in Heimat eindringt
-           GameScreen.getPlayer().getX() < getX() + reach/2){
-           setX(getX() + getAcceleration()*2); // wengl durchdrehen!
-           playSpecial(true);
-           if(GameScreen.getPlayer().getX() > getX()) // und auf player zugehen
-               setAcceleration(-1);
-           else
-               setAcceleration(1);
-           
-        }else{
-            playSpecial(false);
-            dTimer += delta;
-            if(dTimer >= dTimerMax){
-                dTimer %= dTimerMax;
-                if((int)(Math.random()*50) < 5){
-                    setAcceleration(getAcceleration()*(-1));
+        if(!isDescending()) {
+            /*
+            if(getX() < homeX - reach/2 ||
+               getX() > homeX + reach/2){
+               if(getX() > homeX)
+                   setAcceleration(-1);
+               else
+                   setAcceleration(1);
+            }
+            */
+            if(GameScreen.getPlayer().getX() > getX() - reach/2 && // wenn player in Heimat eindringt
+               GameScreen.getPlayer().getX() < getX() + reach/2){
+               setX(getX() + getAcceleration()*2); // wengl durchdrehen!
+               playSpecial(true);
+               if(GameScreen.getPlayer().getX() > getX()) // und auf player zugehen
+                   setAcceleration(-1);
+               else
+                   setAcceleration(1);
+
+            }else{
+                playSpecial(false);
+                dTimer += delta;
+                if(dTimer >= dTimerMax){
+                    dTimer %= dTimerMax;
+                    if((int)(Math.random()*50) < 5){
+                        setAcceleration(getAcceleration()*(-1));
+                    }
                 }
             }
         }
+        
         if(getAcceleration()<-0.1f)
             setFlipHorizontal(true);
         if(getAcceleration()> 0.1f)
             setFlipHorizontal(false);
+        
+        Eingang e = GameScreen.getOverworld().getEingang();
+        if(2110 < getX() && 2130 > getX()) {
+            descend();
+        }
+        
+        if(isDescending()) {
+            playSpecial(true);
+            setAcceleration(0);
+        }
     }
     
     @Override
