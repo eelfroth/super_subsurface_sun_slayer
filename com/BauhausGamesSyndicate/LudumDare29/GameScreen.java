@@ -39,9 +39,9 @@ public class GameScreen implements Screen {
     private FrameBuffer frameBuffer;
     private Mesh frameMesh;
     private final Texture debug_texture;
-    private Sprite hudSprite;
+    private final Sprite hudSpriteR;
+    private final Sprite hudSpriteLbg;
     
-    private boolean rotation;
     private static Music underworldMusic;
     private static Music overworldMusic;
 
@@ -52,8 +52,14 @@ public class GameScreen implements Screen {
         spritesheet = new TextureAtlas(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/spritesheet.txt"));
         overlay = new Texture(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/overlay.png"));
         debug_texture = new Texture(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/mapping.png"));
-        hudSprite = new Sprite(spritesheet.findRegion("overlord4"));
-        hudSprite.setX(1980-hudSprite.getWidth());
+        hudSpriteR = new Sprite(spritesheet.findRegion("HUDR"));
+        hudSpriteR.setX(1980-hudSpriteR.getWidth());
+        hudSpriteR.setY(1080-hudSpriteR.getHeight());
+        
+        hudSpriteLbg = new Sprite(spritesheet.findRegion("HUDLbg"));
+        hudSpriteLbg.setX(0);
+        hudSpriteLbg.setY(1080-hudSpriteR.getHeight());
+        
   //      debug_texture = new Texture(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/gruppennfohto.jpg"));
         
         GameScreen.underworldMusic = Gdx.audio.newMusic(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/underworldLoop.ogg"));
@@ -65,6 +71,7 @@ public class GameScreen implements Screen {
         batch = new SpriteBatch();    
         font = new BitmapFont();
         font.setColor(Color.RED);
+        font.scale(2);
         //fps = new FPSdiag(50, 200);
         //shr = new ShapeRenderer();
         
@@ -81,7 +88,6 @@ public class GameScreen implements Screen {
         underworld = new Underworld(this);
         player = new Player(1020, 550);
 
-        rotation = false;
 
         //framebuffer
         setupFramebuffer();
@@ -129,17 +135,27 @@ public class GameScreen implements Screen {
             if (world == underworld) {
                 renderUnderworld();
             }
-            hudSprite.draw(batch);
             batch.end();
             
-            //overlay
-            renderOverlay();
+
         }
-        frameBuffer.end();
-        
+        frameBuffer.end(); 
 
         //2. render framebuffer to frame:
         renderFramebuffer(world);
+        
+        //overlay & hud
+        batch.begin();
+        renderOverlay(batch);
+        
+        hudSpriteR.draw(batch);
+        font.setColor(new Color(1,1,1,1));
+        font.draw(batch, Integer.toString(underworld.getMoney()), 1750, 960);
+        hudSpriteLbg.draw(batch);
+        font.draw(batch, Integer.toString((int) player.getLife()), 60, 930);
+        
+        batch.end();
+            
         //fps
         //fps.render(shr, font);
     }
@@ -281,13 +297,11 @@ public class GameScreen implements Screen {
         return player;
     }
 
-    private void renderOverlay() {
-        batch.begin();
+    private void renderOverlay(SpriteBatch batch) {
         Sprite sprite = new Sprite(overlay);
         sprite.scale(6);
         sprite.draw(batch);
         //batch.draw(overlay, 0, 0);
-        batch.end();
     }
 
     private void renderOverworld() {
@@ -315,7 +329,7 @@ public class GameScreen implements Screen {
     private void renderFramebuffer(AbstractWorld world) {
 
         float angle = Overworld.getCameraPos()*360/(float) Overworld.getMapWidth();
-        if(rotation) world.matrix.rotate(0,0,1,-angle);
+       // if(rotation) world.matrix.rotate(0,0,1,-angle);
         
         world.shader.begin();
         world.shader.setUniformMatrix("u_worldView", world.matrix);
@@ -326,7 +340,7 @@ public class GameScreen implements Screen {
         //debug_texture.bind();
         frameMesh.render(world.shader, GL20.GL_TRIANGLES);
         world.shader.end();
-        if(rotation) world.matrix.rotate(0,0,1,angle);
+        //if(rotation) world.matrix.rotate(0,0,1,angle);
     }
 
     public void update(float delta) {
