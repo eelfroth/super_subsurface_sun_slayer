@@ -14,5 +14,6 @@ public class Bauernhof extends AbstractSpawn{
         setOverallQuantity(Tuning.BAUERNHOF_QUANTITY);
         setBQuantity(Tuning.BAUERNHOF_SPAWN_BAUER_RATE);
         setMaxBauern(Tuning.BAUERNHOF_MAX_BAUERN);
+        setLife(Tuning.BAUERNHOF_LIFE);
     }
 }

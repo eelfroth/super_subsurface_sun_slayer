@@ -13,7 +13,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
  * @author Jacob Bauer
  */
 public abstract class AbstractEntity{
-    private static TextureRegion[] todesAnimation = new TextureRegion[4];
+    private static TextureRegion[] todesAnimation;
     
     private boolean world;//false: underworld, true: overworld
     private boolean flagRemoveFromUnderworld;
@@ -22,16 +22,17 @@ public abstract class AbstractEntity{
     private float y;
     private float life;
     private int step;//current animation
-    private final int steps;//amount of steps
+    private int steps;//amount of steps
     private float timer = 0;
     private int steptime = 200;//ms
     private float rotation;
     private boolean walkOnCeilingHax;
     
-    private final TextureRegion[] specialTextures;
-    private final TextureRegion[] standardAnimation;
+    private TextureRegion[] specialTextures;
+    private TextureRegion[] standardAnimation;
     private boolean flip = false;
     private boolean special =false;
+    private boolean dead;
     
     public abstract void onDeath();
 
@@ -67,6 +68,14 @@ public abstract class AbstractEntity{
         }
         
         rotation = 0;
+        
+        if (todesAnimation==null){
+            todesAnimation = new TextureRegion[4];
+            todesAnimation[0] = GameScreen.getSpritesheet().findRegion("tot0");
+            todesAnimation[1] = GameScreen.getSpritesheet().findRegion("tot1");
+            todesAnimation[2] = GameScreen.getSpritesheet().findRegion("tot2");
+            todesAnimation[3] = GameScreen.getSpritesheet().findRegion("tot3");
+        }
     }
     
     public float getLife(){
@@ -82,20 +91,41 @@ public abstract class AbstractEntity{
     }
     
     public void update(float delta){
-        timer+=delta;
+
         
-        if (timer>steptime){
-                step++;
-                timer %= steptime;
+        if (dead && step==3){
+        //nichts
+        }else{
+            timer+=delta;
+        
+            if (timer>steptime){
+                    step++;
+                    timer %= steptime;
+            }
+        
+            if (!special){
+                if (step >= standardAnimation.length)
+                    step=0;
+            } else {
+                if (step >= specialTextures.length)
+                    step=0;
+            }
         }
         
-        if (!special){
-            if (step >= standardAnimation.length)
+        
+        if (isDead()){
+            if (!dead){
+                //if  (!isFlagRemoveFromOverworldSet()){
+                onDeath();
+                standardAnimation=todesAnimation;
+                specialTextures=todesAnimation;
                 step=0;
-        } else {
-            if (step >= specialTextures.length)
-                step=0;
+                steps=4;
+                timer=0;
+            }
+            //setFlagRemoveFromOverworld();
         }
+        dead = isDead();
     };
     
     public void render(GameScreen gs){

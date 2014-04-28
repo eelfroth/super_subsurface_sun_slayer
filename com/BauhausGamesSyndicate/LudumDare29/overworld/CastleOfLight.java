@@ -24,6 +24,7 @@ public class CastleOfLight extends AbstractSpawn{
         setMaxLanzen(Tuning.CASTLEOFLIGHT_MAX_LANZEN);
         setMaxRitter(Tuning.CASTLEOFLIGHT_MAX_RITTER);
         setMaxPala(Tuning.CASTLEOFLIGHT_MAX_PALA);
+        setLife(Tuning.CASTLEOFLIGHT_LIFE);
     } 
 }
  

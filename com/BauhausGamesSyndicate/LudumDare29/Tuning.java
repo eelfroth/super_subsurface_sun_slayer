@@ -68,12 +68,14 @@ public final class Tuning {
         public final static int BAUERNHOF_QUANTITY = 1;
         public final static int BAUERNHOF_SPAWN_BAUER_RATE = 1;
         public final static int BAUERNHOF_MAX_BAUERN = 10;
+        public final static int BAUERNHOF_LIFE = 50;
 
         // Siedlung
         //public final String BAUERNHOF_ = "bauernhof";
         public final static int SIEDLUNG_QUANTITY = 2;
         public final static int SIEDLUNG_SPAWN_BAUER_RATE = 1;
         public final static int SIEDLUNG_MAX_BAUERN = 23;
+        public final static int SIEDLUNG_LIFE = 100;
 
         // City2 bef Bauernhof
         //public final String BAUERNHOF2_NAME = "befestigter_bauernhof";
@@ -82,6 +84,7 @@ public final class Tuning {
         public final static int BAUERNHOF2_SPAWN_LANZE_RATE = 1;
         public final static int BAUERNHOF2_MAX_BAUERN = 15;
         public final static int BAUERNHOF2_MAX_LANZEN = 5;
+        public final static int BAUERNHOF2_LIFE = 150;
 
         // CASTLE Burg
         //public final String BURG_NAME = "burg";
@@ -92,6 +95,7 @@ public final class Tuning {
         public final static int BURG_MAX_LANZEN = 10;
         public final static int BURG_MAX_PALA = 5;
         public final static int BURG_MAX_RITTER = 8;
+        public final static int BURG_LIFE = 500;
 
         // FORTRESS Palisaden
         //public final String FORTRESS_NAME = "palisaden";
@@ -102,6 +106,7 @@ public final class Tuning {
         public final static int FORTRESS_MAX_RITTER = 4;
         public final static int FORTRESS_MAX_LANZEN = 15;
         public final static int FORTRESS_MAX_BAUERN = 30;
+        public final static int FORTRESS_LIFE = 350;
 
         // CASTLEOFLIGHT
         //public final String CASTLEOFLIGHT_NAME = "sonnengotttempel";
@@ -112,6 +117,7 @@ public final class Tuning {
         public final static int CASTLEOFLIGHT_MAX_RITTER = 30;
         public final static int CASTLEOFLIGHT_MAX_PALA = 20;
         public final static int CASTLEOFLIGHT_MAX_LANZEN = 40;
+        public final static int CASTLEOFLIGHT_LIFE = 1200;
     
     
     /*---TEAM SUN---*/

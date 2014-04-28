@@ -88,11 +88,6 @@ public abstract class AbstractCharacter extends AbstractEntity {
         if (GameScreen.onOverworld() && !shouldRise && !shouldDescend){
             setY(Overworld.getHeight((int) getX())+ verticalOffset);
         }
-        if (isDead()){
-            if  (!isFlagRemoveFromOverworldSet())
-                onDeath();
-            setFlagRemoveFromOverworld();
-        }
         
         if(getCanWalk()){
             setVelocity    ((getVelocity()+ getAcceleration()* getAccFactor())     * (1 - getFriction()) );
