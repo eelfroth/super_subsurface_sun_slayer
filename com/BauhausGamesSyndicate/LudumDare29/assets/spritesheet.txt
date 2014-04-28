@@ -480,10 +480,10 @@ zivi1s
   index: -1
 zivi2
   rotate: false
-  xy: 1211, 1465
-  size: 16, 30
+  xy: 1700, 1523
+  size: 18, 30
   orig: 22, 36
-  offset: 3, 0
+  offset: 2, 0
   index: -1
 zivi2s
   rotate: false
@@ -494,7 +494,7 @@ zivi2s
   index: -1
 zivi3
   rotate: false
-  xy: 1700, 1523
+  xy: 1211, 1465
   size: 16, 30
   orig: 22, 36
   offset: 3, 0
