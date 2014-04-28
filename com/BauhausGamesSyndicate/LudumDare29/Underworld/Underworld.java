@@ -90,10 +90,7 @@ public class Underworld extends AbstractWorld{
         gs.getCamera().translate(0,0);
         gs.getCamera().update();
         gs.getBatch().setProjectionMatrix(gs.getCamera().combined);
-        
-        gs.getFont().setColor(new Color(1,1,1,1));
-        gs.getFont().draw(gs.getBatch(), "Corpses:"+getMoney(), 200, 300);
-        
+                
         for (AbstractEntity entity : entityList) {
             entity.render(gs);
         }
