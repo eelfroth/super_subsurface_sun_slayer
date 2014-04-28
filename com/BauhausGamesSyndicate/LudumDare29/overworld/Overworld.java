@@ -28,7 +28,7 @@ public class Overworld extends AbstractWorld{
     private final int anzCitys   = 8;
     private final int anzForests = 11;
     
-    private static final ArrayList<AbstractEntity> entityList = new ArrayList<>();
+    private static final ArrayList<AbstractEntity> entityList = new ArrayList<>(400);//max 400 sprites
     private static int cameraPos = 0;
     private static Chunk[] chunks; 
     private static Sprite background;
