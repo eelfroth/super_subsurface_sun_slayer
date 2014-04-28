@@ -6,6 +6,7 @@ import com.BauhausGamesSyndicate.LudumDare29.GameObjects.Fledermaus;
 import com.BauhausGamesSyndicate.LudumDare29.GameObjects.Slender;
 import com.BauhausGamesSyndicate.LudumDare29.GameObjects.Warg;
 import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
+import com.BauhausGamesSyndicate.LudumDare29.Tuning;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.audio.Sound;
@@ -25,7 +26,7 @@ import java.util.ArrayList;
 public class Underworld extends AbstractWorld{
     private final Texture texture;
     private float dt;
-    private final int timeTillNextBuy = 500;
+    private final int timeTillNextBuy = Tuning.TIME_BETWEEN_BUY;
     private final ArrayList<AbstractEntity> entityList = new ArrayList<>();
     private int money = 100;
     private final OrthographicCamera camera;
