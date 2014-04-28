@@ -50,7 +50,15 @@ public class Pala extends AbstractCharacter {
            else
                setAcceleration(-1);
            
-        }  
+        }else{// change direction sometimes
+            dTimer += delta;
+            if(dTimer >= dTimerMax){
+                dTimer %= dTimerMax;
+                if((int)(Math.random()*50) < 5){
+                    setAcceleration(getAcceleration()*(-1));
+                }
+            }
+        }    
         if(getAcceleration()<-0.1f)
             setFlipHorizontal(true);
         if(getAcceleration()> 0.1f)
