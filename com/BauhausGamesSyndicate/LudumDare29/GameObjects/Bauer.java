@@ -15,7 +15,7 @@ public class Bauer extends AbstractCharacter {
     private float reach = 600;
     
     public Bauer(float x, float y, boolean world) {
-        super(x, y, "zivi", world, 1, 1);
+        super(x, y, "zivi", world, 4, 4);
         homeX = x;
         setFriction(0.5f);
         setAccFactor(getAccFactor() + (float) (Math.random()*0.1));
