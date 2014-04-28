@@ -163,7 +163,6 @@ public abstract class AbstractCharacter extends AbstractEntity {
                 ((AbstractCharacter)entity).isEvil()!= this.isEvil() && //is not same fraction?
                 entity.getX()+entity.getWidth() > getX()&&
                 entity.getX() < getX()+entity.getWidth()){
-                playSpecial(true);
                 fight((AbstractCharacter) entity, delta);
                 colissionWithEnemy=true;
             }
