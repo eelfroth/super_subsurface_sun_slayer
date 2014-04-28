@@ -54,7 +54,7 @@ public class Player extends AbstractCharacter {
             }
         }else {//underworld
             
-            if(!isRaising()){
+            if(!isRising()){
                 //    setY(Gdx.graphics.getHeight()/20);
                 
                 

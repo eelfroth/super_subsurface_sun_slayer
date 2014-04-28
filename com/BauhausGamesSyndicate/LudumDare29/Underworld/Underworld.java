@@ -71,7 +71,7 @@ public class Underworld extends AbstractWorld{
         
         //debug: spawn fledermäuse am start
         for(int i=0; i<23; i++) {
-            //buyBat();
+            buyBat();
         }
     }
     
