@@ -8,7 +8,7 @@ import com.BauhausGamesSyndicate.LudumDare29.overworld.Eingang;
  */
 public class Bauer extends AbstractCharacter {
 
-    public Bauer(float x, float y, boolean world, Eingang eingang) {
+    public Bauer(float x, float y, boolean world) {
         super(x, y, "zivi", world, 1, 1);
     }
 
@@ -31,8 +31,5 @@ public class Bauer extends AbstractCharacter {
         for(int i=0; i<23; i++) {
             /* SMOKE_WEED_EVERYDAY */
         }
-    }
-    
-    
-    
+    } 
 }

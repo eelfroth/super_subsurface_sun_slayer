@@ -44,8 +44,6 @@ public class GameScreen implements Screen {
 
     private static Player player;
     private static int money = 100;
-    
-    private static Sound jingle;
 
 
     public GameScreen() {
@@ -79,9 +77,6 @@ public class GameScreen implements Screen {
 
         //framebuffer
         setupFramebuffer();
-        
-        jingle = Gdx.audio.newSound(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/jingle.ogg"));
-        //jingle.play();
     }
 
     @Override

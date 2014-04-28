@@ -8,8 +8,6 @@ import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
  * @author Paul
  */
 public class Forrest extends AbstractEntity {
-    public int x;
-    public int y;
     private final Overworld overworld;
     public Forrest(Overworld overworld, int x, int y){
         super(x, y, "wald", true, 1,1);

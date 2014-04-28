@@ -2,7 +2,6 @@ package com.BauhausGamesSyndicate.LudumDare29.overworld;
 
 import com.BauhausGamesSyndicate.LudumDare29.GameObjects.AbstractEntity;
 import com.BauhausGamesSyndicate.LudumDare29.GameObjects.Bauer;
-import com.BauhausGamesSyndicate.LudumDare29.GameObjects.Soldat;
 
 /**
  *
@@ -14,11 +13,9 @@ public class City extends AbstractEntity {
     private float timetillspawn = 1000;
     private float timer;
     private final Overworld overworld;
-    private final Eingang eingang;
     
-    public City(Overworld overworld, int x, int y, Eingang eingang) {
-        super(x, y, "bauernhof", true, 1,1);
-        this.eingang = eingang;      
+    public City(Overworld overworld, int x, int y) {
+        super(x, y, "bauernhof", true, 1,1);  
 
         if((int)(Math.random()*10) > 5){
             this.setFlipHorizontal(true);
@@ -36,7 +33,9 @@ public class City extends AbstractEntity {
     }
 
     private void spawnEnemy() {
-       Bauer enemy = new Bauer(getX(),getY(), onOverworld(), eingang);
+
+       Bauer enemy = new Bauer(getX(),getY(), onOverworld());
+
        overworld.addEntity(enemy);
     }
 }

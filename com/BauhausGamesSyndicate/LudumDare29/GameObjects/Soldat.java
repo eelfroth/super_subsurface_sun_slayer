@@ -10,7 +10,6 @@ import com.BauhausGamesSyndicate.LudumDare29.overworld.Eingang;
  * @author Jacob Bauer
  */
 public class Soldat extends AbstractCharacter {
-    private final Eingang eingang;
     private boolean arrived;
     
     private int dTimer;
@@ -18,15 +17,15 @@ public class Soldat extends AbstractCharacter {
     private float homeX;
     private float reach = 500;
     
-    public Soldat(float x, float y, boolean world, Eingang eingang) {
-        super(x, y, "lanze", world,4,1);
+    public Soldat(float x, float y, boolean world) {
+        super(x, y, "soldat", world,2,1);
+
         arrived = false;
         homeX = x;
         dTimer = 0;
         setFriction(0.5f);
         //setAccFactor(0.03f + (int)Math.random()*0.5f);
         //setSpeed((float) (0.1f + Math.random()*.2f));
-        this.eingang = eingang;
         if( (Math.random()*2)-1 > 0)
             setAcceleration(-1);
         else
@@ -53,7 +52,7 @@ public class Soldat extends AbstractCharacter {
         }
         if(GameScreen.getPlayer().getX() > homeX - reach/2 && // wenn player in Heimat eindringt
            GameScreen.getPlayer().getX() < homeX + reach){
-           setX(getX() + getAcceleration()*3);
+           setX(getX() + getAcceleration()*2);
            if(GameScreen.getPlayer().getX() > getX())
                setAcceleration(1);
            else
