@@ -16,13 +16,8 @@ public class Lanze extends AbstractCharacter {
     private float homeX;
     private float reach = 600;
     
-<<<<<<< HEAD:com/BauhausGamesSyndicate/LudumDare29/GameObjects/Lanze.java
     public Lanze(float x, float y, boolean world) {
         super(x, y, "lanze", world,2,1);
-=======
-    public Soldat(float x, float y, boolean world) {
-        super(x, y, "lanze", world,4,3);
->>>>>>> 274a0afed6e72f7975f62d44500261e3bfb29172:com/BauhausGamesSyndicate/LudumDare29/GameObjects/Soldat.java
 
         arrived = false;
         homeX = x;

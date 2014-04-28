@@ -8,6 +8,9 @@ package com.BauhausGamesSyndicate.LudumDare29.overworld;
 
 import com.BauhausGamesSyndicate.LudumDare29.GameObjects.AbstractEntity;
 import com.BauhausGamesSyndicate.LudumDare29.GameObjects.Bauer;
+import com.BauhausGamesSyndicate.LudumDare29.GameObjects.Lanze;
+import com.BauhausGamesSyndicate.LudumDare29.GameObjects.Pala;
+import com.BauhausGamesSyndicate.LudumDare29.GameObjects.Ritter;
 
 /**
  *
@@ -89,7 +92,7 @@ public class AbstractSpawn extends AbstractEntity {
           100% Bauern 
           Quantity: 1
        */
-        /*
+       
         for(int i=0; i < BauerQuantity; i++){
             Bauer enemy = new Bauer(getX(),getY(), onOverworld());
             overworld.addEntity(enemy);
@@ -106,6 +109,6 @@ public class AbstractSpawn extends AbstractEntity {
             Pala enemy = new Pala(getX(),getY(), onOverworld());
             overworld.addEntity(enemy);
         }
-        */
+       
     }
 }
