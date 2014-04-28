@@ -94,19 +94,19 @@ public class AbstractSpawn extends AbstractEntity {
 
     private void spawnEnemy() {
        
-        for(int i=0; i < BauerQuantity/100 * overallQuantity ; i++){
+        for(int i=0; i < (int)Math.floor((BauerQuantity/100) * overallQuantity); i++){
             Bauer enemy = new Bauer(getX(),getY(), onOverworld());
             overworld.addEntity(enemy);
         }
-        for(int i=0; i < LanzeQuantity/100 * overallQuantity ; i++){
+        for(int i=0; i < (int)Math.floor((LanzeQuantity/100) * overallQuantity) ; i++){
             Lanze enemy = new Lanze(getX(),getY(), onOverworld());
             overworld.addEntity(enemy);
         }
-        for(int i=0; i < RitterQuantity/100 * overallQuantity ; i++){
+        for(int i=0; i < (int)Math.floor((RitterQuantity/100) * overallQuantity) ; i++){
             Ritter enemy = new Ritter(getX(),getY(), onOverworld());
             overworld.addEntity(enemy);
         }
-        for(int i=0; i < PalaQuantity/100 * overallQuantity ; i++){
+        for(int i=0; i < (int)Math.floor((PalaQuantity/100) * overallQuantity) ; i++){
             Pala enemy = new Pala(getX(),getY(), onOverworld());
             overworld.addEntity(enemy);
         }
