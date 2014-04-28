@@ -154,6 +154,25 @@ public class Player extends AbstractCharacter {
         stepsound.stop();
         growlsound.play();
         
+        int attXpos;
+        int attackRadius =50;
+        
+        if (isFlipped())
+            attXpos= -100;
+        else
+            attXpos= 100;
+        
+            
+        for (AbstractEntity entity : GameScreen.getOverworld().getEntityList()) {
+            if (
+                entity instanceof AbstractCharacter &&
+                !((AbstractCharacter)entity).isEvil() &&
+                entity.getX()-getX() > attXpos - attackRadius &&
+                entity.getX()-getX() < attXpos + attackRadius
+                )
+                entity.drainLife(100);
+        }
+        
     }
     
     @Override
