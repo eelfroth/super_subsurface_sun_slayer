@@ -8,30 +8,36 @@ package com.BauhausGamesSyndicate.LudumDare29;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 
 /**
  *
  * @author Benedikt Vogler
  */
 class TitleScreen implements Screen {
+    private static TextureAtlas spritesheet;
     private Sprite background;
     private Sound jingle;
     private Music title;
     private final Game ld;
+    private Sprite currentBurg;
 
     public TitleScreen(Game ld) {
-        background = new Sprite(new Texture(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/tb0.png")));
-        jingle = Gdx.audio.newSound(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/jingle.ogg"));
-        title = Gdx.audio.newMusic(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/title.ogg"));
+        spritesheet = new TextureAtlas(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/title/spritesheet.txt"));
+        background = new Sprite(spritesheet.findRegion("titelbildschirm"));
+        
+        jingle = Gdx.audio.newSound(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/title/jingle.ogg"));
+        title = Gdx.audio.newMusic(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/title/title.ogg"));
         this.ld = ld;
+        currentBurg = new Sprite(spritesheet.findRegion("tb0"));
+        currentBurg.setX(940);
+        currentBurg.setY(440);
 
     }
 
@@ -40,10 +46,17 @@ class TitleScreen implements Screen {
         SpriteBatch batch = new SpriteBatch();
         batch.begin();
         background.draw(batch);
+        currentBurg.draw(batch);
         batch.end();
         
-        if (Gdx.input.isKeyPressed(Keys.ENTER) ||Gdx.input.isKeyPressed(Keys.SPACE))
+        if (Gdx.input.isKeyPressed(Keys.ENTER) ||Gdx.input.isKeyPressed(Keys.SPACE)){
             ld.setScreen(new GameScreen());
+            dispose();
+        }
+        
+        currentBurg = new Sprite(spritesheet.findRegion("tb"+(int)(Math.random()*7)));
+        currentBurg.setX(940);
+        currentBurg.setY(440);
     }
 
     @Override
@@ -70,6 +83,8 @@ class TitleScreen implements Screen {
 
     @Override
     public void dispose() {
+        title.stop();
+        title.dispose();
     }
     
 }
