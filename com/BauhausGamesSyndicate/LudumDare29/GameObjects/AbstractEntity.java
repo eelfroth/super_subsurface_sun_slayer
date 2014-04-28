@@ -20,7 +20,7 @@ public abstract class AbstractEntity{
     private float y;
     private float life;
     private int step;//current animation
-    private int steps;//amount of steps
+    private final int steps;//amount of steps
     private float timer = 0;
     private int steptime = 200;//ms
     private float rotation;
@@ -114,7 +114,7 @@ public abstract class AbstractEntity{
             //gs.getBatch().getProjectionMatrix().rotate(0, 0, 1, a);
             //Matrix4 mat = gs.getBatch().getProjectionMatrix();
             //gs.getBatch().getProjectionMatrix().rotate(1, 1, 0, a);
-            gs.getBatch().draw(tex,(float)Math.sin(a)*570+960/2+20,(float)Math.cos(a)*520+Gdx.graphics.getHeight()/2 -10);
+            gs.getBatch().draw(tex,(float)Math.sin(a)*550+980,(float)Math.cos(a)*520+530);
             //gs.getBatch().getProjectionMatrix().rotate(1,1,0,-a);
             //gs.getBatch().setProjectionMatrix(mat);
         }
