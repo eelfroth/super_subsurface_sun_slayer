@@ -5,6 +5,7 @@ import com.BauhausGamesSyndicate.LudumDare29.AbstractWorld;
 import com.BauhausGamesSyndicate.LudumDare29.GameObjects.AbstractEntity;
 import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
@@ -33,6 +34,7 @@ public class Overworld extends AbstractWorld{
     private static Chunk[] chunks; 
     private static Sprite background;
     private final Eingang eingang;
+    
 
     public Overworld() { 
         super(GameScreen.setupShader( 
@@ -379,6 +381,15 @@ public class Overworld extends AbstractWorld{
         // add Bauernhof 2
         entityList.add(new Bauernhof2(this, 4000, 300));
         
+        // add Burg
+        entityList.add(new Burg(this, 5450, 440));
+        
+        // add Siedlung
+        entityList.add(new Siedlung(this, 4940, 350));
+        
+        // add Fortress
+        entityList.add(new Fortress(this, 6890, 400));
+        
         // add CastleOfLight
         entityList.add(new CastleOfLight(this, 10306, 520));
     }
@@ -401,8 +412,8 @@ public class Overworld extends AbstractWorld{
     
     @Override
     public void render(GameScreen gs){
-        int y = Gdx.graphics.getHeight()-Chunk.HEIGHT; 
-        gs.getCamera().translate(-Overworld.getCameraPos()/2, -y);
+        //int y = 1080-Chunk.HEIGHT; 
+        gs.getCamera().translate(-Overworld.getCameraPos()/2, 0);//half speed for parralax
         gs.getCamera().update();
         gs.getBatch().setProjectionMatrix(gs.getCamera().combined);
         
@@ -423,11 +434,11 @@ public class Overworld extends AbstractWorld{
             
 
             
-        if (x+background.getWidth() > Overworld.getCameraPos()/2 && x < Gdx.graphics.getWidth()+Overworld.getCameraPos()/2)
+        if (x+background.getWidth() > Overworld.getCameraPos()/2 && x < 1920+Overworld.getCameraPos()/2)
             gs.getBatch().draw(background, x, 0);
         }
          
-        gs.getCamera().translate(Overworld.getCameraPos()/2, y);
+        gs.getCamera().translate(Overworld.getCameraPos()/2, 0);
         gs.getCamera().update();
         gs.getBatch().setProjectionMatrix(gs.getCamera().combined);
 

@@ -114,7 +114,7 @@ public abstract class AbstractEntity{
             //gs.getBatch().getProjectionMatrix().rotate(0, 0, 1, a);
             //Matrix4 mat = gs.getBatch().getProjectionMatrix();
             //gs.getBatch().getProjectionMatrix().rotate(1, 1, 0, a);
-            gs.getBatch().draw(tex,(float)Math.sin(a)*570+Gdx.graphics.getWidth()/2+20,(float)Math.cos(a)*520+Gdx.graphics.getHeight()/2 -10);
+            gs.getBatch().draw(tex,(float)Math.sin(a)*570+960/2+20,(float)Math.cos(a)*520+Gdx.graphics.getHeight()/2 -10);
             //gs.getBatch().getProjectionMatrix().rotate(1,1,0,-a);
             //gs.getBatch().setProjectionMatrix(mat);
         }
@@ -220,7 +220,7 @@ public abstract class AbstractEntity{
     
     public void activateWalkOnCeilingHax() {
        walkOnCeilingHax = true;
-       //projectionMatrix.setToOrtho2D(-Gdx.graphics.getWidth()/2, -Gdx.graphics.getHeight()/2, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+       //projectionMatrix.setToOrtho2D(-1920/2, -Gdx.graphics.getHeight()/2, 1920, Gdx.graphics.getHeight());
     }
     
     public void deactivateWalkOnCeilingHax() {
