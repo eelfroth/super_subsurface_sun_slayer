@@ -6,8 +6,12 @@
 
 package com.BauhausGamesSyndicate.LudumDare29;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -20,10 +24,14 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 class TitleScreen implements Screen {
     private Sprite background;
     private Sound jingle;
+    private Music title;
+    private final Game ld;
 
-    public TitleScreen() {
+    public TitleScreen(Game ld) {
         background = new Sprite(new Texture(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/tb0.png")));
         jingle = Gdx.audio.newSound(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/jingle.ogg"));
+        title = Gdx.audio.newMusic(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/title.ogg"));
+        this.ld = ld;
 
     }
 
@@ -33,6 +41,9 @@ class TitleScreen implements Screen {
         batch.begin();
         background.draw(batch);
         batch.end();
+        
+        if (Gdx.input.isKeyPressed(Keys.ENTER) ||Gdx.input.isKeyPressed(Keys.SPACE))
+            ld.setScreen(new GameScreen());
     }
 
     @Override
@@ -42,6 +53,7 @@ class TitleScreen implements Screen {
     @Override
     public void show() {
         jingle.play();
+        title.play();
     }
 
     @Override
