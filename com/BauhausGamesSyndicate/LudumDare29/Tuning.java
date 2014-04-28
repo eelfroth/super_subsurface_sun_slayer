@@ -48,8 +48,8 @@ public final class Tuning {
     public final static float SLENDER_LIFE = 5f;
     
     /*---BAT---*/
-    public static float BAT_ACCELERATION_FACTOR = 0.3f;
-    public static float BAT_FRICTION = 0.03f;
+    public static float BAT_ACCELERATION_FACTOR = 1f;
+    public static float BAT_FRICTION = 0.5f;
     public static float BAT_LIFE = 20f;
     
     /*---KAUFMENÜ---*/
