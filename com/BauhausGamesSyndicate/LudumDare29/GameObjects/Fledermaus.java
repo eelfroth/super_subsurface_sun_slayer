@@ -18,14 +18,15 @@ public class Fledermaus extends Minion{
 
     public Fledermaus(boolean world) {
        super(
-           GameScreen.onOverworld()?GameScreen.getOverworld().getEingang().getX():Gdx.graphics.getWidth()/2,
-           0,
+           GameScreen.onOverworld()?GameScreen.getOverworld().getEingang().getX():(Gdx.graphics.getWidth()/2)+50,
+           Gdx.graphics.getHeight()/2,
            "fledermaus",
            world,
            4,
            1
        );
        
+       canDescend = true;
        setSteptime(50);
        
        //startwerte zugällig, damit die fledermäuse unterschiedlich fliegen;
@@ -48,11 +49,22 @@ public class Fledermaus extends Minion{
         setLife(1003577);
         
         //den x- und y-koordinaten werden sinuskurven addiert
-        y_sin += delta*0.167;
-        setY((getY() + (float)sin(y_sin/147f)*200.0f) + 200.0f + y_pos);
-        x_sin += delta*0.167;
-        setX(getX() + (float)sin(x_sin/211f)*4f);
+        if(onOverworld()) {
+            y_sin += delta*0.167;
+            setY((getY() + (float)sin(y_sin/147f)*200.0f) + 200.0f + y_pos);
+            x_sin += delta*0.167;
+            setX(getX() + (float)sin(x_sin/211f)*11f);
+        }
+        else if(!isRaising()){
+            y_sin += delta*0.167;
+            setY((Gdx.graphics.getHeight()/2) + ((float)sin(y_sin/147f)*350.0f));
+            x_sin += delta*0.167;
+            setX((Gdx.graphics.getWidth()/2) + (float)sin(x_sin/211f)*350.0f);
+        }
         
+        if(GameScreen.getPlayer().isRaising() && !onOverworld()) {
+                rise();
+        }
         
         //debug shit
         boolean debug = false;
