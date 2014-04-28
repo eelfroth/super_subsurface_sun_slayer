@@ -18,7 +18,7 @@ class TitleScreen implements Screen {
     private Sprite background;
 
     public TitleScreen() {
-        background = Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/tb0.png")
+        //background = Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/tb0.png");
     }
 
     @Override
