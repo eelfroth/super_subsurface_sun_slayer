@@ -71,7 +71,7 @@ public class Underworld extends AbstractWorld{
         
         //debug: spawn fledermäuse am start
         for(int i=0; i<23; i++) {
-            buyBat();
+            //buyBat();
         }
     }
     
@@ -153,7 +153,8 @@ public class Underworld extends AbstractWorld{
         if (money>0) {
             money--;
             Warg warg = new Warg(false);
-            warg.rise();
+            warg.activateWalkOnCeilingHax();
+            //warg.rise();
             entityList.add(warg);
             buySound.play();
         }
@@ -163,7 +164,8 @@ public class Underworld extends AbstractWorld{
         if (money>0) {
             money--;
             Slender slender = new Slender(false);
-            slender.rise();
+            slender.activateWalkOnCeilingHax();
+            //slender.rise();
             entityList.add(slender);
             buySound.play();
         }

@@ -75,4 +75,13 @@ public class Soldat extends AbstractCharacter {
         enemy.drainLife(delta/4);
     }
     
+    @Override
+    public void  onDescend(){
+        activateWalkOnCeilingHax();
+    }
+
+    @Override
+    public void onRise(){
+        //nothing
+    }
 }

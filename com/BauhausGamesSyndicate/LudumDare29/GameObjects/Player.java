@@ -173,5 +173,14 @@ public class Player extends AbstractCharacter {
         this.distanceTraveled=0;
     }
     
-    
+    @Override
+    public void  onDescend(){
+        setX(1020);
+        setY(550);
+    }
+
+    @Override
+    public void onRise(){
+        //nothing
+    }
 }

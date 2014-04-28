@@ -94,4 +94,16 @@ public class Bauer extends AbstractCharacter {
             /* SMOKE_WEED_EVERYDAY */
         }
     } 
+    
+    @Override
+    public void  onDescend(){
+        activateWalkOnCeilingHax();
+        setX(3141);
+        setAcceleration(-1);
+    }
+
+    @Override
+    public void onRise(){
+        //nothing
+    }
 }

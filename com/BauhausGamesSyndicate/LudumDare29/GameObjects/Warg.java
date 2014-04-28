@@ -13,8 +13,8 @@ public class Warg extends Minion {
 
     public Warg(boolean world) {
         super(
-            GameScreen.onOverworld()?GameScreen.getOverworld().getEingang().getX():Gdx.graphics.getWidth()/2,
-            50,
+            3141f + (float)Math.ceil((Math.random()*200)-100),
+            0,
             "warg",
             world,
             3,
@@ -27,5 +27,13 @@ public class Warg extends Minion {
     public void fight(AbstractCharacter enemy, float delta) {
         //playSpacial(true);
         enemy.drainLife(delta/4);
+    }
+    
+    @Override
+    public void  onDescend(){
+        activateWalkOnCeilingHax();
+        
+        setX(3141);
+        setAcceleration(-1);
     }
 }

@@ -13,7 +13,7 @@ public class Slender extends Minion {
 
     public Slender(boolean world) {
         super(
-            GameScreen.onOverworld()?GameScreen.getOverworld().getEingang().getX():Gdx.graphics.getWidth()/2,
+            3141f + (float)Math.ceil((Math.random()*200)-100),
             0,
             "slender",
             world,
@@ -25,5 +25,10 @@ public class Slender extends Minion {
     @Override
     public void fight(AbstractCharacter enemy, float delta) {
         //slender does nothing
+    }
+    
+    @Override
+    public void  onDescend(){
+        activateWalkOnCeilingHax();
     }
 }

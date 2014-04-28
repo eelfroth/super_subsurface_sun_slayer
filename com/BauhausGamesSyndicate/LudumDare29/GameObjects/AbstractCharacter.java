@@ -109,6 +109,7 @@ public abstract class AbstractCharacter extends AbstractEntity {
                 GameScreen.getOverworld().addEntity(this);
                 setFlagRemoveFromUnderworld();
                 switchWorld();
+                onRise();
             }
         }else if (shouldDescend){
             setY(getY()-(delta/8));
@@ -120,8 +121,7 @@ public abstract class AbstractCharacter extends AbstractEntity {
                 GameScreen.getUnderworld().addEntity(this);
                 setFlagRemoveFromOverworld();
                 switchWorld();
-                setX(1020);
-                setY(550);
+                onDescend();
             }
         }
         
@@ -147,6 +147,7 @@ public abstract class AbstractCharacter extends AbstractEntity {
     
     public void rise(){
         shouldRaise = true;
+        deactivateWalkOnCeilingHax();
     }
     
     public void descend() {
@@ -169,4 +170,8 @@ public abstract class AbstractCharacter extends AbstractEntity {
      * @param delta
      */
     public abstract void fight(AbstractCharacter enemy, float delta);
+
+    public abstract void onDescend();
+
+    public abstract void onRise();
 }

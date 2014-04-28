@@ -44,6 +44,7 @@ public class Fledermaus extends Minion{
     @Override
     public void update(float delta) {
         super.update(delta);
+        deactivateWalkOnCeilingHax();
         
         //(debug) unendlich leben
         setLife(1003577);
@@ -70,20 +71,20 @@ public class Fledermaus extends Minion{
                 rise();
         }
         
-        /*if(GameScreen.getPlayer().isDescending() && onOverworld()) {
-                descend();
-        }*/
-        
         //debug shit
-        boolean debug = false;
+        boolean debug = true;
         if(debug) {
             StringBuffer result = new StringBuffer();
+            result.append(getX());
             result.append("\t");
-            result.append(y_sin);
-            result.append("\t");
-            result.append((float)sin(y_sin/100)*100);
             String mynewstring = result.toString();
             Gdx.app.log("", mynewstring);
         }
+    }
+    
+    @Override
+    public void  onDescend(){
+        setX(1020);
+        setY(550);
     }
 }
