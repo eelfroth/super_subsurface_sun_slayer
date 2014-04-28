@@ -36,6 +36,11 @@ public class AbstractSpawn extends AbstractEntity {
             this.setFlipHorizontal(true);
         }
         this.overworld = overworld;
+        BauerQuantity   = 0;
+        LanzeQuantity   = 0;
+        RitterQuantity  = 0;
+        PalaQuantity    = 0;
+        overallQuantity = 0;
     }
     
     public void setBQuantity(int q){
@@ -81,34 +86,29 @@ public class AbstractSpawn extends AbstractEntity {
     @Override
     public void update(float delta){
         timer+=delta;
-        if (timer>=timetillspawn*overallQuantity) {
+        if (timer>=timetillspawn) {
             timer = 0;
             spawnEnemy();
         }
     }
 
     private void spawnEnemy() {
-       /*
-          100% Bauern 
-          Quantity: 1
-       */
        
-        for(int i=0; i < BauerQuantity; i++){
+        for(int i=0; i < BauerQuantity/100 * overallQuantity ; i++){
             Bauer enemy = new Bauer(getX(),getY(), onOverworld());
             overworld.addEntity(enemy);
         }
-        for(int i=0; i < LanzeQuantity; i++){
+        for(int i=0; i < LanzeQuantity/100 * overallQuantity ; i++){
             Lanze enemy = new Lanze(getX(),getY(), onOverworld());
             overworld.addEntity(enemy);
         }
-        for(int i=0; i < RitterQuantity; i++){
+        for(int i=0; i < RitterQuantity/100 * overallQuantity ; i++){
             Ritter enemy = new Ritter(getX(),getY(), onOverworld());
             overworld.addEntity(enemy);
         }
-        for(int i=0; i < PalaQuantity; i++){
+        for(int i=0; i < PalaQuantity/100 * overallQuantity ; i++){
             Pala enemy = new Pala(getX(),getY(), onOverworld());
             overworld.addEntity(enemy);
         }
-       
     }
 }
