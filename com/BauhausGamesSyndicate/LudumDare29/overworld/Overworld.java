@@ -423,7 +423,7 @@ public class Overworld extends AbstractWorld{
             
 
             
-        if (x+background.getWidth() > Overworld.getCameraPos()/2 && x < Gdx.graphics.getWidth()+Overworld.getCameraPos()/2)
+        if (x+background.getWidth() > Overworld.getCameraPos()/2 && x < 1920+Overworld.getCameraPos()/2)
             gs.getBatch().draw(background, x, 0);
         }
          

@@ -18,7 +18,7 @@ public class Fledermaus extends Minion{
 
     public Fledermaus(boolean world) {
        super(
-           (Gdx.graphics.getWidth()/2)+50,
+           (960)+50,
            Gdx.graphics.getHeight()/2,
            "fledermaus",
            world,
@@ -68,7 +68,7 @@ public class Fledermaus extends Minion{
                 setY((Gdx.graphics.getHeight()/2) + ((float)sin(y_sin/147f)*350.0f));
             }
             x_sin += delta*0.167;
-            setX((Gdx.graphics.getWidth()/2) + (float)sin(x_sin/211f)*350.0f);
+            setX((960/2) + (float)sin(x_sin/211f)*350.0f);
         }
         
         if(GameScreen.getPlayer().isRising() && !onOverworld()) {
