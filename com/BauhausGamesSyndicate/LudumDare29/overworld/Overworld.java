@@ -378,7 +378,7 @@ public class Overworld extends AbstractWorld{
         }
         
         // add CastleOfLight
-        //entityList.add(new CastleOfLight(this, 10306, 520));
+        entityList.add(new CastleOfLight(this, 10306, 520));
     }
     
     @Override

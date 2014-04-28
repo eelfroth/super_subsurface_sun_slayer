@@ -41,6 +41,7 @@ public final class Tuning {
     
     
     /*---SPAWNING---*/
+    public final static int TIME_TILL_SPAWN = 10000;
     
     // City Bauernhof
     //public final String BAUERNHOF_ = "bauernhof";

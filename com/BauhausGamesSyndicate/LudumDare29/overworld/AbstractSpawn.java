@@ -11,13 +11,13 @@ import com.BauhausGamesSyndicate.LudumDare29.GameObjects.Bauer;
 import com.BauhausGamesSyndicate.LudumDare29.GameObjects.Lanze;
 import com.BauhausGamesSyndicate.LudumDare29.GameObjects.Pala;
 import com.BauhausGamesSyndicate.LudumDare29.GameObjects.Ritter;
+import com.BauhausGamesSyndicate.LudumDare29.Tuning;
 
 /**
  *
  * @author Paul
  */
 public class AbstractSpawn extends AbstractEntity {
-    private float timetillspawn = 1000;
     private float timer;
     private final Overworld overworld;
     
@@ -86,7 +86,7 @@ public class AbstractSpawn extends AbstractEntity {
     @Override
     public void update(float delta){
         timer+=delta;
-        if (timer>=timetillspawn) {
+        if (timer>=Tuning.TIME_TILL_SPAWN) {
             timer = 0;
             spawnEnemy();
         }
