@@ -62,7 +62,7 @@ public class Fledermaus extends Minion{
                 setY((getY() + (float)sin(y_sin/147f)*200.0f) + 200.0f + y_pos);
                 }
                 x_sin += delta*0.167;
-                setX(getX() + (float)sin(x_sin/211f)*23f);
+                setAcceleration((float)sin(x_sin/211f)*0.1f);
         }
         else {
             if(!isRising()){
@@ -70,7 +70,8 @@ public class Fledermaus extends Minion{
                 setY((Gdx.graphics.getHeight()/2) + ((float)sin(y_sin/147f)*350.0f));
             }
             x_sin += delta*0.167;
-            setX((Gdx.graphics.getWidth()/2) + (float)sin(x_sin/211f)*350.0f);
+            //setX((Gdx.graphics.getWidth()/2) + (float)sin(x_sin/211f)*350.0f);
+            setAcceleration((float)sin(x_sin/211f)*0.1f);
         }
         
         if(GameScreen.getPlayer().isRising() && !onOverworld()) {
