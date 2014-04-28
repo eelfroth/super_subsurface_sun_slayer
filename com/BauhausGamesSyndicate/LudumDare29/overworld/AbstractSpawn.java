@@ -128,24 +128,28 @@ public class AbstractSpawn extends AbstractEntity {
             for(int i=0; i < overallQuantity*BauerQuantity; i++){
                 Bauer enemy = new Bauer(getX(),getY(), onOverworld(), this);
                 overworld.addEntity(enemy);
+                anzBauern++;
             }
         }
         if(LanzeQuantity != 0 && anzLanzen+overallQuantity*LanzeQuantity < maxLanzen){
             for(int i=0; i < overallQuantity*LanzeQuantity ; i++){
                 Lanze enemy = new Lanze(getX(),getY(), onOverworld(), this);
                 overworld.addEntity(enemy);
+                anzLanzen++;
             }
         }
         if(RitterQuantity != 0 && anzRitter+overallQuantity*RitterQuantity < maxRitter){
             for(int i=0; i < overallQuantity*RitterQuantity ; i++){
                 Reiter enemy = new Reiter(getX(),getY(), onOverworld(), this);
                 overworld.addEntity(enemy);
+                anzRitter++;
             }
         }
         if(PalaQuantity != 0 && anzPala+overallQuantity*PalaQuantity < maxPala){
             for(int i=0; i < overallQuantity*PalaQuantity ; i++){
                 Pala enemy = new Pala(getX(),getY(), onOverworld(), this);
                 overworld.addEntity(enemy);
+                anzPala++;
             }
         }
     }
