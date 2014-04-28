@@ -152,6 +152,14 @@ public class Player extends AbstractCharacter {
         GameScreen.getOverworld().getEingang().descend();
     }
 
+    @Override
+    public void switchWorld() {
+        super.switchWorld();
+        GameScreen.switchWorld(onOverworld());
+    }
+    
+    
+
     
     /**
      * was soll passieren, wenn die SPielfigur angreift?

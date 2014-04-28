@@ -25,6 +25,7 @@ public class FPSdiag {
     private long allocatedMemory;
     private long maxMemory;
     private long usedMemory;
+    private SpriteBatch batch;
 
     /**
      *
@@ -36,6 +37,7 @@ public class FPSdiag {
         this.yPos = yPos;
         width = 4;
         maxHeight=150;   
+        batch = new SpriteBatch(); 
     }
     
     /**
@@ -79,7 +81,6 @@ public class FPSdiag {
         if (visible){
             
             //render font
-            SpriteBatch batch = new SpriteBatch(); 
             batch.begin();
             font.draw(batch, memoryText.toString(), xPos, yPos);
             font.draw(batch, "FPS:"+ Gdx.graphics.getFramesPerSecond(), 10, 10);
