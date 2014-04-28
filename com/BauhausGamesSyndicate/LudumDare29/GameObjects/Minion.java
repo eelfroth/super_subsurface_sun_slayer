@@ -65,16 +65,5 @@ public abstract class Minion extends AbstractCharacter{
                 setAcceleration(1);
             
         }
-    }
-    
-    @Override
-    public void  onDescend(){
-        //nothing
-    }
-
-    @Override
-    public void onRise(){
-        //nothing
-    }
-    
+    } 
 }
