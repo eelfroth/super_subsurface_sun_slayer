@@ -24,7 +24,7 @@ public class Eingang{
     private static Sound descend;
 
     public Eingang() {
-        rising = Gdx.audio.newSound(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/rising.mp3"));
+        rising = Gdx.audio.newSound(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/rising.ogg"));
         descend = Gdx.audio.newSound(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/descend.ogg"));
     }
     

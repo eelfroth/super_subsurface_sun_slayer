@@ -7,6 +7,7 @@ import com.BauhausGamesSyndicate.LudumDare29.Underworld.Underworld;
 import com.BauhausGamesSyndicate.LudumDare29.overworld.Overworld;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Mesh;
@@ -43,6 +44,8 @@ public class GameScreen implements Screen {
 
     private static Player player;
     private static int money = 100;
+    
+    private static Sound jingle;
 
 
     public GameScreen() {
@@ -73,12 +76,12 @@ public class GameScreen implements Screen {
         world = overworld;
 
         rotation = false;
-        
-        //shader
-        //setupShader();
-        
+
         //framebuffer
         setupFramebuffer();
+        
+        jingle = Gdx.audio.newSound(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/jingle.ogg"));
+        jingle.play();
     }
 
     @Override

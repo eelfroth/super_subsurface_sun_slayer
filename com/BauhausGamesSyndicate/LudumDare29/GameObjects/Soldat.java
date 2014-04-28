@@ -19,6 +19,7 @@ public class Soldat extends AbstractCharacter {
     
     public Soldat(float x, float y, boolean world) {
         super(x, y, "soldat", world,2,1);
+
         arrived = false;
         homeX = x;
         dTimer = 0;
