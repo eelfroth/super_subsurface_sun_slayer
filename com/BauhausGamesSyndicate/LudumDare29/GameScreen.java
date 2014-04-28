@@ -152,8 +152,7 @@ public class GameScreen implements Screen {
         font.setColor(new Color(1,1,1,1));
         font.draw(batch, Integer.toString(underworld.getMoney()), 1750, 960);
         hudSpriteLbg.draw(batch);
-        font.setColor(new Color(1,1,1,1));
-        font.draw(batch, Integer.toString((int) player.getLife()), 50, 960);
+        font.draw(batch, Integer.toString((int) player.getLife()), 60, 930);
         
         batch.end();
             
