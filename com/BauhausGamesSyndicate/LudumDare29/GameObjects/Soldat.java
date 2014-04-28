@@ -18,7 +18,7 @@ public class Soldat extends AbstractCharacter {
     private float reach = 600;
     
     public Soldat(float x, float y, boolean world) {
-        super(x, y, "lanze", world,2,1);
+        super(x, y, "lanze", world,4,1);
 
         arrived = false;
         homeX = x;
