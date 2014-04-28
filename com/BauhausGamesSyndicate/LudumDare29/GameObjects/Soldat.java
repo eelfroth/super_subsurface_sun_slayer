@@ -27,10 +27,7 @@ public class Soldat extends AbstractCharacter {
         setAccFactor(getAccFactor() + (float) (Math.random()*0.1));
         //setAccFactor(0.03f + (int)Math.random()*0.5f);
         //setSpeed((float) (0.1f + Math.random()*.2f));
-        if( (Math.random()*2)-1 > 0)
-            setAcceleration(-1);
-        else
-            setAcceleration(1);
+        setAcceleration(-1);
     }
 
     @Override
@@ -44,6 +41,8 @@ public class Soldat extends AbstractCharacter {
                 setAcceleration(getAcceleration()*(-1));
         }
         */
+        
+        
         if(getX() < homeX - reach/2 ||
            getX() > homeX + reach/2){
            if(getX() > homeX)
@@ -60,7 +59,10 @@ public class Soldat extends AbstractCharacter {
                setAcceleration(-1);
            
         }  
-     
+        if(getAcceleration()>-0.1f)
+            setFlipHorizontal(true);
+        if(getAcceleration()< 0.1f)
+            setFlipHorizontal(false);
     }
     
     
