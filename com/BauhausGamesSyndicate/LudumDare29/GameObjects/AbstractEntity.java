@@ -13,6 +13,8 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
  * @author Jacob Bauer
  */
 public abstract class AbstractEntity{
+    private static TextureRegion[] todesAnimation = new TextureRegion[4];
+    
     private boolean world;//false: underworld, true: overworld
     private boolean flagRemoveFromUnderworld;
     private boolean flagRemoveFromOverworld;
@@ -31,6 +33,7 @@ public abstract class AbstractEntity{
     private boolean flip = false;
     private boolean special =false;
     
+    public abstract void onDeath();
 
     /**
      * 
@@ -111,18 +114,10 @@ public abstract class AbstractEntity{
         //activateWalkOnCeilingHax();
         if(walkOnCeilingHax){
             float a=x/1000;
-            //gs.getBatch().getProjectionMatrix().rotate(0, 0, 1, a);
-            //Matrix4 mat = gs.getBatch().getProjectionMatrix();
-            //gs.getBatch().getProjectionMatrix().rotate(1, 1, 0, a);
             gs.getBatch().draw(tex,(float)Math.sin(a)*550+980,(float)Math.cos(a)*520+530);
-            //gs.getBatch().getProjectionMatrix().rotate(1,1,0,-a);
-            //gs.getBatch().setProjectionMatrix(mat);
         }
         else {
-            //projectionMatrix.rotate(0, 0, 1, rotation);
-            //gs.getBatch().setProjectionMatrix(projectionMatrix);
             gs.getBatch().draw(tex, x - getWidth()/2, y-56);
-            //projectionMatrix.rotate(0, 0, 1, -rotation);
         }
     }
 
@@ -134,11 +129,11 @@ public abstract class AbstractEntity{
         world = !world;
     }
     
-    public boolean flagRemoveFromUnderworldSet() {
+    public boolean isFlagRemoveFromUnderworldSet() {
         return flagRemoveFromUnderworld;
     }
 
-    public boolean flagRemoveFromOverworldSet() {
+    public boolean isFlagRemoveFromOverworldSet() {
         return flagRemoveFromOverworld;
     }
 
@@ -231,5 +226,7 @@ public abstract class AbstractEntity{
         return flip;
     }
     
-    
+    public boolean isDead(){
+        return life <= 0;
+    }
 }

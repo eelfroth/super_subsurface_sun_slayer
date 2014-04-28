@@ -169,4 +169,8 @@ public class AbstractSpawn extends AbstractEntity {
             }
         }
     }
+
+    @Override
+    public void onDeath() {
+    }
 }

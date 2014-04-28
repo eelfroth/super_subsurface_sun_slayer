@@ -4,13 +4,9 @@ import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
 import com.BauhausGamesSyndicate.LudumDare29.Tuning;
 import com.BauhausGamesSyndicate.LudumDare29.overworld.Chunk;
 import com.BauhausGamesSyndicate.LudumDare29.overworld.Overworld;
-import com.badlogic.gdx.Gdx;
 
 
 public abstract class AbstractCharacter extends AbstractEntity {
-    
-    //wohin fallen
-    
     
     private float acceleration;
     private float accFactor;
@@ -49,13 +45,6 @@ public abstract class AbstractCharacter extends AbstractEntity {
     }
     
     
-    public void move(float delta){
-        setAcceleration(getAcceleration()   );
-        setVelocity    (getVelocity()     + getAcceleration()* getAccFactor()   );
-        setVelocity    (getVelocity()     * (1 - getFriction()) );
-        setX((getX() + getVelocity()*delta));
-    }
-    
     public AbstractCharacter(float x, float y, String name, boolean world){
         this(x, y, name, world,1,1);
     }
@@ -90,23 +79,25 @@ public abstract class AbstractCharacter extends AbstractEntity {
     
     public void setAccFactor(float fac){
         this.accFactor = fac;
-    }
-         
-    public boolean isDead(){
-        return getLife() <= 0;
-    }
+    } 
     
     @Override
     public void update(float delta){
         super.update(delta);
+        
         if (GameScreen.onOverworld() && !shouldRise && !shouldDescend){
             setY(Overworld.getHeight((int) getX())+ verticalOffset);
         }
         if (isDead()){
+            if  (!isFlagRemoveFromOverworldSet())
+                onDeath();
             setFlagRemoveFromOverworld();
         }
-        if(getCanWalk())
-            move(delta);
+        
+        if(getCanWalk()){
+            setVelocity    ((getVelocity()+ getAcceleration()* getAccFactor())     * (1 - getFriction()) );
+            setX((getX() + getVelocity()*delta));
+        }
         
         //flip graphic
         if(getVelocity()< -0.1f)
@@ -200,8 +191,6 @@ public abstract class AbstractCharacter extends AbstractEntity {
     public abstract void onDescend();
 
     public abstract void onRise();
-    
-    public abstract void onDeath();
 
     public float getStartLocation() {
          return Tuning.CHARACTER_UNDERWORLD_START_LOCATION_Y;

@@ -26,6 +26,7 @@ public class Player extends AbstractCharacter {
     private float stepY;
     private int distanceToTravel;
     private float distanceTraveled;
+    private boolean stormIntoBattle = false;
     
     public Player(float x, float y) {
         super(x, y, "overlord", false,10,9);
@@ -233,6 +234,10 @@ public class Player extends AbstractCharacter {
     @Override
     public void onDeath() {
         //nothing
+    }
+    
+    public boolean getStormIntoBattle() {
+        return stormIntoBattle;
     }
 
 }

@@ -11,6 +11,7 @@ import com.badlogic.gdx.Gdx;
  */
 public abstract class Minion extends AbstractCharacter{
     private boolean leaveScreen = false;
+    private boolean stormIntoBattle = false;
     
     public Minion(float x, float y, String name,boolean world, int steps, int specialsteps){
         super(x, y, name, world, steps, specialsteps);
@@ -29,10 +30,15 @@ public abstract class Minion extends AbstractCharacter{
         //follow player
         if(onOverworld()) {
             if (GameScreen.onOverworld()){
-                if (GameScreen.getPlayer().getX() > getX())
+                if(stormIntoBattle){
                     setAcceleration(1);
-                else
-                    setAcceleration(-1);
+                }
+                else {
+                    if (GameScreen.getPlayer().getX() > getX())
+                        setAcceleration(1);
+                    else
+                        setAcceleration(-1);
+                }
             }
             else{
                 Eingang e = GameScreen.getOverworld().getEingang();
@@ -79,6 +85,14 @@ public abstract class Minion extends AbstractCharacter{
     
     public void setLeaveScreen(boolean b) {
         leaveScreen = b;
+    }
+    
+    public void stormIntoBattle() {
+        stormIntoBattle = true;
+    }
+    
+    public void retreat() {
+        stormIntoBattle = false;
     }
     
 }
