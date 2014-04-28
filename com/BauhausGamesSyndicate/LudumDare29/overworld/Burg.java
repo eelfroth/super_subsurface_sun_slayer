@@ -14,11 +14,12 @@ import com.BauhausGamesSyndicate.LudumDare29.Tuning;
  *
  * @author Paul
  */
-public class City2 extends AbstractSpawn{
-    public City2(Overworld overworld, int x, int y){
-        super(overworld, x, y, "bauernhof");
-        setOverallQuantity(Tuning.BAUERNHOF2_QUANTITY);
-        setBQuantity(Tuning.BAUERNHOF2_SPAWN_BAUER_RATE);
-        setLQuantity(Tuning.BAUERNHOF2_SPAWN_LANZE_RATE);
+public class Burg extends AbstractSpawn{
+    public Burg(Overworld overworld, int x, int y){
+        super(overworld, x, y, "burg");
+        setOverallQuantity(Tuning.BURG_QUANTITY);
+        setLQuantity(Tuning.BURG_SPAWN_LANZE_RATE);
+        setRQuantity(Tuning.BURG_SPAWN_RITTER_RATE);
+        setPQuantity(Tuning.BURG_SPAWN_PALA_RATE);
     } 
 }

@@ -10,8 +10,8 @@ import com.BauhausGamesSyndicate.LudumDare29.Tuning;
  * @author Paul Flechsig
  * @author Jacob Bauer
  */
-public class City extends AbstractSpawn{
-    public City(Overworld overworld, int x, int y){
+public class Bauernhof extends AbstractSpawn{
+    public Bauernhof(Overworld overworld, int x, int y){
         super(overworld, x, y, "bauernhof");
         setOverallQuantity(Tuning.BAUERNHOF_QUANTITY);
         setBQuantity(Tuning.BAUERNHOF_SPAWN_BAUER_RATE);
