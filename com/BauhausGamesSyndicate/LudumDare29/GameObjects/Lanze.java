@@ -1,6 +1,7 @@
 package com.BauhausGamesSyndicate.LudumDare29.GameObjects;
 
 import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
+import com.BauhausGamesSyndicate.LudumDare29.Tuning;
 
 /**
  *
@@ -22,9 +23,11 @@ public class Lanze extends AbstractCharacter {
         arrived = false;
         homeX = x;
         dTimer = 0;
-        setFriction(0.5f);
-        setAccFactor(getAccFactor() + (float) (Math.random()*0.1));
         setAcceleration(-1);
+        
+        setAccFactor(Tuning.LANZE_ACCELERATION_FACTOR + (float) (Math.random()*0.1));
+        setFriction(Tuning.LANZE_FRICTION);
+        setLife(Tuning.LANZE_LIFE);
     }
 
     @Override
@@ -79,7 +82,8 @@ public class Lanze extends AbstractCharacter {
     @Override
     public void fight(AbstractCharacter enemy, float delta) {
         //playSpacial(true);
-        enemy.drainLife(delta/4);
+        if(!hasDrainedLife())
+            enemy.drainLife(Tuning.LANZE_DAMAGE_PER_ATTACK);
     }
     
     @Override

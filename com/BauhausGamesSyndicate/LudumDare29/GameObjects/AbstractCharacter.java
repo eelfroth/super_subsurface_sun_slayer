@@ -23,6 +23,7 @@ public abstract class AbstractCharacter extends AbstractEntity {
     private boolean shouldDescend;
     
     private boolean fighting = false;
+    private boolean drainedLife = false;
     
     
     
@@ -150,6 +151,9 @@ public abstract class AbstractCharacter extends AbstractEntity {
         
         //colission check
         fighting = collideWithEnemy(delta);
+        
+        if(!fighting)
+            drainedLife = false;
          
     }
     
@@ -211,5 +215,8 @@ public abstract class AbstractCharacter extends AbstractEntity {
         return fighting;
     };
     
+    public boolean hasDrainedLife(){
+        return drainedLife;
+    };
     
 }

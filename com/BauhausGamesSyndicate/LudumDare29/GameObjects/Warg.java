@@ -27,7 +27,8 @@ public class Warg extends Minion {
     @Override
     public void fight(AbstractCharacter enemy, float delta) {
         playSpecial(true);
-        enemy.drainLife(delta/4);
+        if(!hasDrainedLife())
+            enemy.drainLife(Tuning.WARG_DAMAGE_PER_ATTACK);
     }
     
     @Override

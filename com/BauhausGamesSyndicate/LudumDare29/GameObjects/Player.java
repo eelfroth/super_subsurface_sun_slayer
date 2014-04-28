@@ -186,7 +186,8 @@ public class Player extends AbstractCharacter {
                 entity.getX()-getX() > attXpos - attackRadius &&
                 entity.getX()-getX() < attXpos + attackRadius
                 )
-                entity.drainLife(100);
+                
+                entity.drainLife(Tuning.PLAYER_DAMAGE_PER_ATTACK);
         }
         
     }
