@@ -1,6 +1,7 @@
 package com.BauhausGamesSyndicate.LudumDare29.GameObjects;
 
 import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
+import com.BauhausGamesSyndicate.LudumDare29.Tuning;
 import com.BauhausGamesSyndicate.LudumDare29.overworld.Eingang;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
@@ -13,6 +14,10 @@ import com.badlogic.gdx.audio.Sound;
  * @author Jacob Bauer
  */
 public class Player extends AbstractCharacter {
+    
+    //wohin fallen
+    
+    
     private int menupoint = 0;
     private static Sound growlsound;
     private static Sound stepsound;
@@ -194,12 +199,17 @@ public class Player extends AbstractCharacter {
     
     @Override
     public void  onDescend(){
-        setX(1020);
-        setY(550);
+        //setX(1020);
+        //setY(Tuning.SET);
     }
 
     @Override
     public void onRise(){
         //nothing
+    }
+    
+    @Override
+    public float getStartLocation() {
+         return Tuning.PLAYER_UNDERWORLD_START_LOCATION_Y;
     }
 }

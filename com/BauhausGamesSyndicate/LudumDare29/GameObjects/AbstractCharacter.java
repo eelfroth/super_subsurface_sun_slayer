@@ -1,10 +1,17 @@
 package com.BauhausGamesSyndicate.LudumDare29.GameObjects;
 
 import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
+import com.BauhausGamesSyndicate.LudumDare29.Tuning;
 import com.BauhausGamesSyndicate.LudumDare29.overworld.Chunk;
 import com.BauhausGamesSyndicate.LudumDare29.overworld.Overworld;
+import com.badlogic.gdx.Gdx;
+
 
 public abstract class AbstractCharacter extends AbstractEntity {
+    
+    //wohin fallen
+    
+    
     private float acceleration;
     private float accFactor;
     private float velocity;
@@ -14,6 +21,10 @@ public abstract class AbstractCharacter extends AbstractEntity {
     private boolean canWalk;
     private boolean shouldRaise;
     private boolean shouldDescend;
+    
+    
+    
+    
 
     public AbstractCharacter(float x, float y, String name, boolean world, int steps, int specialSteps){
         super(x, y, name, world,steps, specialSteps);
@@ -111,18 +122,28 @@ public abstract class AbstractCharacter extends AbstractEntity {
                 switchWorld();
                 onRise();
             }
-        }else if (shouldDescend){
-            setY(getY()-(delta/2));
+        } else if (shouldDescend){
+            setY(getY()-(delta/8));
             
             //entering underworld
-            if (getY() < 0){
-                shouldDescend=false;
-                //setX(GameScreen.getOverworld().getEingang().getX() + GameScreen.getOverworld().getEingang().getWidth()/2);
-                GameScreen.getUnderworld().addEntity(this);
-                setFlagRemoveFromOverworld();
-                switchWorld();
-                onDescend();
+            if(onOverworld()) {
+                if (getY() < 0){
+                    //setX(GameScreen.getOverworld().getEingang().getX() + GameScreen.getOverworld().getEingang().getWidth()/2);
+                    GameScreen.getUnderworld().addEntity(this);
+                    setFlagRemoveFromOverworld();
+                    switchWorld();
+                    setY(Gdx.graphics.getWidth()/2);
+                    setX(Gdx.graphics.getHeight());
+                    setAcceleration(0);
+                }
+            } else {
+                if (getY() < getStartLocation()){
+                    shouldDescend=false;
+                    //setX(UNDERWORLD_START_LOCATION_X);
+                    onDescend();
+                }
             }
+            
         }
         
         //colission check
@@ -174,4 +195,8 @@ public abstract class AbstractCharacter extends AbstractEntity {
     public abstract void onDescend();
 
     public abstract void onRise();
+
+    public float getStartLocation() {
+         return Tuning.UNDERWORLD_START_LOCATION_Y;
+    }
 }
