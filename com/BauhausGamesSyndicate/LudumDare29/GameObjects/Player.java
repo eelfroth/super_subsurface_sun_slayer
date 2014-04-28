@@ -199,7 +199,7 @@ public class Player extends AbstractCharacter {
     
     @Override
     public void  onDescend(){
-        //setX(1020);
+        setX(1020);
         //setY(Tuning.SET);
     }
 
