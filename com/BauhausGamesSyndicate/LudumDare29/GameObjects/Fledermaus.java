@@ -1,6 +1,7 @@
 package com.BauhausGamesSyndicate.LudumDare29.GameObjects;
 
 import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
+import com.BauhausGamesSyndicate.LudumDare29.overworld.Eingang;
 import com.badlogic.gdx.Gdx;
 import static java.lang.Math.floor;
 import static java.lang.Math.sin;
@@ -26,7 +27,6 @@ public class Fledermaus extends Minion{
            1
        );
        
-       canDescend = true;
        setSteptime(50);
        
        //startwerte zugällig, damit die fledermäuse unterschiedlich fliegen;
@@ -50,21 +50,29 @@ public class Fledermaus extends Minion{
         
         //den x- und y-koordinaten werden sinuskurven addiert
         if(onOverworld()) {
-            y_sin += delta*0.167;
-            setY((getY() + (float)sin(y_sin/147f)*200.0f) + 200.0f + y_pos);
-            x_sin += delta*0.167;
-            setX(getX() + (float)sin(x_sin/211f)*11f);
+            if(!isDescending()) {
+                y_sin += delta*0.167;
+                setY((getY() + (float)sin(y_sin/147f)*200.0f) + 200.0f + y_pos);
+                }
+                x_sin += delta*0.167;
+                setX(getX() + (float)sin(x_sin/211f)*11f);
         }
-        else if(!isRaising()){
-            y_sin += delta*0.167;
-            setY((Gdx.graphics.getHeight()/2) + ((float)sin(y_sin/147f)*350.0f));
+        else {
+            if(!isRising()){
+                y_sin += delta*0.167;
+                setY((Gdx.graphics.getHeight()/2) + ((float)sin(y_sin/147f)*350.0f));
+            }
             x_sin += delta*0.167;
             setX((Gdx.graphics.getWidth()/2) + (float)sin(x_sin/211f)*350.0f);
         }
         
-        if(GameScreen.getPlayer().isRaising() && !onOverworld()) {
+        if(GameScreen.getPlayer().isRising() && !onOverworld()) {
                 rise();
         }
+        
+        /*if(GameScreen.getPlayer().isDescending() && onOverworld()) {
+                descend();
+        }*/
         
         //debug shit
         boolean debug = false;

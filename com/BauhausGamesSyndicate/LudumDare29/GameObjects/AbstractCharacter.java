@@ -109,7 +109,7 @@ public abstract class AbstractCharacter extends AbstractEntity {
                 switchWorld();
             }
         }else if (shouldDescend){
-            setY(getY()-delta/2);
+            setY(getY()-(delta/8));
             
             //entering underworld
             if (getY() < 0){
@@ -151,7 +151,7 @@ public abstract class AbstractCharacter extends AbstractEntity {
         shouldDescend = true;
     }
 
-    public boolean isRaising() {
+    public boolean isRising() {
         return shouldRaise;
     }
 

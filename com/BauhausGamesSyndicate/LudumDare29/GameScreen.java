@@ -134,7 +134,7 @@ public class GameScreen implements Screen {
 
         
         //fps
-        fps.render(shr, font);
+        //fps.render(shr, font);
     }
 
     @Override
