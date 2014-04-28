@@ -1,0 +1,67 @@
+title.png
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+tb0
+  rotate: false
+  xy: 772, 1084
+  size: 372, 284
+  orig: 1920, 1080
+  offset: 947, 430
+  index: -1
+tb1
+  rotate: false
+  xy: 398, 1084
+  size: 372, 284
+  orig: 1920, 1080
+  offset: 947, 430
+  index: -1
+tb2
+  rotate: false
+  xy: 772, 1084
+  size: 372, 284
+  orig: 1920, 1080
+  offset: 947, 430
+  index: -1
+tb3
+  rotate: false
+  xy: 2, 1084
+  size: 394, 284
+  orig: 1920, 1080
+  offset: 948, 430
+  index: -1
+tb4
+  rotate: false
+  xy: 772, 1084
+  size: 372, 284
+  orig: 1920, 1080
+  offset: 947, 430
+  index: -1
+tb5
+  rotate: false
+  xy: 2, 1084
+  size: 394, 284
+  orig: 1920, 1080
+  offset: 948, 430
+  index: -1
+tb6
+  rotate: false
+  xy: 772, 1084
+  size: 372, 284
+  orig: 1920, 1080
+  offset: 947, 430
+  index: -1
+tb7
+  rotate: false
+  xy: 398, 1084
+  size: 372, 284
+  orig: 1920, 1080
+  offset: 947, 430
+  index: -1
+titelbildschirm
+  rotate: false
+  xy: 2, 2
+  size: 1920, 1080
+  orig: 1920, 1080
+  offset: 0, 0
+  index: -1
