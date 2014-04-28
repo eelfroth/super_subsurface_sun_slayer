@@ -27,7 +27,7 @@ public class Underworld extends AbstractWorld{
     private final Texture texture;
     private float dt;
     private final int timeTillNextBuy = Tuning.TIME_BETWEEN_BUY;
-    private final ArrayList<AbstractEntity> entityList = new ArrayList<>();
+    private final ArrayList<AbstractEntity> entityList = new ArrayList<>(400);//max 400 sprites
     private int money = 100;
     private final OrthographicCamera camera;
     private final Sound buySound;
