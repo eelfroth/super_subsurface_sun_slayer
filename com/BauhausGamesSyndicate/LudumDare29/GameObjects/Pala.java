@@ -7,7 +7,11 @@
 package com.BauhausGamesSyndicate.LudumDare29.GameObjects;
 
 import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
+
 import com.BauhausGamesSyndicate.LudumDare29.Tuning;
+
+import com.BauhausGamesSyndicate.LudumDare29.overworld.AbstractSpawn;
+
 
 /**
  *
@@ -20,12 +24,14 @@ public class Pala extends AbstractCharacter {
     private int dTimerMax = 500;
     private float homeX;
     private float reach = 600;
+    private AbstractSpawn home;
     
-    public Pala(float x, float y, boolean world) {
+    public Pala(float x, float y, boolean world, AbstractSpawn home) {
         super(x, y, "pala", world, 4, 4);
 
         arrived = false;
         homeX = x;
+        this.home = home;
         dTimer = 0;
         setAcceleration(-1);
         
