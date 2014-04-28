@@ -101,5 +101,9 @@ public class Fledermaus extends Minion{
          return Tuning.PLAYER_UNDERWORLD_START_LOCATION_Y;
     }
 
+    @Override
+    public void onDeath() {
+        //nothing
+    }
     
 }

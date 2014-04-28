@@ -196,6 +196,8 @@ public abstract class AbstractCharacter extends AbstractEntity {
     public abstract void onDescend();
 
     public abstract void onRise();
+    
+    public abstract void onDeath();
 
     public float getStartLocation() {
          return Tuning.CHARACTER_UNDERWORLD_START_LOCATION_Y;
@@ -208,4 +210,6 @@ public abstract class AbstractCharacter extends AbstractEntity {
     public boolean isFighting(){
         return fighting;
     };
+    
+    
 }

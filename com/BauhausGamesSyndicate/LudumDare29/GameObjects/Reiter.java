@@ -83,4 +83,9 @@ public class Reiter extends AbstractCharacter {
     public void onRise(){
         //nothing
     }
+    
+    @Override
+    public void onDeath() {
+        //nothing
+    }
 }
