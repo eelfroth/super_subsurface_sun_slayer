@@ -37,4 +37,9 @@ public class Warg extends Minion {
         setX(3141);
         setAcceleration(-1);
     }
+    
+    @Override
+    public void onDeath() {
+        //nothing
+    }
 }

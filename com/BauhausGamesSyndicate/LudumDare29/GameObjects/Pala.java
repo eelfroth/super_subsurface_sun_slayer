@@ -86,4 +86,9 @@ public class Pala extends AbstractCharacter {
     public void onRise(){
         //nothing
     }
+    
+    @Override
+    public void onDeath() {
+        //nothing
+    }
 }

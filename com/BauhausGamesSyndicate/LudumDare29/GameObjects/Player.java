@@ -220,5 +220,10 @@ public class Player extends AbstractCharacter {
     public boolean isAttacking(){
         return attacktimer>0;
     }
+    
+    @Override
+    public void onDeath() {
+        //nothing
+    }
 
 }

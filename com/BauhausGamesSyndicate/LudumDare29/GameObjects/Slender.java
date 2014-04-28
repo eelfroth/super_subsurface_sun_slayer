@@ -34,4 +34,9 @@ public class Slender extends Minion {
     public void  onDescend(){
         activateWalkOnCeilingHax();
     }
+    
+    @Override
+    public void onDeath() {
+        //nothing
+    }
 }

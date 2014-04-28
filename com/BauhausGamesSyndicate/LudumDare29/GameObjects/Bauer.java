@@ -114,4 +114,9 @@ public class Bauer extends AbstractCharacter {
     public void onRise(){
         //nothing
     }
+    
+    @Override
+    public void onDeath() {
+        //nothing
+    }
 }
