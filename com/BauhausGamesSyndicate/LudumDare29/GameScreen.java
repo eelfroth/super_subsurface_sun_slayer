@@ -171,8 +171,7 @@ public class GameScreen implements Screen {
      * @return 
      */
     public static boolean onOverworld() {
-        if (world == overworld) return true;
-        return false;
+        return world == overworld;
     }
     
     public static ShaderProgram setupShader(String vert, String frag) {
@@ -198,7 +197,7 @@ public class GameScreen implements Screen {
         short[] indices  = new short[xQuads*yQuads*6];
         
         float[] quadVertices = new float[36];
-        short[] quadIndices = new short[6];
+        short[] quadIndices;
         
         boolean backwards = true;
         
