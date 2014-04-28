@@ -42,12 +42,17 @@ public final class Tuning {
     
     
     /*---SPAWNING---*/
-    public final static int TIME_TILL_SPAWN = 1000;
+    public final static int TIME_TILL_SPAWN = 10000;
     
     // City Bauernhof
     //public final String BAUERNHOF_ = "bauernhof";
     public final static int BAUERNHOF_QUANTITY = 1;
     public final static int BAUERNHOF_SPAWN_BAUER_RATE = 100;
+    
+    // Siedlung
+    //public final String BAUERNHOF_ = "bauernhof";
+    public final static int SIEDLUNG_QUANTITY = 2;
+    public final static int SIEDLUNG_SPAWN_BAUER_RATE = 100;
     
     // City2 bef Bauernhof
     //public final String BAUERNHOF2_NAME = "befestigter_bauernhof";
@@ -71,7 +76,7 @@ public final class Tuning {
     
     // CASTLEOFLIGHT
     //public final String CASTLEOFLIGHT_NAME = "sonnengotttempel";
-    public final static int CASTLEOFLIGHT_QUANTITY = 15;
+    public final static int CASTLEOFLIGHT_QUANTITY = 10; // 15
     public final static int CASTLEOFLIGHT_SPAWN_PALA_RATE   = 50; // 50
     public final static int CASTLEOFLIGHT_SPAWN_LANZE_RATE  = 30; // 30
     public final static int CASTLEOFLIGHT_SPAWN_RITTER_RATE = 20; // 20
