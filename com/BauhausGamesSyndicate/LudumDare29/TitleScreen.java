@@ -28,7 +28,7 @@ class TitleScreen implements Screen {
     private final Game ld;
 
     public TitleScreen(Game ld) {
-        background = new Sprite(new Texture(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/tb0.png")));
+        background = new Sprite(new Texture(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/titel.png")));
         jingle = Gdx.audio.newSound(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/jingle.ogg"));
         title = Gdx.audio.newMusic(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/title.ogg"));
         this.ld = ld;
@@ -42,8 +42,10 @@ class TitleScreen implements Screen {
         background.draw(batch);
         batch.end();
         
-        if (Gdx.input.isKeyPressed(Keys.ENTER) ||Gdx.input.isKeyPressed(Keys.SPACE))
+        if (Gdx.input.isKeyPressed(Keys.ENTER) ||Gdx.input.isKeyPressed(Keys.SPACE)){
             ld.setScreen(new GameScreen());
+            dispose();
+        }
     }
 
     @Override
@@ -70,6 +72,8 @@ class TitleScreen implements Screen {
 
     @Override
     public void dispose() {
+        title.stop();
+        title.dispose();
     }
     
 }
