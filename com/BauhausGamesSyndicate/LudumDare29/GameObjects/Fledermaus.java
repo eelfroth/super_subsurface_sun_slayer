@@ -1,6 +1,7 @@
 package com.BauhausGamesSyndicate.LudumDare29.GameObjects;
 
 import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
+import com.BauhausGamesSyndicate.LudumDare29.Tuning;
 import com.BauhausGamesSyndicate.LudumDare29.overworld.Eingang;
 import com.badlogic.gdx.Gdx;
 import static java.lang.Math.floor;
@@ -19,7 +20,7 @@ public class Fledermaus extends Minion{
 
     public Fledermaus(boolean world) {
        super(
-           GameScreen.onOverworld()?GameScreen.getOverworld().getEingang().getX():(Gdx.graphics.getWidth()/2)+50,
+           (Gdx.graphics.getWidth()/2)+50,
            Gdx.graphics.getHeight()/2,
            "fledermaus",
            world,
@@ -45,6 +46,7 @@ public class Fledermaus extends Minion{
     public void update(float delta) {
         super.update(delta);
         deactivateWalkOnCeilingHax();
+        setLeaveScreen(false);
         
         //(debug) unendlich leben
         setLife(1003577);
@@ -85,6 +87,13 @@ public class Fledermaus extends Minion{
     @Override
     public void  onDescend(){
         setX(1020);
-        setY(550);
+        //setY(550);
     }
+    
+    @Override
+    public float getStartLocation() {
+         return Tuning.PLAYER_UNDERWORLD_START_LOCATION_Y;
+    }
+
+    
 }

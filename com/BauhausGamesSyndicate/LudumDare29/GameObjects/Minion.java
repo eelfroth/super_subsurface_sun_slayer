@@ -77,4 +77,8 @@ public abstract class Minion extends AbstractCharacter{
         //nothing
     }
     
+    public void setLeaveScreen(boolean b) {
+        leaveScreen = b;
+    }
+    
 }

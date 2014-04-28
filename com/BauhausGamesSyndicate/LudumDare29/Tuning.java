@@ -15,23 +15,24 @@ import com.badlogic.gdx.Gdx;
 public final class Tuning {
     
     
-    /*---CHARACTER (alle Spielfiguren)---*/
+    /*---CHARACTER/ENTITY (alle Spielfiguren)---*/
     //beschleunigung:
-    public final static float ACCELERATION_FACTOR = 0.03f;
-    public final static float FRICTION = 0.05f;
+    public final static float CHARACTER_ACCELERATION_FACTOR = 0.03f;
+    public final static float CHARACTER_FRICTION = 0.05f;
     //unterwelt spawn:
-    public final static float UNDERWORLD_START_LOCATION_Y = 50;
+    public final static float CHARACTER_UNDERWORLD_START_LOCATION_Y = 50;
     //maximale vertikale verteilung:
-    public static double VERTICAL_OFFSET = 20;
-    //weltenwechsel geschwindigkeiten
-    public final static float RISE_SPEED = 0.5f;
-    public final static float DESCEND_SPEED = 0.5f;
+    public final static double CHARACTER_VERTICAL_OFFSET = 20;
+    //weltenwechsel geschwindigkeiten:
+    public final static float CHARACTER_RISE_SPEED = 0.5f;
+    public final static float CHARACTER_DESCEND_SPEED = 0.5f;
+    //leben:
+    public final static float ENTITY_LIFE = 100f;
     
     /*---PLAYER---*/
     public final static float PLAYER_ACCELERATION_FACTOR = 0.03f;
     public final static float PLAYER_FRICTION = 0.05f;
-    //unterwelt spawn:
-    public final static float PLAYER_UNDERWORLD_START_LOCATION_Y   = 550;
+    public final static float PLAYER_UNDERWORLD_START_LOCATION_Y = 550f;
     
     /*---KAUFMENÜ---*/
     public final static int TIME_BETWEEN_BUY = 500;

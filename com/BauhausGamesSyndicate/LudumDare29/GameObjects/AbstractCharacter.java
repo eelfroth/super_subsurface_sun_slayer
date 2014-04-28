@@ -29,11 +29,11 @@ public abstract class AbstractCharacter extends AbstractEntity {
     public AbstractCharacter(float x, float y, String name, boolean world, int steps, int specialSteps){
         super(x, y, name, world,steps, specialSteps);
         
-        verticalOffset = -(int) (Math.random()*Tuning.VERTICAL_OFFSET);
+        verticalOffset = -(int) (Math.random()*Tuning.CHARACTER_VERTICAL_OFFSET);
         velocity  = 0;
-        accFactor = Tuning.ACCELERATION_FACTOR;
+        accFactor = Tuning.CHARACTER_ACCELERATION_FACTOR;
         acceleration = 0;
-        friction = Tuning.FRICTION;
+        friction = Tuning.CHARACTER_FRICTION;
         canWalk = true;
     }
     
@@ -112,7 +112,7 @@ public abstract class AbstractCharacter extends AbstractEntity {
             this.setFlipHorizontal(false);
         
         if (shouldRise){
-            setY(getY()+delta*Tuning.RISE_SPEED);
+            setY(getY()+delta*Tuning.CHARACTER_RISE_SPEED);
             
             if (getY() >= Chunk.HEIGHT){
                 shouldRise=false;
@@ -123,7 +123,7 @@ public abstract class AbstractCharacter extends AbstractEntity {
                 onRise();
             }
         } else if (shouldDescend){
-            setY(getY()-(delta*Tuning.DESCEND_SPEED));
+            setY(getY()-(delta*Tuning.CHARACTER_DESCEND_SPEED));
             
             //entering underworld
             if(onOverworld()) {
@@ -200,6 +200,6 @@ public abstract class AbstractCharacter extends AbstractEntity {
     public abstract void onRise();
 
     public float getStartLocation() {
-         return Tuning.UNDERWORLD_START_LOCATION_Y;
+         return Tuning.CHARACTER_UNDERWORLD_START_LOCATION_Y;
     }
 }

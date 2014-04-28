@@ -2,6 +2,7 @@
 package com.BauhausGamesSyndicate.LudumDare29.GameObjects;
 
 import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
+import com.BauhausGamesSyndicate.LudumDare29.Tuning;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Matrix4;
@@ -43,7 +44,7 @@ public abstract class AbstractEntity{
      * @param specialSteps  the amount of animation steps for the special
      */
     public AbstractEntity(float x, float y, String name, boolean world, int steps, int specialSteps) {
-        life    = 100;
+        life    = Tuning.ENTITY_LIFE;
         this.x = x;
         this.y = y;
         this.world = world;
@@ -117,7 +118,7 @@ public abstract class AbstractEntity{
             //gs.getBatch().getProjectionMatrix().rotate(1,1,0,-a);
             //gs.getBatch().setProjectionMatrix(mat);
         }
-        else {;
+        else {
             //projectionMatrix.rotate(0, 0, 1, rotation);
             //gs.getBatch().setProjectionMatrix(projectionMatrix);
             gs.getBatch().draw(tex, x - getWidth()/2, y-56);
