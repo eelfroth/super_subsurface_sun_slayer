@@ -1,7 +1,5 @@
 package com.BauhausGamesSyndicate.LudumDare29.GameObjects;
 
-import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
-import com.badlogic.gdx.Gdx;
 
 /**
  *
@@ -18,7 +16,7 @@ public class Slender extends Minion {
             "slender",
             world,
             7,
-            1
+            7
         );
     }
     

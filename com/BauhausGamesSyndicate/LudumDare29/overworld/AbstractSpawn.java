@@ -11,13 +11,13 @@ import com.BauhausGamesSyndicate.LudumDare29.GameObjects.Bauer;
 import com.BauhausGamesSyndicate.LudumDare29.GameObjects.Lanze;
 import com.BauhausGamesSyndicate.LudumDare29.GameObjects.Pala;
 import com.BauhausGamesSyndicate.LudumDare29.GameObjects.Ritter;
+import com.BauhausGamesSyndicate.LudumDare29.Tuning;
 
 /**
  *
  * @author Paul
  */
 public class AbstractSpawn extends AbstractEntity {
-    private float timetillspawn = 1000;
     private float timer;
     private final Overworld overworld;
     
@@ -86,7 +86,7 @@ public class AbstractSpawn extends AbstractEntity {
     @Override
     public void update(float delta){
         timer+=delta;
-        if (timer>=timetillspawn) {
+        if (timer>=Tuning.TIME_TILL_SPAWN) {
             timer = 0;
             spawnEnemy();
         }
@@ -94,19 +94,19 @@ public class AbstractSpawn extends AbstractEntity {
 
     private void spawnEnemy() {
        
-        for(int i=0; i < BauerQuantity/100 * overallQuantity ; i++){
+        for(int i=0; i < (int)Math.floor((BauerQuantity/100) * overallQuantity); i++){
             Bauer enemy = new Bauer(getX(),getY(), onOverworld());
             overworld.addEntity(enemy);
         }
-        for(int i=0; i < LanzeQuantity/100 * overallQuantity ; i++){
+        for(int i=0; i < (int)Math.floor((LanzeQuantity/100) * overallQuantity) ; i++){
             Lanze enemy = new Lanze(getX(),getY(), onOverworld());
             overworld.addEntity(enemy);
         }
-        for(int i=0; i < RitterQuantity/100 * overallQuantity ; i++){
+        for(int i=0; i < (int)Math.floor((RitterQuantity/100) * overallQuantity) ; i++){
             Ritter enemy = new Ritter(getX(),getY(), onOverworld());
             overworld.addEntity(enemy);
         }
-        for(int i=0; i < PalaQuantity/100 * overallQuantity ; i++){
+        for(int i=0; i < (int)Math.floor((PalaQuantity/100) * overallQuantity) ; i++){
             Pala enemy = new Pala(getX(),getY(), onOverworld());
             overworld.addEntity(enemy);
         }
