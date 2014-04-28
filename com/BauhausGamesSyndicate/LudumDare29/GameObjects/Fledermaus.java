@@ -72,7 +72,7 @@ public class Fledermaus extends Minion{
         }
         
         //debug shit
-        boolean debug = true;
+        boolean debug = false;
         if(debug) {
             StringBuffer result = new StringBuffer();
             result.append(getX());

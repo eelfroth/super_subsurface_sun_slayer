@@ -112,7 +112,7 @@ public abstract class AbstractCharacter extends AbstractEntity {
                 onRise();
             }
         }else if (shouldDescend){
-            setY(getY()-(delta/8));
+            setY(getY()-(delta/2));
             
             //entering underworld
             if (getY() < 0){
