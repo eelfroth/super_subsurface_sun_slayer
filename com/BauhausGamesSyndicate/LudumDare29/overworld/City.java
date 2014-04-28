@@ -34,8 +34,8 @@ public class City extends AbstractEntity {
 
     private void spawnEnemy() {
 
-       Bauer enemy = new Bauer(getX(),getY(), onOverworld());
+       //Bauer enemy = new Bauer(getX(),getY(), onOverworld());
 
-       overworld.addEntity(enemy);
+      // overworld.addEntity(enemy);
     }
 }

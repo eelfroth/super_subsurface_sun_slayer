@@ -7,7 +7,7 @@ import com.BauhausGamesSyndicate.LudumDare29.Underworld.Underworld;
 import com.BauhausGamesSyndicate.LudumDare29.overworld.Overworld;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Mesh;
@@ -22,7 +22,6 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.glutils.FrameBuffer;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.math.Matrix4;
 
 public class GameScreen implements Screen {
     private final SpriteBatch batch;
@@ -41,10 +40,11 @@ public class GameScreen implements Screen {
     private Mesh frameMesh;
     private final Texture debug_texture;
     private boolean rotation;
+    private static Music underworldMusic;
+    private static Music overworldMusic;
 
     private static Player player;
     private static int money = 100;
-
 
     public GameScreen() {
         spritesheet = new TextureAtlas(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/spritesheet.txt"));
@@ -52,6 +52,11 @@ public class GameScreen implements Screen {
         debug_texture = new Texture(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/mapping.png"));
   //      debug_texture = new Texture(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/gruppennfohto.jpg"));
         
+        GameScreen.underworldMusic = Gdx.audio.newMusic(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/underworldLoop.ogg"));
+        underworldMusic.setLooping(true);
+        underworldMusic.play();
+        GameScreen.overworldMusic = Gdx.audio.newMusic(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/overworldLoop.ogg"));
+        overworldMusic.setLooping(true);
         
         batch = new SpriteBatch();    
         font = new BitmapFont();
@@ -343,9 +348,21 @@ public class GameScreen implements Screen {
         underworld.update(delta);
         
         player.update(delta);
-        if(player.onOverworld()) world = overworld;
-        else world = underworld;
+        if(player.onOverworld())
+            world = overworld;
+        else
+            world = underworld;
         
         Overworld.setCameraPos((int) (player.getX()-Gdx.graphics.getWidth()/2));
+    }
+    
+    public static void switchWorld(boolean world){
+        if (world){
+            underworldMusic.stop();
+            overworldMusic.play();
+        }else {
+            overworldMusic.stop();
+            underworldMusic.play();
+        }
     }
 }
