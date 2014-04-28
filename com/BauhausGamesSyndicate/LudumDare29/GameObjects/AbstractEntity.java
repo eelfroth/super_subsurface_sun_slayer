@@ -225,4 +225,10 @@ public abstract class AbstractEntity{
     public void deactivateWalkOnCeilingHax() {
        walkOnCeilingHax = false;
     }
+
+    public boolean isFlipped() {
+        return flip;
+    }
+    
+    
 }
