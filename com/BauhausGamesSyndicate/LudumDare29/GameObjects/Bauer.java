@@ -120,6 +120,6 @@ public class Bauer extends AbstractCharacter {
     
     @Override
     public void onDeath() {
-        //nothing
+       home.anzBauern -= 1;
     }
 }

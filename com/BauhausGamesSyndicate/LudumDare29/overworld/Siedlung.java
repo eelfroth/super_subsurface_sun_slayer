@@ -13,5 +13,6 @@ public class Siedlung extends AbstractSpawn{
         super(overworld, x, y, "siedlung");
         setOverallQuantity(Tuning.SIEDLUNG_QUANTITY);
         setBQuantity(Tuning.SIEDLUNG_SPAWN_BAUER_RATE);
+        setMaxBauern(Tuning.SIEDLUNG_MAX_BAUERN);
     }
 }

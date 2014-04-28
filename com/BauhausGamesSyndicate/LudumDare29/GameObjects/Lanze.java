@@ -102,6 +102,6 @@ public class Lanze extends AbstractCharacter {
     
     @Override
     public void onDeath() {
-        //nothing
+        home.anzLanzen -= 1;
     }
 }

@@ -28,10 +28,10 @@ public class AbstractSpawn extends AbstractEntity {
     private int maxRitter;
     private int maxPala;
     
-    private int anzBauern;
-    private int anzLanzen;
-    private int anzRitter;
-    private int anzPala;
+    public int anzBauern;
+    public int anzLanzen;
+    public int anzRitter;
+    public int anzPala;
     
     private int BauerQuantity;
     private int LanzeQuantity;
@@ -124,25 +124,25 @@ public class AbstractSpawn extends AbstractEntity {
 
     private void spawnEnemy() {
        
-        if(BauerQuantity != 0){
+        if(BauerQuantity != 0 && anzBauern+overallQuantity*BauerQuantity < maxBauern ){
             for(int i=0; i < overallQuantity*BauerQuantity; i++){
                 Bauer enemy = new Bauer(getX(),getY(), onOverworld(), this);
                 overworld.addEntity(enemy);
             }
         }
-        if(LanzeQuantity != 0){
+        if(LanzeQuantity != 0 && anzLanzen+overallQuantity*LanzeQuantity < maxLanzen){
             for(int i=0; i < overallQuantity*LanzeQuantity ; i++){
                 Lanze enemy = new Lanze(getX(),getY(), onOverworld(), this);
                 overworld.addEntity(enemy);
             }
         }
-        if(RitterQuantity != 0){
+        if(RitterQuantity != 0 && anzRitter+overallQuantity*RitterQuantity < maxRitter){
             for(int i=0; i < overallQuantity*RitterQuantity ; i++){
                 Reiter enemy = new Reiter(getX(),getY(), onOverworld(), this);
                 overworld.addEntity(enemy);
             }
         }
-        if(PalaQuantity != 0){
+        if(PalaQuantity != 0 && anzPala+overallQuantity*PalaQuantity < maxPala){
             for(int i=0; i < overallQuantity*PalaQuantity ; i++){
                 Pala enemy = new Pala(getX(),getY(), onOverworld(), this);
                 overworld.addEntity(enemy);
