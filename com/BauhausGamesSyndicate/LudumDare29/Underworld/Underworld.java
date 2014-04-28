@@ -6,6 +6,7 @@ import com.BauhausGamesSyndicate.LudumDare29.GameObjects.Fledermaus;
 import com.BauhausGamesSyndicate.LudumDare29.GameObjects.Slender;
 import com.BauhausGamesSyndicate.LudumDare29.GameObjects.Warg;
 import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
+import com.BauhausGamesSyndicate.LudumDare29.Tuning;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.audio.Sound;
@@ -25,7 +26,7 @@ import java.util.ArrayList;
 public class Underworld extends AbstractWorld{
     private final Texture texture;
     private float dt;
-    private final int timeTillNextBuy = 500;
+    private final int timeTillNextBuy = Tuning.TIME_BETWEEN_BUY;
     private final ArrayList<AbstractEntity> entityList = new ArrayList<>();
     private int money = 100;
     private final OrthographicCamera camera;
@@ -151,7 +152,7 @@ public class Underworld extends AbstractWorld{
     
     public void buyWarg(){
         if (money>0) {
-            money--;
+            money-= Tuning.WARG_KOSTEN;
             Warg warg = new Warg(false);
             warg.activateWalkOnCeilingHax();
             //warg.rise();
@@ -162,7 +163,7 @@ public class Underworld extends AbstractWorld{
     
     public void buySlender(){
         if (money>0) {
-            money--;
+            money-=Tuning.SLENDER_KOSTEN;
             Slender slender = new Slender(false);
             slender.activateWalkOnCeilingHax();
             //slender.rise();
@@ -172,7 +173,7 @@ public class Underworld extends AbstractWorld{
     }
     public void buyBat(){
         if (money>0) {
-            money--;
+            money-=Tuning.BAT_KOSTEN;
             Fledermaus bat = new Fledermaus(false);
             //bat.rise();
             entityList.add(bat);

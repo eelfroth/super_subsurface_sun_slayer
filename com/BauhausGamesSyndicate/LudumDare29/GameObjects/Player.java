@@ -32,6 +32,8 @@ public class Player extends AbstractCharacter {
         setAccFactor(0.05f);
         growlsound = Gdx.audio.newSound(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/growlsingle.ogg"));
         stepsound = Gdx.audio.newSound(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/step.wav"));
+        setAcceleration(Tuning.PLAYER_ACCELERATION_FACTOR);
+        setFriction(Tuning.PLAYER_FRICTION);
     }
     
     @Override
