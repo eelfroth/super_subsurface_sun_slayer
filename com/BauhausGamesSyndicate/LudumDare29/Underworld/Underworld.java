@@ -152,7 +152,7 @@ public class Underworld extends AbstractWorld{
     
     public void buyWarg(){
         if (money>0) {
-            money--;
+            money-= Tuning.WARG_KOSTEN;
             Warg warg = new Warg(false);
             warg.activateWalkOnCeilingHax();
             //warg.rise();
@@ -163,7 +163,7 @@ public class Underworld extends AbstractWorld{
     
     public void buySlender(){
         if (money>0) {
-            money--;
+            money-=Tuning.SLENDER_KOSTEN;
             Slender slender = new Slender(false);
             slender.activateWalkOnCeilingHax();
             //slender.rise();
@@ -173,7 +173,7 @@ public class Underworld extends AbstractWorld{
     }
     public void buyBat(){
         if (money>0) {
-            money--;
+            money-=Tuning.BAT_KOSTEN;
             Fledermaus bat = new Fledermaus(false);
             //bat.rise();
             entityList.add(bat);

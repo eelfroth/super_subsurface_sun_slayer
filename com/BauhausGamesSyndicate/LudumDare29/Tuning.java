@@ -15,7 +15,7 @@ import com.badlogic.gdx.Gdx;
 public final class Tuning {
     
     
-    /*CHARACTER (alle Spielfiguren)*/
+    /*---CHARACTER (alle Spielfiguren)---*/
     //beschleunigung:
     public final static float ACCELERATION_FACTOR = 0.03f;
     public final static float FRICTION = 0.05f;
@@ -27,15 +27,20 @@ public final class Tuning {
     public final static float RISE_SPEED = 0.5f;
     public final static float DESCEND_SPEED = 0.5f;
     
-    /*PLAYER*/
+    /*---PLAYER---*/
+    public final static float PLAYER_ACCELERATION_FACTOR = 0.03f;
+    public final static float PLAYER_FRICTION = 0.05f;
     //unterwelt spawn:
     public final static float PLAYER_UNDERWORLD_START_LOCATION_Y   = 550;
     
-    
+    /*---KAUFMENÜ---*/
     public final static int TIME_BETWEEN_BUY = 500;
+    public final static int WARG_KOSTEN = 0;
+    public final static int SLENDER_KOSTEN = 0;
+    public final static int BAT_KOSTEN = 0;
     
     
-    // SPAWNING::
+    /*---SPAWNING---*/
     
     // City Bauernhof
     public final static int BAUERNHOF_QUANTITY = 1;
