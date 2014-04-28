@@ -55,6 +55,8 @@ public class Bauer extends AbstractCharacter {
                     }
                 }
                 if(2068 < getX() && 2160 > getX()) {
+                    
+                    
                     setAcceleration(getAcceleration()*(-1));
                     setX(getX() + getAcceleration()*2); // wengl durchdrehen!
                 }
