@@ -404,7 +404,8 @@ public class Overworld extends AbstractWorld{
         
         //update entitys
         for (int i = 0; i < entityList.size(); i++) {
-            entityList.get(i).update(delta);
+            AbstractEntity e = entityList.get(i);
+            e.update(delta);
         }
 
         //remove objects

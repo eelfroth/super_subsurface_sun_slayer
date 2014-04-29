@@ -70,9 +70,9 @@ public class Pala extends AbstractCharacter {
                     }
                 }
             }    
-            if(getAcceleration()<-0.1f)
+            if(getAcceleration()>-0.1f)
                 setFlipHorizontal(true);
-            if(getAcceleration()> 0.1f)
+            if(getAcceleration()< 0.1f)
                 setFlipHorizontal(false);
         }
     }

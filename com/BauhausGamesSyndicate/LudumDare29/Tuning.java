@@ -34,7 +34,7 @@ public final class Tuning {
         public final static float PLAYER_ACCELERATION_FACTOR = 0.03f;
         public final static float PLAYER_FRICTION = 0.05f;
         public final static float PLAYER_UNDERWORLD_START_LOCATION_Y = 550f;
-        public final static float PLAYER_LIFE = 100f;
+        public final static float PLAYER_LIFE = 1000;
         public final static float PLAYER_DAMAGE_PER_ATTACK = 10f;
 
         ///warg:
