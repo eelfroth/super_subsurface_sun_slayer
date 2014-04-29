@@ -26,7 +26,7 @@ public abstract class AbstractEntity{
     private float rotation;
     private boolean walkOnCeilingHax;
     
-    private TextureRegion[] specialTextures;
+    private final TextureRegion[] specialTextures;
     private TextureRegion[] standardAnimation;
     private boolean flip = false;
     private boolean special =false;

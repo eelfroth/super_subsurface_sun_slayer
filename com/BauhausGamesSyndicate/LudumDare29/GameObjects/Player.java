@@ -48,7 +48,7 @@ public class Player extends AbstractCharacter {
     public void update(float delta){   
         super.update(delta);
         setAcceleration(0);
-        
+                
         if (GameScreen.onOverworld()){
             if (Gdx.input.isKeyPressed(Keys.D)){
                 setAcceleration(1);

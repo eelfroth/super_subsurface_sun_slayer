@@ -6,6 +6,7 @@ import com.BauhausGamesSyndicate.LudumDare29.GameObjects.Player;
 import com.BauhausGamesSyndicate.LudumDare29.Underworld.Underworld;
 import com.BauhausGamesSyndicate.LudumDare29.overworld.Overworld;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Color;
@@ -21,7 +22,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.glutils.FrameBuffer;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
 public class GameScreen implements Screen {
     private final SpriteBatch batch;
@@ -35,9 +35,12 @@ public class GameScreen implements Screen {
     private static AbstractWorld world;
     private final OrthographicCamera camera;
     private static Texture overlay;
+    private static Sprite tutorial;
+    private boolean tutorialvisible = true;
     
     private FrameBuffer frameBuffer;
     private Mesh frameMesh;
+    
     private final Texture debug_texture;
     private final Sprite hudSpriteR;
     private final Sprite hudSpriteLbg;
@@ -48,10 +51,18 @@ public class GameScreen implements Screen {
     private static Player player;
     private static int money = 100;
 
+    
+     
+
     public GameScreen() {
         spritesheet = new TextureAtlas(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/spritesheet.txt"));
         overlay = new Texture(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/overlay.png"));
         debug_texture = new Texture(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/mapping.png"));
+        
+        tutorial = new Sprite(new Texture(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/tutorial.png")));
+        tutorial.setX(541);
+        tutorial.setY(300);
+        
         hudSpriteR = new Sprite(spritesheet.findRegion("HUDR"));
         hudSpriteR.setX(1980-hudSpriteR.getWidth());
         hudSpriteR.setY(1080-hudSpriteR.getHeight());
@@ -147,6 +158,8 @@ public class GameScreen implements Screen {
         //overlay & hud
         batch.begin();
         renderOverlay(batch);
+        if (tutorialvisible)
+            tutorial.draw(batch);
         
         hudSpriteR.draw(batch);
         font.setColor(new Color(1,1,1,1));
@@ -345,6 +358,18 @@ public class GameScreen implements Screen {
 
     public void update(float delta) {
         //fps.update(delta);
+        if (Gdx.input.isKeyPressed(Input.Keys.S) ||
+            Gdx.input.isKeyPressed(Input.Keys.W) ||
+            Gdx.input.isKeyPressed(Input.Keys.D) ||
+            Gdx.input.isKeyPressed(Input.Keys.A) ||
+            Gdx.input.isKeyPressed(Input.Keys.SPACE) ||
+            Gdx.input.isKeyPressed(Input.Keys.ENTER) ||
+            Gdx.input.isKeyPressed(Input.Keys.Q) ||
+            Gdx.input.isKeyPressed(Input.Keys.E)
+            ){
+            tutorialvisible = false;
+        }
+        
         overworld.update(delta);
         underworld.update(delta);
         
