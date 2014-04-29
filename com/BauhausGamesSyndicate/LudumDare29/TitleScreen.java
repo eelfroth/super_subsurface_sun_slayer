@@ -12,12 +12,10 @@ import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
-import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.math.Vector3;
 
 /**
  *
@@ -32,6 +30,8 @@ class TitleScreen implements Screen {
     private Sprite currentBurg;
     private final SpriteBatch batch;
     private final OrthographicCamera camera;
+    private float timer = 0;
+    private int step = 0;
 
     public TitleScreen(Game ld) {
         spritesheet = new TextureAtlas(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/title/spritesheet.txt"));
@@ -76,7 +76,19 @@ class TitleScreen implements Screen {
             Gdx.app.exit();
         }
         
-        currentBurg = new Sprite(spritesheet.findRegion("tb"+(int)(Math.random()*7)));
+        delta*=1000;
+         timer+=delta;
+        
+         if (timer>200){
+            step++;
+            timer=0;
+         }
+
+        if (step > 7){
+            step=0;
+        }
+        
+        currentBurg = new Sprite(spritesheet.findRegion("tb"+step));
         currentBurg.setX(940);
         currentBurg.setY(440);
     }
