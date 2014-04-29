@@ -3,6 +3,7 @@ package com.BauhausGamesSyndicate.LudumDare29.overworld;
 
 import com.BauhausGamesSyndicate.LudumDare29.AbstractWorld;
 import com.BauhausGamesSyndicate.LudumDare29.GameObjects.AbstractEntity;
+import com.BauhausGamesSyndicate.LudumDare29.GameObjects.LightGod;
 import com.BauhausGamesSyndicate.LudumDare29.GameObjects.Unicorn;
 import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
 import com.badlogic.gdx.Gdx;
@@ -396,6 +397,8 @@ public class Overworld extends AbstractWorld{
         
         // add uber pr unicorn
         entityList.add(new Unicorn(-556, 520, true));
+        // add GOD!
+        entityList.add(new LightGod(10356, 700, true));
     }
     
     @Override
