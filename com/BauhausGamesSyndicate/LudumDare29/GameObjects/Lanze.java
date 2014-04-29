@@ -15,17 +15,16 @@ public class Lanze extends AbstractCharacter {
     private boolean arrived;
     private int dTimer;
     private int dTimerMax = 500;
-    private float homeX;
-    private float reach = 600;
+    private float reach;
     private AbstractSpawn home;
     
     public Lanze(float x, float y, boolean world, AbstractSpawn home) {
         super(x, y, "lanze", world,4,3);
 
         arrived = false;
-        homeX = x;
         this.home = home;
         dTimer = 0;
+        reach = 600 + (float)Math.random()*100;
         setAcceleration(-1);
         setAccFactor(Tuning.LANZE_ACCELERATION_FACTOR + (float) (Math.random()*0.1));
         setFriction(Tuning.LANZE_FRICTION);
@@ -45,15 +44,15 @@ public class Lanze extends AbstractCharacter {
         */
         
         if(!isFighting()) {
-            if(getX() < homeX - reach/2 ||
-               getX() > homeX + reach/2){
-               if(getX() > homeX)
+            if(getX() < home.getX() - reach/2 ||
+               getX() > home.getX() + reach/2){
+               if(getX() > home.getX())
                    setAcceleration(-1);
                else
                    setAcceleration(1);
             }
-            if(GameScreen.getPlayer().getX() > homeX - reach/2 && // wenn player in Heimat eindringt
-               GameScreen.getPlayer().getX() < homeX + reach/2){
+            if(GameScreen.getPlayer().getX() > home.getX() - reach/2 && // wenn player in Heimat eindringt
+               GameScreen.getPlayer().getX() < home.getX() + reach/2){
                setX(getX() + getAcceleration()*2); // wengl durchdrehen!
                if(GameScreen.getPlayer().getX() > getX()) // und auf player zugehen
                    setAcceleration(1);
@@ -104,5 +103,6 @@ public class Lanze extends AbstractCharacter {
     @Override
     public void onDeath() {
         home.anzLanzen -= 1;
+        home.drainLife(1);
     }
 }

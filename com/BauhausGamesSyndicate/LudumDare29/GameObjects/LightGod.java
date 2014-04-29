@@ -13,12 +13,12 @@ public class LightGod extends AbstractCharacter {
     
     public LightGod(float x, float y, boolean world) {
         super(x, y, "lichtgott", world, 2, 1);
+        setLife(23000);
     }
     
     @Override
     public void update(float delta) {
         super.update(delta);
-        setLife(1003577);
     }
     
     @Override

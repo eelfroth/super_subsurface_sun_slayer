@@ -23,7 +23,7 @@ public class AbstractSpawn extends AbstractEntity {
     
     private int overallQuantity;
     
-    private int maxlifetimeunits;
+    int maxlifetimeunits;
     
     private int maxBauern;
     private int maxLanzen;
@@ -43,7 +43,7 @@ public class AbstractSpawn extends AbstractEntity {
     
     public AbstractSpawn(Overworld overworld, int x, int y, String name) {
         super(x, y, name, true, 1,1);
-        maxlifetimeunits = Math.abs(x);// so viele units kann der spawner maximal erzeugen...
+        maxlifetimeunits = 20000;
         if((int)(Math.random()*10) > 5){
             this.setFlipHorizontal(true);
         }
@@ -117,6 +117,10 @@ public class AbstractSpawn extends AbstractEntity {
     
     @Override
     public void update(float delta){
+        if(isDead()){
+            playSpecial(true);
+            return;
+        }
         if(maxlifetimeunits > 0){
             timer+=delta;
             if (timer>=Tuning.TIME_TILL_SPAWN) {

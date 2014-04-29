@@ -384,7 +384,7 @@ public class Overworld extends AbstractWorld{
         entityList.add(new Bauernhof2(this, 4000, 300));
         
         // add Burg
-        entityList.add(new Burg(this, 5450, 440));
+        entityList.add(new Burg(this, 5850, 480));
         
         // add Siedlung
         entityList.add(new Siedlung(this, 4940, 350));
@@ -397,6 +397,7 @@ public class Overworld extends AbstractWorld{
         
         // add uber pr unicorn
         entityList.add(new Unicorn(-556, 520, true));
+        
         // add GOD!
         entityList.add(new LightGod(10356, 700, true));
     }
