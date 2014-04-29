@@ -40,8 +40,10 @@ public class Slender extends Minion {
         
         if(hasCorpse) {
             setAcceleration(-1);
-            if(2078 < getX() && 2150 > getX())
-                descend();
+            if(2078 < getX() && 2150 > getX()){
+                setFlagRemoveFromOverworld();
+        GameScreen.getUnderworld().giveMoney(Tuning.MONEY_PER_CORPSE);
+        }
             playSpecial(true);
             this.setFlipHorizontal(true);
         }
@@ -56,8 +58,7 @@ public class Slender extends Minion {
     
     @Override
     public void  onDescend(){
-        setFlagRemoveFromUnderworld();
-        GameScreen.getUnderworld().giveMoney(Tuning.MONEY_PER_CORPSE);
+        
     }
     
     @Override
