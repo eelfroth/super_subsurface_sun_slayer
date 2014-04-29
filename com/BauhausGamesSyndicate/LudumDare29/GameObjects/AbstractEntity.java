@@ -13,8 +13,6 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
  * @author Jacob Bauer
  */
 public abstract class AbstractEntity{
-    private static TextureRegion[] todesAnimation;
-    
     private boolean world;//false: underworld, true: overworld
     private boolean flagRemoveFromUnderworld;
     private boolean flagRemoveFromOverworld;
@@ -32,7 +30,7 @@ public abstract class AbstractEntity{
     private TextureRegion[] standardAnimation;
     private boolean flip = false;
     private boolean special =false;
-    private boolean dead;
+    private boolean animateOnce = false;
     
     public abstract void onDeath();
 
@@ -68,14 +66,6 @@ public abstract class AbstractEntity{
         }
         
         rotation = 0;
-        
-        if (todesAnimation==null){
-            todesAnimation = new TextureRegion[4];
-            todesAnimation[0] = GameScreen.getSpritesheet().findRegion("tot0");
-            todesAnimation[1] = GameScreen.getSpritesheet().findRegion("tot1");
-            todesAnimation[2] = GameScreen.getSpritesheet().findRegion("tot2");
-            todesAnimation[3] = GameScreen.getSpritesheet().findRegion("tot3");
-        }
     }
     
     public float getLife(){
@@ -92,8 +82,7 @@ public abstract class AbstractEntity{
     
     public void update(float delta){
 
-        
-        if (dead && step==3){
+        if (animateOnce && step==steps-1){
         //nichts
         }else{
             timer+=delta;
@@ -112,20 +101,13 @@ public abstract class AbstractEntity{
             }
         }
         
-        
         if (isDead()){
-            if (!dead){
-                //if  (!isFlagRemoveFromOverworldSet()){
+            if  (!isFlagRemoveFromOverworldSet()){
+                GameScreen.getOverworld().addEntity(new Leiche(getX(), getY()));
                 onDeath();
-                standardAnimation=todesAnimation;
-                specialTextures=todesAnimation;
-                step=0;
-                steps=4;
-                timer=0;
             }
-            //setFlagRemoveFromOverworld();
+            setFlagRemoveFromOverworld();
         }
-        dead = isDead();
     };
     
     public void render(GameScreen gs){
@@ -258,5 +240,9 @@ public abstract class AbstractEntity{
     
     public boolean isDead(){
         return life <= 0;
+    }
+    
+    public void animateOnce(){
+        animateOnce = true;
     }
 }

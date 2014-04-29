@@ -29,27 +29,29 @@ public abstract class Minion extends AbstractCharacter{
         
         //follow player
         if(onOverworld()) {
-            if (GameScreen.onOverworld() && !isFighting()){
-                if(stormIntoBattle){
-                    if(GameScreen.getPlayer().isFlipped())
-                        setAcceleration(-1);
-                    else
-                        setAcceleration(1);
+            if(!isFighting()) {
+                if (GameScreen.onOverworld()){
+                    if(stormIntoBattle){
+                        if(GameScreen.getPlayer().isFlipped())
+                            setAcceleration(-1);
+                        else
+                            setAcceleration(1);
+                    }
+                    else {
+                        if (GameScreen.getPlayer().getX() > getX())
+                            setAcceleration(1);
+                        else
+                            setAcceleration(-1);
+                    }
                 }
-                else {
-                    if (GameScreen.getPlayer().getX() > getX())
+                else{
+                    Eingang e = GameScreen.getOverworld().getEingang();
+                    if (e.getX() > getX())
                         setAcceleration(1);
                     else
                         setAcceleration(-1);
-                }
+                } 
             }
-            else{
-                Eingang e = GameScreen.getOverworld().getEingang();
-                if (e.getX() > getX())
-                    setAcceleration(1);
-                else
-                    setAcceleration(-1);
-            } 
             
             //if(GameScreen.getPlayer().isDescending())
             //    descend();

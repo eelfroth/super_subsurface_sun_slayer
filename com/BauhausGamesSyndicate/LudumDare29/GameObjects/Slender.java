@@ -10,6 +10,7 @@ import com.BauhausGamesSyndicate.LudumDare29.Tuning;
  * @author Jacob Bauer
  */
 public class Slender extends Minion {
+    private boolean hasCorpse;
 
     public Slender(boolean world) {
         super(
@@ -23,6 +24,15 @@ public class Slender extends Minion {
         setAccFactor(Tuning.SLENDER_ACCELERATION_FACTOR);
         setFriction(Tuning.SLENDER_FRICTION);
         setLife(Tuning.SLENDER_LIFE);
+    }
+    @Override
+    public void update(float delta) {
+        super.update(delta);
+        
+        if(hasCorpse)
+            retreat();
+        else 
+            stormIntoBattle();
     }
     
     @Override
