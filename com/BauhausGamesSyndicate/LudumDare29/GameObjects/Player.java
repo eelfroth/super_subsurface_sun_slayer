@@ -32,6 +32,7 @@ public class Player extends AbstractCharacter {
     private final Texture winscreen;
     private final Texture losescreen;
     private boolean dead;
+    private boolean tohd;
     
     public Player(float x, float y) {
         super(x, y, "overlord", false,10,9);
@@ -50,6 +51,8 @@ public class Player extends AbstractCharacter {
         winscreen = new Texture(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/gameoverwin.png"));
         losescreen = new Texture(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/gameoverfail.png"));
         dead = false;
+        tohd = false;
+        
     }
     
     @Override
@@ -266,6 +269,10 @@ public class Player extends AbstractCharacter {
     
     public boolean getStormIntoBattle() {
         return stormIntoBattle;
+    }
+    
+    public void sungodTohd() {
+        tohd = true;
     }
 
 }
