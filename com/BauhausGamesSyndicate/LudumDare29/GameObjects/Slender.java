@@ -67,6 +67,7 @@ public class Slender extends Minion {
     
     @Override
     public void onDeath() {
+        super.onDeath();
         //nothing
     }
 }

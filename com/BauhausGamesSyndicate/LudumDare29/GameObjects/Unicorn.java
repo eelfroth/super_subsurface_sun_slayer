@@ -42,5 +42,6 @@ public class Unicorn extends AbstractCharacter {
     
     @Override
     public void onDeath() {
+        super.onDeath();
     }
 }

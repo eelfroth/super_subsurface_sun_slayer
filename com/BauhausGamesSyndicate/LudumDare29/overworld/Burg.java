@@ -14,7 +14,7 @@ import com.BauhausGamesSyndicate.LudumDare29.Tuning;
  */
 public class Burg extends AbstractSpawn{
     public Burg(Overworld overworld, int x, int y){
-        super(overworld, x, y, "burg");
+        super(overworld, x, y, "befestigte_burg");
         setOverallQuantity(Tuning.BURG_QUANTITY);
         setLQuantity(Tuning.BURG_SPAWN_LANZE_RATE);
         setRQuantity(Tuning.BURG_SPAWN_RITTER_RATE);

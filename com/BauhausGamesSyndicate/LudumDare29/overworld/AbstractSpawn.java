@@ -23,7 +23,7 @@ public class AbstractSpawn extends AbstractEntity {
     
     private int overallQuantity;
     
-    private int maxlifetimeunits;
+    int maxlifetimeunits;
     
     private int maxBauern;
     private int maxLanzen;
@@ -43,7 +43,7 @@ public class AbstractSpawn extends AbstractEntity {
     
     public AbstractSpawn(Overworld overworld, int x, int y, String name) {
         super(x, y, name, true, 1,1);
-        maxlifetimeunits = Math.abs(x);// so viele units kann der spawner maximal erzeugen...
+        maxlifetimeunits = 20000;
         if((int)(Math.random()*10) > 5){
             this.setFlipHorizontal(true);
         }
@@ -57,6 +57,7 @@ public class AbstractSpawn extends AbstractEntity {
         maxLanzen = 0;
         maxRitter = 0;
         maxPala   = 0;
+        timer = (float)Math.random()*8000;
     }
     
     public void setMaxBauern(int max){
@@ -117,6 +118,10 @@ public class AbstractSpawn extends AbstractEntity {
     
     @Override
     public void update(float delta){
+        if(isDead()){
+            playSpecial(true);
+            return;
+        }
         if(maxlifetimeunits > 0){
             timer+=delta;
             if (timer>=Tuning.TIME_TILL_SPAWN) {
@@ -131,7 +136,7 @@ public class AbstractSpawn extends AbstractEntity {
         if(BauerQuantity != 0){
             for(int i=0; i < overallQuantity*BauerQuantity; i++){
                 if(anzBauern < maxBauern){
-                    Bauer enemy = new Bauer(getX(),getY(), onOverworld(), this);
+                    Bauer enemy = new Bauer(getX()+(float)Math.random()*200,getY(), onOverworld(), this);
                     overworld.addEntity(enemy);
                     anzBauern++;
                     maxlifetimeunits--;
@@ -141,7 +146,7 @@ public class AbstractSpawn extends AbstractEntity {
         if(LanzeQuantity != 0){
             for(int i=0; i < overallQuantity*LanzeQuantity ; i++){
                 if(anzLanzen < maxLanzen){
-                    Lanze enemy = new Lanze(getX(),getY(), onOverworld(), this);
+                    Lanze enemy = new Lanze(getX()+(float)Math.random()*200,getY(), onOverworld(), this);
                     overworld.addEntity(enemy);
                     anzLanzen++;
                     maxlifetimeunits--;
@@ -151,7 +156,7 @@ public class AbstractSpawn extends AbstractEntity {
         if(RitterQuantity != 0){
             for(int i=0; i < overallQuantity*RitterQuantity ; i++){
                 if(anzRitter < maxRitter){
-                    Reiter enemy = new Reiter(getX(),getY(), onOverworld(), this);
+                    Reiter enemy = new Reiter(getX()+(float)Math.random()*200,getY(), onOverworld(), this);
                     overworld.addEntity(enemy);
                     anzRitter++;
                     maxlifetimeunits--;
@@ -161,7 +166,7 @@ public class AbstractSpawn extends AbstractEntity {
         if(PalaQuantity != 0){
             for(int i=0; i < overallQuantity*PalaQuantity ; i++){
                 if(anzPala < maxPala){
-                    Pala enemy = new Pala(getX(),getY(), onOverworld(), this);
+                    Pala enemy = new Pala(getX()+(float)Math.random()*200,getY(), onOverworld(), this);
                     overworld.addEntity(enemy);
                     anzPala++;
                     maxlifetimeunits--;

@@ -3,6 +3,9 @@ package com.BauhausGamesSyndicate.LudumDare29.GameObjects;
 import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
 import com.BauhausGamesSyndicate.LudumDare29.Tuning;
 import com.BauhausGamesSyndicate.LudumDare29.overworld.AbstractSpawn;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.files.FileHandle;
 
 /**
  *
@@ -13,19 +16,24 @@ public class Reiter extends AbstractCharacter {
     
     private int dTimer;
     private int dTimerMax = 500;
-    private float homeX;
-    private float reach = 600;
+    private float reach;
     private AbstractSpawn home;
+    private static FileHandle attacksound;
+    private final Sound privateAttacksound;
+    private boolean isPlaying = false;
     
     public Reiter(float x, float y, boolean world, AbstractSpawn home) {
         super(x, y, "reiter", world,4,3);
-
+        
+        if (attacksound==null)
+            attacksound = Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/swclang1.wav");
+        privateAttacksound = Gdx.audio.newSound(attacksound);
+        
         arrived = false;
-        homeX = x;
         this.home = home;
         dTimer = 0;
         setAcceleration(-1);
-        
+        reach = 1000 + (float)Math.random()*100;
         setAccFactor(Tuning.PALA_ACCELERATION_FACTOR + (float) (Math.random()*0.1));
         setFriction(Tuning.PALA_FRICTION);
         setLife(Tuning.PALA_LIFE);
@@ -37,15 +45,15 @@ public class Reiter extends AbstractCharacter {
         
         
         if(!isFighting()) {
-            if(getX() < homeX - reach/2 ||
-               getX() > homeX + reach/2){
-               if(getX() > homeX)
+            if(getX() < home.getX()- reach/2 ||
+               getX() > home.getX() + reach/2){
+               if(getX() > home.getX())
                    setAcceleration(-1);
                else
                    setAcceleration(1);
             }
-            if(GameScreen.getPlayer().getX() > homeX - reach/2 && // wenn player in Heimat eindringt
-               GameScreen.getPlayer().getX() < homeX + reach/2){
+            if(GameScreen.getPlayer().getX() > home.getX() - reach/2 && // wenn player in Heimat eindringt
+               GameScreen.getPlayer().getX() < home.getX() + reach/2){
                setX(getX() + getAcceleration()*2); // wengl durchdrehen!
                if(GameScreen.getPlayer().getX() > getX()) // und auf player zugehen
                    setAcceleration(1);
@@ -77,8 +85,20 @@ public class Reiter extends AbstractCharacter {
     @Override
     public void fight(AbstractCharacter enemy, float delta) {
         playSpecial(true);
-        if(!hasDrainedLife())
+        if(!hasDrainedLife()) {
             enemy.drainLife(Tuning.REITER_DAMAGE_PER_ATTACK);
+        }
+        
+        if (
+            getAnimationStep()==0
+            &&
+            !isPlaying){
+            privateAttacksound.play();
+            isPlaying=true;
+        }
+        
+        if (getAnimationStep()!=0)
+            isPlaying=false;
         
         setAcceleration(0);
     }
@@ -95,6 +115,8 @@ public class Reiter extends AbstractCharacter {
     
     @Override
     public void onDeath() {
+        super.onDeath();
         home.anzRitter -= 1;
+        home.drainLife(1);
     }
 }
