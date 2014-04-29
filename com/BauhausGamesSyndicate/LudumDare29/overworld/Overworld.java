@@ -72,7 +72,7 @@ public class Overworld extends AbstractWorld{
         citymapY[2] = 500;
         citymapX[3] = 1100;
         citymapY[3] = 360;
-        citymapX[4] = 2940;
+        citymapX[4] = 3090;
         citymapY[4] = 485;
         citymapX[5] = 3400;
         citymapY[5] = 320;
@@ -81,12 +81,12 @@ public class Overworld extends AbstractWorld{
         citymapX[7] = 3850;
         citymapY[7] = 330;
         
-        forestmapX[0] = 300;
+        forestmapX[0] = 350;
         forestmapY[0] = 430;
         forestmapX[1] = 1000;
         forestmapY[1] = 440;
-        forestmapX[2] = 2550;
-        forestmapY[2] = 420;
+        forestmapX[2] = 2500;
+        forestmapY[2] = 320;
         forestmapX[3] = 1200;
         forestmapY[3] = 340;
         forestmapX[4] = 3000;
