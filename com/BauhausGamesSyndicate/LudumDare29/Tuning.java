@@ -6,8 +6,6 @@
 
 package com.BauhausGamesSyndicate.LudumDare29;
 
-import com.badlogic.gdx.Gdx;
-
 /**
  *
  * @author yoji0462
@@ -53,6 +51,7 @@ public final class Tuning {
         public final static float BAT_ACCELERATION_FACTOR = 1f;
         public final static float BAT_FRICTION = 0.5f;
         public final static float BAT_LIFE = 20f;
+        
 
     /*---KAUFMENÜ---*/
         public final static int TIME_BETWEEN_BUY = 500;
@@ -145,7 +144,5 @@ public final class Tuning {
         public static float PALA_LIFE = 5f;
         public static float PALA_DAMAGE_PER_ATTACK = 8f;
     
-    
-    
-    
+
 }
