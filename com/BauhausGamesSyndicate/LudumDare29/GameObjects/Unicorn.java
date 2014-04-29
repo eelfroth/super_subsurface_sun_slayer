@@ -23,7 +23,7 @@ public class Unicorn extends AbstractCharacter {
     
     @Override
     public boolean isEvil() {
-        return false;
+        return true;
     }
 
     @Override

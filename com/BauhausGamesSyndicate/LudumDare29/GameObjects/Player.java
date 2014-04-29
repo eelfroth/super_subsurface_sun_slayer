@@ -6,6 +6,7 @@ import com.BauhausGamesSyndicate.LudumDare29.overworld.Eingang;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.graphics.Texture;
 
 /**
  *
@@ -28,6 +29,9 @@ public class Player extends AbstractCharacter {
     private float distanceTraveled;
     private boolean stormIntoBattle = false;
     private Unicorn unicorn;
+    private final Texture winscreen;
+    private final Texture losescreen;
+    private boolean dead;
     
     public Player(float x, float y) {
         super(x, y, "overlord", false,10,9);
@@ -42,64 +46,72 @@ public class Player extends AbstractCharacter {
         
         growlsound = Gdx.audio.newSound(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/growlsingle.ogg"));
         stepsound = Gdx.audio.newSound(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/step.wav"));
+        
+        winscreen = new Texture(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/gameoverwin.png"));
+        losescreen = new Texture(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/gameoverfail.png"));
+        dead = false;
     }
     
     @Override
     public void update(float delta){   
         super.update(delta);
         setAcceleration(0);
-                
-        if (GameScreen.onOverworld()){
-            if (Gdx.input.isKeyPressed(Keys.D)){
-                setAcceleration(1);
-            }
         
-            if (Gdx.input.isKeyPressed(Keys.A) &&getX()-600>unicorn.getX()){
-                setAcceleration(-1);
-            }
-            
-            //go down?
-            Eingang eingang = GameScreen.getOverworld().getEingang();
-            if (
-                Gdx.input.isKeyPressed(Keys.S) &&
-                getX()+getWidth()/2 > eingang.getX() &&
-                getX()+getWidth()/2 < eingang.getX()+eingang.getWidth()
-                ){
-                descend();
-            }
-        }else {//underworld
-            
-            if(!isRising()){
-                //    setY(Gdx.graphics.getHeight()/20);
+        if(!dead) {
                 
-                
-                
-                if (distanceTraveled<distanceToTravel){//traveling
-                    float dX = stepX*delta; 
-                    float dY = stepY*delta; 
-                    setX(getX()+dX);
-                    setY(getY()+dY);
-                    distanceTraveled += Math.sqrt(dX*dX+dY*dY);
-                } else {
-                    //rise?
-                    if (menupoint==0 && Gdx.input.isKeyPressed(Keys.W)){
-                        rise();
-                    }
-                    
-                    if (Gdx.input.isKeyPressed(Keys.W)){
-                        goTo(0);
-                    } else if (Gdx.input.isKeyPressed(Keys.D)){
-                        goTo(3);
-                    }else if (Gdx.input.isKeyPressed(Keys.S)){
-                        goTo(2);
-                    }else if (Gdx.input.isKeyPressed(Keys.A)){
-                        goTo(1);
-                    }
-                
+            if (GameScreen.onOverworld()){
+                if (Gdx.input.isKeyPressed(Keys.D)){
+                    setAcceleration(1);
                 }
-                
 
+                if (Gdx.input.isKeyPressed(Keys.A) &&getX()-600>unicorn.getX()){
+                    setAcceleration(-1);
+                }
+
+                //go down?
+                Eingang eingang = GameScreen.getOverworld().getEingang();
+                if (
+                    Gdx.input.isKeyPressed(Keys.S) &&
+                    getX()+getWidth()/2 > eingang.getX() &&
+                    getX()+getWidth()/2 < eingang.getX()+eingang.getWidth()
+                    ){
+                    descend();
+                }
+            }else {//underworld
+
+                if(!isRising()){
+                    //    setY(Gdx.graphics.getHeight()/20);
+
+
+
+                    if (distanceTraveled<distanceToTravel){//traveling
+                        float dX = stepX*delta; 
+                        float dY = stepY*delta; 
+                        setX(getX()+dX);
+                        setY(getY()+dY);
+                        distanceTraveled += Math.sqrt(dX*dX+dY*dY);
+                    } else {
+                        //rise?
+                        if (menupoint==0 && Gdx.input.isKeyPressed(Keys.W)){
+                            rise();
+                        }
+
+                        if (Gdx.input.isKeyPressed(Keys.W)){
+                            goTo(0);
+                        } else if (Gdx.input.isKeyPressed(Keys.D)){
+                            goTo(3);
+                        }else if (Gdx.input.isKeyPressed(Keys.S)){
+                            goTo(2);
+                        }else if (Gdx.input.isKeyPressed(Keys.A)){
+                            goTo(1);
+                        }
+
+                    }
+
+
+                }
             }
+            if(isDead()) dead = true;
         }
         
         if (attacktimer>0) {
@@ -165,6 +177,13 @@ public class Player extends AbstractCharacter {
     public void switchWorld() {
         super.switchWorld();
         GameScreen.switchWorld(onOverworld());
+    }
+    
+    @Override
+    public void render(GameScreen gs) {
+        super.render(gs);
+        if(dead)
+            gs.getBatch().draw(losescreen, getX()-500, getY());
     }
     
     
