@@ -27,12 +27,18 @@ public class Player extends AbstractCharacter {
     private int distanceToTravel;
     private float distanceTraveled;
     private boolean stormIntoBattle = false;
+    private Unicorn unicorn;
     
     public Player(float x, float y) {
         super(x, y, "overlord", false,10,9);
         setAccFactor(Tuning.PLAYER_ACCELERATION_FACTOR);
         setFriction(Tuning.PLAYER_FRICTION);
         setLife(Tuning.PLAYER_LIFE);
+        
+        for (AbstractEntity ent : GameScreen.getOverworld().getEntityList()) {
+                if (ent instanceof Unicorn) unicorn = (Unicorn) ent;
+            }
+        
         
         growlsound = Gdx.audio.newSound(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/growlsingle.ogg"));
         stepsound = Gdx.audio.newSound(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/step.wav"));
@@ -48,7 +54,7 @@ public class Player extends AbstractCharacter {
                 setAcceleration(1);
             }
         
-            if (Gdx.input.isKeyPressed(Keys.A)){
+            if (Gdx.input.isKeyPressed(Keys.A) &&getX()-600>unicorn.getX()){
                 setAcceleration(-1);
             }
             

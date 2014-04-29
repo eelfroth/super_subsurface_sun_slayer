@@ -39,6 +39,7 @@ public class Warg extends Minion {
         playSpecial(true);
         if(!hasDrainedLife())
             enemy.drainLife(Tuning.WARG_DAMAGE_PER_ATTACK);
+        setAcceleration(0);
     }
     
     @Override
