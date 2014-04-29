@@ -3,6 +3,9 @@ package com.BauhausGamesSyndicate.LudumDare29.GameObjects;
 import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
 import com.BauhausGamesSyndicate.LudumDare29.Tuning;
 import com.BauhausGamesSyndicate.LudumDare29.overworld.AbstractSpawn;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.files.FileHandle;
 
 /**
  *
@@ -16,10 +19,17 @@ public class Reiter extends AbstractCharacter {
     private float homeX;
     private float reach = 600;
     private AbstractSpawn home;
+    private static FileHandle attacksound;
+    private final Sound privateAttacksound;
+    private boolean isPlaying = false;
     
     public Reiter(float x, float y, boolean world, AbstractSpawn home) {
         super(x, y, "reiter", world,4,3);
-
+        
+        if (attacksound==null)
+            attacksound = Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/swclang1.wav");
+        privateAttacksound = Gdx.audio.newSound(attacksound);
+        
         arrived = false;
         homeX = x;
         this.home = home;
@@ -77,8 +87,20 @@ public class Reiter extends AbstractCharacter {
     @Override
     public void fight(AbstractCharacter enemy, float delta) {
         playSpecial(true);
-        if(!hasDrainedLife())
+        if(!hasDrainedLife()) {
             enemy.drainLife(Tuning.REITER_DAMAGE_PER_ATTACK);
+        }
+        
+        if (
+            getAnimationStep()==0
+            &&
+            !isPlaying){
+            privateAttacksound.play();
+            isPlaying=true;
+        }
+        
+        if (getAnimationStep()!=0)
+            isPlaying=false;
         
         setAcceleration(0);
     }

@@ -4,6 +4,7 @@ package com.BauhausGamesSyndicate.LudumDare29.GameObjects;
 import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
 import com.BauhausGamesSyndicate.LudumDare29.Tuning;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 /**
@@ -244,5 +245,9 @@ public abstract class AbstractEntity{
     
     public void animateOnce(){
         animateOnce = true;
+    }
+
+    public int getAnimationStep() {
+        return step;
     }
 }
