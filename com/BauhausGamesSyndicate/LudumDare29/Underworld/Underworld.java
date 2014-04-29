@@ -175,6 +175,10 @@ public class Underworld extends AbstractWorld{
         return money;
     }
     
+    public void giveMoney( int m) {
+        money += m;
+    }
+    
     public void addEntity(AbstractEntity entity){
         entityList.add(entity);
     }

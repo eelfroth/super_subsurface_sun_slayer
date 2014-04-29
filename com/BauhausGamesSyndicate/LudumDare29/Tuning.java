@@ -44,9 +44,10 @@ public final class Tuning {
         public final static float WARG_DAMAGE_PER_ATTACK = 3f;
 
         //slender:
-        public final static float SLENDER_ACCELERATION_FACTOR = 0.02f;
-        public final static float SLENDER_FRICTION = 0.05f;
+        public final static float SLENDER_ACCELERATION_FACTOR = 0.1f;
+        public final static float SLENDER_FRICTION = 0.5f;
         public final static float SLENDER_LIFE = 5f;
+        public final static int   MONEY_PER_CORPSE = 5;
 
         //bat:
         public final static float BAT_ACCELERATION_FACTOR = 1f;
@@ -143,6 +144,7 @@ public final class Tuning {
         public static float PALA_FRICTION = 0.5f;
         public static float PALA_LIFE = 5f;
         public static float PALA_DAMAGE_PER_ATTACK = 8f;
+    
     
     
     

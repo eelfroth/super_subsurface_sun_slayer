@@ -1,6 +1,7 @@
 package com.BauhausGamesSyndicate.LudumDare29.GameObjects;
 
 import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
+import com.BauhausGamesSyndicate.LudumDare29.Tuning;
 import com.BauhausGamesSyndicate.LudumDare29.overworld.AbstractSpawn;
 import com.BauhausGamesSyndicate.LudumDare29.overworld.Eingang;
 
@@ -111,6 +112,9 @@ public class Bauer extends AbstractCharacter {
         activateWalkOnCeilingHax();
         setX(3141);
         setAcceleration(-1);
+        
+        setFlagRemoveFromUnderworld();
+        GameScreen.getUnderworld().giveMoney(1);
     }
 
     @Override

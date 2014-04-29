@@ -1,5 +1,6 @@
 package com.BauhausGamesSyndicate.LudumDare29.GameObjects;
 
+import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
 import com.BauhausGamesSyndicate.LudumDare29.Tuning;
 
 
@@ -29,13 +30,23 @@ public class Slender extends Minion {
     public void update(float delta) {
         super.update(delta);
         
+        if(onOverworld()) {
+        Leiche corpse = collideWithCorpse(delta);
+        if(corpse != null) {
+            corpse.setFlagRemoveFromOverworld();
+            hasCorpse = true;
+        }
+        }
+        
         if(hasCorpse) {
-            retreat();
+            setAcceleration(-1);
             if(2078 < getX() && 2150 > getX())
                 descend();
+            playSpecial(true);
+            this.setFlipHorizontal(true);
         }
         else 
-            stormIntoBattle();
+            setAcceleration(1);
     }
     
     @Override
@@ -45,7 +56,8 @@ public class Slender extends Minion {
     
     @Override
     public void  onDescend(){
-        activateWalkOnCeilingHax();
+        setFlagRemoveFromUnderworld();
+        GameScreen.getUnderworld().giveMoney(Tuning.MONEY_PER_CORPSE);
     }
     
     @Override
