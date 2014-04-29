@@ -13,7 +13,6 @@ import com.BauhausGamesSyndicate.LudumDare29.overworld.AbstractSpawn;
  */
 public class Lanze extends AbstractCharacter {
     private boolean arrived;
-    
     private int dTimer;
     private int dTimerMax = 500;
     private float homeX;
@@ -28,7 +27,6 @@ public class Lanze extends AbstractCharacter {
         this.home = home;
         dTimer = 0;
         setAcceleration(-1);
-        
         setAccFactor(Tuning.LANZE_ACCELERATION_FACTOR + (float) (Math.random()*0.1));
         setFriction(Tuning.LANZE_FRICTION);
         setLife(Tuning.LANZE_LIFE);
