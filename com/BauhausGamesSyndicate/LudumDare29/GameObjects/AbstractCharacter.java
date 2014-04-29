@@ -157,6 +157,18 @@ public abstract class AbstractCharacter extends AbstractEntity {
         return colissionWithEnemy;        
     }
     
+    public Leiche collideWithCorpse(float delta){
+        Leiche colissionWithCorpse = null;
+        for (AbstractEntity entity : GameScreen.getOverworld().getEntityList()) {
+            if (entity instanceof Leiche &&
+                entity.getX()+entity.getWidth() > getX()&&
+                entity.getX() < getX()+entity.getWidth()){
+                colissionWithCorpse=(Leiche)entity;
+            }
+        }
+        return colissionWithCorpse;        
+    }
+    
     public void rise(){
         shouldRise = true;
         deactivateWalkOnCeilingHax();
