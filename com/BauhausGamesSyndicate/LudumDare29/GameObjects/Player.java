@@ -185,7 +185,9 @@ public class Player extends AbstractCharacter {
     @Override
     public void render(GameScreen gs) {
         super.render(gs);
-        if(dead)
+        if(tohd)
+            gs.getBatch().draw(winscreen, getX()-500, getY());
+        else if(dead)
             gs.getBatch().draw(losescreen, getX()-500, getY());
     }
     
