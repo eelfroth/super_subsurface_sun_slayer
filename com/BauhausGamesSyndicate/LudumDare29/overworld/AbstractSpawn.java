@@ -57,6 +57,7 @@ public class AbstractSpawn extends AbstractEntity {
         maxLanzen = 0;
         maxRitter = 0;
         maxPala   = 0;
+        timer = (float)Math.random()*8000;
     }
     
     public void setMaxBauern(int max){
@@ -135,7 +136,7 @@ public class AbstractSpawn extends AbstractEntity {
         if(BauerQuantity != 0){
             for(int i=0; i < overallQuantity*BauerQuantity; i++){
                 if(anzBauern < maxBauern){
-                    Bauer enemy = new Bauer(getX(),getY(), onOverworld(), this);
+                    Bauer enemy = new Bauer(getX()+(float)Math.random()*200,getY(), onOverworld(), this);
                     overworld.addEntity(enemy);
                     anzBauern++;
                     maxlifetimeunits--;
@@ -145,7 +146,7 @@ public class AbstractSpawn extends AbstractEntity {
         if(LanzeQuantity != 0){
             for(int i=0; i < overallQuantity*LanzeQuantity ; i++){
                 if(anzLanzen < maxLanzen){
-                    Lanze enemy = new Lanze(getX(),getY(), onOverworld(), this);
+                    Lanze enemy = new Lanze(getX()+(float)Math.random()*200,getY(), onOverworld(), this);
                     overworld.addEntity(enemy);
                     anzLanzen++;
                     maxlifetimeunits--;
@@ -155,7 +156,7 @@ public class AbstractSpawn extends AbstractEntity {
         if(RitterQuantity != 0){
             for(int i=0; i < overallQuantity*RitterQuantity ; i++){
                 if(anzRitter < maxRitter){
-                    Reiter enemy = new Reiter(getX(),getY(), onOverworld(), this);
+                    Reiter enemy = new Reiter(getX()+(float)Math.random()*200,getY(), onOverworld(), this);
                     overworld.addEntity(enemy);
                     anzRitter++;
                     maxlifetimeunits--;
@@ -165,7 +166,7 @@ public class AbstractSpawn extends AbstractEntity {
         if(PalaQuantity != 0){
             for(int i=0; i < overallQuantity*PalaQuantity ; i++){
                 if(anzPala < maxPala){
-                    Pala enemy = new Pala(getX(),getY(), onOverworld(), this);
+                    Pala enemy = new Pala(getX()+(float)Math.random()*200,getY(), onOverworld(), this);
                     overworld.addEntity(enemy);
                     anzPala++;
                     maxlifetimeunits--;
