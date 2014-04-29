@@ -15,7 +15,7 @@ public class Slender extends Minion {
 
     public Slender(boolean world) {
         super(
-            3141f + (float)Math.ceil((Math.random()*200)-100),
+            3141f+3141f/2,
             0,
             "slender",
             world,
@@ -36,12 +36,18 @@ public class Slender extends Minion {
             corpse.setFlagRemoveFromOverworld();
             hasCorpse = true;
         }
+        }else{
+            if(hasCorpse){
+            setFlagRemoveFromOverworld();
+        GameScreen.getUnderworld().giveMoney(Tuning.MONEY_PER_CORPSE);
+            }
         }
         
         if(hasCorpse) {
             setAcceleration(-1);
-            if(2078 < getX() && 2150 > getX())
+            if(2078 < getX() && 2150 > getX()){
                 descend();
+        }
             playSpecial(true);
             this.setFlipHorizontal(true);
         }
@@ -56,12 +62,12 @@ public class Slender extends Minion {
     
     @Override
     public void  onDescend(){
-        setFlagRemoveFromUnderworld();
-        GameScreen.getUnderworld().giveMoney(Tuning.MONEY_PER_CORPSE);
+        
     }
     
     @Override
     public void onDeath() {
+        super.onDeath();
         //nothing
     }
 }

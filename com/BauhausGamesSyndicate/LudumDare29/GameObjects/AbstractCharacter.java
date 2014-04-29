@@ -4,6 +4,8 @@ import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
 import com.BauhausGamesSyndicate.LudumDare29.Tuning;
 import com.BauhausGamesSyndicate.LudumDare29.overworld.Chunk;
 import com.BauhausGamesSyndicate.LudumDare29.overworld.Overworld;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 
 
 public abstract class AbstractCharacter extends AbstractEntity {
@@ -21,12 +23,21 @@ public abstract class AbstractCharacter extends AbstractEntity {
     private boolean fighting = false;
     private boolean drainedLife = false;
     
+    private static Sound dieSoundGut;
+    private static Sound dieSoundBoese;
+    
     
     
     
 
     public AbstractCharacter(float x, float y, String name, boolean world, int steps, int specialSteps){
         super(x, y, name, world,steps, specialSteps);
+        
+        if (dieSoundGut==null)
+            dieSoundGut = Gdx.audio.newSound(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/dieing.wav"));
+        
+        if (dieSoundBoese==null)
+            dieSoundBoese = Gdx.audio.newSound(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/splatter3.wav"));
         
         verticalOffset = -(int) (Math.random()*Tuning.CHARACTER_VERTICAL_OFFSET);
         velocity  = 0;
@@ -214,5 +225,12 @@ public abstract class AbstractCharacter extends AbstractEntity {
     public boolean hasDrainedLife(){
         return drainedLife;
     };
-    
+
+    @Override
+    public void onDeath() {
+        if (isEvil())
+            dieSoundBoese.play();
+        else
+            dieSoundGut.play();
+    }
 }

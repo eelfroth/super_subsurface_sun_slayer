@@ -103,6 +103,7 @@ public class Fledermaus extends Minion{
 
     @Override
     public void onDeath() {
+        super.onDeath();
         //nothing
     }
     

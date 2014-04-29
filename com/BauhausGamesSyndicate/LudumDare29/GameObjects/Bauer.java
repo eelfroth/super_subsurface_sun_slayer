@@ -124,6 +124,7 @@ public class Bauer extends AbstractCharacter {
     
     @Override
     public void onDeath() {
+       super.onDeath();
        home.anzBauern -= 1;
        home.drainLife(1);
     }

@@ -65,8 +65,8 @@ public abstract class Minion extends AbstractCharacter{
                    leaveScreen = false;
                    //setX((float)Math.sin(getX()/1000)*570+960+20);
                    //setY((float)Math.cos(getX()/1000)*520+960 -10);
-                   setX(960);
-                   setY(540-15);
+                   setX(1920/2);
+                   setY(1080);
                    rise();
                }
             }

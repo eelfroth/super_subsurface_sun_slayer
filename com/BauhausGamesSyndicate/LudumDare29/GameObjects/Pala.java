@@ -7,10 +7,11 @@
 package com.BauhausGamesSyndicate.LudumDare29.GameObjects;
 
 import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
-
 import com.BauhausGamesSyndicate.LudumDare29.Tuning;
-
 import com.BauhausGamesSyndicate.LudumDare29.overworld.AbstractSpawn;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.files.FileHandle;
 
 
 /**
@@ -24,10 +25,17 @@ public class Pala extends AbstractCharacter {
     private int dTimerMax = 500;
     private float reach;
     private AbstractSpawn home;
+    private static FileHandle attacksound;
+    private final Sound privateAttacksound;
+    private boolean attackIsPlaying;
     
     public Pala(float x, float y, boolean world, AbstractSpawn home) {
         super(x, y, "pala", world, 4, 4);
 
+        if (attacksound==null)
+            attacksound = Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/swclang2.wav");
+        privateAttacksound = Gdx.audio.newSound(attacksound);
+        
         arrived = false;
         this.home = home;
         dTimer = 0;
@@ -88,7 +96,16 @@ public class Pala extends AbstractCharacter {
         if(!hasDrainedLife())
             enemy.drainLife(Tuning.PALA_DAMAGE_PER_ATTACK);
         
-        setAcceleration(0);
+         if (
+            getAnimationStep()==0
+            &&
+            !attackIsPlaying){
+            privateAttacksound.play();
+            attackIsPlaying=true;
+        }
+        
+        if (getAnimationStep()!=0)
+            attackIsPlaying=false;
     }
     
     @Override
@@ -103,6 +120,7 @@ public class Pala extends AbstractCharacter {
     
     @Override
     public void onDeath() {
+        super.onDeath();
         home.anzPala -= 1;
         home.drainLife(1);
     }
