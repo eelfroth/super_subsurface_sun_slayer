@@ -46,6 +46,6 @@ public class LightGod extends AbstractCharacter {
     
     @Override
     public void onDeath() {
-        bosstot = true;
+        GameScreen.getPlayer().sungodTohd();
     }
 }
