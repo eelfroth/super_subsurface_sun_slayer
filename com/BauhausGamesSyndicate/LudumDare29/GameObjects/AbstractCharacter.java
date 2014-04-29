@@ -35,8 +35,10 @@ public abstract class AbstractCharacter extends AbstractEntity {
         
         if (dieSoundGut==null)
             dieSoundGut = Gdx.audio.newSound(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/dieing.wav"));
+        
         if (dieSoundBoese==null)
             dieSoundBoese = Gdx.audio.newSound(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/splatter3.wav"));
+        
         verticalOffset = -(int) (Math.random()*Tuning.CHARACTER_VERTICAL_OFFSET);
         velocity  = 0;
         accFactor = Tuning.CHARACTER_ACCELERATION_FACTOR;
@@ -228,6 +230,7 @@ public abstract class AbstractCharacter extends AbstractEntity {
     public void onDeath() {
         if (isEvil())
             dieSoundBoese.play();
-            else dieSoundGut.play();
+        else
+            dieSoundGut.play();
     }
 }

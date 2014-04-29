@@ -241,6 +241,7 @@ public class Player extends AbstractCharacter {
     
     @Override
     public void onDeath() {
+        super.onDeath();
         //nothing
     }
     

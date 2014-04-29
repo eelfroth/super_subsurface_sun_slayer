@@ -117,6 +117,7 @@ public class Reiter extends AbstractCharacter {
     
     @Override
     public void onDeath() {
+        super.onDeath();
         home.anzRitter -= 1;
     }
 }
