@@ -50,6 +50,8 @@ public class GameScreen implements Screen {
 
     private static Player player;
     private static int money = 100;
+    private boolean shaderActivated = true;
+    private boolean shaderkeyup;
 
     
      
@@ -101,7 +103,7 @@ public class GameScreen implements Screen {
 
 
         //framebuffer
-        setupFramebuffer();
+        if(shaderActivated) setupFramebuffer();
     }
 
     @Override
@@ -134,29 +136,28 @@ public class GameScreen implements Screen {
         //clear
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-                 
-        //1. render game world to framebuffer:
-        frameBuffer.begin();
-        {
+           
+        if (world == overworld) {
+            //1. render game world to framebuffer:
+            if (shaderActivated) frameBuffer.begin();
             batch.begin();
-            if (world == overworld) {
+            
                 renderOverworld();
-            }
-            
-            if (world == underworld) {
-                renderUnderworld();
-            }
+                
             batch.end();
+            if (shaderActivated) frameBuffer.end(); 
             
-
+            //2. render framebuffer to frame:
+            if (shaderActivated) renderFramebuffer(world);
+        } else {
+            batch.begin();
+            renderUnderworld();
         }
-        frameBuffer.end(); 
-
-        //2. render framebuffer to frame:
-        renderFramebuffer(world);
+        
+        if (world == overworld)
+            batch.begin();
         
         //overlay & hud
-        batch.begin();
         renderOverlay(batch);
         if (tutorialvisible)
             tutorial.draw(batch);
@@ -336,12 +337,11 @@ public class GameScreen implements Screen {
     private void renderUnderworld() {
         underworld.render(this);
         player.render(this);
-        
     }
 
     private void renderFramebuffer(AbstractWorld world) {
 
-        float angle = Overworld.getCameraPos()*360/(float) Overworld.getMapWidth();
+        //float angle = Overworld.getCameraPos()*360/(float) Overworld.getMapWidth();
        // if(rotation) world.matrix.rotate(0,0,1,-angle);
         
         world.shader.begin();
@@ -369,6 +369,17 @@ public class GameScreen implements Screen {
             ){
             tutorialvisible = false;
         }
+        
+        if (shaderkeyup && Gdx.input.isKeyPressed(Input.Keys.C)){
+            shaderActivated = !shaderActivated;
+            shaderkeyup=false;
+            
+        }
+        
+        if (!Gdx.input.isKeyPressed(Input.Keys.C))
+            shaderkeyup=true;
+        
+        
         
         overworld.update(delta);
         underworld.update(delta);
