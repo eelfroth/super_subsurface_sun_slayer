@@ -25,7 +25,7 @@ public class FPSdiag {
     private long allocatedMemory;
     private long maxMemory;
     private long usedMemory;
-    private SpriteBatch batch;
+    private final SpriteBatch batch;
 
     /**
      *

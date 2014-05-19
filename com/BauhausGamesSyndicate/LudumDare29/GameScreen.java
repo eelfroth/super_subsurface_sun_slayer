@@ -125,6 +125,43 @@ public class GameScreen implements Screen {
     public void resume() {
     }
 
+    public void update(final float delta) {
+        //fps.update(delta);
+        if (Gdx.input.isKeyPressed(Input.Keys.S) ||
+            Gdx.input.isKeyPressed(Input.Keys.W) ||
+            Gdx.input.isKeyPressed(Input.Keys.D) ||
+            Gdx.input.isKeyPressed(Input.Keys.A) ||
+            Gdx.input.isKeyPressed(Input.Keys.SPACE) ||
+            Gdx.input.isKeyPressed(Input.Keys.ENTER) ||
+            Gdx.input.isKeyPressed(Input.Keys.Q) ||
+            Gdx.input.isKeyPressed(Input.Keys.E)
+            ){
+            tutorialvisible = false;
+        }
+        
+        if (shaderkeyup && Gdx.input.isKeyPressed(Input.Keys.C)){
+            shaderActivated = !shaderActivated;
+            shaderkeyup=false;
+            
+        }
+        
+        if (!Gdx.input.isKeyPressed(Input.Keys.C))
+            shaderkeyup=true;
+        
+        
+        
+        overworld.update(delta);
+        underworld.update(delta);
+        
+        player.update(delta);
+        if(player.onOverworld())
+            world = overworld;
+        else
+            world = underworld;
+        
+        Overworld.setCameraPos((int) (player.getX()-960));
+    }
+    
     @Override
     public void render(float delta) {
         delta *= 1000;
@@ -344,55 +381,18 @@ public class GameScreen implements Screen {
         //float angle = Overworld.getCameraPos()*360/(float) Overworld.getMapWidth();
        // if(rotation) world.matrix.rotate(0,0,1,-angle);
         
-        world.shader.begin();
-        world.shader.setUniformMatrix("u_worldView", world.matrix);
-        world.shader.setUniformi("u_texture", 0);
+        world.getShader().begin();
+        world.getShader().setUniformMatrix("u_worldView", world.getMatrix());
+        world.getShader().setUniformi("u_texture", 0);
         
 
         frameBuffer.getColorBufferTexture().bind();
         //debug_texture.bind();
-        frameMesh.render(world.shader, GL20.GL_TRIANGLES);
-        world.shader.end();
+        frameMesh.render(world.getShader(), GL20.GL_TRIANGLES);
+        world.getShader().end();
         //if(rotation) world.matrix.rotate(0,0,1,angle);
     }
 
-    public void update(float delta) {
-        //fps.update(delta);
-        if (Gdx.input.isKeyPressed(Input.Keys.S) ||
-            Gdx.input.isKeyPressed(Input.Keys.W) ||
-            Gdx.input.isKeyPressed(Input.Keys.D) ||
-            Gdx.input.isKeyPressed(Input.Keys.A) ||
-            Gdx.input.isKeyPressed(Input.Keys.SPACE) ||
-            Gdx.input.isKeyPressed(Input.Keys.ENTER) ||
-            Gdx.input.isKeyPressed(Input.Keys.Q) ||
-            Gdx.input.isKeyPressed(Input.Keys.E)
-            ){
-            tutorialvisible = false;
-        }
-        
-        if (shaderkeyup && Gdx.input.isKeyPressed(Input.Keys.C)){
-            shaderActivated = !shaderActivated;
-            shaderkeyup=false;
-            
-        }
-        
-        if (!Gdx.input.isKeyPressed(Input.Keys.C))
-            shaderkeyup=true;
-        
-        
-        
-        overworld.update(delta);
-        underworld.update(delta);
-        
-        player.update(delta);
-        if(player.onOverworld())
-            world = overworld;
-        else
-            world = underworld;
-        
-        Overworld.setCameraPos((int) (player.getX()-960));
-    }
-    
     public static void switchWorld(boolean world){
         if (world){
             underworldMusic.stop();

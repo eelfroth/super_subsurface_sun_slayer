@@ -23,9 +23,9 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
  */
 class TitleScreen implements Screen {
     private static TextureAtlas spritesheet;
-    private Sprite background;
-    private Sound jingle;
-    private Music title;
+    private final Sprite background;
+    private final Sound jingle;
+    private final Music title;
     private final Game ld;
     private Sprite currentBurg;
     private final SpriteBatch batch;
@@ -77,7 +77,7 @@ class TitleScreen implements Screen {
         }
         
         delta*=1000;
-         timer+=delta;
+        timer+=delta;
         
          if (timer>200){
             step++;

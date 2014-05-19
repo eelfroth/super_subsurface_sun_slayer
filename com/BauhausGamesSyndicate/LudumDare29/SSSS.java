@@ -11,7 +11,7 @@ import com.badlogic.gdx.graphics.Color;
  * @author Paul Flechsig
  * @author Jacob Bauer
  */
-public class LudumDare29 extends Game {
+public class SSSS extends Game {
 
     /**
      * @param args the command line arguments
@@ -26,7 +26,7 @@ public class LudumDare29 extends Game {
         cfg.vSyncEnabled = true;
         cfg.initialBackgroundColor = new Color(0,0,0,1);
         cfg.fullscreen = false;
-         LwjglApplication lwjglApplication = new LwjglApplication(new LudumDare29(), cfg);
+         LwjglApplication lwjglApplication = new LwjglApplication(new SSSS(), cfg);
     }
 
     @Override

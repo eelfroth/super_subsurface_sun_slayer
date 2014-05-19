@@ -7,7 +7,6 @@ import com.BauhausGamesSyndicate.LudumDare29.GameObjects.LightGod;
 import com.BauhausGamesSyndicate.LudumDare29.GameObjects.Unicorn;
 import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
@@ -43,7 +42,7 @@ public class Overworld extends AbstractWorld{
                 Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/shaders/world.vert").readString(),
                 Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/shaders/world.frag").readString()), 
                 new Matrix4());
-        matrix.scale(3.0f, 1.2f, 1.0f);
+        setMatrix(getMatrix().scale(3.0f, 1.2f, 1.0f));
         
         chunks = new Chunk[4];//max 4 backgroudn tiles
         for (int i = 0; i < chunks.length; i++) {
@@ -403,7 +402,7 @@ public class Overworld extends AbstractWorld{
     }
     
     @Override
-    public void update(float delta){
+    public void update(final float delta){
         cameraPos = cameraPos % (Chunk.WIDTH*chunks.length);
         
         //update entitys

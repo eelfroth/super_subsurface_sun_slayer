@@ -19,7 +19,7 @@ public class LightGod extends AbstractCharacter {
     }
     
     @Override
-    public void update(float delta) {
+    public void update(final float delta) {
         super.update(delta);
     }
     

@@ -12,12 +12,10 @@ import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
-import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.math.Vector3;
 
 /**
  *
@@ -25,9 +23,9 @@ import com.badlogic.gdx.math.Vector3;
  */
 class DeathScreen implements Screen {
     private static TextureAtlas spritesheet;
-    private Sprite background;
-    private Sound jingle;
-    private Music title;
+    private final Sprite background;
+    private final Sound jingle;
+    private final Music title;
     private final Game ld;
     private Sprite currentBurg;
     private final SpriteBatch batch;

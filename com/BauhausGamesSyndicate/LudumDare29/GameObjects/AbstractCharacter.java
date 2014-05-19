@@ -85,7 +85,7 @@ public abstract class AbstractCharacter extends AbstractGameObject {
     } 
     
     @Override
-    public void update(float delta){
+    public void update(final float delta){
         super.update(delta);
         
         if (GameScreen.onOverworld() && !shouldRise && !shouldDescend){

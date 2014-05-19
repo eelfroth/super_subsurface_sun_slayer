@@ -83,7 +83,7 @@ public abstract class AbstractGameObject{
         this.life -= life;
     }
     
-    public void update(float delta){
+    public void update(final float delta){
 
         if (animateOnce && dStep==steps-1){
         //nichts
@@ -113,7 +113,7 @@ public abstract class AbstractGameObject{
         }
     };
     
-    public void render(GameScreen gs){
+    public void render(final GameScreen gs){
         TextureRegion tex;
         if (special){
             tex = specialTextures[dStep];

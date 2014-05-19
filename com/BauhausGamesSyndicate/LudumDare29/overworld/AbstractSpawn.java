@@ -23,10 +23,10 @@ public class AbstractSpawn extends AbstractGameObject {
     
     private int overallQuantity;
     
-    int maxlifetimeunits;
+    public int maxlifetimeunits;
     
-    private int maxBauern;
-    private int maxLanzen;
+    private int maxBauern =0;
+    private int maxLanzen =0;
     private int maxRitter;
     private int maxPala;
     
@@ -48,15 +48,6 @@ public class AbstractSpawn extends AbstractGameObject {
             this.setFlipHorizontal(true);
         }
         this.overworld = overworld;
-        BauerQuantity   = 0;
-        LanzeQuantity   = 0;
-        RitterQuantity  = 0;
-        PalaQuantity    = 0;
-        overallQuantity = 0;
-        maxBauern = 0;
-        maxLanzen = 0;
-        maxRitter = 0;
-        maxPala   = 0;
         timer = (float)Math.random()*8000;
     }
     
