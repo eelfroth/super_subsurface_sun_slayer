@@ -16,9 +16,6 @@ import com.badlogic.gdx.graphics.Texture;
  */
 public class Player extends AbstractCharacter {
     
-    //wohin fallen
-    
-    
     private int menupoint = 0;
     private static Sound growlsound;
     private static Sound stepsound;
@@ -31,7 +28,6 @@ public class Player extends AbstractCharacter {
     private Unicorn unicorn;
     private final Texture winscreen;
     private final Texture losescreen;
-    private boolean dead;
     private boolean tohd;
     
     public Player(float x, float y) {
@@ -40,17 +36,16 @@ public class Player extends AbstractCharacter {
         setFriction(Tuning.PLAYER_FRICTION);
         setLife(Tuning.PLAYER_LIFE);
         
+        //find unicorn
         for (AbstractEntity ent : GameScreen.getOverworld().getEntityList()) {
-                if (ent instanceof Unicorn) unicorn = (Unicorn) ent;
-            }
-        
+            if (ent instanceof Unicorn) unicorn = (Unicorn) ent;
+        }
         
         growlsound = Gdx.audio.newSound(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/growlsingle.ogg"));
         stepsound = Gdx.audio.newSound(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/step.wav"));
         
         winscreen = new Texture(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/gameoverwin.png"));
         losescreen = new Texture(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/gameoverfail.png"));
-        dead = false;
         tohd = false;
         
     }
@@ -60,13 +55,14 @@ public class Player extends AbstractCharacter {
         super.update(delta);
         setAcceleration(0);
         
-        if(!dead) {
+        if(!isDead()) {
                 
             if (GameScreen.onOverworld()){
                 if (Gdx.input.isKeyPressed(Keys.D)){
                     setAcceleration(1);
                 }
 
+                //stop at unicorn
                 if (Gdx.input.isKeyPressed(Keys.A) &&getX()-600>unicorn.getX()){
                     setAcceleration(-1);
                 }
@@ -114,7 +110,6 @@ public class Player extends AbstractCharacter {
 
                 }
             }
-            if(isDead()) dead = true;
         }
         
         if (attacktimer>0) {
@@ -187,7 +182,7 @@ public class Player extends AbstractCharacter {
         super.render(gs);
         if(tohd)
             gs.getBatch().draw(winscreen, getX()-500, getY());
-        else if(dead)
+        else if(isDead())
             gs.getBatch().draw(losescreen, getX()-500, getY());
     }
     

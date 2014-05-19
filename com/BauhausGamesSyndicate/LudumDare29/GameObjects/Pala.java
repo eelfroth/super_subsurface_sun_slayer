@@ -19,12 +19,11 @@ import com.badlogic.gdx.files.FileHandle;
  * @author Paul
  */
 public class Pala extends AbstractCharacter {
-    private boolean arrived;
     
     private int dTimer;
-    private int dTimerMax = 500;
-    private float reach;
-    private AbstractSpawn home;
+    private final int dTimerMax = 500;
+    private final float reach;
+    private final AbstractSpawn home;
     private static FileHandle attacksound;
     private final Sound privateAttacksound;
     private boolean attackIsPlaying;
@@ -36,7 +35,6 @@ public class Pala extends AbstractCharacter {
             attacksound = Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/swclang2.wav");
         privateAttacksound = Gdx.audio.newSound(attacksound);
         
-        arrived = false;
         this.home = home;
         dTimer = 0;
         reach = 600 + (float) Math.random()*60;
