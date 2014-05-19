@@ -1,9 +1,7 @@
 package com.BauhausGamesSyndicate.LudumDare29.GameObjects;
 
 import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
-import com.BauhausGamesSyndicate.LudumDare29.Tuning;
 import com.BauhausGamesSyndicate.LudumDare29.overworld.AbstractSpawn;
-import com.BauhausGamesSyndicate.LudumDare29.overworld.Eingang;
 
 /**
  *
@@ -11,16 +9,14 @@ import com.BauhausGamesSyndicate.LudumDare29.overworld.Eingang;
  */
 public class Bauer extends AbstractCharacter {
 
-    private boolean fearOnlyAttacks = false;
+    private final boolean fearOnlyAttacks = false;
     private int dTimer;
-    private int dTimerMax = 500;
-    private float homeX;
-    private float reach = 600;
-    private AbstractSpawn home;
+    private final int dTimerMax = 500;
+    private final float reach = 600;
+    private final AbstractSpawn home;
     
     public Bauer(float x, float y, boolean world, AbstractSpawn home) {
         super(x, y, "zivi", world, 4, 4);
-        homeX = x;
         this.home = home;
         setFriction(0.5f);
         setAccFactor(getAccFactor() + (float) (Math.random()*0.1));

@@ -10,7 +10,7 @@ package com.BauhausGamesSyndicate.LudumDare29.GameObjects;
  *
  * @author Benedikt Vogler
  */
-public class Leiche extends AbstractEntity {
+public class Leiche extends AbstractGameObject {
 
     public Leiche(float x, float y) {
         super(x, y, "tot", true, 4, 1);

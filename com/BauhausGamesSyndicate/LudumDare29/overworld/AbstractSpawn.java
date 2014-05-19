@@ -6,7 +6,7 @@
 
 package com.BauhausGamesSyndicate.LudumDare29.overworld;
 
-import com.BauhausGamesSyndicate.LudumDare29.GameObjects.AbstractEntity;
+import com.BauhausGamesSyndicate.LudumDare29.GameObjects.AbstractGameObject;
 import com.BauhausGamesSyndicate.LudumDare29.GameObjects.Bauer;
 import com.BauhausGamesSyndicate.LudumDare29.GameObjects.Lanze;
 import com.BauhausGamesSyndicate.LudumDare29.GameObjects.Pala;
@@ -17,7 +17,7 @@ import com.BauhausGamesSyndicate.LudumDare29.Tuning;
  *
  * @author Paul
  */
-public class AbstractSpawn extends AbstractEntity {
+public class AbstractSpawn extends AbstractGameObject {
     private float timer;
     private final Overworld overworld;
     

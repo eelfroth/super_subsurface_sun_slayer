@@ -8,8 +8,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
 
 
-public abstract class AbstractCharacter extends AbstractEntity {
-    
+public abstract class AbstractCharacter extends AbstractGameObject {
     private float acceleration;
     private float accFactor;
     private float velocity;
@@ -23,21 +22,19 @@ public abstract class AbstractCharacter extends AbstractEntity {
     private boolean fighting = false;
     private boolean drainedLife = false;
     
-    private static Sound dieSoundGut;
-    private static Sound dieSoundBoese;
-    
-    
+    private static Sound dieSoundGood;
+    private static Sound dieSoundEvil;
     
     
 
     public AbstractCharacter(float x, float y, String name, boolean world, int steps, int specialSteps){
         super(x, y, name, world,steps, specialSteps);
         
-        if (dieSoundGut==null)
-            dieSoundGut = Gdx.audio.newSound(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/dieing.wav"));
+        if (dieSoundGood==null)
+            dieSoundGood = Gdx.audio.newSound(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/dieing.wav"));
         
-        if (dieSoundBoese==null)
-            dieSoundBoese = Gdx.audio.newSound(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/splatter3.wav"));
+        if (dieSoundEvil==null)
+            dieSoundEvil = Gdx.audio.newSound(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/splatter3.wav"));
         
         verticalOffset = -(int) (Math.random()*Tuning.CHARACTER_VERTICAL_OFFSET);
         velocity  = 0;
@@ -49,12 +46,7 @@ public abstract class AbstractCharacter extends AbstractEntity {
     
     public void setCanWalk(boolean can){
         this.canWalk = can;
-    }
-    
-    public boolean getCanWalk(){
-        return this.canWalk;
-    }
-    
+    }   
     
     public AbstractCharacter(float x, float y, String name, boolean world){
         this(x, y, name, world,1,1);
@@ -100,7 +92,7 @@ public abstract class AbstractCharacter extends AbstractEntity {
             setY(Overworld.getHeight((int) getX())+ verticalOffset);
         }
         
-        if(getCanWalk()){
+        if(canWalk){
             setVelocity    ((getVelocity()+ getAcceleration()* getAccFactor())     * (1 - getFriction()) );
             setX((getX() + getVelocity()*delta));
         }
@@ -156,7 +148,7 @@ public abstract class AbstractCharacter extends AbstractEntity {
     
     public boolean collideWithEnemy(float delta){
         boolean colissionWithEnemy = false;
-        for (AbstractEntity entity : GameScreen.getOverworld().getEntityList()) {
+        for (AbstractGameObject entity : GameScreen.getOverworld().getEntityList()) {
             if (entity instanceof AbstractCharacter &&//can typecasting be made
                 ((AbstractCharacter)entity).isEvil()!= this.isEvil() && //is not same fraction?
                 entity.getX()+entity.getWidth() > getX()&&
@@ -170,7 +162,7 @@ public abstract class AbstractCharacter extends AbstractEntity {
     
     public Leiche collideWithCorpse(float delta){
         Leiche colissionWithCorpse = null;
-        for (AbstractEntity entity : GameScreen.getOverworld().getEntityList()) {
+        for (AbstractGameObject entity : GameScreen.getOverworld().getEntityList()) {
             if (entity instanceof Leiche &&
                 entity.getX()+entity.getWidth() > getX()&&
                 entity.getX() < getX()+entity.getWidth()){
@@ -229,8 +221,8 @@ public abstract class AbstractCharacter extends AbstractEntity {
     @Override
     public void onDeath() {
         if (isEvil())
-            dieSoundBoese.play();
+            dieSoundEvil.play();
         else
-            dieSoundGut.play();
+            dieSoundGood.play();
     }
 }

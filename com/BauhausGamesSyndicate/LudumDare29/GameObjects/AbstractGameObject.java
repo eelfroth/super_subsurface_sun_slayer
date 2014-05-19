@@ -4,7 +4,6 @@ package com.BauhausGamesSyndicate.LudumDare29.GameObjects;
 import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
 import com.BauhausGamesSyndicate.LudumDare29.Tuning;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 /**
@@ -13,26 +12,29 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
  * @author Paul Flechsig
  * @author Jacob Bauer
  */
-public abstract class AbstractEntity{
+public abstract class AbstractGameObject{
     private boolean world;//false: underworld, true: overworld
     private boolean flagRemoveFromUnderworld;
     private boolean flagRemoveFromOverworld;
     private float x;
     private float y;
     private float life;
-    private int step;//current animation
-    private int steps;//amount of steps
+    private int dStep;//current animation
+    private final int steps;//amount of steps
     private float timer = 0;
     private int steptime = 200;//ms
     private float rotation;
     private boolean walkOnCeilingHax;
     
     private final TextureRegion[] specialTextures;
-    private TextureRegion[] standardAnimation;
+    private final TextureRegion[] standardAnimation;
     private boolean flip = false;
     private boolean special =false;
     private boolean animateOnce = false;
     
+    /**
+     * What should happen if the Entity dies?
+     */
     public abstract void onDeath();
 
     /**
@@ -44,7 +46,7 @@ public abstract class AbstractEntity{
      * @param steps the amount of animation steps for walking
      * @param specialSteps  the amount of animation steps for the special
      */
-    public AbstractEntity(float x, float y, String name, boolean world, int steps, int specialSteps) {
+    public AbstractGameObject(float x, float y, String name, boolean world, int steps, int specialSteps) {
         life = Tuning.ENTITY_LIFE;
         this.x = x;
         this.y = y;
@@ -83,22 +85,22 @@ public abstract class AbstractEntity{
     
     public void update(float delta){
 
-        if (animateOnce && step==steps-1){
+        if (animateOnce && dStep==steps-1){
         //nichts
         }else{
             timer+=delta;
         
             if (timer>steptime){
-                    step++;
+                    dStep++;
                     timer %= steptime;
             }
         
             if (!special){
-                if (step >= standardAnimation.length)
-                    step=0;
+                if (dStep >= standardAnimation.length)
+                    dStep=0;
             } else {
-                if (step >= specialTextures.length)
-                    step=0;
+                if (dStep >= specialTextures.length)
+                    dStep=0;
             }
         }
         
@@ -114,12 +116,12 @@ public abstract class AbstractEntity{
     public void render(GameScreen gs){
         TextureRegion tex;
         if (special){
-            tex = specialTextures[step];
-            if (tex==null) Gdx.app.error("Sprites", "special texture "+step+" missing");
+            tex = specialTextures[dStep];
+            if (tex==null) Gdx.app.error("Sprites", "special texture "+dStep+" missing");
         }
         else {
-            tex = standardAnimation[step];
-            if (tex==null) Gdx.app.error("Sprites", "standard texture "+step+" missing");
+            tex = standardAnimation[dStep];
+            if (tex==null) Gdx.app.error("Sprites", "standard texture "+dStep+" missing");
         }
         
         if (flip != tex.isFlipX())
@@ -175,11 +177,11 @@ public abstract class AbstractEntity{
     }
     
     public int getWidth() {
-        return standardAnimation[step].getRegionWidth();
+        return standardAnimation[dStep].getRegionWidth();
     }
     
     public int getHeight() {
-        return standardAnimation[step].getRegionHeight();
+        return standardAnimation[dStep].getRegionHeight();
     }
 
     /**
@@ -205,13 +207,13 @@ public abstract class AbstractEntity{
     public void playSpecial(boolean special) {
         if (this.special!=special) {
             timer=0;
-            step=0;
+            dStep=0;
         }
         this.special = special;
     }
     
     public void setStep(int step) {
-        this.step = step % steps;
+        this.dStep = step % steps;
     }
     
     public float getRotation() {
@@ -248,6 +250,6 @@ public abstract class AbstractEntity{
     }
 
     public int getAnimationStep() {
-        return step;
+        return dStep;
     }
 }

@@ -82,7 +82,7 @@ public class Fledermaus extends Minion{
         //debug shit
         boolean debug = false;
         if(debug) {
-            StringBuffer result = new StringBuffer();
+            StringBuilder result = new StringBuilder();
             result.append(getX());
             result.append("\t");
             String mynewstring = result.toString();

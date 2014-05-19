@@ -6,10 +6,8 @@
 
 package com.BauhausGamesSyndicate.LudumDare29.overworld;
 
-import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
 /**
  *
@@ -26,14 +24,6 @@ public class Eingang{
     public Eingang() {
         rising = Gdx.audio.newSound(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/rising.ogg"));
         descend = Gdx.audio.newSound(Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/descend.ogg"));
-    }
-    
-    
-    public void render(GameScreen gs){
-        //ShapeRenderer sh = gs.getShapeRenderer();
-//        sh.begin(ShapeRenderer.ShapeType.Filled);
-//        sh.rect(x, 0, width, 400);
-//        sh.end();
     }
 
     public int getX() {

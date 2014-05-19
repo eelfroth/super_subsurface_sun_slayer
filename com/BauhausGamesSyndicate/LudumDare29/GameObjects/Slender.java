@@ -39,7 +39,7 @@ public class Slender extends Minion {
         }else{
             if(hasCorpse){
             setFlagRemoveFromOverworld();
-        GameScreen.getUnderworld().giveMoney(Tuning.MONEY_PER_CORPSE);
+            GameScreen.getUnderworld().giveMoney(Tuning.MONEY_PER_CORPSE);
             }
         }
         

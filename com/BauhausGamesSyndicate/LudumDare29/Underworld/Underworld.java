@@ -1,7 +1,7 @@
 package com.BauhausGamesSyndicate.LudumDare29.Underworld;
 
 import com.BauhausGamesSyndicate.LudumDare29.AbstractWorld;
-import com.BauhausGamesSyndicate.LudumDare29.GameObjects.AbstractEntity;
+import com.BauhausGamesSyndicate.LudumDare29.GameObjects.AbstractGameObject;
 import com.BauhausGamesSyndicate.LudumDare29.GameObjects.Fledermaus;
 import com.BauhausGamesSyndicate.LudumDare29.GameObjects.Slender;
 import com.BauhausGamesSyndicate.LudumDare29.GameObjects.Warg;
@@ -27,7 +27,7 @@ public class Underworld extends AbstractWorld{
     private final Texture texture;
     private float dt;
     private final int timeTillNextBuy = Tuning.TIME_BETWEEN_BUY;
-    private final ArrayList<AbstractEntity> entityList = new ArrayList<>(400);//max 400 sprites
+    private final ArrayList<AbstractGameObject> entityList = new ArrayList<>(400);//max 400 sprites
     private int money = 100;
     private final Sound buySound;
     private final Sprite[] icons;
@@ -91,7 +91,7 @@ public class Underworld extends AbstractWorld{
         gs.getCamera().update();
         gs.getBatch().setProjectionMatrix(gs.getCamera().combined);
                 
-        for (AbstractEntity entity : entityList) {
+        for (AbstractGameObject entity : entityList) {
             entity.render(gs);
         }
         
@@ -179,7 +179,7 @@ public class Underworld extends AbstractWorld{
         money += m;
     }
     
-    public void addEntity(AbstractEntity entity){
+    public void addEntity(AbstractGameObject entity){
         entityList.add(entity);
     }
     

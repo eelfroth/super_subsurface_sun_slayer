@@ -82,6 +82,7 @@ public abstract class Minion extends AbstractCharacter{
         //nothing
     }
 
+
     @Override
     public void onRise(){
         //nothing

@@ -6,7 +6,7 @@
 
 package com.BauhausGamesSyndicate.LudumDare29.overworld;
 
-import com.BauhausGamesSyndicate.LudumDare29.GameObjects.AbstractEntity;
+import com.BauhausGamesSyndicate.LudumDare29.GameObjects.AbstractGameObject;
 import com.BauhausGamesSyndicate.LudumDare29.GameObjects.Bauer;
 import com.BauhausGamesSyndicate.LudumDare29.Tuning;
 

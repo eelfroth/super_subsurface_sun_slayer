@@ -37,7 +37,7 @@ public class Player extends AbstractCharacter {
         setLife(Tuning.PLAYER_LIFE);
         
         //find unicorn
-        for (AbstractEntity ent : GameScreen.getOverworld().getEntityList()) {
+        for (AbstractGameObject ent : GameScreen.getOverworld().getEntityList()) {
             if (ent instanceof Unicorn) unicorn = (Unicorn) ent;
         }
         
@@ -63,7 +63,7 @@ public class Player extends AbstractCharacter {
                 }
 
                 //stop at unicorn
-                if (Gdx.input.isKeyPressed(Keys.A) &&getX()-600>unicorn.getX()){
+                if (Gdx.input.isKeyPressed(Keys.A) && getX()-600 > unicorn.getX()){
                     setAcceleration(-1);
                 }
 
@@ -81,8 +81,6 @@ public class Player extends AbstractCharacter {
                 if(!isRising()){
                     //    setY(Gdx.graphics.getHeight()/20);
 
-
-
                     if (distanceTraveled<distanceToTravel){//traveling
                         float dX = stepX*delta; 
                         float dY = stepY*delta; 
@@ -96,18 +94,16 @@ public class Player extends AbstractCharacter {
                         }
 
                         if (Gdx.input.isKeyPressed(Keys.W)){
-                            goTo(0);
+                            goToUnderworldBuilding(0);
                         } else if (Gdx.input.isKeyPressed(Keys.D)){
-                            goTo(3);
+                            goToUnderworldBuilding(3);
                         }else if (Gdx.input.isKeyPressed(Keys.S)){
-                            goTo(2);
+                            goToUnderworldBuilding(2);
                         }else if (Gdx.input.isKeyPressed(Keys.A)){
-                            goTo(1);
+                            goToUnderworldBuilding(1);
                         }
 
                     }
-
-
                 }
             }
         }
@@ -133,7 +129,7 @@ public class Player extends AbstractCharacter {
         stormIntoBattle = Gdx.input.isKeyPressed(Keys.E);
     }
     
-    private void goTo(int id){
+    private void goToUnderworldBuilding(int id){
         if (menupoint!=0){//if not on throne go back to it first
             id=0;
         }
@@ -207,7 +203,7 @@ public class Player extends AbstractCharacter {
             attXpos= 100;
         
             
-        for (AbstractEntity entity : GameScreen.getOverworld().getEntityList()) {
+        for (AbstractGameObject entity : GameScreen.getOverworld().getEntityList()) {
             if (
                 entity instanceof AbstractCharacter &&
                 !((AbstractCharacter)entity).isEvil() &&

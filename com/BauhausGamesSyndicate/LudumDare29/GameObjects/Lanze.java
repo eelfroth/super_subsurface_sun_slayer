@@ -14,11 +14,10 @@ import com.badlogic.gdx.files.FileHandle;
  * @author Jacob Bauer
  */
 public class Lanze extends AbstractCharacter {
-    private boolean arrived;
     private int dTimer;
-    private int dTimerMax = 500;
-    private float reach;
-    private AbstractSpawn home;
+    private final int dTimerMax = 500;
+    private final float reach;
+    private final AbstractSpawn home;
     private static FileHandle attacksound;
     private final Sound privateAttacksound;
     private boolean isPlaying;
@@ -30,7 +29,6 @@ public class Lanze extends AbstractCharacter {
             attacksound = Gdx.files.internal("com/BauhausGamesSyndicate/LudumDare29/assets/swclang1.wav");
         privateAttacksound = Gdx.audio.newSound(attacksound);
         
-        arrived = false;
         this.home = home;
         dTimer = 0;
         reach = 600 + (float)Math.random()*100;

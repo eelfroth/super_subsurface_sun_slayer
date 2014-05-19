@@ -1,9 +1,5 @@
 package com.BauhausGamesSyndicate.LudumDare29.GameObjects;
 
-import com.BauhausGamesSyndicate.LudumDare29.GameScreen;
-import com.BauhausGamesSyndicate.LudumDare29.overworld.AbstractSpawn;
-import com.BauhausGamesSyndicate.LudumDare29.overworld.Eingang;
-
 /**
  *
  * @author Benedikt Vogler
