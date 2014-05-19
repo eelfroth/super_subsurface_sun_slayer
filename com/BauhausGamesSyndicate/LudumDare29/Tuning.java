@@ -122,27 +122,27 @@ public final class Tuning {
     
     /*---TEAM SUN---*/
         //bauer:
-        public static float BAUER_ACCELERATION_FACTOR = 0.03f;
-        public static float BAUER_FRICTION = 0.5f;
-        public static float BAUER_LIFE = 5f;
+        public final static float BAUER_ACCELERATION_FACTOR = 0.03f;
+        public final static float BAUER_FRICTION = 0.5f;
+        public final static float BAUER_LIFE = 5f;
 
         //reiter:
-        public static float REITER_ACCELERATION_FACTOR = 0.03f;
-        public static float REITER_FRICTION = 0.5f;
-        public static float REITER_LIFE = 25f;
-        public static float REITER_DAMAGE_PER_ATTACK = 5f;
+        public final static float REITER_ACCELERATION_FACTOR = 0.03f;
+        public final static float REITER_FRICTION = 0.5f;
+        public final static float REITER_LIFE = 25f;
+        public final static float REITER_DAMAGE_PER_ATTACK = 5f;
 
         //lanze:
-        public static float LANZE_ACCELERATION_FACTOR = 0.03f;
-        public static float LANZE_FRICTION = 0.5f;
-        public static float LANZE_LIFE = 5f;
-        public static float LANZE_DAMAGE_PER_ATTACK = 3f;
+        public final static float LANZE_ACCELERATION_FACTOR = 0.03f;
+        public final static float LANZE_FRICTION = 0.5f;
+        public final static float LANZE_LIFE = 5f;
+        public final static float LANZE_DAMAGE_PER_ATTACK = 3f;
 
         //pala:
-        public static float PALA_ACCELERATION_FACTOR = 0.03f;
-        public static float PALA_FRICTION = 0.5f;
-        public static float PALA_LIFE = 5f;
-        public static float PALA_DAMAGE_PER_ATTACK = 8f;
+        public final static float PALA_ACCELERATION_FACTOR = 0.03f;
+        public final static float PALA_FRICTION = 0.5f;
+        public final static float PALA_LIFE = 5f;
+        public final static float PALA_DAMAGE_PER_ATTACK = 8f;
     
 
 }
