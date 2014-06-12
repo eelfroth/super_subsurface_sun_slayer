@@ -106,7 +106,7 @@ public class Bauer extends AbstractCharacter {
         
         //Bauer:
         //Ich mache was ich will!
-        doAnything();
+        //doAnything();
     }
 
     private void doAnything() {
