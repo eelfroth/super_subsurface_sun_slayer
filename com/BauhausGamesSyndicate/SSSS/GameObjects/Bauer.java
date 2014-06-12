@@ -2,6 +2,7 @@ package com.BauhausGamesSyndicate.SSSS.GameObjects;
 
 import com.BauhausGamesSyndicate.SSSS.GameScreen;
 import com.BauhausGamesSyndicate.SSSS.overworld.AbstractSpawn;
+import java.util.ArrayList;
 
 /**
  *Ein Bauer ist ein Typ der sinnlos herum läuft und ein IndieDev mit Style.
@@ -14,6 +15,7 @@ public class Bauer extends AbstractCharacter {
     private final int dTimerMax = 500;
     private final float reach = 600;
     private final AbstractSpawn home;
+    private AbstractSpawn goal;
     
     /**
      *
@@ -25,12 +27,15 @@ public class Bauer extends AbstractCharacter {
     public Bauer(float x, float y, boolean world, AbstractSpawn home) {
         super(x, y, "zivi", world, 4, 4);
         this.home = home;
+        ArrayList<AbstractEntity> spawnlist = GameScreen.getOverworld().getAllEntitysOfType(AbstractSpawn.class);
+        this.goal =(AbstractSpawn) spawnlist.get((int) (Math.random()*spawnlist.size())); //find random goal
+        
         setFriction(0.5f);
         setAccFactor(getAccFactor() + (float) (Math.random()*0.1));
         setAcceleration(-1);
     }
     
-        @Override
+    @Override
     public void update(float delta) {
         super.update(delta);
         
