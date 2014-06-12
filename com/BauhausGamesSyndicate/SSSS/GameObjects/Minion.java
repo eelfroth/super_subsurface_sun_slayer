@@ -1,0 +1,103 @@
+package com.BauhausGamesSyndicate.SSSS.GameObjects;
+
+import com.BauhausGamesSyndicate.SSSS.GameScreen;
+import com.BauhausGamesSyndicate.SSSS.overworld.Eingang;
+
+
+/**
+ *
+ * @author Paul
+ */
+public abstract class Minion extends AbstractCharacter{
+    private boolean leaveScreen = false;
+    private boolean stormIntoBattle = false;
+    
+    public Minion(float x, float y, String name,boolean world, int steps, int specialsteps){
+        super(x, y, name, world, steps, specialsteps);
+       // setSpeed((float) (0.1f + Math.random()*.2f));
+    }
+
+    @Override
+    public boolean isEvil() {
+        return true;
+    }
+
+    @Override
+    public void update(float delta) {
+        super.update(delta);
+        
+        //follow player
+        if(onOverworld()) {
+            if(!isFighting()) {
+                if (GameScreen.onOverworld()){
+                    if(stormIntoBattle){
+                        if(GameScreen.getPlayer().isFlipped())
+                            setAcceleration(-1);
+                        else
+                            setAcceleration(1);
+                    }
+                    else {
+                        if (GameScreen.getPlayer().getX() > getX())
+                            setAcceleration(1);
+                        else
+                            setAcceleration(-1);
+                    }
+                }
+                else{
+                    Eingang e = GameScreen.getOverworld().getEingang();
+                    if (e.getX() > getX())
+                        setAcceleration(1);
+                    else
+                        setAcceleration(-1);
+                } 
+            }
+            
+            //if(GameScreen.getPlayer().isDescending())
+            //    descend();
+        }
+        else if(getWalkOnCeilingHax() && !isRising()){
+            setX(getX()%6282);
+            if ((getX() < 1 || getX() > 6281)) {
+               if(!leaveScreen) 
+                   leaveScreen = true;
+               else {
+                   leaveScreen = false;
+                   //setX((float)Math.sin(getX()/1000)*570+960+20);
+                   //setY((float)Math.cos(getX()/1000)*520+960 -10);
+                   setX(1920/2);
+                   setY(1080);
+                   rise();
+               }
+            }
+            if (3141 > getX() && 0 < getX())
+                setAcceleration(-1);
+            else //if (3141 <= getX() && 6281 > getX())
+                setAcceleration(1);
+            
+        }
+    }
+    
+    @Override
+    public void  onDescend(){
+        //nothing
+    }
+
+
+    @Override
+    public void onRise(){
+        //nothing
+    }
+    
+    public void setLeaveScreen(boolean b) {
+        leaveScreen = b;
+    }
+    
+    public void stormIntoBattle() {
+        stormIntoBattle = true;
+    }
+    
+    public void retreat() {
+        stormIntoBattle = false;
+    }
+    
+}

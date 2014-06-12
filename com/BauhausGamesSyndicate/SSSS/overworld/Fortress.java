@@ -1,0 +1,29 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package com.BauhausGamesSyndicate.SSSS.overworld;
+
+import com.BauhausGamesSyndicate.SSSS.GameObjects.AbstractGameObject;
+import com.BauhausGamesSyndicate.SSSS.GameObjects.Bauer;
+import com.BauhausGamesSyndicate.SSSS.Tuning;
+
+/**
+ *
+ * @author Paul
+ */
+public class Fortress extends AbstractSpawn{
+    public Fortress(Overworld overworld, int x, int y){
+        super(overworld, x, y, "palisaden");
+        setOverallQuantity(Tuning.BURG_QUANTITY);
+        setLQuantity(Tuning.FORTRESS_SPAWN_LANZE_RATE);
+        setRQuantity(Tuning.FORTRESS_SPAWN_RITTER_RATE);
+        setBQuantity(Tuning.FORTRESS_SPAWN_BAUER_RATE);
+        setMaxLanzen(Tuning.FORTRESS_MAX_LANZEN);
+        setMaxRitter(Tuning.FORTRESS_MAX_RITTER);
+        setMaxBauern(Tuning.FORTRESS_MAX_BAUERN);
+        setLife(Tuning.FORTRESS_LIFE);
+    } 
+}
