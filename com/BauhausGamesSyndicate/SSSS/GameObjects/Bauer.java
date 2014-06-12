@@ -49,7 +49,7 @@ public class Bauer extends AbstractCharacter {
                    setAcceleration(1);
             }
             */
-            if(GameScreen.getPlayer().getX() > getX() - reach/2 && // wenn player in Hder nähe
+            if(GameScreen.getPlayer().getX() > getX() - reach/2 && // wenn player in der Nähe
                GameScreen.getPlayer().getX() < getX() + reach/2){
                if(GameScreen.getPlayer().isAttacking() || !fearOnlyAttacks ){
                     setX(getX() + getAcceleration()*2); // wengl durchdrehen!
