@@ -26,6 +26,36 @@ public class SSSS extends Game {
         cfg.vSyncEnabled = true;
         cfg.initialBackgroundColor = new Color(0,0,0,1);
         cfg.fullscreen = false;
+        
+        //arguments
+        if (args.length > 0){
+            //look if contains launch parameters
+            for (int i = 0; i < args.length; i++) {
+                switch (args[i]) {
+                    case "-fullscreen":
+                    case "-f":
+                        //start in fullscreen
+                        cfg.fullscreen = true;
+                        break;
+                    case "-windowed":
+                        //start in windowed mode
+                        cfg.fullscreen = false;
+                        break;
+                    case "-w":
+                        //set the width
+                        cfg.width = Integer.parseInt(args[i+1]);
+                        break;
+                    case "-h":
+                        //set the height
+                        cfg.height = Integer.parseInt(args[i+1]);
+                        break;
+                     case "-dev":
+                         //TO-DO 
+                        break;    
+                }
+            }
+        }    
+        
          LwjglApplication lwjglApplication = new LwjglApplication(new SSSS(), cfg);
     }
 
