@@ -1,5 +1,6 @@
 package com.BauhausGamesSyndicate.SSSS.overworld;
 
+import com.BauhausGamesSyndicate.SSSS.GameObjects.AbstractCharacter;
 import com.BauhausGamesSyndicate.SSSS.GameObjects.AbstractEntity;
 import com.BauhausGamesSyndicate.SSSS.GameObjects.Bauer;
 import com.BauhausGamesSyndicate.SSSS.GameObjects.Lanze;
@@ -24,10 +25,10 @@ public class AbstractSpawn extends AbstractEntity {
     private int maxRitter;
     private int maxPala;
     
-    public int anzBauern;
-    public int anzLanzen;
-    public int anzRitter;
-    public int anzPala;
+    private int anzBauern;
+    private int anzLanzen;
+    private int anzRitter;
+    private int anzPala;
     
     private int BauerQuantity;
     private int LanzeQuantity;
@@ -160,6 +161,18 @@ public class AbstractSpawn extends AbstractEntity {
         }
     }
 
+    public void enter(AbstractCharacter character){
+        if (character instanceof Bauer)
+            anzBauern++;
+        if (character instanceof Reiter)
+            anzRitter++;
+        if (character instanceof Pala)
+            anzPala++;
+        if (character instanceof Lanze)
+            anzLanzen++;
+    }
+    
+    
     @Override
     public void onDeath() {
     }

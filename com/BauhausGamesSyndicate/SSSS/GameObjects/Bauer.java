@@ -63,16 +63,19 @@ public class Bauer extends AbstractCharacter {
                }
             }else{
                 playSpecial(false);
-                dTimer += delta;
-                if(dTimer >= dTimerMax){
-                    dTimer %= dTimerMax;
-                    if((int)(Math.random()*50) < 5){
-                        setAcceleration(getAcceleration()*(-1));
-                    }
-                }
+                
+                 if (goal.getX()+5>getX() && goal.getX()-5<getX()){//Ziel erreicht
+                        goal.enter(this);
+                        this.setFlagRemoveFromOverworld();
+                        //setLife(0);
+                } else{//wenn nciht Ziel erreicht
+                    if (goal.getX()>getX())//ziel rechts von Figur?
+                        setAcceleration(1);
+                    else
+                        setAcceleration(-1);
+                 }
+                 
                 if(2068 < getX() && 2160 > getX()) {
-                    
-                    
                     setAcceleration(getAcceleration()*(-1));
                     setX(getX() + getAcceleration()*2); // wengl durchdrehen!
                 }
@@ -133,7 +136,10 @@ public class Bauer extends AbstractCharacter {
     @Override
     public void onDeath() {
        super.onDeath();
-       home.anzBauern -= 1;
        home.drainLife(1);
     }
+    
+//    public findNewGoal(){
+//        goal =
+//    }
 }
