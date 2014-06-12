@@ -50,6 +50,7 @@ public class Overworld extends AbstractWorld{
         background = new Sprite(new Texture(Gdx.files.internal("com/BauhausGamesSyndicate/SSSS/assets/bg.jpg")));
         //background.scale(4);
         
+        heightmap = new int[256];
         heightmap[0] = 300;
         heightmap[1] = 327;
         heightmap[2] = 353;
@@ -312,7 +313,6 @@ public class Overworld extends AbstractWorld{
 
         
         //heightmap generieren
-        Overworld.heightmap = new int[256];
         int[] citymapX = new int[anzCitys];
         int[] citymapY = new int[anzCitys];
         int[] forestmapX = new int[anzForests];
