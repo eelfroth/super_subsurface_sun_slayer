@@ -111,12 +111,12 @@ public class AbstractSpawn extends AbstractEntity {
             timer+=delta;
             if (timer>=Tuning.TIME_TILL_SPAWN) {
                 timer = 0;
-                spawnEnemy();
+                spawnUnit();
             }
         }
     }
 
-    private void spawnEnemy() {
+    private void spawnUnit() {
        
         if(BauerQuantity != 0){
             for(int i=0; i < overallQuantity*BauerQuantity; i++){
