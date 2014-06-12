@@ -1,6 +1,6 @@
 package com.BauhausGamesSyndicate.SSSS.overworld;
 
-import com.BauhausGamesSyndicate.SSSS.GameObjects.AbstractGameObject;
+import com.BauhausGamesSyndicate.SSSS.GameObjects.AbstractEntity;
 import com.BauhausGamesSyndicate.SSSS.GameObjects.Bauer;
 import com.BauhausGamesSyndicate.SSSS.GameObjects.Lanze;
 import com.BauhausGamesSyndicate.SSSS.GameObjects.Pala;
@@ -11,7 +11,7 @@ import com.BauhausGamesSyndicate.SSSS.Tuning;
  *
  * @author Paul
  */
-public class AbstractSpawn extends AbstractGameObject {
+public class AbstractSpawn extends AbstractEntity {
     private float timer;
     private final Overworld overworld;
     

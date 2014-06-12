@@ -6,7 +6,7 @@
 
 package com.BauhausGamesSyndicate.SSSS.overworld;
 
-import com.BauhausGamesSyndicate.SSSS.GameObjects.AbstractGameObject;
+import com.BauhausGamesSyndicate.SSSS.GameObjects.AbstractEntity;
 import com.BauhausGamesSyndicate.SSSS.GameObjects.Bauer;
 import com.BauhausGamesSyndicate.SSSS.Tuning;
 

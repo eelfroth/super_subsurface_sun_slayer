@@ -7,12 +7,12 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 /**
- *
+ *An entity is an object which is part of the game world
  * @author Benedikt Vogler
  * @author Paul Flechsig
  * @author Jacob Bauer
  */
-public abstract class AbstractGameObject{
+public abstract class AbstractEntity{
     private boolean world;//false: underworld, true: overworld
     private boolean flagRemoveFromUnderworld;
     private boolean flagRemoveFromOverworld;
@@ -46,7 +46,7 @@ public abstract class AbstractGameObject{
      * @param steps the amount of animation steps for walking
      * @param specialSteps  the amount of animation steps for the special
      */
-    public AbstractGameObject(float x, float y, String name, boolean world, int steps, int specialSteps) {
+    public AbstractEntity(float x, float y, String name, boolean world, int steps, int specialSteps) {
         life = Tuning.ENTITY_LIFE;
         this.x = x;
         this.y = y;

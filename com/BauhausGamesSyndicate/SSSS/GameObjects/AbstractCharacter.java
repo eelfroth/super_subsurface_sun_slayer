@@ -8,7 +8,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
 
 
-public abstract class AbstractCharacter extends AbstractGameObject {
+public abstract class AbstractCharacter extends AbstractEntity {
     private float acceleration;
     private float accFactor;
     private float velocity;
@@ -148,7 +148,7 @@ public abstract class AbstractCharacter extends AbstractGameObject {
     
     public boolean collideWithEnemy(float delta){
         boolean colissionWithEnemy = false;
-        for (AbstractGameObject entity : GameScreen.getOverworld().getEntityList()) {
+        for (AbstractEntity entity : GameScreen.getOverworld().getEntityList()) {
             if (entity instanceof AbstractCharacter &&//can typecasting be made
                 ((AbstractCharacter)entity).isEvil()!= this.isEvil() && //is not same fraction?
                 entity.getX()+entity.getWidth() > getX()&&
@@ -162,7 +162,7 @@ public abstract class AbstractCharacter extends AbstractGameObject {
     
     public Leiche collideWithCorpse(float delta){
         Leiche colissionWithCorpse = null;
-        for (AbstractGameObject entity : GameScreen.getOverworld().getEntityList()) {
+        for (AbstractEntity entity : GameScreen.getOverworld().getEntityList()) {
             if (entity instanceof Leiche &&
                 entity.getX()+entity.getWidth() > getX()&&
                 entity.getX() < getX()+entity.getWidth()){

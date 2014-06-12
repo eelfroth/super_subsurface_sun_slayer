@@ -1,13 +1,13 @@
 package com.BauhausGamesSyndicate.SSSS.overworld;
 
-import com.BauhausGamesSyndicate.SSSS.GameObjects.AbstractGameObject;
+import com.BauhausGamesSyndicate.SSSS.GameObjects.AbstractEntity;
 import com.BauhausGamesSyndicate.SSSS.GameScreen;
 
 /**
  *
  * @author Paul
  */
-public class Forrest extends AbstractGameObject {
+public class Forrest extends AbstractEntity {
     private final Overworld overworld;
     public Forrest(Overworld overworld, int x, int y){
         super(x, y, "wald", true, 1,1);

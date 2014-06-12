@@ -2,7 +2,7 @@ package com.BauhausGamesSyndicate.SSSS.overworld;
 
 
 import com.BauhausGamesSyndicate.SSSS.AbstractWorld;
-import com.BauhausGamesSyndicate.SSSS.GameObjects.AbstractGameObject;
+import com.BauhausGamesSyndicate.SSSS.GameObjects.AbstractEntity;
 import com.BauhausGamesSyndicate.SSSS.GameObjects.LightGod;
 import com.BauhausGamesSyndicate.SSSS.GameObjects.Unicorn;
 import com.BauhausGamesSyndicate.SSSS.GameScreen;
@@ -30,7 +30,7 @@ public class Overworld extends AbstractWorld{
     private final int anzCitys   = 8;
     private final int anzForests = 11;
     
-    private static final ArrayList<AbstractGameObject> entityList = new ArrayList<>(400);//max 400 sprites
+    private static final ArrayList<AbstractEntity> entityList = new ArrayList<>(400);//max 400 sprites
     private static int cameraPos = 0;
     private static Chunk[] chunks; 
     private static Sprite background;
@@ -407,7 +407,7 @@ public class Overworld extends AbstractWorld{
         
         //update entitys
         for (int i = 0; i < entityList.size(); i++) {
-            AbstractGameObject e = entityList.get(i);
+            AbstractEntity e = entityList.get(i);
             e.update(delta);
         }
 
@@ -457,7 +457,7 @@ public class Overworld extends AbstractWorld{
         }
         
         //render entitys
-        for( AbstractGameObject m: entityList){
+        for( AbstractEntity m: entityList){
             m.render(gs);
         }
     }
@@ -513,11 +513,11 @@ public class Overworld extends AbstractWorld{
     }
 
     
-    public void addEntity(AbstractGameObject entity){
+    public void addEntity(AbstractEntity entity){
         entityList.add(entity);
     }
 
-    public ArrayList<AbstractGameObject> getEntityList() {
+    public ArrayList<AbstractEntity> getEntityList() {
         return entityList;
     }
     

@@ -37,7 +37,7 @@ public class Player extends AbstractCharacter {
         setLife(Tuning.PLAYER_LIFE);
         
         //find unicorn
-        for (AbstractGameObject ent : GameScreen.getOverworld().getEntityList()) {
+        for (AbstractEntity ent : GameScreen.getOverworld().getEntityList()) {
             if (ent instanceof Unicorn) unicorn = (Unicorn) ent;
         }
         
@@ -203,7 +203,7 @@ public class Player extends AbstractCharacter {
             attXpos= 100;
         
             
-        for (AbstractGameObject entity : GameScreen.getOverworld().getEntityList()) {
+        for (AbstractEntity entity : GameScreen.getOverworld().getEntityList()) {
             if (
                 entity instanceof AbstractCharacter &&
                 !((AbstractCharacter)entity).isEvil() &&

@@ -1,7 +1,7 @@
 package com.BauhausGamesSyndicate.SSSS.Underworld;
 
 import com.BauhausGamesSyndicate.SSSS.AbstractWorld;
-import com.BauhausGamesSyndicate.SSSS.GameObjects.AbstractGameObject;
+import com.BauhausGamesSyndicate.SSSS.GameObjects.AbstractEntity;
 import com.BauhausGamesSyndicate.SSSS.GameObjects.Fledermaus;
 import com.BauhausGamesSyndicate.SSSS.GameObjects.Slender;
 import com.BauhausGamesSyndicate.SSSS.GameObjects.Warg;
@@ -25,7 +25,7 @@ public class Underworld extends AbstractWorld{
     private final Texture texture;
     private float dt;
     private final int timeTillNextBuy = Tuning.TIME_BETWEEN_BUY;
-    private final ArrayList<AbstractGameObject> entityList = new ArrayList<>(400);//max 400 sprites
+    private final ArrayList<AbstractEntity> entityList = new ArrayList<>(400);//max 400 sprites
     private int money = 100;
     private final Sound buySound;
     private final Sprite[] icons;
@@ -89,7 +89,7 @@ public class Underworld extends AbstractWorld{
         gs.getCamera().update();
         gs.getBatch().setProjectionMatrix(gs.getCamera().combined);
                 
-        for (AbstractGameObject entity : entityList) {
+        for (AbstractEntity entity : entityList) {
             entity.render(gs);
         }
         
@@ -177,7 +177,7 @@ public class Underworld extends AbstractWorld{
         money += m;
     }
     
-    public void addEntity(AbstractGameObject entity){
+    public void addEntity(AbstractEntity entity){
         entityList.add(entity);
     }
     
