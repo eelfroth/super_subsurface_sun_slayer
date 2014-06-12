@@ -1,13 +1,7 @@
-/**
-
-* Das tuning für alle festzulegenden Werte im Spiel.
-
-**/
-
 package com.BauhausGamesSyndicate.SSSS;
 
 /**
- *
+ *Das tuning für alle festzulegenden Werte im Spiel.
  * @author yoji0462
  */
 public interface Tuning {
