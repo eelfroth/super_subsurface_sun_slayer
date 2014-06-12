@@ -10,7 +10,7 @@ package com.BauhausGamesSyndicate.SSSS;
  *
  * @author yoji0462
  */
-public final class Tuning {
+public interface Tuning {
     
     
     /*---CHARACTER/ENTITY (alle Spielfiguren)---*/
