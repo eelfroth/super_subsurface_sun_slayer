@@ -25,7 +25,7 @@ public class Player extends AbstractCharacter {
     private int distanceToTravel;
     private float distanceTraveled;
     private boolean stormIntoBattle = false;
-    private Unicorn unicorn;
+    private final Unicorn unicorn;
     private final Texture winscreen;
     private final Texture losescreen;
     private boolean tohd;
@@ -37,9 +37,7 @@ public class Player extends AbstractCharacter {
         setLife(Tuning.PLAYER_LIFE);
         
         //find unicorn
-        for (AbstractEntity ent : GameScreen.getOverworld().getEntityList()) {
-            if (ent instanceof Unicorn) unicorn = (Unicorn) ent;
-        }
+        unicorn = (Unicorn) GameScreen.getOverworld().getAllEntitysOfType(Unicorn.class).get(0);
         
         growlsound = Gdx.audio.newSound(Gdx.files.internal("com/BauhausGamesSyndicate/SSSS/assets/growlsingle.ogg"));
         stepsound = Gdx.audio.newSound(Gdx.files.internal("com/BauhausGamesSyndicate/SSSS/assets/step.wav"));
