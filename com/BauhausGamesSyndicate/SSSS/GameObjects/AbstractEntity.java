@@ -39,8 +39,8 @@ public abstract class AbstractEntity{
 
     /**
      * 
-     * @param x
-     * @param y
+     * @param x  Startkoordinate
+     * @param y Startkoordinate
      * @param name name of sprite in spritesheet
      * @param world true when on overworld, false udnerworld
      * @param steps the amount of animation steps for walking

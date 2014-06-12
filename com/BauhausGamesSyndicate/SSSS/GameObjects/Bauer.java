@@ -4,7 +4,7 @@ import com.BauhausGamesSyndicate.SSSS.GameScreen;
 import com.BauhausGamesSyndicate.SSSS.overworld.AbstractSpawn;
 
 /**
- *
+ *Ein Bauer ist ein Typ der sinnlos herum läuft und ein IndieDev mit Style.
  * @author Benedikt Vogler
  */
 public class Bauer extends AbstractCharacter {
@@ -15,6 +15,13 @@ public class Bauer extends AbstractCharacter {
     private final float reach = 600;
     private final AbstractSpawn home;
     
+    /**
+     *
+     * @param x
+     * @param y
+     * @param world true wenn auf Oberwelt
+     * @param home wo wohnt der?
+     */
     public Bauer(float x, float y, boolean world, AbstractSpawn home) {
         super(x, y, "zivi", world, 4, 4);
         this.home = home;

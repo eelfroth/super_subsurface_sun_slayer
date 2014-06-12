@@ -26,7 +26,15 @@ public abstract class AbstractCharacter extends AbstractEntity {
     private static Sound dieSoundEvil;
     
     
-
+    /**
+     * 
+     * @param x Startkoordinate
+     * @param y Startkoordinate
+     * @param name name des sprites
+     * @param world
+     * @param steps
+     * @param specialSteps 
+     */
     public AbstractCharacter(float x, float y, String name, boolean world, int steps, int specialSteps){
         super(x, y, name, world,steps, specialSteps);
         
