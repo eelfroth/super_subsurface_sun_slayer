@@ -72,10 +72,18 @@ public abstract class AbstractCharacter extends AbstractEntity {
         return this.velocity;
     }
     
+    /**
+     * 
+     * @param v in m/s
+     */
     public void setVelocity(float v){
         this.velocity = v;
     }
     
+    /**
+     * 
+     * @return 
+     */
     public float getAcceleration(){
         return this.acceleration;
     }
