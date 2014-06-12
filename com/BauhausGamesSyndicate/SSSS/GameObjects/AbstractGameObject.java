@@ -118,21 +118,22 @@ public abstract class AbstractGameObject{
         if (special){
             tex = specialTextures[dStep];
             if (tex==null) Gdx.app.error("Sprites", "special texture "+dStep+" missing");
-        }
-        else {
+        } else {
             tex = standardAnimation[dStep];
             if (tex==null) Gdx.app.error("Sprites", "standard texture "+dStep+" missing");
         }
         
-        if (flip != tex.isFlipX())
-           tex.flip(true, false);
-        //activateWalkOnCeilingHax();
-        if(walkOnCeilingHax){
-            float a=x/1000;
-            gs.getBatch().draw(tex,(float)Math.sin(a)*550+980,(float)Math.cos(a)*520+530);
-        }
-        else {
-            gs.getBatch().draw(tex, x - getWidth()/2, y-56);
+        if (tex!=null) {
+            if (flip != tex.isFlipX())
+               tex.flip(true, false);
+            //activateWalkOnCeilingHax();
+            if(walkOnCeilingHax){
+                float a=x/1000;
+                gs.getBatch().draw(tex,(float)Math.sin(a)*550+980,(float)Math.cos(a)*520+530);
+            }
+            else {
+                gs.getBatch().draw(tex, x - getWidth()/2, y-56);
+            }
         }
     }
 
