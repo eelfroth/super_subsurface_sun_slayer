@@ -23,10 +23,6 @@ public class Overworld extends AbstractWorld{
     private static int[] heightmap;
     
     // x - Positionen der Städte
-    private static int[] citymapX;
-    private static int[] citymapY;
-    private static int[] forestmapX;
-    private static int[] forestmapY;
     private final int anzCitys   = 8;
     private final int anzForests = 11;
     
@@ -53,55 +49,6 @@ public class Overworld extends AbstractWorld{
 
         background = new Sprite(new Texture(Gdx.files.internal("com/BauhausGamesSyndicate/SSSS/assets/bg.jpg")));
         //background.scale(4);
-        
-        //heightmap generieren
-        Overworld.heightmap = new int[256];
-        Overworld.citymapX = new int[anzCitys];
-        Overworld.citymapY = new int[anzCitys];
-        Overworld.forestmapX = new int[anzForests];
-        Overworld.forestmapY = new int[anzForests];
-//        for (int x = 0; x < heightmap.length; x++) {
-//            heightmap[x] = (int) (Math.random()*Chunk.HEIGHT/2);
-//        }
-        citymapX[0] = 530;
-        citymapY[0] = 400;
-        citymapX[1] = 880;
-        citymapY[1] = 450;
-        citymapX[2] = 1200;
-        citymapY[2] = 500;
-        citymapX[3] = 1100;
-        citymapY[3] = 360;
-        citymapX[4] = 3090;
-        citymapY[4] = 485;
-        citymapX[5] = 3400;
-        citymapY[5] = 320;
-        citymapX[6] = 3600;
-        citymapY[6] = 300;
-        citymapX[7] = 3850;
-        citymapY[7] = 330;
-        
-        forestmapX[0] = 350;
-        forestmapY[0] = 430;
-        forestmapX[1] = 1000;
-        forestmapY[1] = 440;
-        forestmapX[2] = 2500;
-        forestmapY[2] = 320;
-        forestmapX[3] = 1200;
-        forestmapY[3] = 340;
-        forestmapX[4] = 3000;
-        forestmapY[4] = 400;
-        forestmapX[5] = 3400;
-        forestmapY[5] = 220;
-        forestmapX[6] = 3600;
-        forestmapY[6] = 200;
-        forestmapX[7] = 3850;
-        forestmapY[7] = 230;
-        forestmapX[8] = 3500;
-        forestmapY[8] = 200;
-        forestmapX[9] = 3200;
-        forestmapY[9] = 250;
-        forestmapX[10] = 3650;
-        forestmapY[10] = 270;
         
         heightmap[0] = 300;
         heightmap[1] = 327;
@@ -364,8 +311,57 @@ public class Overworld extends AbstractWorld{
         heightmap[255] = 300;
 
         
+        //heightmap generieren
+        Overworld.heightmap = new int[256];
+        int[] citymapX = new int[anzCitys];
+        int[] citymapY = new int[anzCitys];
+        int[] forestmapX = new int[anzForests];
+        int[] forestmapY = new int[anzForests];
+//        for (int x = 0; x < heightmap.length; x++) {
+//            heightmap[x] = (int) (Math.random()*Chunk.HEIGHT/2);
+//        }
+        citymapX[0] = 530;
+        citymapY[0] = 400;
+        citymapX[1] = 880;
+        citymapY[1] = 450;
+        citymapX[2] = 1200;
+        citymapY[2] = 500;
+        citymapX[3] = 1100;
+        citymapY[3] = 360;
+        citymapX[4] = 3090;
+        citymapY[4] = 485;
+        citymapX[5] = 3400;
+        citymapY[5] = 320;
+        citymapX[6] = 3600;
+        citymapY[6] = 300;
+        citymapX[7] = 3850;
+        citymapY[7] = 330;
+        
+        forestmapX[0] = 350;
+        forestmapY[0] = 430;
+        forestmapX[1] = 1000;
+        forestmapY[1] = 440;
+        forestmapX[2] = 2500;
+        forestmapY[2] = 320;
+        forestmapX[3] = 1200;
+        forestmapY[3] = 340;
+        forestmapX[4] = 3000;
+        forestmapY[4] = 400;
+        forestmapX[5] = 3400;
+        forestmapY[5] = 220;
+        forestmapX[6] = 3600;
+        forestmapY[6] = 200;
+        forestmapX[7] = 3850;
+        forestmapY[7] = 230;
+        forestmapX[8] = 3500;
+        forestmapY[8] = 200;
+        forestmapX[9] = 3200;
+        forestmapY[9] = 250;
+        forestmapX[10] = 3650;
+        forestmapY[10] = 270;
+        
         //place towns
-        for (int i = 0; i < anzCitys; i++){
+        for (int i = 0; i < citymapX.length; i++){
             
             entityList.add(
                 new Bauernhof(this, citymapX[i], citymapY[i])
@@ -374,7 +370,7 @@ public class Overworld extends AbstractWorld{
         }
         
         //place Forrests
-        for (int i = 0; i < anzForests; i++){
+        for (int i = 0; i < forestmapX.length; i++){
             entityList.add(
                 new Forrest(this, forestmapX[i], forestmapY[i])
             );
@@ -519,6 +515,24 @@ public class Overworld extends AbstractWorld{
 
     public ArrayList<AbstractEntity> getEntityList() {
         return entityList;
+    }
+    
+    /**
+     * 
+     * @param <type> the class you want to filter
+     * @param type set the filter
+     * @return  a list containing every entity of that type
+     */
+    @SuppressWarnings("unchecked")
+    public <type extends AbstractEntity> ArrayList<type> getAllEntitysOfType(final Class<? extends AbstractEntity> type) {
+        ArrayList<type> list = new ArrayList<>(5);//defautl size 5
+
+        for (AbstractEntity entity : entityList) {//check every entity
+            if (type.isInstance(entity)) { //if the entity is of the wanted type
+                list.add((type) entity); //add it to list
+            }
+        }
+        return list;
     }
     
     
