@@ -29,12 +29,6 @@ public abstract class AbstractWorld {
         return shader;
     }
 
-    /**
-     * @param shader the shader to set
-     */
-    public void setShader(ShaderProgram shader) {
-        this.shader = shader;
-    }
 
     public Matrix4 getMatrix() {
         return matrix;
