@@ -6,7 +6,7 @@ import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 import com.badlogic.gdx.graphics.Color;
 
 /**
- *Needs libGDX1.0
+ *Needs libGDX v1.0 - v1.3
  * @author Benedikt Vogler
  * @author Paul Flechsig
  * @author Jacob Bauer
