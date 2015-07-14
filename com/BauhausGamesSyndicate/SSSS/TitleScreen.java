@@ -15,7 +15,7 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
  *
  * @author Benedikt Vogler
  */
-class TitleScreen implements Screen {
+public class TitleScreen implements Screen {
     private static TextureAtlas spritesheet;
     private final Sprite background;
     private final Sound jingle;
