@@ -82,7 +82,6 @@ public class GameScreen implements Screen {
         batch = new SpriteBatch();    
         font = new BitmapFont();
         font.setColor(Color.RED);
-        font.scale(2);
         //fps = new FPSdiag(50, 200);
         //shr = new ShapeRenderer();
         
