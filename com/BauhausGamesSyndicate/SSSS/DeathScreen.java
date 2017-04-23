@@ -60,7 +60,7 @@ class DeathScreen implements Screen {
         }
         
         if (Gdx.input.isKeyPressed(Keys.F)){
-            Gdx.graphics.setDisplayMode(Gdx.graphics.getDesktopDisplayMode());
+            Gdx.graphics.setFullscreenMode(Gdx.graphics.getDisplayMode());
         }
         
         if (Gdx.input.isKeyPressed(Keys.ESCAPE)){
